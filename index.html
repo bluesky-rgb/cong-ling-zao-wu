@@ -119,7 +119,7 @@ footer{margin-top:40px;font-size:13px;color:var(--muted);border-top:1px solid va
     <div><strong>68</strong><span>个选题</span></div>
     <div><strong>2</strong><span>集试播方案</span></div>
     <div><strong>20</strong><span>段已渲染视频</span></div>
-    <div><strong>5</strong><span>个互动网页</span></div>
+    <div><strong>6</strong><span>个网页</span></div>
   </div>
   <nav class="toc" aria-label="目录">
     <a href="#pages">成果入口</a><a href="#lines">两条线</a><a href="#method">方法</a><a href="#videos">视频</a><a href="#journey">探索历程</a><a href="#findings">探索中的发现</a><a href="#repo">仓库与源码</a><a href="#sources">资料来源</a><a href="#next">下一步</a>
@@ -130,6 +130,7 @@ footer{margin-top:40px;font-size:13px;color:var(--muted);border-top:1px solid va
   <div class="sh"><div class="n">01</div><h2>成果入口</h2></div>
   <div class="grid">
     <a class="entry" href="plan/"><span class="k">总纲</span><b>项目全书</b><p>定位、方法、双线结构、8 卷科技树、68 个选题库（可筛选）、呈现形式、素材分工、制作流程、道具与工具、品牌、发布复盘、风险合规、路线图和决定记录。</p><span class="go">打开 →</span></a>
+    <a class="entry" href="episodes/"><span class="k">系列构想</span><b>选题详案</b><p>全部 68 个选题的完整构想：时代设定、钩子、误解台阶、三层原理、实验设计、道具、安全等级、实践时要验证的点和前后衔接；另附第一季 12 集播出计划。</p><span class="go">打开 →</span></a>
     <a class="entry" href="electricity/"><span class="k">A 线 · 第一卷</span><b>从零造电</b><p>互动网页：摩擦起电、伏打电堆、电生磁、磁生电、手摇发电机。每章包含三层「为什么」、古代材料、原理→设计决策、可以亲手调参数的演示，共 17 条来源。</p><span class="go">打开 →</span></a>
     <a class="entry" href="ep04/"><span class="k">A 线 · 试播集</span><b>磁生电拍摄本</b><p>第 04 集：理解路径、20 个分镜（可按实拍、动画、字幕卡筛选）、素材清单、iPad 制作流程、8 张图文卡文案和发布清单。</p><span class="go">打开 →</span></a>
     <a class="entry" href="ep04/voice.html"><span class="k">A 线 · 试播集</span><b>磁生电旁白稿</b><p>按镜头分段的逐字稿，标好每段的估算时长，可以一键复制去生成 AI 配音；另附 5 条 AI 氛围镜头的中英文提示词。</p><span class="go">打开 →</span></a>
@@ -190,6 +191,7 @@ footer{margin-top:40px;font-size:13px;color:var(--muted);border-top:1px solid va
     <li class="key"><span class="d">10-18</span><span class="dot"></span><div class="c"><b>转折：古人已有的技艺也值得讲</b><span>新增 B 线「古法解密」和第八卷的 18 个选题。原来的「时代穿帮」反而成了第二条内容线。</span></div></li>
     <li class="key"><span class="d">10-18</span><span class="dot"></span><div class="c"><b>B 线试播集：指南鱼</b><span>查证时发现学界有争议：磁化铁鱼的究竟是地磁场，还是夹住鱼头的铁钳？于是设计了四组对照实验，并渲染 7 段视频和粗剪样片。</span><em>→ 指南鱼拍摄本</em></div></li>
     <li><span class="d">10-19</span><span class="dot"></span><div class="c"><b>汇总成这个仓库</b><span>把所有网页、视频、源码和资料来源整理成一个公开网站。</span></div></li>
+    <li class="key"><span class="d">10-19</span><span class="dot"></span><div class="c"><b>理论先行，实践在后</b><span>明确分工：Claude 把全系列的构想和方案做完整，作者按需要动手验证、再发布。写出 68 个选题详案和第一季播出计划。</span><em>→ 选题详案</em></div></li>
   </ol>
 </section>
 
@@ -215,6 +217,7 @@ footer{margin-top:40px;font-size:13px;color:var(--muted);border-top:1px solid va
   <div class="sh"><div class="n">07</div><h2>仓库与源码</h2></div>
   <pre>index.html              项目首页（本页）
 plan/                   项目全书
+episodes/               选题详案（68 个选题 + 第一季计划）
 electricity/            从零造电 · 互动网页
 ep04/                   第 04 集 · 磁生电拍摄本、旁白稿（voice.html）
 b1/                     B1 · 指南鱼拍摄本
@@ -266,6 +269,7 @@ python3 roughcut_b1.py     # B1 粗剪样片</pre>
       <tr><td>生成或录制配音</td><td>作者</td><td>旁白稿可以一键复制到剪映，用「朗读」生成</td></tr>
       <tr><td>拼接成片</td><td>Claude</td><td>把实拍替换进粗剪样片，按旁白对齐</td></tr>
       <tr><td>指南鱼对照实验</td><td>作者</td><td>必须由成年人操作明火，用拍摄本里的记录表记下结果</td></tr>
+      <tr><td>按选题详案逐集实践</td><td>作者</td><td>每集详案里都写明了「实践时要验证」的点，按第一季计划推进</td></tr>
       <tr><td>发布与复盘</td><td>一起</td><td>先发 3 集再判断方向，把评论里的疑问用到下一集</td></tr>
     </tbody>
   </table></div>

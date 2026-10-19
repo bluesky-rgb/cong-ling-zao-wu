@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>从零造物选题详案</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: series bible in the shared workshop-notebook system. Season plan table on top, sticky filter bar, then one expandable dossier per episode. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+.wrap{max-width:1000px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(34px,7vw,56px);font-weight:900}
+.lead{color:var(--muted);max-width:44em}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+section>*,header>*{min-width:0}
+.stats{display:flex;flex-wrap:wrap;gap:8px}
+.stats div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:6px 12px;font-size:14px}
+.stats b{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:640px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--copper);font-weight:600}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);padding-block:10px;display:grid;gap:8px;border-bottom:1px solid var(--line)}
+.fr{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.fr .lbl{font-size:12px;color:var(--muted);min-width:2.5em}
+.fr button{font:inherit;font-size:13px;color:var(--ink);background:var(--sheet);border:1px solid var(--line);border-radius:999px;padding:3px 11px;cursor:pointer;min-height:32px}
+.fr button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.fr button:focus-visible,summary:focus-visible,input:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+.search{display:flex;gap:8px;align-items:center}
+.search input{font:inherit;font-size:14px;flex:1;min-width:0;background:var(--sheet);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.count{font-family:var(--mono);font-size:12px;color:var(--muted);white-space:nowrap}
+.list{display:grid;gap:10px}
+details.ep{background:var(--sheet);border:1px solid var(--line);border-radius:10px;min-width:0}
+details.ep[open]{border-color:var(--copper)}
+details.ep summary{list-style:none;cursor:pointer;padding:12px 14px;display:grid;grid-template-columns:4.2em minmax(0,1fr) auto;gap:10px;align-items:baseline}
+details.ep summary::-webkit-details-marker{display:none}
+.id{font-family:var(--mono);font-size:13px;color:var(--copper);font-weight:600}
+.st{display:grid;gap:2px;min-width:0}
+.st b{font-family:var(--display);font-size:19px;font-weight:900}
+.st span{font-size:14px;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:4px;justify-content:flex-end}
+.pill{font-size:11px;border-radius:4px;padding:1px 7px;font-weight:500;white-space:nowrap}
+.s-l{background:var(--good-soft);color:var(--good)}
+.s-m{background:var(--copper-soft);color:var(--copper)}
+.s-h{background:var(--warn-soft);color:var(--warn)}
+.p-done{background:var(--good-soft);color:var(--good)}
+.p-web{background:var(--field-soft);color:var(--field)}
+.p-todo{background:var(--paper);color:var(--muted);border:1px solid var(--line)}
+.body{padding:0 14px 14px;display:grid;gap:12px}
+.era{font-size:13px;color:var(--muted);overflow-wrap:anywhere}
+.body>*{min-width:0}
+.era b{color:var(--ink);font-weight:500}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:6px}
+.ladder li{display:grid;grid-template-columns:1.6em minmax(0,1fr);gap:8px;font-size:14px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:6px}
+.layer{display:grid;grid-template-columns:5.6em minmax(0,1fr);gap:10px;font-size:14px;background:var(--paper);border-radius:6px;padding:6px 10px}
+.layer span{font-family:var(--mono);font-size:11px;color:var(--field);padding-top:3px}
+dl.kv{margin:0;display:grid;grid-template-columns:5.2em minmax(0,1fr);gap:6px 12px;font-size:14px}
+dl.kv dt{color:var(--muted)}
+dl.kv dd{margin:0}
+.verify{background:var(--copper-soft);border-radius:6px;padding:8px 10px;font-size:14px}
+.verify b{color:var(--copper)}
+.note{font-size:13px;color:var(--warn)}
+h3.sub{font-size:14px;font-weight:500;font-family:var(--body);color:var(--muted)}
+@media (max-width:560px){.bar{position:static}details.ep summary{grid-template-columns:3.6em minmax(0,1fr)}.tags{grid-column:2;justify-content:flex-start}}
+</style>
+
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep04/">磁生电拍摄本</a><a href="../ep04/voice.html">磁生电旁白稿</a><a href="../b1/">指南鱼拍摄本</a><a href="../#videos">视频</a></nav>
+<header>
+  <div class="eyebrow">从零造物 · 系列构想 · 选题详案</div>
+  <h1>选题详案</h1>
+  <p class="lead">全系列 68 个选题，每个都是一份完整的构想：设定在哪个年代、用什么钩子开场、观众要走过哪几级误解、三层原理、怎么做实验、需要什么道具、安全等级，以及<b>实践时必须验证的点</b>。理论部分已经写好；等你需要拍哪一集时，再按这一份去动手验证，然后发布。</p>
+  <div class="stats" id="stats"></div>
+</header>
+
+<section>
+  <h2>第一季播出计划</h2>
+  <p class="lead">12 集，双周更新，约半年。A 线和 B 线交替，难拍的集和好拍的集穿插安排；前两集是已经做好全套方案的试播集。</p>
+  <div class="tw"><table>
+    <thead><tr><th>顺序</th><th>选题</th><th>线</th><th>为什么排在这里</th></tr></thead>
+    <tbody id="season"></tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>全部选题</h2>
+  <div class="bar">
+    <div class="fr" id="fl" role="group" aria-label="按线筛选"></div>
+    <div class="fr" id="fv" role="group" aria-label="按卷筛选"></div>
+    <div class="fr" id="fs" role="group" aria-label="按安全等级筛选"></div>
+    <div class="search"><input id="q" type="search" placeholder="搜索：磁、盐、水车……" aria-label="搜索选题"><span class="count" id="cnt"></span></div>
+  </div>
+  <div class="list" id="list"></div>
+</section>
+</div>
+
+<script>
+(function(){
+const VOL=['一 · 电','二 · 能量从哪来','三 · 火与材料','四 · 水与农业','五 · 救命的知识','六 · 机械与交通','七 · 信息与测量','八 · 古法解密'];
+// id, vol, name, era, hook, ladder("误解→打破" / ...), layers("a|b|c"), design, experiment, props, safety, verify, link, cost, status, note
+const E=[
+['E01',0,'摩擦起电与莱顿瓶','北宋 · 约 1090 年 · 穿越者的工坊','琥珀一擦，为什么能吸起稻草？','电只能来自雷电→琥珀和毛皮一擦就有电/摩擦出的电会一直留着→放一会儿就散了/电存不住→用瓶子内外贴金属箔，做成莱顿瓶存电','摩擦后，两种材料带上相反的电|不同材料抓电子的能力不同，可以排成一张起电序列|电子从一种材料转移到另一种材料','电荷会漏走→选干燥天气、用绝缘手柄；想把电存起来→两层导体中间夹一层绝缘','用塑料棒（替代琥珀）摩擦后吸纸屑；在塑料瓶内外贴锡箔做莱顿瓶，充电后放电，看火花','琥珀或塑料棒、毛皮或羊毛布、塑料瓶、锡箔、纸屑','m','空气湿度对效果的影响有多大；莱顿瓶的火花能不能拍清楚（需要暗环境）','→ 02 伏打电堆：静电存不住、用不久，需要持续的电','低','web','自制莱顿瓶只做小号，不要多个串联'],
+['E02',0,'伏打电堆','北宋 · 约 1090 年','两块金属加盐水，为什么能持续出电？','电只能靠摩擦→两种金属夹盐水也有电/一组就够用→单组电压很低，要串联/浸一下盐水就行→铜片上的气泡会让电越来越弱','铜片、铁片之间夹盐水布，导线里出现持续电流|每组电压基本固定，串联起来电压相加|铁比铜更容易失去电子，电子经过导线流向铜','单组电压低→叠成一堆串联；叠得太高会把盐水压出来→改成一排盛盐水的杯子','铜片、铁片、盐水布分别叠 1、4、10 组，用万用表测电压；对照：换成醋、换成清水、换成锌片','铜片（或铜钱）、铁片、锌片（对照用）、盐、醋、布片、万用表、LED','l','铁和铜组成的电堆每组实际电压是多少（没有查到可靠数据，必须实测）；要几组才能点亮 LED','→ 03 电生磁：有了持续电流，才能发现电流的磁效应','低','web','北宋设定下锌很难得到，所以主线用铁片，锌片只作对照'],
+['E03',0,'电生磁','北宋 · 约 1090 年','通电导线为什么能拨动指南针？','电和磁是两回事→通电导线让磁针偏转/磁场是一条直线→磁感线绕着导线转圈/一根导线就够强→绕成线圈、加上铁芯才成为电磁铁','导线一通电，旁边的磁针就偏转；电流反向，磁针也反向|电流周围有环形磁场，电流越大磁场越强|运动的电荷产生磁场；铁芯里的磁畴被排列整齐，磁场大大增强','单根导线磁场弱→绕成线圈；铁能放大磁场→加软铁芯；裸铜线挨在一起会短路→涂漆或缠丝','导线沿南北方向放在指南针正上方，接通、反接；在铁钉上绕 10 圈和 50 圈，比较各能吸起几枚回形针','指南针、电池、导线、铁钉、漆包线、回形针','l','用自制电堆供电时，磁针偏转是否明显；电磁铁能吸起几枚回形针','← B1 指南鱼（古人已经会磁化铁）；→ 04 磁生电','低','web','这种接法接近短路，只能短时间通电'],
+['E04',0,'磁生电','北宋 · 约 1090 年','磁铁就在线圈里，为什么不发电？','把磁铁放进线圈就有电→磁铁不动时指针始终为零/磁铁越强电越多→关键是变化得多快/推一下就够了→要持续发电，就得让磁通量一直变化','磁铁插入或抽出线圈的瞬间，电流表指针跳动|电压 = 匝数 × 磁通量变化的快慢（法拉第定律）|运动导线里的电子受洛伦兹力，被推向一端','电压与变化速度成正比→磁铁要动得快；与匝数成正比→多绕几圈；只在变化时有电→改成旋转','快插和慢插对比；5 匝和 50 匝线圈对比；插入和拔出时指针方向相反','钕磁铁、漆包线、指针式灵敏电流计、指南针、小灯泡','l','指针偏转幅度够不够在画面里看清；5 匝和 50 匝的差别是否明显；指针会不会一下打满','→ 05 手摇发电机','低','done',''],
+['E05',0,'手摇发电机','北宋 · 约 1090 年','灯泡一接上，手柄为什么变沉了？','转得越快灯越亮就行→接的灯越多，手柄越难摇/发电机能白白给电→电来自你使出的力气/交流电没有用→加上换向器就变成单向电流','摇动磁铁扫过线圈，灯一闪一闪；接上灯后手柄明显变沉|楞次定律：感应电流总是阻碍引起它的变化|能量守恒：电能来自人做的功','需要持续变化→改成旋转；电压与转速成正比→用齿轮增速；电解需要单向电流→加换向器','以同样的速度摇手摇发电机，分别空载、接灯、短路，感受阻力并用拉力计测量','手摇发电机或自制转子、灯泡、拉力计','l','三种负载下的阻力差能否用拉力计测出来；自制转子能让灯亮到什么程度','→ 第二卷：把手柄换成水车、风车','中','web',''],
+['E06',1,'水车发电','北宋 · 约 1090 年','落差和流量，哪个更重要？','水越多越好→落差同样重要/水车越大越好→转得太慢，电压不够/直接接上就行→需要齿轮增速','水冲动水轮，带动发电机发电|功率约等于流量 × 落差 × 效率|水的势能先变成动能，再变成电能','水车转得慢→齿轮增速；水量不稳定→修蓄水池','用水龙头冲小水轮，带动一个小直流电机（当发电机用）；分别改变水量和出水高度，测电压','小水轮模型、小直流电机、水管、万用表','l','高度和流量各自对电压影响多大','← B4 水排；→ 风车','中','todo','北宋已有水车，创新点在于把它接到发电机上'],
+['E07',1,'风车发电','北宋 · 约 1090 年','风速翻一倍，电能涨多少？','风速翻倍，电也翻倍→风的功率约涨到八倍/叶片越多越好→并非如此/风车对着风就行→风向会变，要能自动转向','风吹叶片转动，带动发电机|风的功率与风速的三次方成正比|叶片截取了空气流动的动能','风向会变→加尾舵；风速不稳→需要储能','用电扇的两档风速吹纸风车，带动小电机，测电压并计算功率','纸风车、小电机、电扇、万用表','l','实测功率比是否接近八倍（小模型损耗大，可能偏离很多）','→ 储能问题','低','todo',''],
+['E08',1,'畜力与人力','北宋 · 约 1090 年','点亮一盏灯，人要蹬多累？','发电很轻松→持续输出非常累/灯只亮一点点也不费力→功率决定你有多累','蹬自行车发电点灯|功率 = 做的功 ÷ 时间|人体能持续输出的功率很有限','人力有限→换成畜力、水力；减少传动损耗','用自行车发电机分别带 1、2、3 盏灯，记录能坚持多久','自行车发电机、灯泡、计时器','l','能稳定点亮几盏灯、坚持多久','← 05 楞次定律','中','todo',''],
+['E09',1,'重力发电','北宋 · 约 1090 年','一袋石头落下，灯能亮多久？','重物一下就落完了→用齿轮让它慢慢落/越重越好→高度同样重要','重物下落，带动发电机点灯|势能 = 重量 × 高度|势能转化为电能','下落太快→齿轮减速','重物绕过滑轮带动小电机，测灯亮了几秒，与计算值比较','重物、滑轮、小电机、LED、计时器','l','实测亮灯时间和计算值差多少','→ 储能问题','低','todo',''],
+['E10',1,'蒸汽发电','北宋 · 约 1090 年','烧开一壶水，怎么变成电？','蒸汽只能吹风车→可以推动活塞或叶轮/火越大越好→压力过高会爆炸','蒸汽推动叶轮，带动发电机|热能变成机械能，压力越大做功越多|水变成蒸汽，体积膨胀一千多倍','压力危险→加安全阀','只用动画；可以远距离拍摄现成的教学用蒸汽机模型','教学用蒸汽机模型（可选）','h','—','← 第三卷 煤与焦炭；→ 今天的火电和核电','高','todo','不要自制任何压力容器'],
+['E11',1,'化学电：土豆与大地','北宋 · 约 1090 年','土豆为什么能点亮 LED？','电是土豆里的→电来自两种金属，土豆只是电解质/一个土豆就够亮→要串联好几个','铜片、锌片插进土豆，两端有电压|两种金属失去电子的倾向不同，形成电压|同伏打电堆，金属失去的电子经导线流动','电压低→串联','分别用土豆、柠檬、盐水、湿土测电压；串联点亮 LED','土豆、柠檬、铜片、锌片或镀锌钉、LED、万用表','l','几种电解质的电压差异；几个串联才能点亮 LED','← 02 伏打电堆','低','todo',''],
+['E12',1,'热电','北宋 · 约 1090 年','金属一头烧热，为什么就有电压？','热和电没关系→加热金属接点就有电压/电压很大→只有几毫伏','两种金属的接点受热，产生电压|塞贝克效应：电压大致与温差成正比|热端的电子更活跃，向冷端扩散','电压太小→很多组串联，做成热电堆','把铜线和铁丝拧成接点，用蜡烛加热，毫伏表测电压','铜线、铁丝、蜡烛、毫伏表','m','能测到几毫伏','→ 今天的测温热电偶','低','todo',''],
+['E13',1,'压电','北宋 · 约 1090 年','敲一下石头，为什么会冒火花？','火花是摩擦出来的→挤压晶体会产生很高的电压','按下打火机点火器，冒出火花|压电效应：挤压某些晶体会产生电压|晶体内正负电荷的中心被挤得错开','—','拆出电子打火机的点火器，按压看火花；接在 LED 上看它闪','电子打火机点火器、LED','m','能不能让 LED 闪一下','→ 今天的传感器','低','todo','只用点火器，不接触燃气'],
+['E14',1,'静电机','北宋 · 约 1090 年','怎样让静电源源不断？','摩擦起电只能一下一下来→转动机器就能连续起电','转动的机器持续产生火花|感应起电和电荷累积|电荷被分离并收集起来','—','动画为主；可以远距离拍摄教学用感应起电机','教学用感应起电机（可选）','m','—','← 01 摩擦起电','中','todo','高压小电流，不要触碰电极'],
+['E15',2,'生火','新石器时代','钻木为什么能起火？','摩擦一下就能着→要达到燃点，还要保住热量/有柴就能烧→还要有氧气','钻木冒烟、起火|燃烧三要素：可燃物、氧气、温度|摩擦生热让木屑达到燃点','热量会散失→把木屑聚在一起、用火绒接火','在户外由成年人对比三种方法：火石火镰、放大镜、火塞，看哪种最快','火石火镰、放大镜、火塞、火绒','m','三种方法各要多久','→ 木炭与制陶','低','todo','钻木取火在新石器时代之前早已存在，这一集讲原理，也可以归入 B 线'],
+['E16',2,'木炭与制陶','新石器时代','木炭为什么比木头烧得更热？','木头直接烧最热→水分和烟带走了热量/泥巴晒干就是陶器→要高温烧结','木炭火更旺、烟更少；陶坯烧后变硬|隔绝空气加热，去掉水分和挥发物|碳含量高，燃烧温度更高','需要高温→木炭加鼓风','户外小样：在密封铁罐里加热木片得到木炭；制陶用动画','铁罐、木片（户外）','m','罐里能不能得到木炭','→ 炼铜','低','todo',''],
+['E17',2,'炼铜','新石器时代晚期','绿色的石头怎么变成铜？','石头里本来就有铜块→铜和氧结合成了矿石/用火烧就行→要靠木炭夺走氧','孔雀石和木炭一起高温加热，得到铜|还原反应|碳夺走铜化合物里的氧','需要高温→鼓风','去非遗工坊拍；原理用动画','—','h','—','→ 炼铁','高','todo',''],
+['E18',2,'炼铁','青铜时代','铁矿石其实就是铁锈？','铁矿是纯铁→是铁的氧化物/烧化就行→早期炉温不够熔化铁，只得到海绵状的铁块/铁都一样→含碳量决定软硬','铁矿加木炭得到海绵状铁块，锻打挤出杂质|一氧化碳把氧化铁还原成铁|碳原子嵌进铁的晶格，改变硬度','温度不够→风箱、水排；太脆→控制含碳量','去铁匠铺实地拍；由铁匠演示淬火','—','h','—','← B4 水排；→ 煤与焦炭','高','todo',''],
+['E19',2,'煤与焦炭','北宋 · 约 1090 年','有煤，为什么还要烧木炭炼铁？','煤比木炭好→煤里的硫让铁变脆/直接烧就行→先炼成焦炭','用煤炼的铁容易脆|硫混进了铁里|焦化去掉硫和挥发物','—','只用动画','—','h','焦炭在中国最早出现的年代需要查证','→ 第二卷 蒸汽；→ 第五卷 煤气中毒','高','todo','北宋已经在用煤'],
+['E20',2,'制盐','北宋 · 约 1090 年','盐为什么不能像糖那样靠降温结晶？','盐水一冷就析出→盐的溶解度几乎不随温度变化/煮干就行→太费柴，要先晒浓','盐水蒸发后析出晶体|盐和糖的溶解度曲线完全不同|水分子离开后，离子重新排成晶格','省燃料→先晒卤；判断浓度→用莲子测卤，本质上是密度计','浓盐水和浓糖水分别冷却、晒干，对比；鸡蛋和莲子在不同浓度卤水里的沉浮','盐、糖、锅、鸡蛋、莲子','l','莲子在多浓的卤水里开始上浮','← B2 卓筒井','低','todo','北宋已有井盐，这一集讲原理'],
+['E21',2,'玻璃','无玻璃的年代','沙子怎么变透明？','沙子烧一烧就是玻璃→石英的熔点太高/再加点别的→助熔剂降低熔点','沙子加草木灰，高温熔化成玻璃|助熔剂降低熔点|熔体冷得太快，来不及结晶，变成非晶态','—','去工坊拍；非晶态用动画讲','—','h','—','→ 透镜、望远镜','高','todo','中国古代已有琉璃，设定要选在合适的地区和年代'],
+['E22',2,'肥皂','设定待定','油加草木灰，为什么能去污？','水能洗掉油→油和水不相溶/肥皂把油溶解了→肥皂分子一头抓油、一头抓水','油脂和碱性溶液反应，生成肥皂|皂化反应|两亲分子把油滴包裹起来','—','强碱只用动画；演示：油和水分层，加入肥皂后乳化','油、水、肥皂、透明杯','m','—','→ 第五卷 洗手','低','todo',''],
+['E23',2,'纸','西汉以前','树皮怎么变成纸？','纸是压出来的→纤维在水里分散，再重新交织','把纸浆捞起来晾干，就成了纸|纤维之间形成大量氢键|纤维素分子之间的氢键把纤维连成一张网','—','废纸打成纸浆，用纱网框抄纸，晾干','废纸、纱网框、盆、料理机','l','能不能抄出厚度均匀的纸','→ B3 活字印刷','低','todo',''],
+['E24',2,'石灰与水泥','设定待定','烧过的石头，为什么还能变回石头？','石灰遇水只是变湿→会放热，并且慢慢硬化','石灰石烧成生石灰，加水后慢慢硬化|碳酸钙→氧化钙→氢氧化钙→碳酸钙的循环|吸收空气里的二氧化碳，重新结晶','—','只用动画（生石灰遇水剧烈放热）','—','m','—','→ B6 赵州桥','低','todo',''],
+['E25',3,'螺旋提水','先秦','一根螺旋，怎么把水送上高处？','水不能往高处走→螺旋把水一格一格托上去/转得越快越好→倾斜的角度同样关键','转动螺旋管，水从高处流出|每一格都是一个局部的低处|水始终在往下流，只是整体被抬高了','倾角太大→水会倒流','把透明软管绕在瓶子上做成螺旋泵，改变倾角试验','透明软管、塑料瓶、两个盆','l','最大能用多大的倾角','—','低','todo',''],
+['E26',3,'虹吸','设定待定','水为什么能先往上爬，再翻过堤坝？','水不会往上走→管子注满水就能翻过去/管子越高越好→超过约十米就会断流','注满水的软管，把水引过高处|出口低于水面就会持续流动|大气压把水推上去，另一侧的重力把水拉下来','需要先注满→引水','用软管和两个桶演示，改变出口高度，看流速变化','软管、两个桶','l','出口高差和流速的关系','→ 灌溉','低','todo',''],
+['E27',3,'陶罐滴灌','设定待定','埋一个罐子，为什么能省很多水？','浇得越多越好→大量的水被蒸发或渗走了','埋在土里的素烧陶罐慢慢渗水|陶壁微孔的毛细作用|土越干，渗得越快，能自动调节','—','两盆同样的植物，一盆用陶罐，一盆表面浇水，记录用水量和土壤湿度','素烧陶罐、花盆、植物、量杯','l','实际能省多少水','—','低','todo',''],
+['E28',3,'水车提水','东汉以前','河水怎么自己爬上田埂？','水只能往低处流→水流推动轮子，斗把水带上去','水流推动轮子，轮上的斗把水提起来|水流的动能变成提升水的势能|能量转换','—','水车模型','水车模型','l','模型能把水提多高','→ 第二卷 水车发电','低','todo','中国东汉已有翻车'],
+['E29',3,'轮作固氮','设定待定','种过豆子的地，为什么更肥？','庄稼只会从土里吸养分→豆子能给土加氮','豆科作物之后种的庄稼长得更好|根瘤菌固定空气里的氮|把氮气变成植物能吸收的含氮化合物','→ 轮作','挖出豆苗看根瘤特写；两盆对照种植（要几周）','豆苗、花盆、放大镜','l','对照实验需要几周才能看出差别','—','低','todo','中国古代已有绿肥和轮作的经验'],
+['E30',3,'选种与嫁接','设定待定','不懂基因，怎么改良品种？','品种是天生的→一代代挑选就能改良','一代代挑选好种子，嫁接枝条|人工选择；嫁接处的形成层愈合连通|遗传变异被筛选、积累','—','对比种子大小选种；嫁接一棵小果树（周期很长）','种子、果树枝条、嫁接刀','m','—','—','低','todo','古代已有嫁接；用刀要小心'],
+['E31',4,'口服补液','设定待定','喝水止不住脱水，为什么加点盐和糖就行？','拉肚子就多喝水→光喝水吸收不了/越甜越好→比例很关键','加了盐和糖的水能被身体吸收|肠道里钠和葡萄糖一起被吸收，同时把水带进身体|细胞膜上的协同转运蛋白','比例关键→只讲原理，不给配方','只用动画，不做任何人体实验','—','m','—','—','低','todo','健康类：注明「现实中请遵医嘱」'],
+['E32',4,'洗手','1840 年代以前','医生洗手，为什么能救下产妇？','看不见脏东西就是干净→手上带着致病物质','用含氯溶液洗手后，产妇死亡率下降|1847 年塞麦尔维斯的观察|病菌经手传播','—','用荧光粉模拟细菌，紫外灯下对比洗手前后','荧光洗手粉、紫外手电','l','不同洗法的残留差别','← E22 肥皂','低','todo',''],
+['E33',4,'防坏血病','1740 年代以前的远航','史上最早的对照实验之一','病是瘴气引起的→是缺一种营养','吃柑橘的水手好转|1747 年林德把病人分组对照|缺维生素 C 会影响胶原蛋白合成','—','讲解对照实验的设计；用碘液滴定，比较几种果汁的维生素 C 含量','碘酒、淀粉、几种果汁、滴管','l','滴定数据','—','低','todo',''],
+['E34',4,'净水','设定待定','晒一瓶水，为什么能消毒？','看起来清澈就是干净→还有看不见的微生物/过滤就够了→还要杀菌','过滤后再煮沸或暴晒|过滤去掉颗粒，加热和紫外线杀菌|紫外线破坏微生物的 DNA','—','用沙、石子、木炭过滤浑水，对比前后的浑浊度（不饮用）','塑料瓶、沙、石子、木炭、浑水','l','过滤效果','—','低','todo','注明不能替代正规的净水方法'],
+['E35',4,'种痘','18 世纪以前','用一场小病，换来对大病的免疫','病只能硬扛→接种相似的轻病就能预防','接种牛痘的人不再得天花|1796 年琴纳的牛痘接种|免疫系统会记住相似的病原','—','只用动画','—','m','—','—','低','todo','中国明清已有人痘法，可讲牛痘为什么更安全'],
+['E36',4,'煤气中毒与通风','设定待定','关紧门窗烧炭，为什么危险？','炭火没有烟就安全→会产生无色无味的一氧化碳','密闭的屋里烧炭，人会昏迷|燃烧不充分产生一氧化碳|一氧化碳和血红蛋白结合，挤掉了氧','→ 通风','只用动画；可以演示蜡烛在密闭罐里熄灭，但要说明那只是缺氧','蜡烛、玻璃罐','h','—','← E19 煤与焦炭','低','todo','绝不实拍任何一氧化碳相关内容'],
+['E37',4,'罐藏','1810 年以前','比细菌学早几十年的保鲜法','食物坏掉是自己变质→是微生物进入','密封后加热的罐头不会坏|阿佩尔约 1810 年公布了方法|加热杀死微生物，密封防止它们再进来','—','两罐汤，一罐煮后密封，一罐不处理，对比几天后的变化（不食用）','玻璃罐、汤','m','几天后的变化','→ 巴斯德','低','todo',''],
+['E38',4,'蒸发冷却罐','设定待定','不用电的冰箱','冷只能靠冰→水蒸发也能降温','湿沙罐里的食物更凉|蒸发吸热|水分子离开时带走热量','—','大小两个陶罐套在一起，中间填湿沙，用温度计对比内外温差','大小陶罐、沙、温度计','l','实际温差（和空气湿度关系很大）','← B12 冰鉴与藏冰','低','todo',''],
+['E39',5,'杠杆与滑轮组','设定待定','一个人怎么吊起一头牛？','力气不够就吊不起→动滑轮越多越省力','用滑轮组吊起重物|省力就要费距离，做的功不变|能量守恒','—','滑轮组提重物，用弹簧秤测拉力','滑轮、绳子、弹簧秤、重物','l','实测拉力和理论值差多少','—','低','todo',''],
+['E40',5,'曲柄连杆','设定待定','来回运动，怎么变成转动？','推拉只能来回→曲柄把直线运动变成转圈','推拉连杆，轮子转动|曲柄连杆机构|直线运动和圆周运动的转换','—','纸板模型','纸板、图钉','l','—','← B4 水排','低','todo',''],
+['E41',5,'齿轮与轴承','设定待定','怎么让转速变快或变慢？','转速改不了→换齿数比就能变','大齿轮带小齿轮，转得更快|齿数比决定转速比；滚动摩擦比滑动摩擦小|—','—','齿轮模型；用珠子做轴承，对比摩擦','齿轮模型、珠子','l','—','→ 第二卷 水车发电增速','低','todo',''],
+['E42',5,'马轭','欧洲中世纪早期','换一副套具，马为什么能拉得更重？','马的力气是固定的→套具勒住脖子，马使不出全力','换成肩部受力的马轭后，马能拉得更重|旧式颈带会压住马的气管|受力点决定能否顺畅呼吸和发力','—','只用动画','—','l','—','—','低','todo','中国很早就用胸带挽具'],
+['E43',5,'逆风航行','设定待定','帆船为什么能逆风前进？','帆只能被风推着走→帆产生升力，龙骨抵住侧推，走之字形','帆船走之字形逆风前进|帆产生升力，龙骨抵消侧向力|气流在帆两侧形成压力差','—','模型船、电扇、水槽','模型船、电扇、水槽','l','模型能不能逆风前进','—','中','todo',''],
+['E44',5,'热气球','1783 年以前','一团热空气，怎么把人带上天？','只有比空气轻的东西才能飞→热空气本身就更轻','热空气让袋子升起|密度差产生浮力|气体受热膨胀，密度变小','—','塑料袋加吹风机（不用明火，不放孔明灯）','塑料袋、吹风机','m','—','—','低','todo',''],
+['E45',6,'摆钟','17 世纪以前','摆一次的时间，为什么只看摆长？','摆得越大，一次越久→摆幅不同，周期几乎一样','长摆慢、短摆快；摆幅不同，周期几乎不变|小角度下周期只和摆长、重力有关|摆的等时性','—','绳子加重物测周期，分别改变摆长、摆幅和重量','绳子、重物、计时器','l','摆幅很大时周期偏差多少','← B13 漏刻','低','todo',''],
+['E46',6,'温度计','设定待定','怎样从零定义「一度」？','冷热只能靠感觉→液柱随温度升降，用两个固定点标刻度','液柱随温度升降|热胀冷缩加上冰水、沸水两个定点|—','—','用细管和色水自制温度计，在冰水和沸水中标定','细玻璃管或吸管、色水、温度计（对照）','m','自制温度计的误差','—','低','todo','用沸水时注意烫伤'],
+['E47',6,'用影子测地球','设定待定','一根杆子，怎么量出地球多大？','地球大小没法量→两地影子的角度差就能算出','两地同一时刻，杆子的影子角度不同|埃拉托色尼约公元前 240 年的方法|地球是球体，太阳光近似平行','—','和另一座城市的朋友约好同一时刻测影长','杆子、卷尺、量角器','l','测量误差','—','低','todo',''],
+['E48',6,'数字与 0','设定待定','为什么换了写法，算账就变快了？','数字怎么写都一样→位值制让竖式计算成为可能','用阿拉伯数字竖式计算比罗马数字快得多|位值制和 0 的占位作用|—','—','用罗马数字和阿拉伯数字做竖式计算比赛','纸、笔','l','—','—','低','todo',''],
+['E49',6,'复式记账','1494 年以前的欧洲','怎样让账永远算不错？','记一笔账就够了→每笔记两边，两边总数必须相等','每笔账同时记在两边|借贷平衡|用守恒来检查错误','—','用一个小卖部的账本做演示','账本示意','l','—','—','低','todo',''],
+['E50',6,'光学电报','1790 年代以前','不用电，怎么把消息传到百里之外？','只能派人送信→编码加上中继站接力','塔上的信号臂一站接一站传递|编码和中继|受视距限制','—','两人用手电闪光编码传话','手电、编码表','l','—','→ 第一卷之后：电报','低','todo',''],
+['B1',7,'指南鱼','北宋 · 约 1044 年 ·《武经总要》','这条铁鱼没碰过磁石，为什么会指南？','烧红只是为了软化→烧红让铁失去磁性，冷却时重新磁化/鱼尾朝北一定是关键→可能只是仪式，磁化来自铁钳/做好就能一直用→要收进密闭的盒子保持磁性','古人：烧红、铁钳夹头、尾朝北淬火，收进密器|争议：地磁场磁化，还是铁钳的热剩磁？|热剩磁：冷却穿过约 770°C 时，按周围的磁场排列','—','四组对照：照原文 / 尾朝东 / 换铜夹子 / 不加热，各做 3 次','无镀层薄钢片、铁钳、铜夹子、卡式炉、指南针','m','四组的结果（完全未知）','→ 03 电生磁','低','done','明火加烧红金属，只能由成年人操作'],
+['B2',7,'卓筒井','北宋 · 庆历年间 · 四川','没有钢铁钻机，怎么打出很深的盐井？','要用坚硬的钻头往下钻→重锤反复下落冲击/打通就能取卤→要竹筒做井壁，挡住坍塌和淡水/卤水提不上来→筒底装单向阀','古人：铁锥冲击，竹筒作套管，底部带阀门的竹筒汲卤|经验：口小井深，隔绝淡水|冲击破岩；单向阀靠水压开合','—','用塑料管加乒乓球或皮片做单向阀汲水筒模型','塑料管、乒乓球或皮片、水桶','l','单向阀模型能不能把水提上来','→ E20 制盐','低','todo',''],
+['B3',7,'活字印刷','北宋 · 庆历年间 · 毕昇','一千年前，怎么不靠电脑排出一本书？','印一页刻一块版→把字拆成能反复使用的单元/排好的字会散→用松脂、蜡和纸灰固定在铁板上，加热就能拆下','古人：泥活字烧硬，铁板上用松脂、蜡、纸灰固定|沈括《梦溪笔谈》的记载|模块化；松脂和蜡熔点低，加热就软','—','用黏土刻字烧硬（或用橡皮刻），用蜡固定排版并印刷','黏土、刻刀、蜡、印泥、纸','m','用蜡固定能不能印得清楚','← E23 纸','低','todo','加热蜡时注意烫伤'],
+['B4',7,'水排','东汉 · 公元 31 年 · 杜诗','一条河，怎么替人拉风箱？','水车只能转圈→曲柄连杆把转动变成推拉','古人：水轮经曲柄连杆推动风箱鼓风|《后汉书》的记载|旋转运动转换成往复运动','—','纸板模型','纸板、图钉','l','—','→ E18 炼铁；→ E06 水车发电','低','todo',''],
+['B5',7,'都江堰','战国 · 约公元前 256 年 · 李冰','两千多年前修的水利工程，为什么至今还在用？','治水就要修大坝→顺着地形分水排沙，不用拦水','古人：鱼嘴分水、飞沙堰排沙、宝瓶口控水|经验：深淘滩，低作堰|弯道环流和地形自动分水排沙','—','用托盘、沙子和水做沙盘模型','大托盘、沙、石子、水','l','沙盘能不能重现分水和排沙','—','中','todo',''],
+['B6',7,'赵州桥','隋 · 约公元 605 年 · 李春','一千四百年的石拱桥，两肩为什么开四个小拱？','实心才结实→敞肩拱更轻，还能泄洪','古人：大拱两肩各开两个小拱|减轻自重，洪水时让水流过|拱把压力传向两端的桥基','—','用纸板或积木做实肩拱桥和敞肩拱桥，对比承重','纸板或积木、砝码','l','两种拱桥的承重差别','← E24 石灰','低','todo',''],
+['B7',7,'榫卯','约七千年前 · 河姆渡遗址已有','不用一根钉子，木头为什么能咬得这么紧？','不用钉子就不牢→形状互锁比钉子更耐晃','古人：凸出的榫插进凹下的卯|形状互锁，摩擦和受力分配|柔性连接能吸收振动','—','拆装榫卯积木，做摇晃测试','榫卯积木','l','—','—','低','todo',''],
+['B8',7,'被中香炉','西汉','在被窝里滚来滚去，香炉为什么洒不出来？','只要盖紧就不洒→几层圆环让炉身永远朝下','古人：几层互相垂直的圆环套在一起|常平架：每层环各自转动|炉身重心始终朝下','—','用铁丝或纸环做模型','铁丝或纸板','l','—','→ 今天的相机稳定器、船用罗盘','低','todo',''],
+['B9',7,'鱼洗','古代','搓一搓盆耳，水为什么会喷起来？','水是被手震起来的→盆壁形成驻波','古人：用湿手搓铜盆的双耳|驻波|振动最强的地方把水激起','—','用鱼洗仿品，慢动作拍水花','鱼洗仿品','l','能不能搓出喷水（需要练习技巧）','—','低','todo',''],
+['B10',7,'透光镜','西汉','实心铜镜，为什么能把背面的花纹「照」到墙上？','镜子是透明的→镜面有肉眼看不见的起伏','古人：铜镜反光，墙上出现背面的花纹|铸造和研磨留下的微小起伏|反射光把微小起伏放大成图案','—','动画为主；可以用透光镜仿品演示','透光镜仿品（可选）','l','仿品效果是否明显','—','中','todo',''],
+['B11',7,'一钟双音','战国早期 · 曾侯乙编钟','同一口钟，敲两个位置，为什么音不同？','一口钟只有一个音→特殊的截面让两种振动分开','古人：合瓦形的编钟，敲正面和侧面各发一个音|合瓦形截面|两种振动模式互不干扰','—','动画为主；用扁形铁罐和圆形铁罐对比敲击声','扁形铁罐、圆形铁罐','l','对比效果明显吗','—','低','todo',''],
+['B12',7,'冰鉴与藏冰','先秦 · 曾侯乙墓出土青铜冰鉴','没有冰箱，古人夏天怎么吃上冰？','冰到夏天早化了→地窖加稻草，隔热减慢融化','古人：冬天采冰，存进地窖用稻草隔热|隔热|减慢热量传入','—','冰块包稻草和不包，对比融化时间','冰块、稻草、两个盒子','l','融化时间差','→ E38 蒸发冷却罐','低','todo',''],
+['B13',7,'漏刻','古代','没有钟表，怎么把一天分得很准？','水滴得一样快→水位越低流得越慢，所以用多级水壶','古人：多级漏壶串联|最下一级的水位几乎不变|流速取决于水位高度','—','几个塑料瓶串联，记录流量是否稳定','塑料瓶、计时器、量杯','l','多级串联能让流速稳定多少','→ E45 摆钟','低','todo',''],
+['B14',7,'豆腐点卤','相传西汉','一锅豆浆，加一点卤水为什么就凝固了？','卤水是让豆浆变稠的调料→它让蛋白质聚成网','古人：热豆浆里点卤水或石膏|盐和蛋白质的作用|电荷被屏蔽，蛋白质聚集成网，把水锁在里面','—','豆浆分三份，分别用盐卤、石膏、白醋点，对比','豆浆、盐卤、石膏、白醋、锅','l','三种凝固剂的效果','—','低','todo',''],
+['B15',7,'酿酒与酿醋','古代','同一缸粮食，怎么先变成酒、再变成醋？','酒放坏了就是醋→是另一种菌在接力','古人：先酿酒，再酿醋|酵母和醋酸菌|糖→酒精→醋酸','—','米酒敞口放置几天，测酸度变化（不饮用）','米酒、纱布、玻璃罐、pH 试纸','l','多少天开始变酸','—','低','todo',''],
+['B16',7,'瓷器','东汉 · 成熟青瓷出现','同样是泥，瓷为什么比陶硬，还不吸水？','瓷只是烧得更久的陶→瓷土和更高的温度','古人：用瓷土高温烧成|原料和烧成温度|内部玻化，气孔被填满','—','用陶片和瓷片滴水，对比吸水','陶片、瓷片、滴管','l','—','← E16 制陶','低','todo',''],
+['B17',7,'指南车','传说久远 · 三国马钧曾制造','车怎么转弯，车上木人的手都一直指南？','里面藏着磁石→靠的是齿轮','古人：车上木人始终指向一个方向|差动齿轮|左右轮转动的差值抵消车身转向','—','用积木或齿轮套件做模型','积木或齿轮套件','l','模型的累积误差','—','中','todo','原物失传，要说明讲的是复原方案'],
+['B18',7,'张衡地动仪','东汉 · 公元 132 年','它真的能测出远方的地震吗？','它一定很灵→原物失传，只有文字记载','古人：《后汉书》的文字描述|复原方案有好几种|各方案的物理依据不同','—','动画，比较几种复原方案','—','l','—','—','低','todo','复原方案有争议，要讲清楚证据的边界']
+];
+const SEASON=[
+ ['E04','第一集用钩子最强、方案最完整的试播集'],
+ ['B1','B 线试播，和第一卷同在北宋；实验结果未知，本身就是悬念'],
+ ['E01','回到第一卷开头，补上科技树的起点'],
+ ['E02','道具便宜；必须实测铁铜电堆的电压'],
+ ['B14','食物题材，好拍，能拉近观众'],
+ ['E03','接上 B1 指南鱼：古人会磁化铁，我们让电生磁'],
+ ['E05','第一卷收官：楞次定律和能量守恒'],
+ ['B13','用塑料瓶就能复现，衔接后面的摆钟'],
+ ['E06','第二卷开篇：把第 05 集的发电机接到水车上'],
+ ['B2','和制盐联动，单向阀模型很直观'],
+ ['E11','土豆点亮 LED，适合做成竖屏爆款切片'],
+ ['特辑','第一季回顾：科技树点亮情况 +「古代可行度」排名']
+];
+const byId={};E.forEach(e=>byId[e[0]]=e);
+document.getElementById('season').innerHTML=SEASON.map((s,i)=>{const e=byId[s[0]];return `<tr><td class="n">${String(i+1).padStart(2,'0')}</td><td>${e?`<a href="#${e[0]}">${e[0]} ${e[2]}</a>`:'第一季特辑'}</td><td>${e?(e[1]===7?'B 线':'A 线'):'—'}</td><td>${s[1]}</td></tr>`;}).join('');
+
+const SAFE={l:['安全','s-l'],m:['需注意','s-m'],h:['只用动画或工坊','s-h']};
+const STAT={done:['方案和动画已完成','p-done'],web:['网页已有章节','p-web'],todo:['构想完成','p-todo']};
+const done=E.filter(e=>e[14]==='done').length,web=E.filter(e=>e[14]==='web').length;
+document.getElementById('stats').innerHTML=`<div>选题 <b>${E.length}</b></div><div>A 线 <b>${E.filter(e=>e[1]<7).length}</b></div><div>B 线 <b>${E.filter(e=>e[1]===7).length}</b></div><div>可在家安全拍 <b>${E.filter(e=>e[10]==='l').length}</b></div><div>方案和动画已完成 <b>${done}</b></div><div>网页已有章节 <b>${web}</b></div>`;
+
+let fl='all',fv='all',fs='all',q='';
+try{const s=JSON.parse(localStorage.getItem('epf')||'{}');fl=s.fl||'all';fv=s.fv||'all';fs=s.fs||'all';}catch(e){}
+function save(){try{localStorage.setItem('epf',JSON.stringify({fl,fv,fs}))}catch(e){}}
+function group(id,label,opts,cur,set){const el=document.getElementById(id);el.innerHTML=`<span class="lbl">${label}</span>`;
+ opts.forEach(([v,t])=>{const b=document.createElement('button');b.type='button';b.textContent=t;b.setAttribute('aria-pressed',String(v===cur));b.onclick=()=>{set(v);save();render();};el.appendChild(b);});}
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+function render(){
+ group('fl','线',[['all','全部'],['A','A 线 · 穿越造物'],['B','B 线 · 古法解密']],fl,v=>{fl=v;fv='all';});
+ const vols=VOL.map((v,i)=>[String(i),v]).filter(([i])=>fl==='all'||(fl==='A'?i!=='7':i==='7'));
+ group('fv','卷',[['all','全部'],...vols],fv,v=>fv=v);
+ group('fs','安全',[['all','全部'],['l','安全'],['m','需注意'],['h','只用动画或工坊']],fs,v=>fs=v);
+ const list=document.getElementById('list');list.innerHTML='';let n=0;
+ E.forEach(e=>{
+  if(fl==='A'&&e[1]===7)return; if(fl==='B'&&e[1]!==7)return;
+  if(fv!=='all'&&String(e[1])!==fv)return; if(fs!=='all'&&e[10]!==fs)return;
+  if(q&&!e.join(' ').includes(q))return; n++;
+  const [id,vol,name,era,hook,lad,lay,design,exp,props,safe,verify,link,cost,st,note]=e;
+  const L=lay.split('|');const isB=vol===7;
+  const labs=isB?['古人的做法','当时的理解','现代原理']:['现象层','规律层','本质层'];
+  const d=document.createElement('details');d.className='ep';d.id=id;
+  d.innerHTML=`<summary><span class="id">${id}</span><span class="st"><b>${esc(name)}</b><span>${esc(hook)}</span></span><span class="tags"><span class="pill ${SAFE[safe][1]}">${SAFE[safe][0]}</span><span class="pill ${STAT[st][1]}">${STAT[st][0]}</span></span></summary>
+  <div class="body">
+   <p class="era"><b>${esc(VOL[vol])}</b> · 设定：${esc(era)} · 成本：${esc(cost)}</p>
+   <div><h3 class="sub">理解路径：先让误解失效</h3><ol class="ladder">${lad.split('/').map((s,i)=>{const [m,f]=s.split('→');return `<li><span class="k">${i+1}</span><span><s>${esc(m)}</s> → ${esc(f||'')}</span></li>`}).join('')}</ol></div>
+   <div><h3 class="sub">${isB?'三层揭秘':'三层「为什么」'}</h3><div class="layers">${L.map((t,i)=>`<div class="layer"><span>${labs[i]}</span><p>${esc(t)}</p></div>`).join('')}</div></div>
+   <dl class="kv">${design&&design!=='—'?`<dt>设计决策</dt><dd>${esc(design)}</dd>`:''}<dt>实验</dt><dd>${esc(exp)}</dd><dt>道具</dt><dd>${esc(props)}</dd><dt>衔接</dt><dd>${esc(link)}</dd></dl>
+   <p class="verify"><b>实践时要验证：</b>${esc(verify)}</p>
+   ${note?`<p class="note">注意：${esc(note)}</p>`:''}
+  </div>`;
+  list.appendChild(d);});
+ document.getElementById('cnt').textContent=n+' 个';
+}
+document.getElementById('q').addEventListener('input',ev=>{q=ev.target.value.trim();render();});
+render();
+if(location.hash){const t=document.getElementById(location.hash.slice(1));if(t&&t.tagName==='DETAILS'){t.open=true;}}
+document.getElementById('season').addEventListener('click',ev=>{const a=ev.target.closest('a');if(!a)return;const t=document.getElementById(a.getAttribute('href').slice(1));if(t){fl='all';fv='all';fs='all';q='';document.getElementById('q').value='';render();const t2=document.getElementById(a.getAttribute('href').slice(1));t2.open=true;}});
+})();
+</script>
