@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>制盐拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第三卷 · 第 20 集</div>
+<h1>制盐</h1>
+<p class="thesis">盐的溶解度几乎不随温度变，所以不能靠降温析出，只能把水赶走。古人先晒卤省柴，再用莲子试卤，本质上是一支密度计。</p>
+<div class="facts">
+<div><span>暂定标题</span>盐水一冷，为什么不析出盐？</div>
+<div><span>时长</span>约 3 分 41 秒 · 13 个镜头</div>
+<div><span>时代</span>北宋 · 约 1090 年</div>
+<div><span>衔接</span>← B2 卓筒井；第二季开篇</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">北宋的盐</p><p class="p">海盐、池盐、井盐三大来源，北宋实行官府专卖。四川井盐用卓筒井汲卤后入锅煎煮。</p></div>
+<div class="ol"><p class="o">煎盐与除杂</p><p class="p">煎盐时加入少量豆浆等，使杂质凝聚成浮沫撇去（豆浆里的蛋白质受热凝固，把杂质裹走）。</p></div>
+<div class="ol"><p class="o">石莲试卤</p><p class="p">宋代盐场有用石莲（老莲子）放进卤水、看浮起几颗来判断卤水浓淡的做法。常被引为宋人笔记的记载，具体出处还需核对原书，拍摄前请确认。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>盐水一冷就会析出盐</s> → 盐的溶解度几乎不随温度变化</span></li>
+<li><span class="k">2</span><span><s>煮干就行</s> → 太费柴，要先晒浓</span></li>
+<li><span class="k">3</span><span><s>看颜色、尝味道就知道卤够不够浓</s> → 用莲子测密度</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>盐水蒸发后析出方形晶体；冷却几乎不析出</p></div>
+<div class="layer"><span>规律层</span><p>盐和糖的溶解度曲线完全不同</p></div>
+<div class="layer"><span>本质层</span><p>水分子离开后，钠离子和氯离子重新排成立方晶格</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>降温析不出 → 蒸发；蒸发费柴 → 先晒卤；判断浓度 → 莲子（密度计）；杂质多 → 加豆浆聚成浮沫撇去。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">用食盐和白糖；煮盐水时用小锅、小火，看好锅。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>饱和糖水 vs 饱和盐水，冷藏一夜</td><td>降温析出</td></tr>
+<tr><td>B</td><td>淡盐水直接熬 vs 先晒两天再熬</td><td>晒卤省多少火</td></tr>
+<tr><td>C</td><td>四种浓度盐水 + 莲子 / 鸡蛋</td><td>密度与浮沉</td></tr>
+<tr><td>D</td><td>慢晒 vs 快熬</td><td>晶体大小</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>饱和溶液：80 ℃ 左右的热水 100 毫升，一勺一勺加，搅到再也溶不进去，记下加了多少克。</li>
+<li>冷藏时用透明杯，第二天先拍杯底，再把析出物捞出晾干称重。</li>
+<li>晒卤用浅盘，放在阳台阳光下，每天同一时间称一次重量。</li>
+<li>试卤：每杯 300 毫升，盐浓度约 0%、5%、15%、26%（饱和），每杯放 5 颗干莲子，等 1 分钟数浮起几颗。</li>
+<li>密度 = 质量 ÷ 体积：用厨房秤称 100 毫升盐水的重量。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>结果</th><th>备注</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 糖：100 毫升热水溶了几克 / 析出几克</td><td><input type="text" inputmode="decimal" data-k="e20-0-0" aria-label="A 糖：100 毫升热水溶了几克 / 析出几克 结果"></td><td><input type="text" inputmode="decimal" data-k="e20-0-1" aria-label="A 糖：100 毫升热水溶了几克 / 析出几克 备注"></td><td><input type="text" data-k="e20-0-n" aria-label="A 糖：100 毫升热水溶了几克 / 析出几克 备注"></td></tr>
+<tr><td>A 盐：100 毫升热水溶了几克 / 析出几克</td><td><input type="text" inputmode="decimal" data-k="e20-1-0" aria-label="A 盐：100 毫升热水溶了几克 / 析出几克 结果"></td><td><input type="text" inputmode="decimal" data-k="e20-1-1" aria-label="A 盐：100 毫升热水溶了几克 / 析出几克 备注"></td><td><input type="text" data-k="e20-1-n" aria-label="A 盐：100 毫升热水溶了几克 / 析出几克 备注"></td></tr>
+<tr><td>B 直接熬：熬干用时（分钟）</td><td><input type="text" inputmode="decimal" data-k="e20-2-0" aria-label="B 直接熬：熬干用时（分钟） 结果"></td><td><input type="text" inputmode="decimal" data-k="e20-2-1" aria-label="B 直接熬：熬干用时（分钟） 备注"></td><td><input type="text" data-k="e20-2-n" aria-label="B 直接熬：熬干用时（分钟） 备注"></td></tr>
+<tr><td>B 晒两天后：剩余重量 / 熬干用时</td><td><input type="text" inputmode="decimal" data-k="e20-3-0" aria-label="B 晒两天后：剩余重量 / 熬干用时 结果"></td><td><input type="text" inputmode="decimal" data-k="e20-3-1" aria-label="B 晒两天后：剩余重量 / 熬干用时 备注"></td><td><input type="text" data-k="e20-3-n" aria-label="B 晒两天后：剩余重量 / 熬干用时 备注"></td></tr>
+<tr><td>C 0%：浮起几颗 · 密度</td><td><input type="text" inputmode="decimal" data-k="e20-4-0" aria-label="C 0%：浮起几颗 · 密度 结果"></td><td><input type="text" inputmode="decimal" data-k="e20-4-1" aria-label="C 0%：浮起几颗 · 密度 备注"></td><td><input type="text" data-k="e20-4-n" aria-label="C 0%：浮起几颗 · 密度 备注"></td></tr>
+<tr><td>C 5%：浮起几颗 · 密度</td><td><input type="text" inputmode="decimal" data-k="e20-5-0" aria-label="C 5%：浮起几颗 · 密度 结果"></td><td><input type="text" inputmode="decimal" data-k="e20-5-1" aria-label="C 5%：浮起几颗 · 密度 备注"></td><td><input type="text" data-k="e20-5-n" aria-label="C 5%：浮起几颗 · 密度 备注"></td></tr>
+<tr><td>C 15%：浮起几颗 · 密度</td><td><input type="text" inputmode="decimal" data-k="e20-6-0" aria-label="C 15%：浮起几颗 · 密度 结果"></td><td><input type="text" inputmode="decimal" data-k="e20-6-1" aria-label="C 15%：浮起几颗 · 密度 备注"></td><td><input type="text" data-k="e20-6-n" aria-label="C 15%：浮起几颗 · 密度 备注"></td></tr>
+<tr><td>C 26%：浮起几颗 · 密度</td><td><input type="text" inputmode="decimal" data-k="e20-7-0" aria-label="C 26%：浮起几颗 · 密度 结果"></td><td><input type="text" inputmode="decimal" data-k="e20-7-1" aria-label="C 26%：浮起几颗 · 密度 备注"></td><td><input type="text" data-k="e20-7-n" aria-label="C 26%：浮起几颗 · 密度 备注"></td></tr>
+<tr><td>D 慢晒 vs 快熬：晶体样子</td><td><input type="text" inputmode="decimal" data-k="e20-8-0" aria-label="D 慢晒 vs 快熬：晶体样子 结果"></td><td><input type="text" inputmode="decimal" data-k="e20-8-1" aria-label="D 慢晒 vs 快熬：晶体样子 备注"></td><td><input type="text" data-k="e20-8-n" aria-label="D 慢晒 vs 快熬：晶体样子 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>冷藏后盐水几乎不析出，糖水析出明显（糖可能形成过饱和、需要搅动或放一粒糖晶种）</li>
+<li>莲子在哪个浓度开始浮起（干莲子可能浮在清水上，需要先泡水或用老莲子）</li>
+<li>晒两天能省多少熬煮时间</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>熬盐水和熬糖水都很烫，糖浆尤其容易烫伤；小火、有人看着。</li>
+<li>实验用的盐水和糖水不要再食用。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>食盐、白糖</td><td>溶质</td></tr>
+<tr><td>透明杯、量杯、厨房秤</td><td>配溶液与测密度</td></tr>
+<tr><td>小锅、浅盘</td><td>熬煮与晒卤</td></tr>
+<tr><td>干莲子（石莲）、鸡蛋</td><td>试卤</td></tr>
+<tr><td>放大镜或手机微距</td><td>拍晶体</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:41。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://www.acs.org/content/dam/acsorg/msc/downloads/chapter-5/lesson-6/ch5-l6-activity-sheet-answers.pdf">ACS：Solubility of salt and sugar</a> <span>0–100 ℃ 溶解度数据</span></li>
+<li><a href="https://touch.travel.qunar.com/bookElement/7756963/3663868-2">去哪儿游记：卓筒井工艺</a> <span>晒卤、滤卤、煎盐时加豆浆和皂角</span></li>
+<li><a href="https://www.ihchina.cn/project_details/14375.html">中国非物质文化遗产网：井盐深钻汲制技艺</a></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "锅里熬一碗浓盐水，锅边慢慢结出一圈白色盐粒", "一碗卤水熬干，锅边结出一层白盐。"], [2, "0:08", "done", "问题卡：盐水一冷，为什么不析出盐？", ""], [3, "0:14", "done", "片头：第三卷科技树，第 20 集闪烁", "北宋，约公元一〇九〇年。上一季，我们把卤水从深井里提了上来。这一季，从这碗卤水开始。"], [4, "0:21", "done", "资料卡：三种盐、煎盐、试卤", "北宋的盐有三种来源：海盐、池盐、井盐，由官府专卖。煎盐，就是把卤水倒进锅里用柴火熬干，再加一点豆浆，把杂质聚成浮沫撇掉。"], [5, "0:45", "real", "实验 1：两杯热水分别溶到饱和，一杯糖、一杯盐；放进冰箱一夜，第二天对比杯底", "两杯热水，一杯溶糖、一杯溶盐，都溶到再也溶不进去，放进冰箱一夜。第二天……（按实拍描述）"], [6, "1:15", "done", "动画：糖和盐的溶解度曲线；从 100 ℃ 冷到 0 ℃ 各析出多少", "糖的溶解度随温度变化很大，开水能溶的糖，是冰水的两倍多；盐几乎不变，从零度到一百度，一百克水只多溶三克半。所以盐不能像糖那样靠降温析出，只能把水赶走。"], [7, "1:35", "done", "问题卡：熬一锅卤要多少柴？怎么省？", ""], [8, "1:41", "real", "实验 2：同样 500 毫升淡盐水，一份直接熬干，一份先在阳光下晒两天再熬；记录熬干的时间", "一份直接熬，一份先晒两天再熬。熬干需要的时间分别是……（按实测描述）"], [9, "2:11", "done", "动画：水分子离开，钠离子和氯离子排成立方晶格；莲子在不同浓度的卤水里浮沉", "水分子一个个离开，剩下的钠离子和氯离子一个隔一个排成立方体，所以盐粒是小方块。卤水越浓，密度越大；密度超过莲子，莲子就浮起来。用浮起几颗来判断卤水能不能下锅，这就是一支密度计。"], [10, "2:35", "real", "实验 3：清水、淡盐水、浓盐水、饱和盐水四杯，各放 5 颗莲子（以鸡蛋作对照），看浮沉；用厨房秤和量杯算每杯的密度", "四杯不同浓度的盐水，各放五颗莲子：……（按实测描述几颗浮起、密度多少）"], [11, "3:05", "real", "放大镜下的盐粒：慢慢晒干得到的大方晶 vs 快速熬干的细盐", "放大看：慢慢晒出来的盐，是一个个漂亮的小方块；熬得快的，晶体就细碎。（按实拍描述）"], [12, "3:27", "done", "结论卡：盐不怕冷，只怕水走", "盐不怕冷，只怕水走。先晒卤省柴，再用莲子试卤：古人没有溶解度曲线，却把每一步都做对了。"], [13, "3:34", "done", "片尾：点亮第 20 集，预告第 15 集", "下集：回到一切的起点，火。"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>

@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>生火拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第三卷 · 第 15 集</div>
+<h1>生火</h1>
+<p class="thesis">火要可燃物、氧气和足够的温度。阳燧、火镰、钻木三种取火法，做的是同一件事：把一小撮火绒加热到燃点。</p>
+<div class="facts">
+<div><span>暂定标题</span>没有火柴和打火机，古人怎么生火？</div>
+<div><span>时长</span>约 3 分 39 秒 · 13 个镜头</div>
+<div><span>时代</span>新石器时代到北宋</div>
+<div><span>衔接</span>→ 16 木炭与制陶；→ 第五卷 煤气中毒</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">阳燧</p><p class="p">《周礼》记载司烜氏「以夫遂取明火于日」，郑玄注夫遂即阳燧，是一面高锡青铜的凹面镜。《淮南子》也提到镜子离火绒太远太近都不行，说的正是焦距。</p></div>
+<div class="ol"><p class="o">火镰</p><p class="p">钢片快速划过坚硬的燧石，刮下细小的钢屑。钢屑在空气里迅速氧化发热，变成火星，落在炭化布或火绒上。高碳钢最容易打出火星。</p></div>
+<div class="ol"><p class="o">注意</p><p class="p">户外用品店卖的「打火棒」是现代的铈铁合金，原理相近但不是古代火镰；拍摄时请用「高碳钢火镰 + 燧石」，或在画面里说明。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>摩擦一下就能着</s> → 要达到燃点，还要保住热量</span></li>
+<li><span class="k">2</span><span><s>有柴就能烧</s> → 还要有氧气</span></li>
+<li><span class="k">3</span><span><s>火星就是火</s> → 火星是燃烧的钢屑，要火绒接住</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>钻木冒烟、火镰出火星、凹面镜点燃火绒</p></div>
+<div class="layer"><span>规律层</span><p>燃烧三要素：可燃物、氧气、温度（燃点）</p></div>
+<div class="layer"><span>本质层</span><p>摩擦生热、聚光加热、细小铁屑快速氧化放热</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>热量会散走 → 木粉聚成堆、用火绒接火；火种太小 → 吹气补氧，再加细柴；阳光要聚焦 → 凹面镜，找准焦点。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">实验 2–4 都在户外空地、由成年人操作，旁边放一桶水。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>蜡烛：剪芯 / 喷水 / 罩杯</td><td>三要素缺一不可</td></tr>
+<tr><td>B</td><td>大杯 vs 小杯罩蜡烛</td><td>氧气多少与燃烧时间</td></tr>
+<tr><td>C</td><td>凹面镜、放大镜聚光点火绒</td><td>阳燧</td></tr>
+<tr><td>D</td><td>高碳钢火镰 + 燧石 + 炭化布</td><td>火镰</td></tr>
+<tr><td>E</td><td>弓钻钻木</td><td>钻木</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>蜡烛实验在室内瓷盘上做；罩杯计时从杯口碰到盘子开始。</li>
+<li>炭化布：纯棉布条装进扎了小孔的铁盒，在炭火上烤到小孔不再冒烟，冷却后取出（户外操作）。</li>
+<li>聚光选晴天正午，镜面对准太阳，慢慢前后移动火绒找焦点；不要用眼睛直视焦点。</li>
+<li>火镰：燧石边缘朝外，火镰快速向下刮，火星落在炭化布上，见到红点后包进干草团吹气。</li>
+<li>钻木：用现成的弓钻套装，记录从开始到冒烟、到得到火种的时间。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>用时（秒）</th><th>是否成功 / 备注</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 剪芯 / 喷水 / 罩杯</td><td><input type="text" inputmode="decimal" data-k="e15-0-0" aria-label="A 剪芯 / 喷水 / 罩杯 用时（秒）"></td><td><input type="text" inputmode="decimal" data-k="e15-0-1" aria-label="A 剪芯 / 喷水 / 罩杯 是否成功 / 备注"></td><td><input type="text" data-k="e15-0-n" aria-label="A 剪芯 / 喷水 / 罩杯 备注"></td></tr>
+<tr><td>B 大杯罩住多久熄灭</td><td><input type="text" inputmode="decimal" data-k="e15-1-0" aria-label="B 大杯罩住多久熄灭 用时（秒）"></td><td><input type="text" inputmode="decimal" data-k="e15-1-1" aria-label="B 大杯罩住多久熄灭 是否成功 / 备注"></td><td><input type="text" data-k="e15-1-n" aria-label="B 大杯罩住多久熄灭 备注"></td></tr>
+<tr><td>B 小杯罩住多久熄灭</td><td><input type="text" inputmode="decimal" data-k="e15-2-0" aria-label="B 小杯罩住多久熄灭 用时（秒）"></td><td><input type="text" inputmode="decimal" data-k="e15-2-1" aria-label="B 小杯罩住多久熄灭 是否成功 / 备注"></td><td><input type="text" data-k="e15-2-n" aria-label="B 小杯罩住多久熄灭 备注"></td></tr>
+<tr><td>C 凹面镜点火绒</td><td><input type="text" inputmode="decimal" data-k="e15-3-0" aria-label="C 凹面镜点火绒 用时（秒）"></td><td><input type="text" inputmode="decimal" data-k="e15-3-1" aria-label="C 凹面镜点火绒 是否成功 / 备注"></td><td><input type="text" data-k="e15-3-n" aria-label="C 凹面镜点火绒 备注"></td></tr>
+<tr><td>C 放大镜点黑纸</td><td><input type="text" inputmode="decimal" data-k="e15-4-0" aria-label="C 放大镜点黑纸 用时（秒）"></td><td><input type="text" inputmode="decimal" data-k="e15-4-1" aria-label="C 放大镜点黑纸 是否成功 / 备注"></td><td><input type="text" data-k="e15-4-n" aria-label="C 放大镜点黑纸 备注"></td></tr>
+<tr><td>D 火镰：擦几下点着</td><td><input type="text" inputmode="decimal" data-k="e15-5-0" aria-label="D 火镰：擦几下点着 用时（秒）"></td><td><input type="text" inputmode="decimal" data-k="e15-5-1" aria-label="D 火镰：擦几下点着 是否成功 / 备注"></td><td><input type="text" data-k="e15-5-n" aria-label="D 火镰：擦几下点着 备注"></td></tr>
+<tr><td>E 钻木：多久冒烟 / 是否得到火种</td><td><input type="text" inputmode="decimal" data-k="e15-6-0" aria-label="E 钻木：多久冒烟 / 是否得到火种 用时（秒）"></td><td><input type="text" inputmode="decimal" data-k="e15-6-1" aria-label="E 钻木：多久冒烟 / 是否得到火种 是否成功 / 备注"></td><td><input type="text" data-k="e15-6-n" aria-label="E 钻木：多久冒烟 / 是否得到火种 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>凹面化妆镜的焦距是否短到能点火</li>
+<li>炭化布能否接住火镰的火星</li>
+<li>新手钻木能否在 5 分钟内得到火种（很可能不行，这本身就是看点）</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>所有明火实验在户外空地进行，由成年人操作，备好一桶水或灭火器。</li>
+<li>聚光时不要直视焦点，也不要对着人或易燃物。</li>
+<li>火镰的燧石边缘锋利，戴手套。</li>
+<li>注意当地的防火规定，干燥大风天不要做。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>蜡烛、玻璃杯（大小各一）、瓷盘</td><td>燃烧三要素</td></tr>
+<tr><td>凹面化妆镜、放大镜、黑纸</td><td>阳燧</td></tr>
+<tr><td>高碳钢火镰、燧石、纯棉布、铁盒</td><td>火镰与炭化布</td></tr>
+<tr><td>弓钻钻木套装、干草</td><td>钻木</td></tr>
+<tr><td>水桶或灭火器、手套</td><td>安全</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:39。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://en.wikipedia.org/wiki/Chinese_sun_and_moon_mirrors">Wikipedia：Chinese sun and moon mirrors</a> <span>《周礼》阳燧、《淮南子》焦距</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Fire_striker">Wikipedia：Fire striker</a> <span>火镰原理、炭化布</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Fire_triangle">Wikipedia：Fire triangle</a></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "户外暗处：火镰擦过火石，一串火星落在火绒上，吹出火苗", "一擦，一吹，火就着了。"], [2, "0:08", "done", "问题卡：没有火柴和打火机，古人怎么生火？", ""], [3, "0:14", "done", "片头：第三卷科技树，第 15 集闪烁", "火是这一卷所有技术的起点。古人取火，有三种老办法。"], [4, "0:21", "done", "资料卡：钻燧取火、阳燧、火镰", "传说燧人氏「钻燧取火」。《周礼》里，专门有官员用一面叫「阳燧」的凹面铜镜向太阳取火。民间随身带的是火镰和火石，一直用到火柴普及。"], [5, "0:45", "real", "实验 1：点三支蜡烛，分别剪掉烛芯、喷水、罩上玻璃杯；再用大小不同的杯子罩住，计时多久熄灭", "先弄清火要什么。剪掉烛芯，灭了；喷点水，灭了；罩上杯子……大杯撑了几秒、小杯撑了几秒（按实测描述）。"], [6, "1:15", "done", "动画：燃烧三要素，缺一样就灭", "火要三样东西：可燃物、氧气、足够的温度。拿走任何一样，火就灭。反过来，取火就是把这三样凑齐，而最难凑的，是温度。"], [7, "1:35", "done", "问题卡：三种取火法，哪种最容易？", ""], [8, "1:41", "real", "实验 2（户外、成年人）：用放大镜和凹面化妆镜在正午聚光，分别点黑纸和火绒，计时", "正午的太阳，用凹面镜聚光：黑纸几秒冒烟，火绒几秒起火……（按实测描述）"], [9, "2:06", "real", "实验 3（户外、成年人）：用火镰套装（高碳钢火镰 + 燧石）擦火星，落在炭化布或火绒上", "换火镰：……擦了几下才把火绒点着（按实测描述）。"], [10, "2:31", "done", "动画：阳燧聚光、火镰刮下铁屑自燃、钻木摩擦生热", "三种办法做的是同一件事。阳燧把阳光聚到一点；火镰从钢上刮下极小的铁屑，小到在空气里自己就烧起来；钻木靠摩擦把力气变成热，让木粉升温到燃点。"], [11, "2:55", "real", "实验 4（户外、成年人）：弓钻钻木（钻木取火套装），记录多久冒烟、能否得到火种", "最后是最原始的钻木：……（按实测描述冒烟时间、是否成功）。"], [12, "3:25", "done", "结论卡：取火就是把一小撮火绒加热到燃点", "取火，就是把一小撮火绒加热到燃点，再给它氧气和柴。有了火，下一步，就是要更高的温度。"], [13, "3:32", "done", "片尾：点亮第 15 集，预告第 16 集", "下集：木炭与陶器。"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>
