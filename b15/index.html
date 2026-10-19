@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>酿酒与酿醋拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 古法解密 · B15</div>
+<h1>酿酒与酿醋</h1>
+<p class="thesis">曲把淀粉剪成糖，酵母在无氧时把糖变成酒；敞开口，醋酸菌用氧把酒变成醋。一个要密封，一个要通风。</p>
+<div class="facts">
+<div><span>暂定标题</span>同一缸粮食，怎么先变酒、再变醋？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>北魏《齐民要术》</div>
+<div><span>衔接</span>← B14 豆腐（同样是食物里的化学）</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">《齐民要术》</p><p class="p">北魏贾思勰所著农书，有专篇记载制曲、造酒和作醋的方法。</p></div>
+<div class="ol"><p class="o">酒曲</p><p class="p">在谷物上培养霉菌（如根霉、曲霉）和酵母。霉菌的酶把淀粉分解成糖，酵母把糖发酵成酒精，两步同时进行。</p></div>
+<div class="ol"><p class="o">醋</p><p class="p">醋酸菌在有氧条件下把酒精氧化成醋酸，常在液面形成菌膜（「醋母」）。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>酒放坏了就是醋</s> → 是另一种微生物在接力</span></li>
+<li><span class="k">2</span><span><s>粮食里本来就有糖</s> → 淀粉要先被酶剪成糖</span></li>
+<li><span class="k">3</span><span><s>发酵越通风越好</s> → 酵母要密封，醋酸菌要通风</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>糖水加酵母会冒气；醪糟变甜又有酒味；敞口的酒会变酸</p></div>
+<div class="layer"><span>规律层</span><p>酵母：糖 → 酒精 + 二氧化碳（无氧）；醋酸菌：酒精 + 氧 → 醋酸</p></div>
+<div class="layer"><span>本质层</span><p>酶切断淀粉的糖苷键；不同微生物对氧气的需求不同</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>粮食没糖 → 用曲糖化；酒要多 → 密封、保温；要醋 → 敞口、通风、接种醋母。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">所有发酵样品只做观察和测量，敞口发酵的那罐不要食用。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>温糖水 + 酵母 + 气球</td><td>酵母产气</td></tr>
+<tr><td>B</td><td>冰糖水 + 酵母 + 气球</td><td>温度的影响</td></tr>
+<tr><td>C</td><td>只有糖水 + 气球</td><td>对照</td></tr>
+<tr><td>D</td><td>甜酒曲做醪糟</td><td>糖化与发酵</td></tr>
+<tr><td>E</td><td>醪糟汁密封 vs 敞口</td><td>醋酸菌与氧气</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>A–C：各 300 毫升水加 2 勺糖；A 用约 35 ℃ 温水，B 用加冰的水；A、B 各加 1 勺干酵母；瓶口套气球，每 30 分钟拍一张。</li>
+<li>醪糟：糯米泡 8 小时后蒸熟，晾到不烫手（约 35 ℃），按酒曲包装用量拌匀压实，中间挖洞，盖好放在约 30 ℃ 处 36–48 小时。</li>
+<li>醪糟汁过滤后分装两个玻璃罐：一罐拧紧盖子，一罐用纱布和皮筋封口，放在室温避光处。</li>
+<li>每天同一时间用 pH 试纸测一次，拍表面，记录气味。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>第 1 天</th><th>第 3 天</th><th>第 7 天</th><th>第 14 天</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 气球周长（厘米）</td><td><input type="text" inputmode="decimal" data-k="b15-0-0" aria-label="A 气球周长（厘米） 第 1 天"></td><td><input type="text" inputmode="decimal" data-k="b15-0-1" aria-label="A 气球周长（厘米） 第 3 天"></td><td><input type="text" inputmode="decimal" data-k="b15-0-2" aria-label="A 气球周长（厘米） 第 7 天"></td><td><input type="text" inputmode="decimal" data-k="b15-0-3" aria-label="A 气球周长（厘米） 第 14 天"></td><td><input type="text" data-k="b15-0-n" aria-label="A 气球周长（厘米） 备注"></td></tr>
+<tr><td>B 气球周长（厘米）</td><td><input type="text" inputmode="decimal" data-k="b15-1-0" aria-label="B 气球周长（厘米） 第 1 天"></td><td><input type="text" inputmode="decimal" data-k="b15-1-1" aria-label="B 气球周长（厘米） 第 3 天"></td><td><input type="text" inputmode="decimal" data-k="b15-1-2" aria-label="B 气球周长（厘米） 第 7 天"></td><td><input type="text" inputmode="decimal" data-k="b15-1-3" aria-label="B 气球周长（厘米） 第 14 天"></td><td><input type="text" data-k="b15-1-n" aria-label="B 气球周长（厘米） 备注"></td></tr>
+<tr><td>C 气球周长（厘米）</td><td><input type="text" inputmode="decimal" data-k="b15-2-0" aria-label="C 气球周长（厘米） 第 1 天"></td><td><input type="text" inputmode="decimal" data-k="b15-2-1" aria-label="C 气球周长（厘米） 第 3 天"></td><td><input type="text" inputmode="decimal" data-k="b15-2-2" aria-label="C 气球周长（厘米） 第 7 天"></td><td><input type="text" inputmode="decimal" data-k="b15-2-3" aria-label="C 气球周长（厘米） 第 14 天"></td><td><input type="text" data-k="b15-2-n" aria-label="C 气球周长（厘米） 备注"></td></tr>
+<tr><td>E 密封罐 pH</td><td><input type="text" inputmode="decimal" data-k="b15-3-0" aria-label="E 密封罐 pH 第 1 天"></td><td><input type="text" inputmode="decimal" data-k="b15-3-1" aria-label="E 密封罐 pH 第 3 天"></td><td><input type="text" inputmode="decimal" data-k="b15-3-2" aria-label="E 密封罐 pH 第 7 天"></td><td><input type="text" inputmode="decimal" data-k="b15-3-3" aria-label="E 密封罐 pH 第 14 天"></td><td><input type="text" data-k="b15-3-n" aria-label="E 密封罐 pH 备注"></td></tr>
+<tr><td>E 敞口罐 pH</td><td><input type="text" inputmode="decimal" data-k="b15-4-0" aria-label="E 敞口罐 pH 第 1 天"></td><td><input type="text" inputmode="decimal" data-k="b15-4-1" aria-label="E 敞口罐 pH 第 3 天"></td><td><input type="text" inputmode="decimal" data-k="b15-4-2" aria-label="E 敞口罐 pH 第 7 天"></td><td><input type="text" inputmode="decimal" data-k="b15-4-3" aria-label="E 敞口罐 pH 第 14 天"></td><td><input type="text" data-k="b15-4-n" aria-label="E 敞口罐 pH 备注"></td></tr>
+<tr><td>E 敞口罐表面 / 气味</td><td><input type="text" inputmode="decimal" data-k="b15-5-0" aria-label="E 敞口罐表面 / 气味 第 1 天"></td><td><input type="text" inputmode="decimal" data-k="b15-5-1" aria-label="E 敞口罐表面 / 气味 第 3 天"></td><td><input type="text" inputmode="decimal" data-k="b15-5-2" aria-label="E 敞口罐表面 / 气味 第 7 天"></td><td><input type="text" inputmode="decimal" data-k="b15-5-3" aria-label="E 敞口罐表面 / 气味 第 14 天"></td><td><input type="text" data-k="b15-5-n" aria-label="E 敞口罐表面 / 气味 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>冰水组的酵母是否几乎不产气</li>
+<li>醪糟需要多久出汁</li>
+<li>敞口罐多少天开始明显变酸、长菌膜</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>发酵产物只给成年人尝，敞口罐的样品不要食用。</li>
+<li>如果出现黑、绿、红等颜色的霉斑，整罐丢弃，不要闻得太近。</li>
+<li>玻璃瓶不要拧紧后长时间高温放置，产气会让瓶子承压。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>干酵母、白糖、透明瓶、气球</td><td>酵母产气</td></tr>
+<tr><td>糯米、甜酒曲、蒸锅、保温箱或泡沫箱</td><td>醪糟</td></tr>
+<tr><td>玻璃罐 × 2、纱布、皮筋</td><td>密封与敞口</td></tr>
+<tr><td>pH 试纸、软尺</td><td>测量</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://zh.wikisource.org/zh-hans/%E9%BD%8A%E6%B0%91%E8%A6%81%E8%A1%93">维基文库：齐民要术</a> <span>制曲、造酒、作酢诸篇</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Jiuqu">Wikipedia：Jiuqu</a> <span>酒曲</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Acetobacter">Wikipedia：Acetobacter</a> <span>醋酸菌</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "一瓶温糖水加了酵母，瓶口套着的气球慢慢鼓起来（延时拍摄）", "一瓶糖水，一小勺酵母，气球自己鼓起来了。"], [2, "0:08", "done", "问题卡：粮食里没有糖，酒是怎么来的？", ""], [3, "0:14", "done", "片头：B 线科技树，B15 闪烁", "古法解密。今天说两只看不见的小生物，怎么接力。"], [4, "0:21", "done", "资料卡：《齐民要术》、酒曲、醋", "北魏贾思勰的《齐民要术》里，就有制曲、造酒、作醋的专篇。酒曲是在谷物上养出来的霉菌和酵母，是中国酿酒的关键。酒敞着口放久了会变酸，古人干脆把这个「失败」变成了酿醋的方法。"], [5, "0:45", "real", "实验 1：三个瓶子：温糖水 + 酵母、冰糖水 + 酵母、只有糖水，瓶口都套气球，每 30 分钟拍一张", "三个瓶子：……哪个气球鼓得最快？（按实测描述）。气球里的是二氧化碳。"], [6, "1:15", "done", "动画：曲的酶把淀粉剪成葡萄糖，酵母在无氧条件下把糖变成酒精和二氧化碳", "米饭里没有糖，只有淀粉：一长串连在一起的葡萄糖。酒曲里的霉菌放出酶，把长链剪开；酵母在没有空气的缸里吃糖，放出酒精和二氧化碳。剪糖和吃糖同时进行，叫「边糖化边发酵」。"], [7, "1:39", "real", "实验 2：用甜酒曲做醪糟：糯米蒸熟晾到温热，拌酒曲压实，中间挖个洞，30 ℃ 保温 36–48 小时；拍中间渗出的汁", "用超市买的甜酒曲做一碗醪糟：……两天后，中间的洞里渗出了甜汁。（按实拍描述）"], [8, "2:09", "done", "问题卡：酒放着放着，为什么会变酸？", ""], [9, "2:15", "real", "实验 3：醪糟汁分两罐：一罐密封，一罐盖纱布敞口；每天同一时间用 pH 试纸测，拍表面", "同一份醪糟汁，一罐密封，一罐敞着口：每天测一次酸度……（按实测描述）"], [10, "2:40", "done", "动画：敞口后醋酸菌在表面长出菌膜，用氧气把酒精变成醋酸", "敞口的那罐，空气进来了。醋酸菌在表面安家，长出一层菌膜，用氧气把酒精变成醋酸。酵母怕氧，醋酸菌要氧：一个要密封，一个要通风。"], [11, "3:00", "real", "实验 4：第 7–14 天：敞口罐表面菌膜的特写；记录气味变化", "一周以后，敞口罐的表面……（按实拍描述菌膜和气味）"], [12, "3:22", "done", "结论卡：先是酵母，再是醋酸菌", "先是酵母把糖变成酒，再是醋酸菌把酒变成醋。古人看不见它们，却学会了什么时候盖紧、什么时候敞开。"], [13, "3:29", "done", "片尾：点亮 B15，预告第 24 集", "下集：烧过的石头，为什么还能变回石头？"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>

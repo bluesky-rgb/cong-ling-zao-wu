@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>肥皂拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第三卷 · 第 22 集</div>
+<h1>肥皂</h1>
+<p class="thesis">肥皂分子一头爱水、一头爱油，能把油滴包起来带走。古人用草木灰水的碱性，也用皂荚里天然的皂苷。</p>
+<div class="facts">
+<div><span>暂定标题</span>油加草木灰，为什么能去污？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>周代草木灰 · 南宋「肥皂团」</div>
+<div><span>衔接</span>← 16 草木灰；→ B15 酿酒酿醋</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">草木灰</p><p class="p">《礼记》「衣裳垢，和灰请浣」。草木灰的主要碱性成分是碳酸钾，泡出的水呈碱性，能和油脂发生反应。</p></div>
+<div class="ol"><p class="o">澡豆与胰子</p><p class="p">晋代已有澡豆（豆粉加香料）；唐代孙思邈的方子里加入猪胰，「胰子」一词沿用至今。</p></div>
+<div class="ol"><p class="o">肥皂团</p><p class="p">南宋周密《武林旧事》记载临安有卖「肥皂团」的，是用皂荚捣碎团成的丸子。「肥皂」后来成了所有肥皂的统称。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>水能洗掉油</s> → 油和水不相溶</span></li>
+<li><span class="k">2</span><span><s>肥皂把油溶解了</s> → 肥皂分子把油滴包起来</span></li>
+<li><span class="k">3</span><span><s>古人没有肥皂</s> → 草木灰水和皂荚都能去污</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>加了肥皂，油和水能混成乳白色；油渍被洗掉</p></div>
+<div class="layer"><span>规律层</span><p>表面活性剂降低表面张力，形成胶束包裹油滴</p></div>
+<div class="layer"><span>本质层</span><p>两亲分子：亲水头朝外、疏水尾朝内；油脂与碱发生皂化反应</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>去油要两头分子 → 皂荚（现成）或油加碱（皂化）；强碱伤手 → 用弱碱的草木灰水或植物皂苷。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">用食用油做油渍，同样大小的白棉布，每块滴 5 滴油。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>油 + 水摇晃 / 加洗洁精再摇</td><td>乳化</td></tr>
+<tr><td>B</td><td>胡椒粉水面 + 洗洁精</td><td>表面张力</td></tr>
+<tr><td>C</td><td>清水 / 皂荚水 / 草木灰水洗油布</td><td>古人的洗涤剂</td></tr>
+<tr><td>D</td><td>pH 试纸测三种水</td><td>碱性</td></tr>
+<tr><td>E</td><td>皂荚泡沫 vs 洗洁精泡沫</td><td>天然皂苷</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>皂荚（中药店或网店的「皂角」）掰碎，10 克加 500 毫升水煮 15 分钟，滤出褐色的水。</li>
+<li>草木灰水：木柴灰一勺加 500 毫升水，搅匀静置一夜，取上层清液；全程戴手套。</li>
+<li>每块油布在 200 毫升水里搓 1 分钟，用清水冲一下，晾干后并排拍照。</li>
+<li>泡沫：各取 50 毫升倒进同样的瓶子，摇 10 下，计时泡沫消到一半的时间。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>结果</th><th>备注</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 加洗洁精前 / 后</td><td><input type="text" inputmode="decimal" data-k="e22-0-0" aria-label="A 加洗洁精前 / 后 结果"></td><td><input type="text" inputmode="decimal" data-k="e22-0-1" aria-label="A 加洗洁精前 / 后 备注"></td><td><input type="text" data-k="e22-0-n" aria-label="A 加洗洁精前 / 后 备注"></td></tr>
+<tr><td>B 胡椒粉散开情况</td><td><input type="text" inputmode="decimal" data-k="e22-1-0" aria-label="B 胡椒粉散开情况 结果"></td><td><input type="text" inputmode="decimal" data-k="e22-1-1" aria-label="B 胡椒粉散开情况 备注"></td><td><input type="text" data-k="e22-1-n" aria-label="B 胡椒粉散开情况 备注"></td></tr>
+<tr><td>C 清水洗后</td><td><input type="text" inputmode="decimal" data-k="e22-2-0" aria-label="C 清水洗后 结果"></td><td><input type="text" inputmode="decimal" data-k="e22-2-1" aria-label="C 清水洗后 备注"></td><td><input type="text" data-k="e22-2-n" aria-label="C 清水洗后 备注"></td></tr>
+<tr><td>C 皂荚水洗后</td><td><input type="text" inputmode="decimal" data-k="e22-3-0" aria-label="C 皂荚水洗后 结果"></td><td><input type="text" inputmode="decimal" data-k="e22-3-1" aria-label="C 皂荚水洗后 备注"></td><td><input type="text" data-k="e22-3-n" aria-label="C 皂荚水洗后 备注"></td></tr>
+<tr><td>C 草木灰水洗后</td><td><input type="text" inputmode="decimal" data-k="e22-4-0" aria-label="C 草木灰水洗后 结果"></td><td><input type="text" inputmode="decimal" data-k="e22-4-1" aria-label="C 草木灰水洗后 备注"></td><td><input type="text" data-k="e22-4-n" aria-label="C 草木灰水洗后 备注"></td></tr>
+<tr><td>D pH：清水 / 皂荚水 / 草木灰水</td><td><input type="text" inputmode="decimal" data-k="e22-5-0" aria-label="D pH：清水 / 皂荚水 / 草木灰水 结果"></td><td><input type="text" inputmode="decimal" data-k="e22-5-1" aria-label="D pH：清水 / 皂荚水 / 草木灰水 备注"></td><td><input type="text" data-k="e22-5-n" aria-label="D pH：清水 / 皂荚水 / 草木灰水 备注"></td></tr>
+<tr><td>E 泡沫消一半用时：皂荚 / 洗洁精</td><td><input type="text" inputmode="decimal" data-k="e22-6-0" aria-label="E 泡沫消一半用时：皂荚 / 洗洁精 结果"></td><td><input type="text" inputmode="decimal" data-k="e22-6-1" aria-label="E 泡沫消一半用时：皂荚 / 洗洁精 备注"></td><td><input type="text" data-k="e22-6-n" aria-label="E 泡沫消一半用时：皂荚 / 洗洁精 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>皂荚水去油效果是否明显好于清水</li>
+<li>草木灰水的 pH 是多少，去油效果如何</li>
+<li>皂荚泡沫能维持多久</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>草木灰水是碱性的，戴手套，溅到眼睛立刻用大量清水冲洗。</li>
+<li>不要在家用烧碱（氢氧化钠）做肥皂：皂化反应只用动画演示。</li>
+<li>皂荚水不要入口。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>食用油、白棉布</td><td>油渍</td></tr>
+<tr><td>洗洁精、透明瓶、胡椒粉、盘子</td><td>乳化与表面张力</td></tr>
+<tr><td>皂荚（皂角）、锅、滤布</td><td>皂荚水</td></tr>
+<tr><td>木柴灰、手套</td><td>草木灰水</td></tr>
+<tr><td>pH 试纸</td><td>测碱性</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://www.theworldofchinese.com/2023/03/how-did-ancient-chinese-wash-their-clothes/">The World of Chinese：How did ancient Chinese wash their clothes</a> <span>草木灰、澡豆、胰子、肥皂团</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Soap">Wikipedia：Soap</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Gleditsia_sinensis">Wikipedia：Gleditsia sinensis</a> <span>皂荚</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "一块沾了油的白布，在皂荚水里搓一搓，油渍掉了", "一块油渍，在一盆褐色的水里搓几下，就没了。"], [2, "0:08", "done", "问题卡：油和水不相溶，肥皂怎么把油带走？", ""], [3, "0:14", "done", "片头：第三卷科技树，第 22 集闪烁", "有了火、有了灰，下一样东西，是让衣服干净。"], [4, "0:21", "done", "资料卡：草木灰、澡豆与胰子、肥皂团", "《礼记》里就说，衣服脏了「和灰请浣」，用草木灰泡的水洗。晋唐时有「澡豆」，唐代还加进了猪胰，所以北方至今把肥皂叫「胰子」。南宋临安的街上，有人卖「肥皂团」：捣碎的皂荚团成的丸子。"], [5, "0:45", "real", "实验 1：透明瓶里装油和水，摇晃后很快分层；加几滴洗洁精再摇，变成乳白色，不再分层", "油和水，怎么摇都会分开。加几滴洗洁精再摇……（按实拍描述）"], [6, "1:10", "done", "动画：肥皂分子一头爱水、一头爱油，把油滴包起来带走", "肥皂分子有两头：一头爱水，一头爱油。爱油的尾巴钻进油里，爱水的头朝外，把油滴团团围住。油滴被「包」起来，就能脱离布面，随水漂走。"], [7, "1:34", "real", "实验 2：盘里清水撒一层胡椒粉，指尖蘸洗洁精轻点水面，胡椒粉瞬间向四周散开", "再看一个：水面撒满胡椒粉，指尖蘸一点洗洁精，一碰……（按实拍描述）。肥皂分子挤到水面上，水的「表皮」就松了。"], [8, "1:54", "done", "问题卡：没有肥皂，古人用什么洗衣服？", ""], [9, "2:00", "real", "实验 3：三块同样沾了食用油的白布，分别用清水、皂荚水、草木灰水（过滤后，戴手套）搓 1 分钟，晾干对比；用 pH 试纸测三种水", "同样的油渍，三种水：清水……皂荚水……草木灰水……（按实测描述去污效果和 pH）"], [10, "2:35", "done", "动画：油脂遇碱皂化成肥皂分子；皂荚里的皂苷天生就是两头的分子", "草木灰水是碱性的：碱能把油脂上的三条脂肪酸剪下来，变成肥皂分子，这叫皂化。皂荚更省事：它里面的皂苷，天生就是一头爱水、一头爱油。"], [11, "2:57", "real", "实验 4：皂荚水摇一摇起满泡沫；与洗洁精泡沫并排，计时看谁先消", "皂荚水一摇，也能起一层泡沫……（按实测描述持续时间）"], [12, "3:22", "done", "结论卡：一头爱水，一头爱油，把油包起来带走", "一头爱水，一头爱油，把油包起来带走。古人不知道分子，却找到了现成的「两头分子」：皂荚。"], [13, "3:29", "done", "片尾：点亮第 22 集，预告 B15", "下集：同一缸粮食，怎么先变酒、再变醋？"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>
