@@ -131,7 +131,7 @@ ol.log span{color:var(--muted)}
 </style>
 
 <div class="wrap">
-<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep04/">磁生电拍摄本</a><a href="../ep04/voice.html">磁生电旁白稿</a><a href="../b1/">指南鱼拍摄本</a><a href="../#videos">视频</a></nav>
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../b1/">B1</a><a href="../#videos">视频</a></nav>
 <header>
   <div class="eyebrow">项目全书 · 第 5 版 · 2026 年 10 月 18 日</div>
   <h1>从零造物</h1>
@@ -233,7 +233,7 @@ ol.log span{color:var(--muted)}
   <div class="legend"><span><i class="sw done"></i>拍摄方案和动画已完成</span><span><i class="sw plan"></i>网页已有章节</span><span><i class="sw"></i>待策划</span></div>
   <div>
     <div class="track"><div class="tname"><b>一 · 电</b><small>首发卷 · 北宋 1090</small></div>
-      <div class="chain"><span class="ep plan">01 摩擦起电</span><span class="arr">→</span><span class="ep plan">02 伏打电堆</span><span class="arr">→</span><span class="ep plan">03 电生磁</span><span class="arr">→</span><span class="ep done">04 磁生电</span><span class="arr">→</span><span class="ep plan">05 手摇发电机</span></div></div>
+      <div class="chain"><span class="ep done">01 摩擦起电</span><span class="arr">→</span><span class="ep done">02 伏打电堆</span><span class="arr">→</span><span class="ep done">03 电生磁</span><span class="arr">→</span><span class="ep done">04 磁生电</span><span class="arr">→</span><span class="ep done">05 手摇发电机</span></div></div>
     <div class="track"><div class="tname"><b>二 · 能量从哪来</b><small>同一台发电机换动力</small></div>
       <div class="chain"><span class="link">接 第一卷 05</span><span class="ep">水车</span><span class="ep">风车</span><span class="ep">畜力与人力</span><span class="ep">重力</span><span class="ep">蒸汽</span><span class="ep">化学电</span><span class="ep">热电</span><span class="ep">压电</span><span class="ep">静电机</span></div></div>
     <div class="track"><div class="tname"><b>三 · 火与材料</b><small>没有高温就没有金属</small></div>
@@ -453,11 +453,11 @@ ol.log span{color:var(--muted)}
 const V=['一 · 电','二 · 能量','三 · 火与材料','四 · 水与农业','五 · 救命的知识','六 · 机械与交通','七 · 信息与测量','八 · 古法解密（B 线）'];
 // [vol, title, hook, principle, props, safety(l/m/h), status, era-note]
 const T=[
- [0,'01 摩擦起电与莱顿瓶','琥珀一擦，为什么能吸起稻草？','电子从一种材料转移到另一种；莱顿瓶用绝缘层把正负电荷隔开储存','琥珀或塑料棒、毛皮、玻璃瓶、锡箔','l','网页已有章节'],
- [0,'02 伏打电堆','两块金属加盐水，为什么能持续出电？','锌（或铁）比铜更容易失去电子；串联叠加，电压相加','铜片、铁片、盐水、布片','l','网页已有章节'],
- [0,'03 电生磁','通电导线为什么能拨动指南针？','电流周围有环形磁场；绕成线圈再加铁芯，就是电磁铁','指南针、电池、导线、铁钉','l','网页已有章节'],
+ [0,'01 摩擦起电与莱顿瓶','琥珀一擦，为什么能吸起稻草？','电子从一种材料转移到另一种；莱顿瓶用绝缘层把正负电荷隔开储存','琥珀或塑料棒、毛皮、玻璃瓶、锡箔','l','方案和动画已完成'],
+ [0,'02 伏打电堆','两块金属加盐水，为什么能持续出电？','锌（或铁）比铜更容易失去电子；串联叠加，电压相加','铜片、铁片、盐水、布片','l','方案和动画已完成'],
+ [0,'03 电生磁','通电导线为什么能拨动指南针？','电流周围有环形磁场；绕成线圈再加铁芯，就是电磁铁','指南针、电池、导线、铁钉','l','方案和动画已完成'],
  [0,'04 磁生电','磁铁就在线圈里，为什么不发电？','法拉第定律：电压 = 匝数 × 磁通量变化的快慢','钕磁铁、漆包线、指针式电流计','l','方案和动画已完成'],
- [0,'05 手摇发电机','灯泡一接上，手柄为什么变沉了？','旋转让磁通量持续变化；楞次定律其实就是能量守恒','磁铁转轴、线圈、小灯泡','l','网页已有章节'],
+ [0,'05 手摇发电机','灯泡一接上，手柄为什么变沉了？','旋转让磁通量持续变化；楞次定律其实就是能量守恒','磁铁转轴、线圈、小灯泡','l','方案和动画已完成'],
  [1,'水车发电','落差和流量，哪个更重要？','水的势能 → 转动 → 电','小水轮模型、水管','l','待策划','北宋已有水车，创新点在于「接上发电机」'],
  [1,'风车发电','风速翻一倍，电能涨多少？','风的功率和风速的三次方成正比','纸风车、电扇','l','待策划'],
  [1,'畜力与人力','点亮一盏灯，人要蹬多累？','功率与做功；楞次定律的体感','自行车发电机、灯泡','l','待策划'],

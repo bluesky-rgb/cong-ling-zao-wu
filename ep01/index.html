@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>摩擦起电拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../b1/">B1</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第一卷 · 第 01 集</div>
+<h1>摩擦起电</h1>
+<p class="thesis">擦几下就能隔空吸起纸屑：电是被「抢」出来的。再做一个莱顿瓶，把电存起来。</p>
+<div class="facts">
+<div><span>暂定标题</span>没有电池，电是从哪来的？</div>
+<div><span>时长</span>约 3 分 40 秒 · 13 个镜头</div>
+<div><span>时代</span>北宋 · 约 1090 年</div>
+<div><span>衔接</span>→ 02 伏打电堆：静电存不住</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">东汉王充《论衡·乱龙篇》：「顿牟掇芥，磁石引针」</p><p class="p">「顿牟」一般解作琥珀，也有学者根据汉墓出土的「顿牟簪」认为是玳瑁。两种材料摩擦后都能起电，这句话同时写到了静电和磁。</p></div>
+<div class="ol"><p class="o">1745 年 · 莱顿瓶</p><p class="p">德国的冯·克莱斯特和荷兰莱顿的穆森布罗克先后发现，瓶子能把电存起来。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>电只能来自雷电</s> → 琥珀和毛皮一擦就有电</span></li>
+<li><span class="k">2</span><span><s>摩擦出来的电会一直留着</s> → 放一会儿就散了，潮湿的天气散得更快</span></li>
+<li><span class="k">3</span><span><s>电存不住</s> → 用瓶子内外贴金属箔，做成莱顿瓶</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>摩擦后，两种材料带上相反的电，能吸起轻小的东西</p></div>
+<div class="layer"><span>规律层</span><p>不同材料抓电子的本领不同，可以排成一张「起电序列」</p></div>
+<div class="layer"><span>本质层</span><p>电子从一种材料转移到另一种；绝缘体之间具体怎么转移，至今仍在研究</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>电荷会漏走 → 选干燥的天气、用绝缘手柄；想把电存起来 → 两层导体中间夹一层绝缘。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">每组摩擦 10 下，靠近同一堆纸屑，数吸起几片。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>材料</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>塑料棒 + 毛衣</td><td>主实验（塑料棒代替琥珀）</td></tr>
+<tr><td>B</td><td>玻璃棒 + 丝绸</td><td>换一对材料</td></tr>
+<tr><td>C</td><td>金属勺 + 毛衣</td><td>导体会不会起电</td></tr>
+<tr><td>D</td><td>塑料棒，不摩擦</td><td>对照</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>准备约 1 平方厘米的碎纸屑，铺在深色桌面上，方便拍摄。</li>
+<li>每组摩擦 10 下，靠近纸屑 2 厘米处停 3 秒，数吸起几片；每组做 3 次。</li>
+<li>在干燥的房间和刚洗完澡的浴室里各做一遍 A 组。</li>
+<li>做莱顿瓶：塑料瓶内外各贴一圈锡箔（不要贴到瓶口），瓶口插导线连到内层锡箔，顶端接一个铝箔球。</li>
+<li>用摩擦过的塑料棒反复碰铝箔球 15 次，然后在暗处用带绝缘柄的导线把铝箔球和外层锡箔接通，拍火花。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>第 1 次</th><th>第 2 次</th><th>第 3 次</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 塑料棒 + 毛衣（片）</td><td><input type="text" inputmode="decimal" data-k="e01-0-0" aria-label="A 塑料棒 + 毛衣（片） 第 1 次"></td><td><input type="text" inputmode="decimal" data-k="e01-0-1" aria-label="A 塑料棒 + 毛衣（片） 第 2 次"></td><td><input type="text" inputmode="decimal" data-k="e01-0-2" aria-label="A 塑料棒 + 毛衣（片） 第 3 次"></td><td><input type="text" data-k="e01-0-n" aria-label="A 塑料棒 + 毛衣（片） 备注"></td></tr>
+<tr><td>B 玻璃棒 + 丝绸（片）</td><td><input type="text" inputmode="decimal" data-k="e01-1-0" aria-label="B 玻璃棒 + 丝绸（片） 第 1 次"></td><td><input type="text" inputmode="decimal" data-k="e01-1-1" aria-label="B 玻璃棒 + 丝绸（片） 第 2 次"></td><td><input type="text" inputmode="decimal" data-k="e01-1-2" aria-label="B 玻璃棒 + 丝绸（片） 第 3 次"></td><td><input type="text" data-k="e01-1-n" aria-label="B 玻璃棒 + 丝绸（片） 备注"></td></tr>
+<tr><td>C 金属勺 + 毛衣（片）</td><td><input type="text" inputmode="decimal" data-k="e01-2-0" aria-label="C 金属勺 + 毛衣（片） 第 1 次"></td><td><input type="text" inputmode="decimal" data-k="e01-2-1" aria-label="C 金属勺 + 毛衣（片） 第 2 次"></td><td><input type="text" inputmode="decimal" data-k="e01-2-2" aria-label="C 金属勺 + 毛衣（片） 第 3 次"></td><td><input type="text" data-k="e01-2-n" aria-label="C 金属勺 + 毛衣（片） 备注"></td></tr>
+<tr><td>D 不摩擦（片）</td><td><input type="text" inputmode="decimal" data-k="e01-3-0" aria-label="D 不摩擦（片） 第 1 次"></td><td><input type="text" inputmode="decimal" data-k="e01-3-1" aria-label="D 不摩擦（片） 第 2 次"></td><td><input type="text" inputmode="decimal" data-k="e01-3-2" aria-label="D 不摩擦（片） 第 3 次"></td><td><input type="text" data-k="e01-3-n" aria-label="D 不摩擦（片） 备注"></td></tr>
+<tr><td>A · 浴室里（片）</td><td><input type="text" inputmode="decimal" data-k="e01-4-0" aria-label="A · 浴室里（片） 第 1 次"></td><td><input type="text" inputmode="decimal" data-k="e01-4-1" aria-label="A · 浴室里（片） 第 2 次"></td><td><input type="text" inputmode="decimal" data-k="e01-4-2" aria-label="A · 浴室里（片） 第 3 次"></td><td><input type="text" data-k="e01-4-n" aria-label="A · 浴室里（片） 备注"></td></tr>
+<tr><td>莱顿瓶充电次数 / 有无火花</td><td><input type="text" inputmode="decimal" data-k="e01-5-0" aria-label="莱顿瓶充电次数 / 有无火花 第 1 次"></td><td><input type="text" inputmode="decimal" data-k="e01-5-1" aria-label="莱顿瓶充电次数 / 有无火花 第 2 次"></td><td><input type="text" inputmode="decimal" data-k="e01-5-2" aria-label="莱顿瓶充电次数 / 有无火花 第 3 次"></td><td><input type="text" data-k="e01-5-n" aria-label="莱顿瓶充电次数 / 有无火花 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>空气湿度对吸纸屑的效果影响有多大</li>
+<li>金属勺是否完全吸不起（手握时）</li>
+<li>自制莱顿瓶的火花在暗处能否拍清楚</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>莱顿瓶只做小号的单个瓶子，不要把几个串联。</li>
+<li>放电时用带绝缘柄的导线，不要用手直接碰。</li>
+<li>心脏起搏器佩戴者不要参与放电实验。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>塑料棒或琥珀</td><td>摩擦起电</td></tr>
+<tr><td>毛衣或羊毛布、丝绸、玻璃棒、金属勺</td><td>对比材料</td></tr>
+<tr><td>碎纸屑</td><td>检验起电</td></tr>
+<tr><td>塑料瓶、锡箔、导线、铝箔</td><td>做莱顿瓶</td></tr>
+<tr><td>带绝缘柄的导线</td><td>安全放电</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:38。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://education.mrsec.wisc.edu/triboelectricity/">UW–Madison MRSEC：Triboelectricity</a> <span>摩擦起电与起电序列</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Triboelectric_effect">Wikipedia：Triboelectric effect</a> <span>机制仍有争议</span></li>
+<li><a href="https://www.sohu.com/a/311322714_772510">搜狐：「顿牟掇芥」的「顿牟」到底是琥珀还是玳瑁？</a> <span>《论衡·乱龙篇》原句与两种解读</span></li>
+<li><a href="https://nationalmaglab.org/magnet-academy/history-of-electricity-magnetism/museum/leyden-jars-1745/">National MagLab：Leyden Jars – 1745</a></li>
+<li><a href="https://www.sciencehistory.org/distillations/magazine/leyden-jar-battery">Science History Institute：Leyden Jar Battery</a></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "塑料棒（替代琥珀）在毛衣上擦几下，靠近桌上的纸屑，纸屑跳起来粘在棒上", "擦几下，这根棒子就能隔空把纸屑吸起来。"], [2, "0:08", "done", "问题卡：没有电池、没有电线，电是从哪来的？", ""], [3, "0:14", "done", "片头：第一卷科技树，第 01 集闪烁", "北宋，约公元一〇九〇年。我们从最古老的电说起。"], [4, "0:21", "done", "资料卡：古希腊、王充《论衡》、莱顿瓶", "其实古人早就注意到了。古希腊人发现，琥珀摩擦后能吸起轻小的东西，英文里「电」这个词，就来自希腊语的「琥珀」。东汉王充在《论衡》里也写过「顿牟掇芥」，一般认为说的就是琥珀吸起草籽；也有学者认为「顿牟」是玳瑁。"], [5, "0:46", "done", "动画：电子从毛皮转移到琥珀，琥珀吸起纸屑", "为什么会这样？所有东西里都有带负电的电子。两种材料一接触，抓电子本领强的一方会抢走一些电子。分开以后，一个带负电，一个带正电。至于绝缘体之间电子具体是怎么转移的，物理学家到今天还在研究。"], [6, "1:06", "real", "对比：塑料棒+毛衣、玻璃棒+丝绸、金属勺+毛衣，分别靠近纸屑", "换几种材料试试。金属勺子怎么擦都吸不起纸屑：金属导电，电荷一产生，就通过手溜走了。（按实测结果调整）"], [7, "1:36", "done", "问题卡：电能不能存起来？", ""], [8, "1:42", "real", "在塑料瓶内外各贴一圈锡箔，瓶口插一根导线连到内层，顶端接一个小铝箔球", "那就做一个能存电的瓶子：内外各贴一层锡箔，中间隔着瓶壁。"], [9, "2:12", "done", "动画：莱顿瓶充电、放电", "每次用带电的棒子碰一下金属球，里层就多存一些负电，外层被吸来等量的正电。正负电隔着瓶壁互相拉住，跑不掉。用导线把内外连起来，就会一下子全放掉。"], [10, "2:34", "real", "暗处：反复充电十几次后，用带绝缘柄的导线连通内外层，拍放电火花", "充电十几次，再把内外接通……（按实拍结果描述火花和声音）"], [11, "3:04", "real", "同样的实验，分别在干燥的房间和刚洗完澡的浴室里做，对比纸屑数量", "天气潮湿时，效果明显变差：空气里的水汽会把电荷慢慢带走。（按实测数据调整）"], [12, "3:24", "done", "结论卡：电可以「抢」出来，也能「存」起来，但存不久", "电可以抢出来，也能存起来。可是存不久，一次就用完了。要让灯一直亮，我们需要一种不会断的电。"], [13, "3:31", "done", "片尾：点亮第 01 集，预告第 02 集", "下一集：怎样得到持续的电。"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>

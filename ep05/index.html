@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>手摇发电机拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../b1/">B1</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第一卷 · 第 05 集</div>
+<h1>手摇发电机</h1>
+<p class="thesis">摇起来灯就亮，可是接上灯，手柄就变沉了。这正是能量守恒：灯里的每一点电，都来自你使的劲。</p>
+<div class="facts">
+<div><span>暂定标题</span>灯泡一接上，手柄为什么变沉了？</div>
+<div><span>时长</span>约 3 分 43 秒 · 14 个镜头</div>
+<div><span>时代</span>北宋 · 约 1090 年</div>
+<div><span>衔接</span>第一卷完结 → 第二卷 水车发电</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">1832 年 · 皮克西</p><p class="p">巴黎仪器匠，手摇马蹄形磁铁扫过线圈发电；后来按安培的建议加了换向器，输出单向的脉动电流。</p></div>
+<div class="ol"><p class="o">1834 年 · 楞次定律</p><p class="p">感应电流的方向，总是阻碍引起它的变化。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>转得越快灯越亮就行</s> → 接的灯越多，手柄越难摇</span></li>
+<li><span class="k">2</span><span><s>发电机能白白给电</s> → 电来自你使出的力气</span></li>
+<li><span class="k">3</span><span><s>交流电没有用</s> → 加上换向器，就变成单向电流</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>摇动磁铁扫过线圈，灯一闪一闪；接上灯后手柄明显变沉</p></div>
+<div class="layer"><span>规律层</span><p>楞次定律：感应电流总是阻碍引起它的变化</p></div>
+<div class="layer"><span>本质层</span><p>能量守恒：电能来自人做的功</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>需要持续变化 → 改成旋转；电压与转速成正比 → 用齿轮增速；电解需要单向电流 → 加换向器。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">保持同样的转速（可以跟着节拍器摇），只改变负载。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>负载</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>空载（不接任何东西）</td><td>基准阻力</td></tr>
+<tr><td>B</td><td>接一盏小灯</td><td>阻力是否变大</td></tr>
+<tr><td>C</td><td>接两盏灯（并联）</td><td>负载越大阻力越大</td></tr>
+<tr><td>D</td><td>两根线直接接通（短路，只持续几秒）</td><td>阻力最大</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>买现成的教学用手摇发电机最方便；自制的话，把钕磁铁固定在转轴上，线圈放在旁边。</li>
+<li>手柄上系一根绳，接拉力计，按节拍器每秒一圈匀速拉动，读拉力。</li>
+<li>每种负载摇 10 秒，记录拉力的大致范围。</li>
+<li>电流表接两端，慢慢摇，拍指针左右摆。</li>
+<li>没有换向器的话，可以用整流二极管代替演示「单向」，旁白里说明。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>拉力（牛）</th><th>灯的亮度</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 空载</td><td><input type="text" inputmode="decimal" data-k="e05-0-0" aria-label="A 空载 拉力（牛）"></td><td><input type="text" inputmode="decimal" data-k="e05-0-1" aria-label="A 空载 灯的亮度"></td><td><input type="text" data-k="e05-0-n" aria-label="A 空载 备注"></td></tr>
+<tr><td>B 一盏灯</td><td><input type="text" inputmode="decimal" data-k="e05-1-0" aria-label="B 一盏灯 拉力（牛）"></td><td><input type="text" inputmode="decimal" data-k="e05-1-1" aria-label="B 一盏灯 灯的亮度"></td><td><input type="text" data-k="e05-1-n" aria-label="B 一盏灯 备注"></td></tr>
+<tr><td>C 两盏灯</td><td><input type="text" inputmode="decimal" data-k="e05-2-0" aria-label="C 两盏灯 拉力（牛）"></td><td><input type="text" inputmode="decimal" data-k="e05-2-1" aria-label="C 两盏灯 灯的亮度"></td><td><input type="text" data-k="e05-2-n" aria-label="C 两盏灯 备注"></td></tr>
+<tr><td>D 短路（几秒）</td><td><input type="text" inputmode="decimal" data-k="e05-3-0" aria-label="D 短路（几秒） 拉力（牛）"></td><td><input type="text" inputmode="decimal" data-k="e05-3-1" aria-label="D 短路（几秒） 灯的亮度"></td><td><input type="text" data-k="e05-3-n" aria-label="D 短路（几秒） 备注"></td></tr>
+<tr><td>电流表指针是否左右摆</td><td><input type="text" inputmode="decimal" data-k="e05-4-0" aria-label="电流表指针是否左右摆 拉力（牛）"></td><td><input type="text" inputmode="decimal" data-k="e05-4-1" aria-label="电流表指针是否左右摆 灯的亮度"></td><td><input type="text" data-k="e05-4-n" aria-label="电流表指针是否左右摆 备注"></td></tr>
+<tr><td>加换向器或二极管后</td><td><input type="text" inputmode="decimal" data-k="e05-5-0" aria-label="加换向器或二极管后 拉力（牛）"></td><td><input type="text" inputmode="decimal" data-k="e05-5-1" aria-label="加换向器或二极管后 灯的亮度"></td><td><input type="text" data-k="e05-5-n" aria-label="加换向器或二极管后 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>四种负载下的阻力差别能否用拉力计测出来</li>
+<li>自制转子能让灯亮到什么程度</li>
+<li>指针左右摆在画面里是否明显</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>短路只持续几秒，线圈会发热。</li>
+<li>钕磁铁吸力很强，不要让两块相撞夹到手指。</li>
+<li>转轴转动时注意头发和衣袖。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>手摇发电机（教学用）或自制转子</td><td>发电</td></tr>
+<tr><td>小灯泡 × 2、导线</td><td>负载</td></tr>
+<tr><td>拉力计、节拍器 App</td><td>测阻力</td></tr>
+<tr><td>电流表（指针式）</td><td>看交流</td></tr>
+<tr><td>整流二极管（可选）</td><td>代替换向器演示</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:43。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://en.wikipedia.org/wiki/Lenz%27s_law">Wikipedia：Lenz&#x27;s law</a> <span>1834 年由楞次提出</span></li>
+<li><a href="https://k12.libretexts.org/Bookshelves/Science_and_Technology/Physics/19%3A_Electromagnetism/19.05%3A_Lenz&#x27;s_Law">LibreTexts：Lenz&#x27;s Law</a> <span>接灯后手柄变沉</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Hippolyte_Pixii">Wikipedia：Hippolyte Pixii</a></li>
+<li><a href="https://nationalmaglab.org/magnet-academy/watch-play/interactive-tutorials/pixii-machine/">National MagLab：Pixii Machine</a> <span>换向器</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "摇动手摇发电机，小灯泡随着转动一闪一闪地亮起来", "摇起来，灯就亮了。"], [2, "0:08", "done", "问题卡：灯泡一接上，手柄为什么变沉了？", ""], [3, "0:14", "done", "片头：第 05 集", "北宋，约公元一〇九〇年。上一集我们知道了：磁通量一变，就有电。"], [4, "0:21", "real", "把磁铁装在转轴上，摇动手柄，让两极轮流扫过线圈", "一直推拉磁铁太累，那就让它转起来：两极轮流扫过线圈，磁通量就一直在变。"], [5, "0:46", "real", "同样的转速下，空载、接一盏灯、导线短路，用拉力计测手柄的阻力", "奇怪的事发生了：不接灯时很轻，接上灯明显变沉，两根线直接接通时最沉。拉力计的读数是……（按实测数据描述）"], [6, "1:16", "done", "动画：负载越大，电流越大，线圈的反向磁场越强", "原因在线圈里：电流一流动，线圈自己也变成了磁铁，而且总是反推转过来的磁铁。电流越大，推得越狠，手柄越沉。"], [7, "1:38", "done", "问题卡：如果手柄反而变轻，会发生什么？", ""], [8, "1:44", "done", "资料卡：反证 —— 永动机", "反过来想：如果感应电流帮着磁铁转，那就会越转越快，不用出力，电就源源不断。这就是永动机，违背了能量守恒。所以手柄一定会变沉：灯里的每一点电，都来自你使的劲。"], [9, "2:06", "done", "资料卡：皮克西 1832、楞次 1834", "一八三二年，巴黎的仪器匠皮克西造出了第一台手摇发电机。两年后，楞次总结出：感应电流总是阻碍引起它的变化。"], [10, "2:26", "real", "电流表接在发电机两端，慢慢摇，指针左右来回摆", "慢慢摇，看电流表：指针一会儿往左，一会儿往右。这是交流电。"], [11, "2:51", "done", "动画：换向器把交流变成单向的脉动电流", "要让电流只往一个方向流，就在转轴上装一个换向器：每转半圈，接线自动对调一次。皮克西后来就是这么做的。"], [12, "3:09", "real", "装上换向器（或用整流二极管代替）后再摇，指针只往一边偏", "装上换向器再摇，指针只往一边偏了。（按实拍结果调整）"], [13, "3:29", "done", "结论卡：第一卷完成，我们从零造出了电", "从琥珀吸纸屑，到摇动手柄点亮一盏灯，我们从零造出了电。"], [14, "3:36", "done", "片尾：点亮第 05 集，第一卷完结", "下一卷，让河水替我们摇。"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>

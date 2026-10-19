@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>伏打电堆拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../b1/">B1</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第一卷 · 第 02 集</div>
+<h1>伏打电堆</h1>
+<p class="thesis">几片铜、几片铁、一点盐水，就能持续出电。北宋没有锌，我们用铁，电压只能实测。</p>
+<div class="facts">
+<div><span>暂定标题</span>两块金属加盐水，为什么能持续出电？</div>
+<div><span>时长</span>约 3 分 56 秒 · 14 个镜头</div>
+<div><span>时代</span>北宋 · 约 1090 年</div>
+<div><span>衔接</span>→ 03 电生磁：有了持续电流</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">1800 年 · 伏打电堆</p><p class="p">伏打把铜（或银）、浸盐水的布、锌一层层叠起来，用盐水时每组约 0.76 伏。这一集按北宋设定改用铁片，锌片只作对照。</p></div>
+<div class="ol"><p class="o">为什么不用锌</p><p class="p">在北宋，金属锌还很难得到。铁铜组合的电压没有查到可靠数据，所以这一集的关键数字全部来自实测。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>电只能靠摩擦得到</s> → 两种金属夹着盐水也有电</span></li>
+<li><span class="k">2</span><span><s>一组就够用</s> → 单组电压很低，要串联</span></li>
+<li><span class="k">3</span><span><s>浸一下盐水就行</s> → 铜片上的气泡会让电越来越弱</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>铜片、铁片之间夹着盐水布，导线里出现持续电流</p></div>
+<div class="layer"><span>规律层</span><p>每组电压基本固定，串联起来电压相加</p></div>
+<div class="layer"><span>本质层</span><p>铁比铜更容易失去电子，电子经过导线从铁流向铜</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>单组电压低 → 叠成一堆串联；叠得太高会把盐水压出来 → 改成一排盛盐水的杯子（伏打的「杯冠」）。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">用同样大小的金属片，每次只改一个条件，用万用表直流电压档读数。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>组合</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>铜 / 盐水布 / 铁，1 组</td><td>基准</td></tr>
+<tr><td>B</td><td>铜 / 醋布 / 铁</td><td>换电解液</td></tr>
+<tr><td>C</td><td>铜 / 清水布 / 铁</td><td>清水行不行</td></tr>
+<tr><td>D</td><td>铜 / 干布 / 铁</td><td>对照</td></tr>
+<tr><td>E</td><td>1、4、10 组串联</td><td>电压是否相加</td></tr>
+<tr><td>F</td><td>铜 / 盐水布 / 锌</td><td>对照：锌比铁高多少</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>金属片剪成约 3×3 厘米，用砂纸擦亮表面。</li>
+<li>布片剪得比金属片略小，浸透后挤到不滴水。</li>
+<li>每组叠好后立刻读数，记录到小数点后两位。</li>
+<li>叠 10 组时用两根筷子或木签在四周固定，防止滑倒。</li>
+<li>10 组读数后接上 LED（长脚接铜那端），在暗处拍是否亮起。</li>
+<li>放置 10 分钟后再读一次，拍铜片上的气泡特写。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>电压（伏）</th><th>十分钟后（伏）</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 铜/盐水/铁 × 1</td><td><input type="text" inputmode="decimal" data-k="e02-0-0" aria-label="A 铜/盐水/铁 × 1 电压（伏）"></td><td><input type="text" inputmode="decimal" data-k="e02-0-1" aria-label="A 铜/盐水/铁 × 1 十分钟后（伏）"></td><td><input type="text" data-k="e02-0-n" aria-label="A 铜/盐水/铁 × 1 备注"></td></tr>
+<tr><td>B 铜/醋/铁 × 1</td><td><input type="text" inputmode="decimal" data-k="e02-1-0" aria-label="B 铜/醋/铁 × 1 电压（伏）"></td><td><input type="text" inputmode="decimal" data-k="e02-1-1" aria-label="B 铜/醋/铁 × 1 十分钟后（伏）"></td><td><input type="text" data-k="e02-1-n" aria-label="B 铜/醋/铁 × 1 备注"></td></tr>
+<tr><td>C 铜/清水/铁 × 1</td><td><input type="text" inputmode="decimal" data-k="e02-2-0" aria-label="C 铜/清水/铁 × 1 电压（伏）"></td><td><input type="text" inputmode="decimal" data-k="e02-2-1" aria-label="C 铜/清水/铁 × 1 十分钟后（伏）"></td><td><input type="text" data-k="e02-2-n" aria-label="C 铜/清水/铁 × 1 备注"></td></tr>
+<tr><td>D 铜/干布/铁 × 1</td><td><input type="text" inputmode="decimal" data-k="e02-3-0" aria-label="D 铜/干布/铁 × 1 电压（伏）"></td><td><input type="text" inputmode="decimal" data-k="e02-3-1" aria-label="D 铜/干布/铁 × 1 十分钟后（伏）"></td><td><input type="text" data-k="e02-3-n" aria-label="D 铜/干布/铁 × 1 备注"></td></tr>
+<tr><td>E 铜/盐水/铁 × 4</td><td><input type="text" inputmode="decimal" data-k="e02-4-0" aria-label="E 铜/盐水/铁 × 4 电压（伏）"></td><td><input type="text" inputmode="decimal" data-k="e02-4-1" aria-label="E 铜/盐水/铁 × 4 十分钟后（伏）"></td><td><input type="text" data-k="e02-4-n" aria-label="E 铜/盐水/铁 × 4 备注"></td></tr>
+<tr><td>E 铜/盐水/铁 × 10</td><td><input type="text" inputmode="decimal" data-k="e02-5-0" aria-label="E 铜/盐水/铁 × 10 电压（伏）"></td><td><input type="text" inputmode="decimal" data-k="e02-5-1" aria-label="E 铜/盐水/铁 × 10 十分钟后（伏）"></td><td><input type="text" data-k="e02-5-n" aria-label="E 铜/盐水/铁 × 10 备注"></td></tr>
+<tr><td>F 铜/盐水/锌 × 1</td><td><input type="text" inputmode="decimal" data-k="e02-6-0" aria-label="F 铜/盐水/锌 × 1 电压（伏）"></td><td><input type="text" inputmode="decimal" data-k="e02-6-1" aria-label="F 铜/盐水/锌 × 1 十分钟后（伏）"></td><td><input type="text" data-k="e02-6-n" aria-label="F 铜/盐水/锌 × 1 备注"></td></tr>
+<tr><td>LED 是否亮起（几组时）</td><td><input type="text" inputmode="decimal" data-k="e02-7-0" aria-label="LED 是否亮起（几组时） 电压（伏）"></td><td><input type="text" inputmode="decimal" data-k="e02-7-1" aria-label="LED 是否亮起（几组时） 十分钟后（伏）"></td><td><input type="text" data-k="e02-7-n" aria-label="LED 是否亮起（几组时） 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>铁铜电堆每组的实际电压（没有查到可靠数据）</li>
+<li>几组串联才能点亮 LED</li>
+<li>十分钟后电压下降多少（极化）</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>电压很低，接触安全；注意金属片边缘锋利。</li>
+<li>用完的布片和金属片洗手后再碰食物。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>铜片（或铜钱）、铁片、锌片</td><td>电极（锌片仅作对照）</td></tr>
+<tr><td>盐、醋、布片</td><td>电解液</td></tr>
+<tr><td>万用表</td><td>测电压</td></tr>
+<tr><td>LED、导线、鳄鱼夹</td><td>检验能否点灯</td></tr>
+<tr><td>筷子或木签、砂纸</td><td>固定、打磨</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:56。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://en.wikipedia.org/wiki/Voltaic_pile">Wikipedia：Voltaic pile</a> <span>盐水时每组约 0.76 伏（锌铜）</span></li>
+<li><a href="https://nationalmaglab.org/magnet-academy/history-of-electricity-magnetism/museum/voltaic-pile-1800/">National MagLab：Voltaic Pile – 1800</a> <span>叠太高会压出盐水、杯冠</span></li>
+<li><a href="https://www.acs.org/content/dam/acsorg/education/outreach/ncw/plan-an-event/educational-resources/building-a-voltaic-pile-hist.pdf">ACS：Building a Voltaic Pile</a> <span>家庭电堆做法与反应</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Galvanism">Wikipedia：Galvanism</a> <span>伽伐尼的「动物电」</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "一小叠铜片、盐水布、铁片，两端接万用表，屏幕上出现读数", "几片铜、几片铁、一点盐水，万用表上就出现了读数。（按实测读数改写）"], [2, "0:08", "done", "问题卡：没有摩擦，电从哪来？", ""], [3, "0:14", "done", "片头：第 02 集", "北宋，约公元一〇九〇年。上一集的电，用一次就没了。今天我们要一种不会断的电。"], [4, "0:21", "done", "资料卡：伽伐尼的蛙腿与伏打的电堆", "十八世纪末，意大利的伽伐尼发现，蛙腿碰到两种金属会抽动，他以为电来自青蛙。伏打不同意：只要两种不同的金属，中间夹着潮湿的东西，就能产生电。一八〇〇年，他把这种组合一层层叠起来，造出了第一个能持续供电的电池。"], [5, "0:46", "real", "一组：铜片、盐水布、铁片叠在一起，万用表测电压", "先做一组：一片铜，一块浸了盐水的布，一片铁。读数是……（按实测读数改写）"], [6, "1:11", "done", "动画：铁失去电子，电子经导线流向铜，铜片冒出氢气泡", "电是从哪来的？铁比铜更容易失去电子。铁原子丢下电子，变成铁离子溶进盐水；电子穿不过盐水，只能绕道导线，从铁流到铜，这就是电流。在铜片上，电子被盐水里的氢离子接走，冒出了气泡。"], [7, "1:35", "real", "对照：同样的铜片铁片，分别夹盐水布、醋布、清水布、干布，测电压", "换掉中间的布试试：盐水、醋、清水、干布……（按实测读数逐一描述）。中间必须有能导电的液体。"], [8, "2:05", "done", "问题卡：一组太弱，怎么办？", ""], [9, "2:11", "real", "叠 1 组、4 组、10 组，分别测电压；10 组时接上 LED 试试", "一组太弱，那就叠起来：一组、四组、十组……（按实测读数描述）。LED 亮了吗？（按实拍结果）"], [10, "2:41", "done", "动画：串联，总电压 = 组数 × 每组电压", "这叫串联：每多一组，总电压就多加一份。"], [11, "2:57", "real", "放置十分钟后再测电压；铜片上的气泡特写", "过了一会儿，读数变小了。看铜片上的这些气泡：它们挡住了反应。伏打当年也遇到了同样的问题。"], [12, "3:22", "real", "把铁片换成锌片，对比电压", "如果换成锌片，电压会更高。可是在北宋，金属锌还很难得到，所以我们的电堆用的是铁。"], [13, "3:42", "done", "结论卡：两种金属 + 盐水，第一个能持续供电的东西", "两种金属，一点盐水，就有了第一个能持续供电的东西。"], [14, "3:49", "done", "片尾：点亮第 02 集，预告第 03 集", "下一集：有了持续的电流，指南针为什么会乱转？"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
