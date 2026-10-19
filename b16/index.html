@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>瓷器拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 古法解密 · B16</div>
+<h1>瓷器</h1>
+<p class="thesis">瓷土耐得住高温，一部分原料在一千二三百度熔成玻璃、填满孔隙：这就是瓷不吸水、声音清脆、还能透光的原因。</p>
+<div class="facts">
+<div><span>暂定标题</span>同样是泥，瓷为什么不吸水？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>东汉成熟青瓷 · 宋代名窑</div>
+<div><span>衔接</span>← 16 木炭与制陶；→ 21 玻璃</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">起点之争</p><p class="p">中国学界一般以东汉（浙江上虞一带）成熟青瓷为瓷器的成熟；西方常把唐以前的高温釉器称为「原始瓷」，把 6–7 世纪作为真正瓷器的起点。两种说法的差别在于定义标准。</p></div>
+<div class="ol"><p class="o">温度</p><p class="p">低温陶约 650–1000 ℃ 烧成，多孔、吸水；原始瓷和瓷约 1200–1300 ℃ 及以上，胎体玻化，基本不吸水。</p></div>
+<div class="ol"><p class="o">原料</p><p class="p">高岭土因景德镇附近的高岭村得名，耐高温；长石等在高温下熔融成玻璃相。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>瓷只是烧得更久的陶</s> → 是原料和温度都不一样</span></li>
+<li><span class="k">2</span><span><s>温度越高越好</s> → 普通黏土会软塌，要用瓷土</span></li>
+<li><span class="k">3</span><span><s>上了釉才不漏水</s> → 胎体本身就玻化了</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>瓷不吸水、敲声清脆、薄处透光；陶吸水、声音发闷</p></div>
+<div class="layer"><span>规律层</span><p>烧成温度和原料决定玻化程度</p></div>
+<div class="layer"><span>本质层</span><p>长石等熔成玻璃相填满颗粒间的孔隙；高岭土高温下保持骨架</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>想要不吸水 → 提高温度让胎体玻化；普通黏土高温会软塌 → 换耐高温的瓷土；温度上不去 → 更好的窑和燃料（龙窑、木炭）。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">「陶」用未上釉的花盆碎片，「瓷」用碎碗的底足（只取没上釉的部分）。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>陶片 vs 瓷片泡水 24 小时，称重</td><td>吸水率</td></tr>
+<tr><td>B</td><td>底足滴水 / 滴墨水</td><td>直观对比</td></tr>
+<tr><td>C</td><td>敲击声音、手电透光</td><td>玻化的表现</td></tr>
+<tr><td>D</td><td>同窑高温烧普通陶泥和瓷泥（工作室）</td><td>为什么要瓷土</td></tr>
+<tr><td>E</td><td>断面微距</td><td>结构</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>陶片、瓷片洗净，用烤箱 110 ℃ 烘 1 小时，冷却后称干重（精确到 0.1 克）。</li>
+<li>泡水 24 小时，取出用湿毛巾擦掉表面水，立刻称湿重。</li>
+<li>吸水率 = （湿重 − 干重）÷ 干重 × 100%。</li>
+<li>敲击时用筷子，录音对比；透光用手机手电，在暗处拍。</li>
+<li>陶艺工作室一般烧到 1230 ℃ 左右，可以请老师把两片泥放在同一窑里。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>干重（克）</th><th>湿重（克）</th><th>吸水率</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 陶片</td><td><input type="text" inputmode="decimal" data-k="b16-0-0" aria-label="A 陶片 干重（克）"></td><td><input type="text" inputmode="decimal" data-k="b16-0-1" aria-label="A 陶片 湿重（克）"></td><td><input type="text" inputmode="decimal" data-k="b16-0-2" aria-label="A 陶片 吸水率"></td><td><input type="text" data-k="b16-0-n" aria-label="A 陶片 备注"></td></tr>
+<tr><td>A 瓷片</td><td><input type="text" inputmode="decimal" data-k="b16-1-0" aria-label="A 瓷片 干重（克）"></td><td><input type="text" inputmode="decimal" data-k="b16-1-1" aria-label="A 瓷片 湿重（克）"></td><td><input type="text" inputmode="decimal" data-k="b16-1-2" aria-label="A 瓷片 吸水率"></td><td><input type="text" data-k="b16-1-n" aria-label="A 瓷片 备注"></td></tr>
+<tr><td>B 滴水：陶 / 瓷</td><td><input type="text" inputmode="decimal" data-k="b16-2-0" aria-label="B 滴水：陶 / 瓷 干重（克）"></td><td><input type="text" inputmode="decimal" data-k="b16-2-1" aria-label="B 滴水：陶 / 瓷 湿重（克）"></td><td><input type="text" inputmode="decimal" data-k="b16-2-2" aria-label="B 滴水：陶 / 瓷 吸水率"></td><td><input type="text" data-k="b16-2-n" aria-label="B 滴水：陶 / 瓷 备注"></td></tr>
+<tr><td>C 敲击声音</td><td><input type="text" inputmode="decimal" data-k="b16-3-0" aria-label="C 敲击声音 干重（克）"></td><td><input type="text" inputmode="decimal" data-k="b16-3-1" aria-label="C 敲击声音 湿重（克）"></td><td><input type="text" inputmode="decimal" data-k="b16-3-2" aria-label="C 敲击声音 吸水率"></td><td><input type="text" data-k="b16-3-n" aria-label="C 敲击声音 备注"></td></tr>
+<tr><td>C 透光</td><td><input type="text" inputmode="decimal" data-k="b16-4-0" aria-label="C 透光 干重（克）"></td><td><input type="text" inputmode="decimal" data-k="b16-4-1" aria-label="C 透光 湿重（克）"></td><td><input type="text" inputmode="decimal" data-k="b16-4-2" aria-label="C 透光 吸水率"></td><td><input type="text" data-k="b16-4-n" aria-label="C 透光 备注"></td></tr>
+<tr><td>D 高温后：陶泥 / 瓷泥</td><td><input type="text" inputmode="decimal" data-k="b16-5-0" aria-label="D 高温后：陶泥 / 瓷泥 干重（克）"></td><td><input type="text" inputmode="decimal" data-k="b16-5-1" aria-label="D 高温后：陶泥 / 瓷泥 湿重（克）"></td><td><input type="text" inputmode="decimal" data-k="b16-5-2" aria-label="D 高温后：陶泥 / 瓷泥 吸水率"></td><td><input type="text" data-k="b16-5-n" aria-label="D 高温后：陶泥 / 瓷泥 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>陶片和瓷片的吸水率差多少（常见说法：陶 10% 以上，瓷不到 1%，需要实测）</li>
+<li>家用电子秤能否测出瓷片的微小增重</li>
+<li>普通陶泥在瓷的温度下是否明显变形</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>碎瓷片边缘锋利，戴手套处理，边缘可以先用砂纸磨一下。</li>
+<li>烤箱烘干后陶片很烫，用夹子取。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>未上釉花盆碎片、碎瓷碗</td><td>陶与瓷</td></tr>
+<tr><td>厨房秤（0.1 克）、烤箱</td><td>测吸水率</td></tr>
+<tr><td>滴管、墨水、筷子、手电</td><td>直观对比</td></tr>
+<tr><td>陶泥、瓷泥（可选）</td><td>高温对比</td></tr>
+<tr><td>手套、砂纸</td><td>安全</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://pacificasiamuseum.usc.edu/?p=2495">USC Pacific Asia Museum：Earthenware, stoneware, porcelain</a> <span>烧成温度与吸水</span></li>
+<li><a href="https://www.gotheborg.com/glossary/proto_porcelain.shtml">Gotheborg：Proto-porcelain</a> <span>中西方定义差异、1200–1300 ℃</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "一只陶碗、一只瓷碗翻过来，往没上釉的底足各滴一滴水：陶的吸进去，瓷的成一颗水珠", "同样一滴水，一个喝了进去，一个原样不动。"], [2, "0:08", "done", "问题卡：同样是泥，瓷为什么不吸水？", ""], [3, "0:14", "done", "片头：B 线科技树，B16 闪烁", "古法解密。上一集我们烧出了陶，这一集，看看瓷。"], [4, "0:21", "done", "资料卡：东汉成熟青瓷、宋代名窑、定义之争", "东汉时，浙江上虞一带已经能烧出成熟的青瓷。到了宋代，汝、官、哥、钧、定等名窑遍地，瓷器大量外销。不过，「瓷」从哪年算起，中外标准并不一样：西方常把唐以前的这类器物叫作「原始瓷」。"], [5, "0:45", "real", "实验 1：素烧花盆碎片和碎瓷碗的底足（不带釉部分），烘干称重；泡水 24 小时后擦干再称，算吸水率", "把陶片和瓷片烘干、称重，泡一天水再称：陶片重了……瓷片重了……（按实测描述吸水率）"], [6, "1:15", "done", "动画：陶的颗粒间留着孔，水钻进去；瓷烧得更热，玻璃填满孔隙", "放大看：陶片里的黏土颗粒烧结在一起，但中间留着许多小孔，水顺着孔钻进去。瓷烧到一千二三百度，一部分原料熔成玻璃，流进孔里把孔填满，这叫玻化。水进不去，敲起来清脆，薄的地方还能透光。"], [7, "1:39", "real", "实验 2：分别敲陶片和瓷片听声音；用手电筒从背后照一只薄瓷杯", "敲一敲：陶片发闷，瓷片清脆。手电筒照薄瓷杯：……（按实拍描述透光）"], [8, "2:04", "done", "问题卡：为什么不是什么泥都能烧成瓷？", ""], [9, "2:10", "done", "动画：普通黏土在一千二百度软塌，瓷土形状不变", "既然温度越高越好，那普通泥巴多烧一会儿行不行？不行。普通黏土铁和杂质多，一千一二百度就软塌、起泡。瓷土的配方不一样：高岭土耐高温，撑住形状；长石等在高温下熔成玻璃，填满孔隙。"], [10, "2:30", "real", "实验 3（可选，陶艺工作室）：普通陶泥小片和瓷泥小片放进同一窑，按瓷的温度烧，对比是否变形起泡", "把普通陶泥和瓷泥放进同一窑，按瓷的温度烧：……（按实拍描述）"], [11, "3:00", "real", "实验 4：手机微距看两种断面：陶断面粗糙多孔，瓷断面细密发亮", "再看断面：陶的断面像饼干，瓷的断面像玻璃。（按实拍描述）"], [12, "3:22", "done", "结论卡：选对的泥，烧到够高的温度", "选对的泥，烧到够高的温度，让孔被玻璃填满：瓷就不吸水了。古人没有显微镜，却靠一窑一窑地试，找到了这个配方。"], [13, "3:29", "done", "片尾：点亮 B16，预告第 23 集", "下集：回到 A 线，在家抄一张纸。"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>
