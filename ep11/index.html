@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>果蔬电池拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第一卷番外 · 第 11 集</div>
+<h1>果蔬电池</h1>
+<p class="thesis">北宋没有土豆，就用萝卜和橘子。电压由两种金属决定，果蔬只是「盐水」；电流看内阻，串起来才能点亮 LED。</p>
+<div class="facts">
+<div><span>暂定标题</span>一个萝卜，能当电池吗？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>北宋 · 约 1090 年（土豆仅作对照）</div>
+<div><span>衔接</span>← 02 伏打电堆；适合做竖屏切片</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">同一个原理</p><p class="p">果蔬电池就是伏打电堆：两种金属插进含盐、含酸的汁水里。锌铜组合常见读数约 0.9 伏，铁铜组合更低，需要实测。</p></div>
+<div class="ol"><p class="o">时代穿帮</p><p class="p">马铃薯原产美洲，明代以后才传入中国。北宋有萝卜、橘子、铜钱和铁钉，土豆只作现代对照。</p></div>
+<div class="ol"><p class="o">煮过的土豆</p><p class="p">希伯来大学拉宾诺维奇团队发现，土豆煮约 8 分钟后再做电池，内阻降低，功率可提高到约 10 倍。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>电是土豆里的</s> → 电来自两种金属，果蔬只是电解质</span></li>
+<li><span class="k">2</span><span><s>换个更「有电」的水果电压更高</s> → 电压几乎只看金属</span></li>
+<li><span class="k">3</span><span><s>一个就够点亮</s> → 要串联好几个，还要减小内阻</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>铜片、锌片插进果蔬，两端出现约 1 伏的电压</p></div>
+<div class="layer"><span>规律层</span><p>两种金属失去电子的倾向不同，形成电压；串联电压相加</p></div>
+<div class="layer"><span>本质层</span><p>锌（或铁）失去的电子经导线流向铜；果肉里的离子完成回路，内阻决定电流</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>电压低 → 串联；电流小 → 煮软、切块、减小电极间距以降低内阻；北宋没有锌 → 铁钉加铜钱，电压更低，要串更多。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">电极插入深度、间距（约 2 厘米）保持一致，用万用表直流电压档。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>土豆 + 铜片 + 镀锌钉</td><td>现代对照</td></tr>
+<tr><td>B</td><td>萝卜 + 铜片 + 镀锌钉</td><td>换果蔬</td></tr>
+<tr><td>C</td><td>橘子 + 铜片 + 镀锌钉</td><td>换果蔬</td></tr>
+<tr><td>D</td><td>萝卜 + 铜钱 + 铁钉</td><td>北宋版本</td></tr>
+<tr><td>E</td><td>串联 2 / 3 / 4 个</td><td>能否点亮 LED</td></tr>
+<tr><td>F</td><td>生土豆 vs 煮过的土豆</td><td>内阻</td></tr>
+<tr><td>G</td><td>湿土 + 铜片 + 铁片</td><td>大地电池</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>铜片和铁钉用砂纸擦亮；铜钱可以用旧铜币，先用醋擦掉氧化层。</li>
+<li>每个电池单独测电压，记录到小数点后两位。</li>
+<li>串联时注意：前一个的铜接下一个的锌（或铁）。</li>
+<li>红色 LED 长脚接铜那一端，在暗处拍；不亮可以再多串几个。</li>
+<li>有条件的话，把万用表调到电流档（毫安），测短路电流对比生熟土豆。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>电压（伏）</th><th>电流（毫安）</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 土豆 · 锌铜</td><td><input type="text" inputmode="decimal" data-k="e11-0-0" aria-label="A 土豆 · 锌铜 电压（伏）"></td><td><input type="text" inputmode="decimal" data-k="e11-0-1" aria-label="A 土豆 · 锌铜 电流（毫安）"></td><td><input type="text" data-k="e11-0-n" aria-label="A 土豆 · 锌铜 备注"></td></tr>
+<tr><td>B 萝卜 · 锌铜</td><td><input type="text" inputmode="decimal" data-k="e11-1-0" aria-label="B 萝卜 · 锌铜 电压（伏）"></td><td><input type="text" inputmode="decimal" data-k="e11-1-1" aria-label="B 萝卜 · 锌铜 电流（毫安）"></td><td><input type="text" data-k="e11-1-n" aria-label="B 萝卜 · 锌铜 备注"></td></tr>
+<tr><td>C 橘子 · 锌铜</td><td><input type="text" inputmode="decimal" data-k="e11-2-0" aria-label="C 橘子 · 锌铜 电压（伏）"></td><td><input type="text" inputmode="decimal" data-k="e11-2-1" aria-label="C 橘子 · 锌铜 电流（毫安）"></td><td><input type="text" data-k="e11-2-n" aria-label="C 橘子 · 锌铜 备注"></td></tr>
+<tr><td>D 萝卜 · 铁 + 铜钱</td><td><input type="text" inputmode="decimal" data-k="e11-3-0" aria-label="D 萝卜 · 铁 + 铜钱 电压（伏）"></td><td><input type="text" inputmode="decimal" data-k="e11-3-1" aria-label="D 萝卜 · 铁 + 铜钱 电流（毫安）"></td><td><input type="text" data-k="e11-3-n" aria-label="D 萝卜 · 铁 + 铜钱 备注"></td></tr>
+<tr><td>E 串联 2 个</td><td><input type="text" inputmode="decimal" data-k="e11-4-0" aria-label="E 串联 2 个 电压（伏）"></td><td><input type="text" inputmode="decimal" data-k="e11-4-1" aria-label="E 串联 2 个 电流（毫安）"></td><td><input type="text" data-k="e11-4-n" aria-label="E 串联 2 个 备注"></td></tr>
+<tr><td>E 串联 3 个</td><td><input type="text" inputmode="decimal" data-k="e11-5-0" aria-label="E 串联 3 个 电压（伏）"></td><td><input type="text" inputmode="decimal" data-k="e11-5-1" aria-label="E 串联 3 个 电流（毫安）"></td><td><input type="text" data-k="e11-5-n" aria-label="E 串联 3 个 备注"></td></tr>
+<tr><td>E 串联 4 个（LED 亮否）</td><td><input type="text" inputmode="decimal" data-k="e11-6-0" aria-label="E 串联 4 个（LED 亮否） 电压（伏）"></td><td><input type="text" inputmode="decimal" data-k="e11-6-1" aria-label="E 串联 4 个（LED 亮否） 电流（毫安）"></td><td><input type="text" data-k="e11-6-n" aria-label="E 串联 4 个（LED 亮否） 备注"></td></tr>
+<tr><td>F 生土豆</td><td><input type="text" inputmode="decimal" data-k="e11-7-0" aria-label="F 生土豆 电压（伏）"></td><td><input type="text" inputmode="decimal" data-k="e11-7-1" aria-label="F 生土豆 电流（毫安）"></td><td><input type="text" data-k="e11-7-n" aria-label="F 生土豆 备注"></td></tr>
+<tr><td>F 煮过的土豆</td><td><input type="text" inputmode="decimal" data-k="e11-8-0" aria-label="F 煮过的土豆 电压（伏）"></td><td><input type="text" inputmode="decimal" data-k="e11-8-1" aria-label="F 煮过的土豆 电流（毫安）"></td><td><input type="text" data-k="e11-8-n" aria-label="F 煮过的土豆 备注"></td></tr>
+<tr><td>G 湿土</td><td><input type="text" inputmode="decimal" data-k="e11-9-0" aria-label="G 湿土 电压（伏）"></td><td><input type="text" inputmode="decimal" data-k="e11-9-1" aria-label="G 湿土 电流（毫安）"></td><td><input type="text" data-k="e11-9-n" aria-label="G 湿土 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>萝卜、橘子与土豆的电压是否接近</li>
+<li>铁 + 铜钱的电压是多少，要串几个才能点亮 LED</li>
+<li>煮过的土豆电流是否明显变大</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>做过电池的果蔬不要再吃，金属离子会溶进去。</li>
+<li>电压很低，接触安全；注意铁钉和铜片的尖角。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>萝卜、橘子、土豆</td><td>电解质</td></tr>
+<tr><td>铜片或铜钱、镀锌钉、铁钉</td><td>电极</td></tr>
+<tr><td>导线、鳄鱼夹、红色 LED</td><td>回路</td></tr>
+<tr><td>万用表</td><td>测电压和电流</td></tr>
+<tr><td>花盆和湿土</td><td>大地电池</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://www.smithsonianmag.com/innovation/a-potato-battery-can-light-up-a-room-for-over-a-month-180948260/">Smithsonian：A Potato Battery Can Light Up a Room for Over a Month</a> <span>煮 8 分钟，功率约 10 倍</span></li>
+<li><a href="https://www.powermag.com/researchers-treated-potato-can-generate-cheap-sustainable-power">POWER Magazine：Treated potato can generate cheap power</a> <span>内阻降低</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Voltaic_pile">Wikipedia：Voltaic pile</a> <span>同一原理</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "暗处：一排插着铜片和铁钉的萝卜，接上 LED，微微发亮（按实拍结果）", "几个萝卜，能不能点亮一盏灯？"], [2, "0:08", "done", "问题卡：一个萝卜，能当电池吗？", ""], [3, "0:14", "done", "片头：第一卷番外，第 11 集闪烁", "北宋，约公元一〇九〇年。网上流行用土豆点灯，可北宋没有土豆。我们用萝卜和橘子。"], [4, "0:21", "done", "资料卡：伏打电堆、土豆传入中国、煮土豆的研究", "果蔬电池和第二集的伏打电堆，是同一个原理：两种金属，加上含盐、含酸的汁水。土豆要到明代以后才从美洲传进中国，所以下面的土豆只当对照组。有研究发现，土豆煮过以后再做电池，功率能提高到大约十倍。"], [5, "0:43", "real", "实验 1：土豆（对照）、萝卜、橘子各插一片铜片和一颗镀锌钉，用万用表测电压", "土豆、萝卜、橘子，各插一片铜和一片锌。读数是……（按实测描述）"], [6, "1:13", "done", "动画：换果蔬电压几乎不变；把锌换成铁，三个一起变低", "换了果蔬，电压却差不多：电压是由两种金属决定的，果蔬只相当于盐水。它们影响的是电流：汁水多不多、离子多不多，决定电子走得顺不顺。"], [7, "1:35", "real", "实验 2：把镀锌钉换成铁钉，把铜片换成铜钱，再测电压", "镀锌钉是现代的东西，北宋有的是铁钉和铜钱。换上以后……（按实测描述）"], [8, "2:00", "done", "问题卡：电压不到 1 伏，怎么点亮 LED？", ""], [9, "2:06", "real", "实验 3：串联 2、3、4 个，测电压；在暗处接 LED；再对比生土豆和煮过的土豆", "串起来：两个、三个、四个……（按实测描述电压和 LED 亮度）"], [10, "2:36", "done", "动画：内阻、煮过以后内阻变小、串联超过 LED 门槛", "一个果蔬电池里，电子要穿过厚厚的果肉，阻力很大，这叫内阻。把土豆煮过，细胞被破坏，离子走得更顺，内阻就小了。再把几个串起来，电压超过 LED 的门槛，灯就亮了。"], [11, "3:00", "real", "番外：花盆湿土里插铜片和铁片，测电压（「大地电池」）", "连湿土都能当电池：插一片铜、一片铁，读数是……（按实测描述）"], [12, "3:22", "done", "结论卡：电压看金属，电流看「盐水」", "电压看金属，电流看「盐水」。串起来，几个萝卜也能点亮一盏灯。"], [13, "3:29", "done", "片尾：点亮第 11 集，预告第一季特辑", "下集：第一季特辑。哪些东西，真的能在北宋造出来？"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>

@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>卓筒井拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 古法解密 · B2</div>
+<h1>卓筒井</h1>
+<p class="thesis">没有钢铁钻机，北宋盐工靠冲击凿井、竹筒护壁、皮阀汲卤，把井打到几十丈深。</p>
+<div class="facts">
+<div><span>暂定标题</span>没有钢铁钻机，怎么打出很深的盐井？</div>
+<div><span>时长</span>约 3 分 34 秒 · 13 个镜头</div>
+<div><span>时代</span>北宋庆历年间（1041–1048）· 四川</div>
+<div><span>衔接</span>← B14（盐卤）；→ 第三卷 制盐</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">卓筒井</p><p class="p">北宋庆历年间出现于四川，今大英县一带仍存古盐井。口小（约碗口大）、井深，取代了此前的大口浅井。</p></div>
+<div class="ol"><p class="o">苏轼《蜀盐说》</p><p class="p">「自庆历、皇祐以来，蜀始创筒井，用圜刃凿山……深者至数十丈」，并记载了用去节大竹作井壁、竹筒底部悬熟皮汲卤。引文以原书为准，拍摄前请再核对一遍原文。</p></div>
+<div class="ol"><p class="o">燊海井</p><p class="p">1835 年凿成于自贡，深约 1001 米，被称为世界上第一口超千米深井，用的是同一类冲击式顿钻法。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>打井要用坚硬的钻头往下钻</s> → 重锤反复下落，冲击破岩</span></li>
+<li><span class="k">2</span><span><s>打通就能取卤</s> → 要用竹筒作井壁，挡住淡水和坍塌</span></li>
+<li><span class="k">3</span><span><s>卤水提不上来</s> → 筒底装单向阀，靠水压开合</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>古人：铁锥冲击、竹筒作井壁、底部带皮阀的竹筒汲卤</p></div>
+<div class="layer"><span>规律层</span><p>经验：口小井深，隔绝淡水，卤水才浓</p></div>
+<div class="layer"><span>本质层</span><p>冲击把能量集中在钻头尖上破岩；单向阀靠两侧的水压差开合</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>岩石硬、人力有限 → 用杠杆把人的体重变成反复冲击；井壁会塌、淡水会渗 → 竹筒套管；井太深没法下去舀 → 带单向阀的长竹筒。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">三个小实验分别对应凿井、护壁、汲卤，道具都很便宜。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>螺丝刀绑重物，反复提起砸石膏块 50 下</td><td>冲击能打多深</td></tr>
+<tr><td>B</td><td>同样时间用手拧螺丝刀</td><td>对照：旋转</td></tr>
+<tr><td>C</td><td>湿沙桶里插管打孔，有 / 无吸管套管</td><td>套管防坍塌</td></tr>
+<tr><td>D</td><td>塑料管底贴橡皮阀，提水</td><td>单向阀能否把水提上来</td></tr>
+<tr><td>E</td><td>同一根管去掉阀片</td><td>对照</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>石膏块：熟石膏加水倒进纸杯，凝固一天后脱模；或者用一块红砖代替。</li>
+<li>重物可以用装沙的塑料瓶绑在螺丝刀柄上，每次提起约 20 厘米再放下，戴护目镜。</li>
+<li>湿沙桶：透明塑料桶里装湿沙，中间一层加点水，用一根细管往下插再拔出，看孔会不会塌。</li>
+<li>汲卤筒：直径 2–3 厘米的塑料管，底部用胶带只固定橡皮片的一边，让它能单向翻开；或在管口放一个乒乓球，下面用铁丝挡住。</li>
+<li>每次提水后倒进量杯，记录毫升数。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>第 1 次</th><th>第 2 次</th><th>第 3 次</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 冲击 50 下深度（毫米）</td><td><input type="text" inputmode="decimal" data-k="b2-0-0" aria-label="A 冲击 50 下深度（毫米） 第 1 次"></td><td><input type="text" inputmode="decimal" data-k="b2-0-1" aria-label="A 冲击 50 下深度（毫米） 第 2 次"></td><td><input type="text" inputmode="decimal" data-k="b2-0-2" aria-label="A 冲击 50 下深度（毫米） 第 3 次"></td><td><input type="text" data-k="b2-0-n" aria-label="A 冲击 50 下深度（毫米） 备注"></td></tr>
+<tr><td>B 手拧同样时间深度（毫米）</td><td><input type="text" inputmode="decimal" data-k="b2-1-0" aria-label="B 手拧同样时间深度（毫米） 第 1 次"></td><td><input type="text" inputmode="decimal" data-k="b2-1-1" aria-label="B 手拧同样时间深度（毫米） 第 2 次"></td><td><input type="text" inputmode="decimal" data-k="b2-1-2" aria-label="B 手拧同样时间深度（毫米） 第 3 次"></td><td><input type="text" data-k="b2-1-n" aria-label="B 手拧同样时间深度（毫米） 备注"></td></tr>
+<tr><td>C 无套管：孔是否塌</td><td><input type="text" inputmode="decimal" data-k="b2-2-0" aria-label="C 无套管：孔是否塌 第 1 次"></td><td><input type="text" inputmode="decimal" data-k="b2-2-1" aria-label="C 无套管：孔是否塌 第 2 次"></td><td><input type="text" inputmode="decimal" data-k="b2-2-2" aria-label="C 无套管：孔是否塌 第 3 次"></td><td><input type="text" data-k="b2-2-n" aria-label="C 无套管：孔是否塌 备注"></td></tr>
+<tr><td>C 有套管：孔是否保持</td><td><input type="text" inputmode="decimal" data-k="b2-3-0" aria-label="C 有套管：孔是否保持 第 1 次"></td><td><input type="text" inputmode="decimal" data-k="b2-3-1" aria-label="C 有套管：孔是否保持 第 2 次"></td><td><input type="text" inputmode="decimal" data-k="b2-3-2" aria-label="C 有套管：孔是否保持 第 3 次"></td><td><input type="text" data-k="b2-3-n" aria-label="C 有套管：孔是否保持 备注"></td></tr>
+<tr><td>D 有阀：一筒提水（毫升）</td><td><input type="text" inputmode="decimal" data-k="b2-4-0" aria-label="D 有阀：一筒提水（毫升） 第 1 次"></td><td><input type="text" inputmode="decimal" data-k="b2-4-1" aria-label="D 有阀：一筒提水（毫升） 第 2 次"></td><td><input type="text" inputmode="decimal" data-k="b2-4-2" aria-label="D 有阀：一筒提水（毫升） 第 3 次"></td><td><input type="text" data-k="b2-4-n" aria-label="D 有阀：一筒提水（毫升） 备注"></td></tr>
+<tr><td>E 无阀：一筒提水（毫升）</td><td><input type="text" inputmode="decimal" data-k="b2-5-0" aria-label="E 无阀：一筒提水（毫升） 第 1 次"></td><td><input type="text" inputmode="decimal" data-k="b2-5-1" aria-label="E 无阀：一筒提水（毫升） 第 2 次"></td><td><input type="text" inputmode="decimal" data-k="b2-5-2" aria-label="E 无阀：一筒提水（毫升） 第 3 次"></td><td><input type="text" data-k="b2-5-n" aria-label="E 无阀：一筒提水（毫升） 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>冲击和手拧的深度差别是否明显</li>
+<li>湿沙模型能否清楚地拍出坍塌</li>
+<li>橡皮阀能否不漏水地提起一整管</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>冲击实验戴护目镜，石膏碎屑会飞溅；手不要放在落点附近。</li>
+<li>熟石膏粉不要吸入，搅拌时戴口罩。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>螺丝刀、装沙塑料瓶、绳子</td><td>冲击钻模型</td></tr>
+<tr><td>熟石膏或红砖</td><td>「岩石」</td></tr>
+<tr><td>透明塑料桶、湿沙、吸管、细管</td><td>护壁实验</td></tr>
+<tr><td>塑料管、橡皮片或乒乓球、胶带</td><td>汲卤筒</td></tr>
+<tr><td>量杯、护目镜、口罩</td><td>测量与安全</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:34。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://www.ihchina.cn/project_details/14375.html">中国非物质文化遗产网：自贡井盐深钻汲制技艺</a> <span>大英卓筒井创始于北宋庆历年间、燊海井</span></li>
+<li><a href="https://www.chinanews.com.cn/cul/2019/10-08/8972931.shtml">中国新闻网：卓筒井</a> <span>苏轼引文、熟牛皮单向阀</span></li>
+<li><a href="https://touch.travel.qunar.com/bookElement/7756963/3663868-2">去哪儿游记：卓筒井</a> <span>《蜀盐说》开头原文</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "一根底部装了皮阀的塑料管，放进水桶再提起来，满满一管水", "一根管子，底下贴一小片皮，就能把水提上来。"], [2, "0:08", "done", "问题卡：没有钢铁钻机，怎么打出很深的盐井？", ""], [3, "0:14", "done", "片头：B 线科技树，B2 闪烁", "古法解密。今天去北宋的四川，看一口盐井。"], [4, "0:21", "done", "资料卡：卓筒井、苏轼《蜀盐说》、燊海井", "北宋庆历年间，四川的盐工发明了一种新井：井口只有碗口大，却能打到几十丈深，叫「卓筒井」。苏轼在《蜀盐说》里记下了它的做法。到了一八三五年，自贡的燊海井用同一类方法打到了一千米深。"], [5, "0:45", "real", "实验 1：螺丝刀绑上重物，反复提起砸向石膏块，数 50 下打了多深；对照：同样时间用手拧", "没有钻机，怎么往石头里打洞？试试两种办法：一下一下砸，和用手拧。50 下以后……（按实测描述深度）"], [6, "1:15", "done", "动画：碓板冲击凿井、淡水渗入、竹筒护壁、咸泉自上", "古人用的是冲击：人踩碓板，把沉重的铁钻头提起来，再让它砸下去，一下一下冲碎岩石。打穿含水的砂层，淡水会渗进来把卤水冲淡；于是把打通竹节的大竹子一节节接起来插下去，既挡住淡水，又撑住井壁。打到卤水层，卤水就自己往上冒。"], [7, "1:39", "real", "实验 2：透明桶里分层装湿沙和水，插管打孔：不加套管的孔塌了；用吸管做套管的孔保持住", "井壁为什么要用竹筒？看这个：不加套管，沙子一下就塌了。（按实拍描述）"], [8, "2:04", "done", "问题卡：井打好了，卤水怎么提上来？", ""], [9, "2:10", "real", "实验 3：做汲卤筒：塑料管底部用胶带贴一片橡皮（或放一个乒乓球）当阀，放进水桶、提起", "苏轼说，汲卤的竹筒底下挂着几寸熟皮。我们用一片橡皮试试。（按实拍描述）"], [10, "2:36", "done", "动画：往下放阀门打开，往上提阀门压紧；对照：没有阀提起来就漏光", "往下放，外面的水压把皮阀顶开，卤水涌进筒里；往上提，筒里卤水的重量把皮阀压紧，一滴不漏。这就是单向阀：今天的水泵里，用的还是这个原理。"], [11, "2:58", "real", "对照：同一根管子去掉阀片，提起来水全漏掉；用量杯量一筒能提多少水", "去掉阀片，提起来就漏光了。有阀的一筒，能提……（按实测描述毫升数）"], [12, "3:20", "done", "结论卡：冲击凿井、竹筒护壁、皮阀汲卤", "冲击凿井，竹筒护壁，皮阀汲卤。没有钢铁机器，北宋的盐工也打出了深井。"], [13, "3:27", "done", "片尾：点亮 B2，预告第 11 集", "下集：回到第一卷，用萝卜和橘子发电。"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>
