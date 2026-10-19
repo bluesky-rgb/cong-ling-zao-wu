@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>漏刻拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 古法解密 · B13</div>
+<h1>漏刻</h1>
+<p class="thesis">一个壶的水越流越慢；加一个带溢流口的平水壶，水位不变，流速就不变，时间就能均匀地刻出来。</p>
+<div class="facts">
+<div><span>暂定标题</span>没有钟表，古人怎么把一天分得很准？</div>
+<div><span>时长</span>约 3 分 44 秒 · 13 个镜头</div>
+<div><span>时代</span>西汉已有漏壶 · 北宋 1030 年 莲花漏</div>
+<div><span>衔接</span>平水壶 → 第 06 集蓄水池；→ 摆钟</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">满城汉墓铜漏壶</p><p class="p">1968 年河北满城一号汉墓出土，属于沉箭漏：壶里的箭随水位下沉，看刻度读时间。</p></div>
+<div class="ol"><p class="o">莲花漏</p><p class="p">1030 年北宋燕肃创制。下面的壶开分水孔，多余的水流走，水位保持稳定，减少了水位变化对流量的影响。</p></div>
+<div class="ol"><p class="o">物理</p><p class="p">小孔出水速度约为 √(2gh)，h 是水深。水位不变，流速就不变（托里拆利定律）。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>水滴得一样快</s> → 水越浅，流得越慢</span></li>
+<li><span class="k">2</span><span><s>多放几个壶就行</s> → 关键是中间那个壶的水位不变</span></li>
+<li><span class="k">3</span><span><s>古代计时很粗糙</s> → 溢流稳压后，一天的误差可以很小</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>单个壶：刻度越到后面越密；加了溢流壶：刻度等距</p></div>
+<div class="layer"><span>规律层</span><p>流速只取决于水面到小孔的高度</p></div>
+<div class="layer"><span>本质层</span><p>水的势能转为动能：v = √(2gh)，水深不变则流速不变</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>流速随水位变 → 加平水壶溢流稳压；溢流会浪费水 → 上面再加大供水壶；读数要直观 → 受水壶里放浮子和刻箭。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">用同样的瓶子和同样大小的出水孔（用烧热的针扎孔，孔径约 1 毫米）。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>单个瓶子，每 30 秒画水位线</td><td>流速是否越来越慢</td></tr>
+<tr><td>B</td><td>瓶子开溢流口，上方持续加水，每分钟接水称量</td><td>水位不变时流量是否稳定</td></tr>
+<tr><td>C</td><td>三级：供水桶 → 平水瓶 → 受水量筒 + 浮子箭尺</td><td>箭尺刻度是否等距</td></tr>
+<tr><td>D</td><td>同 C，但拿掉溢流口</td><td>对照：溢流的作用</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>出水孔开在瓶身侧面靠下处，溢流口开在出水孔上方约 15 厘米处，孔径要比出水孔大。</li>
+<li>供水桶用一个大水桶，接一根细管（或开一个小孔）往平水瓶里滴，流量要略大于出水孔的流量，保证一直有水溢出。</li>
+<li>受水端用量筒或细高的透明瓶，放一块泡沫浮子，插一根竹签当箭尺。</li>
+<li>用手机秒表，每 5 分钟在竹签上画一个刻度，连续 30 分钟。</li>
+<li>最后用尺子量刻度间距，和单瓶的水位线对比。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>第 1 段</th><th>第 2 段</th><th>第 3 段</th><th>第 4 段</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 单瓶：每 30 秒水位下降（毫米）</td><td><input type="text" inputmode="decimal" data-k="b13-0-0" aria-label="A 单瓶：每 30 秒水位下降（毫米） 第 1 段"></td><td><input type="text" inputmode="decimal" data-k="b13-0-1" aria-label="A 单瓶：每 30 秒水位下降（毫米） 第 2 段"></td><td><input type="text" inputmode="decimal" data-k="b13-0-2" aria-label="A 单瓶：每 30 秒水位下降（毫米） 第 3 段"></td><td><input type="text" inputmode="decimal" data-k="b13-0-3" aria-label="A 单瓶：每 30 秒水位下降（毫米） 第 4 段"></td><td><input type="text" data-k="b13-0-n" aria-label="A 单瓶：每 30 秒水位下降（毫米） 备注"></td></tr>
+<tr><td>B 溢流瓶：每分钟接水（毫升）</td><td><input type="text" inputmode="decimal" data-k="b13-1-0" aria-label="B 溢流瓶：每分钟接水（毫升） 第 1 段"></td><td><input type="text" inputmode="decimal" data-k="b13-1-1" aria-label="B 溢流瓶：每分钟接水（毫升） 第 2 段"></td><td><input type="text" inputmode="decimal" data-k="b13-1-2" aria-label="B 溢流瓶：每分钟接水（毫升） 第 3 段"></td><td><input type="text" inputmode="decimal" data-k="b13-1-3" aria-label="B 溢流瓶：每分钟接水（毫升） 第 4 段"></td><td><input type="text" data-k="b13-1-n" aria-label="B 溢流瓶：每分钟接水（毫升） 备注"></td></tr>
+<tr><td>C 三级：每 5 分钟箭尺上升（毫米）</td><td><input type="text" inputmode="decimal" data-k="b13-2-0" aria-label="C 三级：每 5 分钟箭尺上升（毫米） 第 1 段"></td><td><input type="text" inputmode="decimal" data-k="b13-2-1" aria-label="C 三级：每 5 分钟箭尺上升（毫米） 第 2 段"></td><td><input type="text" inputmode="decimal" data-k="b13-2-2" aria-label="C 三级：每 5 分钟箭尺上升（毫米） 第 3 段"></td><td><input type="text" inputmode="decimal" data-k="b13-2-3" aria-label="C 三级：每 5 分钟箭尺上升（毫米） 第 4 段"></td><td><input type="text" data-k="b13-2-n" aria-label="C 三级：每 5 分钟箭尺上升（毫米） 备注"></td></tr>
+<tr><td>D 无溢流：每 5 分钟箭尺上升（毫米）</td><td><input type="text" inputmode="decimal" data-k="b13-3-0" aria-label="D 无溢流：每 5 分钟箭尺上升（毫米） 第 1 段"></td><td><input type="text" inputmode="decimal" data-k="b13-3-1" aria-label="D 无溢流：每 5 分钟箭尺上升（毫米） 第 2 段"></td><td><input type="text" inputmode="decimal" data-k="b13-3-2" aria-label="D 无溢流：每 5 分钟箭尺上升（毫米） 第 3 段"></td><td><input type="text" inputmode="decimal" data-k="b13-3-3" aria-label="D 无溢流：每 5 分钟箭尺上升（毫米） 第 4 段"></td><td><input type="text" data-k="b13-3-n" aria-label="D 无溢流：每 5 分钟箭尺上升（毫米） 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>单瓶水位线间距变化有多大</li>
+<li>溢流后每分钟流量能稳定到什么程度</li>
+<li>三级装置 30 分钟内刻度是否等距、误差多少</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>扎孔用的针加热时用钳子夹住，小心烫手。</li>
+<li>装置放在托盘或水池边，注意地面防滑和周围电器。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>塑料瓶 × 3、大水桶</td><td>供水壶、平水壶</td></tr>
+<tr><td>量筒或细高透明瓶</td><td>受水壶</td></tr>
+<tr><td>泡沫块、竹签、记号笔</td><td>浮子和箭尺</td></tr>
+<tr><td>针、钳子、细管</td><td>开孔与引水</td></tr>
+<tr><td>手机秒表、尺子、量杯</td><td>计时与测量</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:44。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://www.cdstm.cn/subjects/yxkx/yqgsh/wz/art/2023/art_27e212fb48294046a6ce40fc72463713.html">中国数字科技馆：漏壶——古代的水钟</a> <span>沉箭漏、浮箭漏、莲花漏（1030 年燕肃）</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Torricelli%27s_law">Wikipedia：Torricelli&#x27;s law</a> <span>出水速度与溢流式水钟</span></li>
+<li><a href="https://zh.wikipedia.org/zh-hans/%E8%93%AE%E8%8A%B1%E6%BC%8F">维基百科：莲花漏</a></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "塑料瓶底扎一个小孔，水细细地流出来；旁边放着手机秒表", "一个扎了孔的瓶子，能当钟用吗？"], [2, "0:08", "done", "问题卡：没有钟表，怎么把一天分得很准？", ""], [3, "0:14", "done", "片头：B 线科技树，B13 闪烁", "古法解密。今天做一台水钟。"], [4, "0:21", "done", "资料卡：满城汉墓铜漏壶、百刻制、燕肃莲花漏", "中国人用水计时，至少有两千年。河北满城的西汉墓里，就出土过铜漏壶：壶里插一支刻着刻度的箭，看水位读时刻。古人把一昼夜分成一百刻，「一刻钟」的「刻」就是这么来的。"], [5, "0:45", "real", "实验 1：单个瓶子装满水，每 30 秒在瓶身上用记号笔画一条水位线", "先做最简单的：一个瓶子，每三十秒画一条线。（按实测描述）线和线之间，越来越近。"], [6, "1:15", "done", "动画：水越浅流得越慢，刻度越来越密", "原因是水压：水越深，压得越重，从小孔里冲得越快。水位一降，流速就跟着变慢。所以单个壶计时，刻度只能画得不均匀，而且越到后面越不准。"], [7, "1:37", "done", "问题卡：怎么让水一直流得一样快？", ""], [8, "1:43", "real", "实验 2：瓶身侧面开一个溢流口，上方用细水流不断加水；下方量杯每分钟读一次接到的水量", "让水位不变就行：给瓶子开一个溢流口，上面不断加水，多出来的从溢流口流走。每分钟接到的水量是……（按实测描述是否稳定）"], [9, "2:13", "done", "动画：供水壶 → 平水壶（溢流）→ 受水壶，箭尺匀速上升", "古人的办法一模一样：上面一个供水壶，中间一个平水壶，多余的水从溢流口流走，水位始终不变。流进最下面受水壶的水就稳了，壶里的浮子托着箭尺，匀速往上升。一〇三〇年，北宋燕肃造的「莲花漏」，就用了这个办法。"], [10, "2:37", "real", "实验 3：搭三级装置：大桶（供水）→ 带溢流口的瓶子（平水）→ 量筒（受水），量筒里放泡沫浮子，插一根竹签当箭尺", "我们照着做一个三级的：（按实拍描述搭建过程）"], [11, "3:07", "real", "校准：用手机计时，每 5 分钟在竹签上画一个刻度，拍刻度是否等距；与实验 1 的瓶身线对比", "每五分钟画一个刻度：（按实测描述刻度是否等距、误差多大）。和第一个瓶子比一比。"], [12, "3:30", "done", "结论卡：水位不变，流速就不变", "水位不变，流速就不变，时间就能被均匀地刻出来。这个道理，古人用了上千年。"], [13, "3:37", "done", "片尾：点亮 B13，预告第 06 集", "下集：回到 A 线，让河水替我们发电。"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>

@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>豆腐点卤拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 古法解密 · B14</div>
+<h1>豆腐点卤</h1>
+<p class="thesis">一勺卤水就能让一锅豆浆凝固：带两份正电的离子把蛋白质连成网，把水锁在里面。</p>
+<div class="facts">
+<div><span>暂定标题</span>一勺卤水，为什么能让豆浆凝固？</div>
+<div><span>时长</span>约 3 分 38 秒 · 13 个镜头</div>
+<div><span>时代</span>相传西汉 · 可靠记载始于五代宋初</div>
+<div><span>衔接</span>食物题材，适合做竖屏切片</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">刘安传说</p><p class="p">明代李时珍《本草纲目》：「豆腐之法，始于淮南王刘安」。这是后世的追记，距刘安已一千六百多年。</p></div>
+<div class="ol"><p class="o">打虎亭汉墓石刻</p><p class="p">1960 年河南密县打虎亭东汉墓出土的一幅石刻，有学者认为表现的是豆腐制作，也有学者认为当时还谈不上真正的豆腐。</p></div>
+<div class="ol"><p class="o">《清异录》</p><p class="p">五代宋初陶穀记载，百姓把豆腐叫作「小宰羊」。宋代笔记里，豆腐已是常见菜肴。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>卤水是让豆浆变稠的调料</s> → 它让蛋白质连成一张网</span></li>
+<li><span class="k">2</span><span><s>什么盐都能点豆腐</s> → 要带两份正电的镁、钙离子才好用</span></li>
+<li><span class="k">3</span><span><s>凝固只靠盐</s> → 酸也行：中和负电，走的是另一条路</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>热豆浆里加卤水或石膏，几秒到几分钟内凝成豆花</p></div>
+<div class="layer"><span>规律层</span><p>镁、钙等二价盐和酸都能让豆浆凝固，生豆浆则效果差</p></div>
+<div class="layer"><span>本质层</span><p>大豆蛋白带负电互相排斥；加热使其展开，离子中和电荷并连接蛋白质，聚集成网锁住水</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>蛋白质要先展开 → 豆浆必须煮开；卤水溶得快、容易点不匀 → 一边慢慢倒一边搅；想要嫩 → 用溶得慢的石膏、少压水；想要老 → 多压水。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">同一批豆浆，每杯 200 毫升，凝固剂用量按包装说明（每杯先试 2 克左右），每次只改一个条件。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>煮开的豆浆 + 卤水</td><td>主实验</td></tr>
+<tr><td>B</td><td>没煮过的豆浆 + 卤水</td><td>加热的作用（这杯不要吃）</td></tr>
+<tr><td>C</td><td>煮开的豆浆 + 食盐</td><td>一价离子行不行</td></tr>
+<tr><td>D</td><td>煮开的豆浆 + 石膏</td><td>另一种二价离子</td></tr>
+<tr><td>E</td><td>煮开的豆浆 + 白醋</td><td>酸的路线</td></tr>
+<tr><td>F</td><td>煮开的豆浆，什么都不加</td><td>对照</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>买现成的无糖豆浆最省事；自己磨的话，豆浆一定要彻底煮开几分钟（小心「假沸」）。</li>
+<li>卤水和石膏都买「食用级」的，先用少量温水化开。</li>
+<li>豆浆降到 80 °C 左右（不再翻滚）时点入，边倒边慢慢搅，然后静置 10 分钟不要动。</li>
+<li>每杯从加入开始计时，记录多久出现絮状豆花、豆花是粗是细。</li>
+<li>把豆花舀进铺纱布的模子（可用有孔的塑料盒），压上装水的锅，20 分钟后脱模、切开对比。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>开始凝固（秒）</th><th>豆花样子</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 煮开 + 卤水</td><td><input type="text" inputmode="decimal" data-k="b14-0-0" aria-label="A 煮开 + 卤水 开始凝固（秒）"></td><td><input type="text" inputmode="decimal" data-k="b14-0-1" aria-label="A 煮开 + 卤水 豆花样子"></td><td><input type="text" data-k="b14-0-n" aria-label="A 煮开 + 卤水 备注"></td></tr>
+<tr><td>B 未煮 + 卤水</td><td><input type="text" inputmode="decimal" data-k="b14-1-0" aria-label="B 未煮 + 卤水 开始凝固（秒）"></td><td><input type="text" inputmode="decimal" data-k="b14-1-1" aria-label="B 未煮 + 卤水 豆花样子"></td><td><input type="text" data-k="b14-1-n" aria-label="B 未煮 + 卤水 备注"></td></tr>
+<tr><td>C 煮开 + 食盐</td><td><input type="text" inputmode="decimal" data-k="b14-2-0" aria-label="C 煮开 + 食盐 开始凝固（秒）"></td><td><input type="text" inputmode="decimal" data-k="b14-2-1" aria-label="C 煮开 + 食盐 豆花样子"></td><td><input type="text" data-k="b14-2-n" aria-label="C 煮开 + 食盐 备注"></td></tr>
+<tr><td>D 煮开 + 石膏</td><td><input type="text" inputmode="decimal" data-k="b14-3-0" aria-label="D 煮开 + 石膏 开始凝固（秒）"></td><td><input type="text" inputmode="decimal" data-k="b14-3-1" aria-label="D 煮开 + 石膏 豆花样子"></td><td><input type="text" data-k="b14-3-n" aria-label="D 煮开 + 石膏 备注"></td></tr>
+<tr><td>E 煮开 + 白醋</td><td><input type="text" inputmode="decimal" data-k="b14-4-0" aria-label="E 煮开 + 白醋 开始凝固（秒）"></td><td><input type="text" inputmode="decimal" data-k="b14-4-1" aria-label="E 煮开 + 白醋 豆花样子"></td><td><input type="text" data-k="b14-4-n" aria-label="E 煮开 + 白醋 备注"></td></tr>
+<tr><td>F 对照</td><td><input type="text" inputmode="decimal" data-k="b14-5-0" aria-label="F 对照 开始凝固（秒）"></td><td><input type="text" inputmode="decimal" data-k="b14-5-1" aria-label="F 对照 豆花样子"></td><td><input type="text" data-k="b14-5-n" aria-label="F 对照 备注"></td></tr>
+<tr><td>压制后：卤水 / 石膏 / 白醋 软硬</td><td><input type="text" inputmode="decimal" data-k="b14-6-0" aria-label="压制后：卤水 / 石膏 / 白醋 软硬 开始凝固（秒）"></td><td><input type="text" inputmode="decimal" data-k="b14-6-1" aria-label="压制后：卤水 / 石膏 / 白醋 软硬 豆花样子"></td><td><input type="text" data-k="b14-6-n" aria-label="压制后：卤水 / 石膏 / 白醋 软硬 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>没煮过的豆浆点卤后到底凝不凝、凝成什么样</li>
+<li>食盐在同样用量下能不能凝固</li>
+<li>卤水和石膏豆腐的口感差别是否明显（常见说法，需要实测）</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>卤水（盐卤）浓液不能直接喝，误饮有危险；放在孩子拿不到的地方，用完洗手。</li>
+<li>只用食用级卤水和石膏，不要用工业品或建筑石膏。</li>
+<li>生豆浆不能吃，B 组样品做完就倒掉；热豆浆注意烫伤。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>无糖豆浆 1.5 升或黄豆</td><td>原料</td></tr>
+<tr><td>食用卤水、食用石膏、白醋、食盐</td><td>凝固剂</td></tr>
+<tr><td>透明杯 × 6、温度计、秒表</td><td>对比与计时</td></tr>
+<tr><td>纱布、有孔模具、重物</td><td>压制豆腐</td></tr>
+<tr><td>锅、勺</td><td>加热</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:38。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://en.wikipedia.org/wiki/Tofu">Wikipedia：Tofu</a> <span>凝固剂种类与机理、刘安说与汉墓石刻</span></li>
+<li><a href="https://www.chinawenhua.com.cn/zyinshi/2020/12263.html">中华文化：豆腐小史</a> <span>《本草纲目》《清异录》《老学庵笔记》等记载</span></li>
+<li><a href="https://www.theworldofchinese.com/2023/07/bean-to-block-journey-to-the-birthplace-of-chinese-tofu/">The World of Chinese：Bean to Block</a> <span>刘安传说的出处与疑点</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "热豆浆里倒一勺卤水，轻轻搅两下，几秒钟内出现絮状的豆花", "一锅豆浆，倒进一勺卤水，几秒钟就凝固了。"], [2, "0:08", "done", "问题卡：一勺卤水，为什么能让一锅豆浆凝固？", ""], [3, "0:14", "done", "片头：B 线科技树，B14 闪烁", "古法解密。今天说一块豆腐。"], [4, "0:21", "done", "资料卡：刘安传说、打虎亭汉墓、《清异录》", "相传豆腐是西汉淮南王刘安发明的，可这个说法最早见于明代，离刘安已经一千多年。河南打虎亭东汉墓里有一幅石刻，有学者认为画的是做豆腐，也有人存疑。比较可靠的文字记载在五代宋初：陶穀的《清异录》说，当地百姓把豆腐叫作「小宰羊」。到了宋代，豆腐已是街头常见的菜。"], [5, "0:46", "real", "实验 1：同一批豆浆分两杯，一杯没煮过、一杯煮开过，各点同样多的卤水", "先试一个问题：豆浆不煮开，直接点卤会怎样？（按实拍结果描述）"], [6, "1:12", "done", "动画：蛋白质带负电互相排斥 → 受热展开 → 镁离子把它们连成网，水被锁在网里", "豆浆里的大豆蛋白，表面带着负电，互相排斥，所以能均匀地散在水里。煮开以后，蛋白质受热展开，露出更多能粘在一起的部位。卤水里的镁离子带两份正电，抓住蛋白质上的负电：蛋白质不再互相排斥，还能借着离子连在一起，结成一张网，把水锁在网眼里。"], [7, "1:36", "done", "问题卡：是不是随便什么盐都行？", ""], [8, "1:42", "real", "实验 2：同样的热豆浆分四杯，分别加食盐水、卤水、石膏水、白醋，计时并对比豆花", "换几种东西试试：食盐、卤水、石膏、白醋……（按实测描述哪杯最快、哪杯最细、哪杯几乎不凝）"], [9, "2:12", "done", "动画：卤水、石膏、白醋三种「点法」", "卤水和石膏里的镁离子、钙离子都带两份正电，能当「桥」；食盐里的钠离子只带一份，效果差得多（按实测改写）。石膏溶得慢，凝得更均匀。白醋走的是另一条路：酸把蛋白质的负电中和掉，它们不再排斥，自己就抱成了团。超市里的内酯豆腐，也是这个原理。"], [10, "2:34", "real", "实验 3：把卤水豆花和石膏豆花分别舀进铺纱布的模具，压上装水的锅，20 分钟后脱模", "把豆花舀进铺着纱布的模子，压上重物，挤出多余的水……二十分钟后，脱模。"], [11, "3:04", "real", "对比：卤水、石膏、白醋三块豆腐的切面，用筷子夹起，尝一尝", "三块豆腐放在一起：（按实测描述软硬、口感、味道）。豆腐是老是嫩，还要看压掉了多少水。"], [12, "3:24", "done", "结论卡：蛋白质连成网，把水锁住，这就是豆腐", "一勺卤水，让蛋白质连成一张网，把水锁在里面。古人不知道什么是离子，却靠一代代试，找到了最合适的「桥」。"], [13, "3:31", "done", "片尾：点亮 B14，预告 B13", "下集：没有钟表，古人怎么把一天分得很准？"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>
