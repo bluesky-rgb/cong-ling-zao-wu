@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>指南鱼拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: same workshop-notebook system as the rest of the project. Reading column; experiment log is a working table the viewer fills in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.orig{display:grid;gap:12px}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:20px}
+.ol .o b{color:var(--copper);font-weight:900}
+.ol .p{font-size:14px;color:var(--muted)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:10px}
+.box{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:14px;display:grid;gap:6px;align-content:start;min-width:0}
+.box.f{border-top:3px solid var(--field);border-radius:0 0 10px 10px}
+.box.c{border-top:3px solid var(--copper);border-radius:0 0 10px 10px}
+.box b{font-size:17px;font-family:var(--display)}
+.box p{font-size:14px;color:var(--muted);line-height:1.65}
+.k{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--copper);text-transform:uppercase}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:600px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+select{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 6px;min-height:34px;max-width:100%}
+select:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+.tally{font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.out{display:grid;gap:10px}
+.branch{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px}
+.branch.on{border-color:var(--copper);background:var(--copper-soft)}
+.branch .if{font-size:13px;color:var(--muted)}
+.branch .vo{font-family:var(--display);font-size:17px;line-height:1.8}
+.hint{font-size:14px;color:var(--muted)}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500;background:var(--field-soft);color:var(--field)}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+footer ol{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+footer li{overflow-wrap:anywhere}
+</style>
+
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../electricity/">从零造电</a><a href="../ep04/">磁生电拍摄本</a><a href="../ep04/voice.html">磁生电旁白稿</a><a href="../b1/">指南鱼拍摄本</a><a href="../#videos">视频</a></nav>
+<header>
+  <div class="eyebrow">从零造物 · B 线 · 古法解密 · 第 B1 集</div>
+  <h1>指南鱼</h1>
+  <p class="thesis">北宋人没碰磁石，就让一片铁指了南。学界对它为什么能指南有两种解释，我们做个实验来分辨。</p>
+  <div class="facts">
+    <div><span>暂定标题</span>这条铁鱼没碰过磁石，为什么会指南？</div>
+    <div><span>时长</span>约 5 分 30 秒 · 15 个镜头</div>
+    <div><span>时代</span>北宋 · 约 1044 年 ·《武经总要》</div>
+    <div><span>和 A 线的关系</span>第一卷「电」的前传：先会让铁带磁，再让磁变成电</div>
+  </div>
+</header>
+
+<section>
+  <h2>原文与白话</h2>
+  <p class="lead">出自北宋《武经总要》前集卷十五，约成书于公元 1040–1044 年。加粗的是这一集要追问的关键动作。</p>
+  <div class="orig">
+    <div class="ol"><p class="o">（指南）鱼法：用薄铁叶剪裁，长二寸、阔五分，首尾锐，如鱼形。</p><p class="p">把薄铁片剪成鱼形，约两寸长、半寸宽，头尾都是尖的。</p></div>
+    <div class="ol"><p class="o">置炭火中<b>烧之。候通赤</b>，<b>以铁钤钤鱼首出火</b>。</p><p class="p">放进炭火里烧，烧到通红，用铁钳夹住鱼头取出。</p></div>
+    <div class="ol"><p class="o"><b>以尾正对子位</b>，<b>蘸水盆中</b>，没尾数分则止。<b>以密器收之</b>。</p><p class="p">鱼尾正对北方，蘸进水盆，尾巴没入几分就停，再收进密闭的盒子。</p></div>
+    <div class="ol"><p class="o">用时置水碗于无风处，平放鱼在水面令浮，其首常南向午也。</p><p class="p">用时在无风处放一碗水，让鱼平浮在水面，鱼头总是指向南方。</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>两种解释</h2>
+  <p class="lead">两种解释都承认同一个原理：铁烧到约 770°C 以上会失去磁性，冷却穿过这个温度时，会按当时周围的磁场排好磁区，淬火再把排列固定下来（热剩磁）。分歧只在于：周围的磁场主要是谁的？</p>
+  <div class="two">
+    <div class="box f"><span class="k" style="color:var(--field)">解释一 · 传统说法</span><b>地磁场</b><p>鱼尾朝北，就是让铁片顺着地磁场冷却。按这个说法，「以尾正对子位」是关键的一步。</p></div>
+    <div class="box c"><span class="k">解释二 · 新的研究</span><b>铁钳</b><p>据闻人军的论文介绍，黄兴通过模拟实验认为，铁片是被夹住鱼头的铁钳磁化的，地磁场没有起到实质作用；「尾朝子位」的仪式意义可能大于实际效果。</p></div>
+  </div>
+  <p class="lead">论文还提到，「以密器收之」也很关键：盒子里可能放着天然磁石，用来保持鱼的磁性，类似后世的「养针」。</p>
+</section>
+
+<section>
+  <h2>对照实验</h2>
+  <p class="lead">四组用同样的钢片和同样的火，每组只改一个条件，各做 3 次。结果一律以实拍为准，旁白按结果从下面三种结论里选一种。</p>
+  <div class="tw"><table>
+    <thead><tr><th>组</th><th>夹鱼头用</th><th>淬火时鱼尾朝</th><th>加热</th><th>检验什么</th></tr></thead>
+    <tbody>
+      <tr><td>A</td><td>铁钳</td><td>北</td><td>烧红</td><td>完全照原文</td></tr>
+      <tr><td>B</td><td>铁钳</td><td>东</td><td>烧红</td><td>去掉「朝北」：方向还重要吗？</td></tr>
+      <tr><td>C</td><td>铜夹子（不吸磁铁）</td><td>北</td><td>烧红</td><td>去掉「铁钳」：只靠地磁场行不行？</td></tr>
+      <tr><td>D</td><td>—</td><td>—</td><td>不加热</td><td>对照：普通铁片本来会不会指南</td></tr>
+    </tbody>
+  </table></div>
+  <h3>操作步骤</h3>
+  <ol class="steps">
+    <li>开拍前先用指南针检查：铁钳靠近时指针会不会偏？偏了就说明铁钳本身带磁，要在画面里记录下来。铜夹子要先用磁铁试一下，确认不会被吸住。</li>
+    <li>用指南针定出北方，在桌上贴一条胶带作标记。</li>
+    <li>把钢片剪成约 6 厘米长、1.5 厘米宽的鱼形（两寸约合 6 厘米），每条用记号笔标上组号。</li>
+    <li>按各组的条件加热和淬火，擦干后放进各自的盒子，盒子里不要放磁铁。</li>
+    <li>在远离手机、音箱和铁器的地方放一碗水，把鱼轻轻平放在水面上，等它停稳，记录鱼头指向哪里。每条换不同的初始方向放 3 次。</li>
+  </ol>
+  <h3>实验记录</h3>
+  <p class="hint">在拍摄现场直接选择结果。记录只保存在这台设备的浏览器里，拍完可以截图发给我。</p>
+  <div class="tw"><table id="log">
+    <thead><tr><th>组</th><th>第 1 次</th><th>第 2 次</th><th>第 3 次</th><th>头指南</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+  <div class="row"><button type="button" id="clear">清空记录</button><span class="hint" id="suggest"></span></div>
+  <h3>三种可能的结论（镜头 13 的旁白）</h3>
+  <div class="out">
+    <div class="branch" id="br1"><p class="if">如果：C 组（铜夹子）也能稳定指南，B 组（尾朝东）最后是横着停的</p><p class="vo">结果，换成铜夹子的那组照样能指南；鱼尾朝东的那组，最后却是横着停的。说明在我们的条件下，地磁场就足以磁化这条鱼，「鱼尾朝北」这一步确实有用。</p><button type="button" data-copy="br1">复制这段</button></div>
+    <div class="branch" id="br2"><p class="if">如果：C 组几乎不指南，而 A、B 两组不论尾朝哪边，都是鱼头指向同一个方向</p><p class="vo">结果，铜夹子那组几乎不会指南；而用铁钳的两组，不管鱼尾朝北还是朝东，都是鱼头指向同一个方向。说明真正磁化这条鱼的，更可能是那把铁钳。「鱼尾朝北」也许更像一种仪式。</p><button type="button" data-copy="br2">复制这段</button></div>
+    <div class="branch" id="br3"><p class="if">如果：几组的指向都不稳定</p><p class="vo">结果，几组的指向都不太稳定。说明这样得到的磁性非常弱。也许这就是原文最后一句的用意：做好的鱼要「以密器收之」。有学者认为，盒子里可能放着天然磁石，用来给鱼补充磁性。</p><button type="button" data-copy="br3">复制这段</button></div>
+  </div>
+</section>
+
+<section>
+  <h2>安全与道具</h2>
+  <div class="warn">
+    <b>这一集有明火和烧红的金属</b>
+    <ul>
+      <li>加热和淬火只能由成年人操作，戴护目镜和隔热手套；淬火会溅出蒸汽。</li>
+      <li>在户外或灶台上进行，旁边备一盆水；烧红的鱼放在不可燃的盘子上冷却。</li>
+      <li>只用没有镀层的钢片。镀锌铁皮和有涂层的罐头皮加热会冒出有害烟雾，绝对不要用。</li>
+      <li>钢片边缘锋利，剪的时候要戴手套。</li>
+      <li>视频里加字幕：「涉及高温，请勿模仿」。</li>
+    </ul>
+  </div>
+  <div class="tw"><table>
+    <thead><tr><th>道具</th><th>用途</th></tr></thead>
+    <tbody>
+      <tr><td>无镀层薄钢片（0.2–0.3 毫米）</td><td>剪鱼，至少剪 6 条</td></tr>
+      <tr><td>普通铁钳（尖嘴钳）、黄铜夹子或镊子</td><td>A、B 组和 C 组分别用</td></tr>
+      <tr><td>卡式炉或燃气灶</td><td>烧红钢片</td></tr>
+      <tr><td>两个盆（一个淬火，一个放鱼浮在水面）</td><td>淬火、测试</td></tr>
+      <tr><td>指南针、胶带、记号笔</td><td>定方向、标组号</td></tr>
+      <tr><td>护目镜、隔热手套</td><td>安全</td></tr>
+      <tr><td>钕磁铁、钢针（镜头 14）</td><td>对比用磁石磨针的方法</td></tr>
+      <tr><td>可选：手机磁力计 App</td><td>测每条鱼的磁场强弱，数据更有说服力</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>分镜与旁白</h2>
+  <p class="lead">5 段动画和字幕卡、片头片尾都已渲染好；粗剪样片里其余镜头是占位画面。</p>
+  <div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button><span class="hint">结论段默认不包含，拍完后从上面三种里选一段。</span></div>
+  <div id="shots" style="display:grid;gap:10px"></div>
+</section>
+
+<section>
+  <footer style="display:grid;gap:8px">
+    <h2>来源</h2>
+    <ol>
+      <li><a href="https://www.fdgwz.org.cn/Web/Show/7856">闻人军：司南酌、盘针及指南鱼新议（复旦大学出土文献与古文字研究中心）</a>：《武经总要》原文，黄兴的铁钳热剩磁实验结论，「密器」的作用</li>
+      <li><a href="https://jdn.ucas.ac.cn/public/uploads/files/61a07c316c980.pdf">同文 PDF 版</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Wujing_Zongyao">Wikipedia：Wujing Zongyao</a>：成书年代（约 1040–1044）、编者、指南鱼做法的译文</li>
+      <li><a href="https://www.tcd.ie/physics/research/groups/magnetism/facts/the-seven-magnetic-moments/the-first-magnetic-device/">都柏林圣三一学院磁学组：The first magnetic device</a>：指南鱼与热剩磁</li>
+      <li><a href="https://en.wikipedia.org/wiki/Thermoremanent_magnetization">Wikipedia：Thermoremanent magnetization</a></li>
+    </ol>
+  </footer>
+</section>
+</div>
+
+<script>
+(function(){
+const SH=[
+ [1,'0:00','real','铁片小鱼浮在水碗里，转了半圈后停下，鱼头指南；旁边放指南针对照','这条铁鱼从没碰过磁石，可它一停下来，鱼头就指着南方。'],
+ [2,'0:08','done','字幕卡：这条铁鱼没碰过磁石，为什么会指南？',''],
+ [3,'0:14','done','B 线片头：科技树，北宋 · 约 1044 年','北宋，大约公元一〇四四年。一本叫《武经总要》的兵书里，记下了这条鱼的做法。'],
+ [4,'0:21','done','原文卡：四句原文逐句出现，关键动作高亮','原文只有几句：把薄铁片剪成鱼形，放进炭火烧到通红，用铁钳夹住鱼头取出，鱼尾正对北方，蘸进水盆，再收进密闭的盒子。用的时候放在水面上，鱼头就会指南。'],
+ [5,'0:46','real','剪刀把薄钢片剪成两寸长的小鱼','先照着原文做一条。我用的是没有镀层的薄钢片，剪成两寸长、头尾都尖的小鱼。'],
+ [6,'1:04','real','钳子夹鱼头放到火上烧红；鱼尾朝北，斜着蘸进水盆','烧到通红，夹住鱼头取出来，鱼尾朝北，斜着蘸进水里。这一步有明火和高温蒸汽，请不要模仿。'],
+ [7,'1:32','real','鱼平放在水面上转动后停下；旁边一条没烧过的鱼','放到水面上……它转了半圈，停在了南北方向。旁边这条没烧过的，停在哪儿都行。（按实拍结果调整）'],
+ [8,'2:00','done','字幕卡：烧红、朝北、蘸水，哪一步真正起作用？',''],
+ [9,'2:06','done','热剩磁动画：小磁区随温度变乱，再按周围磁场排队','先看烧红。铁里有很多小磁区，平时各朝各的方向，互相抵消。烧到七百七十摄氏度左右，铁就失去磁性，小磁区全乱了。冷却穿过这个温度时，小磁区会按周围的磁场排好队，淬火再把队形固定下来。这条鱼就成了一块很弱的磁铁。'],
+ [10,'2:30','done','两种解释动画：地磁场 vs 铁钳','问题是：周围的磁场是谁的？传统解释认为是地磁场，所以要鱼尾朝北。但也有研究者做了模拟实验，认为真正起作用的，是夹住鱼头的那把铁钳。那就做实验来分辨。'],
+ [11,'2:50','real','四组对照实验 A、B、C、D，每组 3 次','我们准备了四组：A 组完全照原文；B 组把鱼尾改成朝东；C 组把铁钳换成不吸磁铁的铜夹子；D 组不加热，作为对照。每组做三次，记录鱼头最后指向哪里。'],
+ [12,'4:00','res','记录表特写，逐组揭晓结果','（按实拍结果描述每组的表现）'],
+ [13,'4:30','res','结论卡：哪种解释得到支持','（从「三种可能的结论」里选一段）'],
+ [14,'5:00','real','用磁铁沿一个方向磨钢针，放在水面上指南，与指南鱼并排对比','四十多年后，沈括在《梦溪笔谈》里记下了另一种办法：用磁石磨针。磨出来的针磁性更强，也更稳定。'],
+ [15,'5:25','done','B 线片尾：点亮「指南鱼」，预告第一卷','古人已经会让铁带上磁性。那么，磁能不能变成电？答案在第一卷。']
+];
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+const box=document.getElementById('shots');
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]&&!s[4].startsWith('（')).map(s=>s[4].replace(/（[^）]*）/g,'')).join('\n\n'),this);};
+document.querySelectorAll('[data-copy]').forEach(b=>{b.onclick=()=>copy(document.querySelector('#'+b.dataset.copy+' .vo').textContent,b);});
+
+const G=['A 照原文','B 尾朝东','C 铜夹子','D 不加热'];
+const OPT=['未记录','头指南','头指北','横着停','乱转、停不稳'];
+const tb=document.querySelector('#log tbody');
+let st={};try{st=JSON.parse(localStorage.getItem('b1log')||'{}')}catch(e){}
+G.forEach((g,gi)=>{const tr=document.createElement('tr');tr.innerHTML=`<td>${g}</td>`;
+ for(let r=0;r<3;r++){const td=document.createElement('td');const sel=document.createElement('select');sel.id=`g${gi}r${r}`;sel.setAttribute('aria-label',`${g} 第 ${r+1} 次`);
+  OPT.forEach((o,oi)=>{const op=document.createElement('option');op.value=oi;op.textContent=o;sel.appendChild(op);});sel.value=st[sel.id]||0;
+  sel.onchange=()=>{st[sel.id]=sel.value;save();tally();};td.appendChild(sel);tr.appendChild(td);}
+ const t=document.createElement('td');t.className='tally';t.id=`t${gi}`;tr.appendChild(t);tb.appendChild(tr);});
+function save(){try{localStorage.setItem('b1log',JSON.stringify(st))}catch(e){}}
+function cnt(gi,v){let n=0;for(let r=0;r<3;r++)if(String(st[`g${gi}r${r}`]||0)===String(v))n++;return n;}
+function rec(gi){let n=0;for(let r=0;r<3;r++)if(String(st[`g${gi}r${r}`]||0)!=='0')n++;return n;}
+function tally(){G.forEach((g,gi)=>{document.getElementById('t'+gi).textContent=`${cnt(gi,1)} / ${rec(gi)}`;});
+ ['br1','br2','br3'].forEach(id=>document.getElementById(id).classList.remove('on'));
+ const s=document.getElementById('suggest');const all=[0,1,2,3].every(gi=>rec(gi)===3);
+ if(!all){s.textContent='四组都记录满 3 次后，这里会提示更接近哪种结论。';return;}
+ const A=cnt(0,1),C=cnt(2,1),Bside=cnt(1,3),unstable=[0,1,2].reduce((x,gi)=>x+cnt(gi,4),0);
+ let pick='br3',txt='几组的指向都不稳定，更接近结论三。';
+ if(unstable>=5){pick='br3';txt='几组的指向都不稳定，更接近结论三。';}
+ else if(C>=2&&Bside>=2){pick='br1';txt='C 组能指南、B 组横着停，更接近结论一（地磁场）。';}
+ else if(C<=1&&A>=2){pick='br2';txt='C 组基本不指南、A 组能指南，更接近结论二（铁钳）。';}
+ else {txt='结果不在这三种情况里，把记录截图发给我，我来帮你写结论。';pick=null;}
+ if(pick)document.getElementById(pick).classList.add('on');s.textContent=txt+' 这只是粗略提示，以实拍画面为准。';}
+document.getElementById('clear').onclick=()=>{st={};save();document.querySelectorAll('#log select').forEach(s=>s.value=0);tally();};
+tally();
+})();
+</script>

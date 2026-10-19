@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>从零造物</title>
+<meta name="description" content="穿越古代从零造物，以及用现代原理解开古人的技艺：一个科普视频系列的完整探索记录。">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: project home in the shared workshop-notebook system. Hero, entry cards, video gallery, exploration timeline, findings, sources. Copper = energy/materials, field blue = invisible things and links. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 72px}
+.wrap{max-width:1080px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+img,video{max-width:100%;display:block}
+header.hero{padding-block:56px 20px;display:grid;gap:18px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(52px,11vw,104px);font-weight:900;letter-spacing:.02em;line-height:1}
+.thesis{font-family:var(--display);font-size:clamp(19px,3.2vw,26px);font-weight:500;max-width:30em}
+.formula{font-family:var(--mono);font-size:14px;background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 14px;justify-self:start}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:8px}
+.stats div{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+.stats strong{display:block;font-family:var(--display);font-size:30px;font-weight:900;line-height:1.1;font-variant-numeric:tabular-nums}
+.stats span{font-size:13px;color:var(--muted)}
+nav.toc{display:flex;flex-wrap:wrap;gap:6px}
+nav.toc a{font-size:13px;text-decoration:none;color:var(--ink);background:var(--sheet);border:1px solid var(--line);border-radius:999px;padding:4px 12px}
+section{border-top:2px solid var(--ink);padding-block:28px 6px;display:grid;gap:16px;margin-top:28px;scroll-margin-top:12px}
+.sh{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:end}
+.sh .n{font-family:var(--display);font-weight:900;font-size:44px;line-height:.9;color:var(--copper)}
+h2{font-size:clamp(24px,4vw,32px);font-weight:900}
+h3{font-size:18px;font-weight:500}
+.lead{color:var(--muted);max-width:46em}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px}
+/* entry cards */
+a.entry{display:grid;gap:8px;align-content:start;text-decoration:none;color:var(--ink);background:var(--sheet);border:1px solid var(--line);border-radius:12px;padding:16px 18px;min-width:0;transition:border-color .15s}
+a.entry:hover,a.entry:focus-visible{border-color:var(--copper);outline:none}
+a.entry .k{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--copper);text-transform:uppercase}
+a.entry b{font-family:var(--display);font-size:22px;font-weight:900}
+a.entry p{font-size:14px;color:var(--muted);line-height:1.65}
+a.entry .go{font-size:13px;color:var(--field)}
+/* lines */
+.lines{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:12px}
+.line{background:var(--sheet);border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:grid;gap:8px}
+.line.a{border-top:4px solid var(--copper);border-radius:0 0 12px 12px}
+.line.b{border-top:4px solid var(--field);border-radius:0 0 12px 12px}
+.line b{font-family:var(--display);font-size:22px;font-weight:900}
+.line .hook{font-family:var(--display);font-size:16px}
+.line p{font-size:14px;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{font-size:13px;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:2px 9px}
+/* videos */
+.vgroup{display:grid;gap:12px}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:12px}
+.v{background:var(--sheet);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:grid;min-width:0}
+.v.big{grid-column:1/-1}
+.v video{width:100%;aspect-ratio:16/9;background:#000;max-width:100%}
+.v .cap{padding:10px 14px 14px;display:grid;gap:4px}
+.v .cap b{font-size:16px}
+.v .cap .m{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.v .cap p{font-size:14px;color:var(--muted);line-height:1.6}
+/* timeline */
+ol.tl{margin:0;padding:0;list-style:none;display:grid;gap:0}
+ol.tl li{display:grid;grid-template-columns:7.2em 18px minmax(0,1fr);gap:12px}
+ol.tl .d{font-family:var(--mono);font-size:12px;color:var(--muted);padding-top:4px;text-align:right}
+ol.tl .dot{position:relative}
+ol.tl .dot::before{content:"";position:absolute;left:8px;top:0;bottom:0;width:2px;background:var(--line)}
+ol.tl .dot::after{content:"";position:absolute;left:3px;top:9px;width:12px;height:12px;border-radius:50%;background:var(--sheet);border:2px solid var(--copper)}
+ol.tl li.key .dot::after{background:var(--copper)}
+ol.tl .c{padding-bottom:16px;display:grid;gap:2px}
+ol.tl .c b{font-size:15px}
+ol.tl .c span{font-size:14px;color:var(--muted)}
+ol.tl .c em{font-style:normal;font-size:13px;color:var(--field)}
+/* findings */
+.finds{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:10px}
+.f{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:4px}
+.f .t{font-size:11px;font-family:var(--mono);letter-spacing:.08em;border-radius:4px;padding:1px 7px;justify-self:start}
+.t.p{background:var(--field-soft);color:var(--field)}
+.t.h{background:var(--copper-soft);color:var(--copper)}
+.t.w{background:var(--good-soft);color:var(--good)}
+.t.s{background:var(--warn-soft);color:var(--warn)}
+.f b{font-size:16px;font-family:var(--display)}
+.f p{font-size:14px;color:var(--muted);line-height:1.65}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+pre{margin:0;font-family:var(--mono);font-size:13px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;overflow-x:auto;line-height:1.7}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+ol.src{margin:0;padding-left:1.4em;font-size:14px;display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+ol.src span{color:var(--muted)}
+footer{margin-top:40px;font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px;display:grid;gap:4px}
+@media (max-width:560px){ol.tl li{grid-template-columns:5.6em 18px minmax(0,1fr)}}
+</style>
+<body>
+<div class="wrap">
+<header class="hero">
+  <div class="eyebrow">科普视频系列 · 探索记录 · 2026 年 10 月</div>
+  <h1>从零造物</h1>
+  <p class="thesis">带着现代知识穿越回古代，只用当时能找到的材料，把技术一件件重新造出来；再反过来，用现代原理解开古人早已做到的技艺。每一步都讲清楚：为什么能做成。</p>
+  <div class="formula">贯穿第一卷的一条规律：ε = −N · ΔΦ / Δt</div>
+  <div class="stats">
+    <div><strong>2</strong><span>条内容线</span></div>
+    <div><strong>8</strong><span>卷</span></div>
+    <div><strong>68</strong><span>个选题</span></div>
+    <div><strong>2</strong><span>集试播方案</span></div>
+    <div><strong>20</strong><span>段已渲染视频</span></div>
+    <div><strong>5</strong><span>个互动网页</span></div>
+  </div>
+  <nav class="toc" aria-label="目录">
+    <a href="#pages">成果入口</a><a href="#lines">两条线</a><a href="#method">方法</a><a href="#videos">视频</a><a href="#journey">探索历程</a><a href="#findings">探索中的发现</a><a href="#repo">仓库与源码</a><a href="#sources">资料来源</a><a href="#next">下一步</a>
+  </nav>
+</header>
+
+<section id="pages">
+  <div class="sh"><div class="n">01</div><h2>成果入口</h2></div>
+  <div class="grid">
+    <a class="entry" href="plan/"><span class="k">总纲</span><b>项目全书</b><p>定位、方法、双线结构、8 卷科技树、68 个选题库（可筛选）、呈现形式、素材分工、制作流程、道具与工具、品牌、发布复盘、风险合规、路线图和决定记录。</p><span class="go">打开 →</span></a>
+    <a class="entry" href="electricity/"><span class="k">A 线 · 第一卷</span><b>从零造电</b><p>互动网页：摩擦起电、伏打电堆、电生磁、磁生电、手摇发电机。每章包含三层「为什么」、古代材料、原理→设计决策、可以亲手调参数的演示，共 17 条来源。</p><span class="go">打开 →</span></a>
+    <a class="entry" href="ep04/"><span class="k">A 线 · 试播集</span><b>磁生电拍摄本</b><p>第 04 集：理解路径、20 个分镜（可按实拍、动画、字幕卡筛选）、素材清单、iPad 制作流程、8 张图文卡文案和发布清单。</p><span class="go">打开 →</span></a>
+    <a class="entry" href="ep04/voice.html"><span class="k">A 线 · 试播集</span><b>磁生电旁白稿</b><p>按镜头分段的逐字稿，标好每段的估算时长，可以一键复制去生成 AI 配音；另附 5 条 AI 氛围镜头的中英文提示词。</p><span class="go">打开 →</span></a>
+    <a class="entry" href="b1/"><span class="k">B 线 · 试播集</span><b>指南鱼拍摄本</b><p>北宋《武经总要》原文、学界的两种解释、四组对照实验和现场记录表、按结果三选一的结论旁白、安全提示、分镜与旁白。</p><span class="go">打开 →</span></a>
+    <a class="entry" href="#videos"><span class="k">视频</span><b>动画与粗剪样片</b><p>20 段按物理公式渲染的 1080p 视频：两集的粗剪样片、原理动画、字幕卡和片头片尾，可以直接在这一页播放。</p><span class="go">往下看 →</span></a>
+  </div>
+</section>
+
+<section id="lines">
+  <div class="sh"><div class="n">02</div><h2>两条线</h2></div>
+  <div class="lines">
+    <div class="line a"><span class="eyebrow">A 线 · 穿越造物 · 第一至七卷</span><b>我们带知识回古代</b><p class="hook">「只用古代的材料，能不能造出 X？」</p><p>造出那个时代还没有的东西。第一卷设定在北宋，约公元 1090 年：沈括刚在《梦溪笔谈》里写下磁针指南，而电磁感应要到 1831 年才被发现。</p>
+      <div class="chips"><span>一 · 电</span><span>二 · 能量从哪来</span><span>三 · 火与材料</span><span>四 · 水与农业</span><span>五 · 救命的知识</span><span>六 · 机械与交通</span><span>七 · 信息与测量</span></div></div>
+    <div class="line b"><span class="eyebrow">B 线 · 古法解密 · 第八卷</span><b>古人已经做到的，我们来解开</b><p class="hook">「古人不懂 X，为什么能做对？」</p><p>古人没有现代科学，却靠经验把事情做对了。讲法分三层：古人的做法 → 当时的理解 → 现代原理。很多可以在家用模型复现。</p>
+      <div class="chips"><span>指南鱼</span><span>卓筒井</span><span>活字印刷</span><span>水排</span><span>都江堰</span><span>赵州桥</span><span>榫卯</span><span>被中香炉</span><span>鱼洗</span><span>透光镜</span><span>一钟双音</span><span>冰鉴</span><span>漏刻</span><span>豆腐点卤</span><span>酿酒与酿醋</span><span>瓷器</span><span>指南车</span><span>地动仪</span></div></div>
+  </div>
+  <p class="lead">两条线可以互相衔接：古人的指南鱼已经会让铁带磁，我们接着让磁变成电；古人的水排让河水拉风箱，我们把转轴接到发电机上。</p>
+</section>
+
+<section id="method">
+  <div class="sh"><div class="n">03</div><h2>方法</h2></div>
+  <h3>三层「为什么」</h3>
+  <div class="layers">
+    <div class="layer"><span>现象层</span><p>会发生什么？磁铁抽出线圈的瞬间，电流表指针跳了一下。</p></div>
+    <div class="layer"><span>规律层</span><p>遵循什么规律？电压 = 匝数 × 磁通量变化的快慢。</p></div>
+    <div class="layer"><span>本质层</span><p>微观上发生了什么？导线里的电子被洛伦兹力推向一端。</p></div>
+  </div>
+  <div class="grid">
+    <div class="f"><b>原理 → 设计决策</b><p>每个结构都有理由。电压和变化速度成正比 → 磁铁要动得快 → 一直推拉太累，改成旋转 → 接到水车上，让河水来摇。</p></div>
+    <div class="f"><b>先让误解失效</b><p>一集拆成约 5 个台阶，每个台阶先说出观众最常见的误解，再用实拍或动画当场打破它。</p></div>
+    <div class="f"><b>三类素材各司其职</b><p>实拍负责让人相信，代码动画负责让人看见看不见的东西，字幕卡负责让人停下来想。实验结果绝不用 AI 生成。</p></div>
+    <div class="f"><b>诚实边界</b><p>标明时代设定；说清哪些地方做了简化；有争议的地方摆出证据，让实验来说话。</p></div>
+  </div>
+</section>
+
+<section id="videos">
+  <div class="sh"><div class="n">04</div><h2>视频</h2></div>
+  <p class="lead">所有动画都由 Python 按物理公式逐帧渲染（1920×1080，30 帧）：磁感线根数按偶极子磁场计算，电压曲线按法拉第定律计算。粗剪样片里写着「待实拍」的段落，是留给真实实验画面的占位。点击即可播放。</p>
+  <div class="vgroup" id="vg"></div>
+</section>
+
+<section id="journey">
+  <div class="sh"><div class="n">05</div><h2>探索历程</h2></div>
+  <p class="lead">这个项目是在一次连续的对话里，从一个问题一步步长出来的。实心圆点是方向发生转变的节点。</p>
+  <ol class="tl">
+    <li class="key"><span class="d">10-16</span><span class="dot"></span><div class="c"><b>起点：如果回到古代，怎么发电？</b><span>提出「科技树重建」的思路，以及每集「问题 → 材料 → 原理 → 动手 → 解锁」的五段结构。</span></div></li>
+    <li><span class="d">10-16</span><span class="dot"></span><div class="c"><b>不只看成品，还要讲原理</b><span>做了第一个磁铁穿线圈的交互演示，得出关键发现：磁通量最大时，电压反而为零。</span></div></li>
+    <li class="key"><span class="d">10-16</span><span class="dot"></span><div class="c"><b>联网查证 → 「从零造电」互动网页</b><span>5 章科技树，每章都有三层为什么、古代材料、原理→设计决策和可操作的演示，附 17 条来源。</span><em>→ 从零造电</em></div></li>
+    <li><span class="d">10-16</span><span class="dot"></span><div class="c"><b>要能发布的视频，并指导用什么素材达到什么目的</b><span>选定横屏长视频，先把一集「磁生电」做精，作为模板；写出理解路径、20 个分镜和素材清单。</span></div></li>
+    <li><span class="d">10-16</span><span class="dot"></span><div class="c"><b>在 iPad 上开发，文档打不开</b><span>可编辑文档在 iPad 版 App 里不被支持，于是先导出 PDF，之后所有方案都改用网页。制作流程也改成全部在 iPad 上完成。</span><em>→ 磁生电拍摄本</em></div></li>
+    <li class="key"><span class="d">10-16</span><span class="dot"></span><div class="c"><b>直接生成视频</b><span>用代码渲染出 8 段动画和字幕卡，又拼出完整的 10 分钟粗剪样片，缺的实拍镜头用占位画面标明。</span></div></li>
+    <li><span class="d">10-16</span><span class="dot"></span><div class="c"><b>扩展成系列</b><span>从发电方式扩展到灌溉、救命知识、机械、测量；再加上生火、制盐、炼铁、煤这条「火与材料」主线。</span></div></li>
+    <li><span class="d">10-16</span><span class="dot"></span><div class="c"><b>第一次汇总 → 总方案</b><span>补上时代设定、品牌包装、发布复盘、风险合规；渲染出镜头 18 法拉第铁环和片头片尾模板；第一卷定在北宋。</span></div></li>
+    <li><span class="d">10-17</span><span class="dot"></span><div class="c"><b>是否需要视频模型？</b><span>确定三类素材的分工：实验必须实拍，原理动画用代码渲染，AI 视频只用来营造氛围。</span></div></li>
+    <li><span class="d">10-18</span><span class="dot"></span><div class="c"><b>旁白稿与 AI 提示词</b><span>写出按镜头分段的逐字稿，估算成片约 6–7 分钟；修正一处史实：法拉第从 1825 年起就在琢磨这个问题。</span><em>→ 磁生电旁白稿</em></div></li>
+    <li><span class="d">10-18</span><span class="dot"></span><div class="c"><b>「我不确定怎么做」</b><span>把流程简化为：你只需要买道具、拍实验，拼接成片交给 Claude。</span></div></li>
+    <li><span class="d">10-18</span><span class="dot"></span><div class="c"><b>全量整理 → 项目全书</b><span>15 个部分、51 个选题。逐个核对后发现，活字印刷、水车、井盐在北宋已经存在。</span><em>→ 项目全书</em></div></li>
+    <li class="key"><span class="d">10-18</span><span class="dot"></span><div class="c"><b>转折：古人已有的技艺也值得讲</b><span>新增 B 线「古法解密」和第八卷的 18 个选题。原来的「时代穿帮」反而成了第二条内容线。</span></div></li>
+    <li class="key"><span class="d">10-18</span><span class="dot"></span><div class="c"><b>B 线试播集：指南鱼</b><span>查证时发现学界有争议：磁化铁鱼的究竟是地磁场，还是夹住鱼头的铁钳？于是设计了四组对照实验，并渲染 7 段视频和粗剪样片。</span><em>→ 指南鱼拍摄本</em></div></li>
+    <li><span class="d">10-19</span><span class="dot"></span><div class="c"><b>汇总成这个仓库</b><span>把所有网页、视频、源码和资料来源整理成一个公开网站。</span></div></li>
+  </ol>
+</section>
+
+<section id="findings">
+  <div class="sh"><div class="n">06</div><h2>探索中的发现</h2></div>
+  <div class="finds">
+    <div class="f"><span class="t p">物理</span><b>磁通量最大时，电压为零</b><p>磁铁正在线圈中间时，穿过的磁感线最多，但这一刻没有在变化，所以没有电压。这正好解释了「磁铁放在线圈里为什么不发电」，成了第 04 集的钩子。</p></div>
+    <div class="f"><span class="t p">物理</span><b>楞次定律就是能量守恒</b><p>接上灯泡后手柄变沉；如果反过来变轻，就成了永动机。这留作第 05 集的钩子。</p></div>
+    <div class="f"><span class="t h">史实</span><b>修正：法拉第琢磨了好几年</b><p>他从 1825 年起就在想这个问题，到 1831 年 8 月 29 日才用铁环实验做成，不是「花了几个月」。</p></div>
+    <div class="f"><span class="t h">史实</span><b>北宋是合适的穿越年代</b><p>沈括在《梦溪笔谈》里记录了磁针指南和磁偏角，而电磁感应要到 1831 年才被发现。北宋时锌很难得到，所以电堆改用铁片（电压更低，还需要实测）。</p></div>
+    <div class="f"><span class="t h">史实</span><b>指南鱼的磁化有学术争议</b><p>传统解释认为是地磁场；据闻人军的论文介绍，黄兴的模拟实验认为是铁钳。我们不下结论，用对照实验来检验。</p></div>
+    <div class="f"><span class="t h">史实</span><b>「时代穿帮」变成了第二条线</b><p>活字印刷、水车、井盐、炼铁在北宋都已存在。这些不再是选题的问题，而是 B 线的素材。</p></div>
+    <div class="f"><span class="t w">制作</span><b>原理动画用代码，不用视频模型</b><p>磁感线根数、电压曲线都按公式计算，准确，而且能精确修改；视频模型容易把物理细节画错。</p></div>
+    <div class="f"><span class="t w">制作</span><b>实验镜头必须实拍</b><p>科普里的实验镜头是证据，用 AI 生成既可能出错，也等于伪造。AI 只用于古代工坊、水车这类氛围镜头。</p></div>
+    <div class="f"><span class="t w">制作</span><b>成片可能只有 6–7 分钟</b><p>旁白念完约 4 分半；最终以实际录音为准，画面跟着旁白走。</p></div>
+    <div class="f"><span class="t w">制作</span><b>iPad 版 App 打不开可编辑文档</b><p>所以所有方案都做成了网页；网页在 iPad 的 Claude App 和 Safari 里都能打开。</p></div>
+    <div class="f"><span class="t s">安全</span><b>不要加热镀锌铁皮</b><p>指南鱼要烧红钢片：只能由成年人操作，并且只用无镀层的钢片。镀锌铁皮和有涂层的罐头皮加热会冒出有害烟雾。</p></div>
+    <div class="f"><span class="t s">安全</span><b>健康类选题不给配方</b><p>口服补液、净水这类内容只讲原理和历史意义，注明「现实中请遵医嘱」。</p></div>
+  </div>
+</section>
+
+<section id="repo">
+  <div class="sh"><div class="n">07</div><h2>仓库与源码</h2></div>
+  <pre>index.html              项目首页（本页）
+plan/                   项目全书
+electricity/            从零造电 · 互动网页
+ep04/                   第 04 集 · 磁生电拍摄本、旁白稿（voice.html）
+b1/                     B1 · 指南鱼拍摄本
+media/video/            20 段 MP4（1080p）
+media/posters/          视频封面截图
+source/video/           渲染全部视频的 Python 源码
+docs/                   探索历程、决定记录、资料来源（Markdown）</pre>
+  <h3>重新渲染视频</h3>
+  <p class="lead">需要 Python 3、Pillow 和 ffmpeg，以及 Noto Sans / Serif CJK 字体。每个脚本单独运行即可输出 MP4；加上「镜头名 秒数」参数会只渲染一帧预览。</p>
+  <pre>cd source/video
+python3 shot10.py          # 镜头 10 · 磁感线计数
+python3 shot14.py          # 镜头 14 · 导线里的电子
+python3 shot17.py          # 镜头 17 · 交流电波形
+python3 shot18.py          # 镜头 18 · 法拉第铁环
+python3 cards.py           # 第 04 集字幕卡
+python3 titles.py          # 第 04 集片头片尾
+python3 roughcut.py        # 第 04 集粗剪样片
+python3 b1.py              # B1 指南鱼全部动画
+python3 roughcut_b1.py     # B1 粗剪样片</pre>
+  <p class="lead">脚本里的输出路径写的是原工作目录 /home/claude/video/out，运行前可以改成仓库里的 media/video。</p>
+</section>
+
+<section id="sources">
+  <div class="sh"><div class="n">08</div><h2>资料来源</h2></div>
+  <p class="lead">每个页面底部都列有各自的来源；这里汇总最主要的几条。</p>
+  <ol class="src">
+    <li><a href="https://aps.org/apsnews/2008/07/1820-oersted-electromagnetism">APS News：July 1820, Oersted &amp; Electromagnetism</a> <span>奥斯特发现电生磁</span></li>
+    <li><a href="https://archive.copper.org/education/history/60centuries/electrical/faradays.php">Copper Development Association：Faraday's Famous Ten Days</a> <span>1831 年铁环实验、铜盘发电，以及法拉第从 1825 年起的思考</span></li>
+    <li><a href="https://graphsearch.epfl.ch/en/concept/65888">EPFL Graph Search：Electromagnetic induction</a> <span>磁铁插拔线圈产生瞬时电流</span></li>
+    <li><a href="https://en.wikipedia.org/wiki/Voltaic_pile">Wikipedia：Voltaic pile</a> <span>伏打电堆，每个单元约 0.76 V</span></li>
+    <li><a href="https://nationalmaglab.org/magnet-academy/history-of-electricity-magnetism/museum/leyden-jars-1745/">National MagLab：Leyden Jars – 1745</a></li>
+    <li><a href="https://nationalmaglab.org/magnet-academy/watch-play/interactive-tutorials/pixii-machine/">National MagLab：Pixii Machine</a> <span>皮克西手摇发电机与换向器</span></li>
+    <li><a href="https://k12.libretexts.org/Bookshelves/Science_and_Technology/Physics/19%3A_Electromagnetism/19.05%3A_Lenz's_Law">LibreTexts：Lenz's Law</a></li>
+    <li><a href="https://en.wikipedia.org/wiki/Electromagnet">Wikipedia：Electromagnet</a> <span>斯特金的电磁铁</span></li>
+    <li><a href="https://www.ee.cityu.edu.hk/~gchen/pdf/ShenKuo2021.pdf">香港城市大学：沈括与《梦溪笔谈》</a> <span>磁针指南与磁偏角</span></li>
+    <li><a href="https://www.fdgwz.org.cn/Web/Show/7856">闻人军：司南酌、盘针及指南鱼新议</a> <span>《武经总要》指南鱼原文，铁钳热剩磁说</span></li>
+    <li><a href="https://en.wikipedia.org/wiki/Wujing_Zongyao">Wikipedia：Wujing Zongyao</a> <span>成书年代约 1040–1044</span></li>
+    <li><a href="https://en.wikipedia.org/wiki/Thermoremanent_magnetization">Wikipedia：Thermoremanent magnetization</a></li>
+  </ol>
+</section>
+
+<section id="next">
+  <div class="sh"><div class="n">09</div><h2>下一步</h2></div>
+  <div class="tw"><table>
+    <thead><tr><th>事项</th><th>谁来做</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td>买齐第 04 集道具</td><td>作者</td><td>钕磁铁、漆包线、指针式电流计、指南针、小灯泡</td></tr>
+      <tr><td>拍第 04 集的 8 段实验</td><td>作者</td><td>镜头 1、2、5、7、8、9、13、16，手机俯拍即可</td></tr>
+      <tr><td>生成或录制配音</td><td>作者</td><td>旁白稿可以一键复制到剪映，用「朗读」生成</td></tr>
+      <tr><td>拼接成片</td><td>Claude</td><td>把实拍替换进粗剪样片，按旁白对齐</td></tr>
+      <tr><td>指南鱼对照实验</td><td>作者</td><td>必须由成年人操作明火，用拍摄本里的记录表记下结果</td></tr>
+      <tr><td>发布与复盘</td><td>一起</td><td>先发 3 集再判断方向，把评论里的疑问用到下一集</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<footer>
+  <p>从零造物 · 由作者与 Claude 在对话中共同探索整理 · 2026 年 10 月</p>
+  <p>动画由仓库内的 Python 源码渲染；历史资料版权归原作者，引用均附来源。</p>
+</footer>
+</div>
+
+<script>
+(function(){
+const G=[
+ ['第 04 集 · 磁生电（A 线试播集）',[
+  ['ep04-rough-cut','粗剪样片','10:00','整集 20 个镜头按顺序排好；还剩 9 段占位（8 段实拍、1 段网页录屏）。',1],
+  ['ep04-title-open','片头','0:07','第一卷科技树：前三集亮起，第 04 集闪烁，打出「北宋 · 约公元 1090 年」。'],
+  ['ep04-s03-card','镜头 3 · 核心字幕卡','0:04','磁场不发电，变化才发电。'],
+  ['ep04-s06-question','镜头 6 · 问题卡','0:04','那反过来，磁能生电吗？'],
+  ['ep04-s10-flux-count','镜头 10 · 磁感线计数','0:18','磁铁穿过线圈，按偶极子磁场实时计算穿过线圈的磁感线根数，并画出磁通量曲线。'],
+  ['ep04-s12-formula','镜头 12 · 公式卡','0:12','ε、N、ΔΦ、Δt 和负号依次高亮，逐个说明含义。'],
+  ['ep04-s14-electrons','镜头 14 · 导线里的电子','0:22','导线在磁场里运动，电子被洛伦兹力推向一端，两端出现电压。'],
+  ['ep04-s15-question','镜头 15 · 问题卡','0:04','一直推拉太累了，怎么办？'],
+  ['ep04-s17-ac-wave','镜头 17 · 交流电波形','0:17','磁铁旋转扫过带铁芯的线圈，电压正负交替；转速提高后波形变密变高。'],
+  ['ep04-s18-faraday-ring','镜头 18 · 法拉第铁环','0:30','1831 年 8 月 29 日的实验：只有接通和断开的瞬间，指针才会跳。'],
+  ['ep04-s20-end-card','镜头 20 · 结尾卡','0:05','自己动手调参数，链接在简介。'],
+  ['ep04-title-close','片尾','0:07','点亮「磁生电」，下一集出现问号：为什么手柄会变沉？']]],
+ ['B1 · 指南鱼（B 线试播集）',[
+  ['b1-rough-cut','粗剪样片','5:32','15 个镜头；还剩 8 段占位（6 段实拍、2 段要等实验结果）。',1],
+  ['b1-title-open','片头','0:07','第八卷「古法解密」科技树，打出「北宋 · 约公元 1044 年 ·《武经总要》」。'],
+  ['b1-question-1','问题卡 1','0:06','这条铁鱼没碰过磁石，为什么会指南？'],
+  ['b1-original-text','原文卡','0:25','《武经总要》四句原文逐句出现，配白话，关键动作高亮。'],
+  ['b1-question-2','问题卡 2','0:06','烧红、朝北、蘸水，哪一步真正起作用？'],
+  ['b1-thermoremanence','热剩磁','0:24','小磁区随温度变乱；冷却穿过约 770°C 时，按周围的磁场排队；淬火把排列固定下来。'],
+  ['b1-two-explanations','两种解释','0:20','地磁场还是铁钳？同一个原理，区别只在于是谁的磁场。'],
+  ['b1-title-close','片尾','0:07','点亮「指南鱼」，预告：磁能变成电吗？见第一卷。']]]
+];
+const box=document.getElementById('vg');
+G.forEach(([title,items])=>{
+  const h=document.createElement('h3');h.textContent=title;box.appendChild(h);
+  const g=document.createElement('div');g.className='vgrid';
+  items.forEach(([f,name,dur,desc,big])=>{
+    const a=document.createElement('article');a.className='v'+(big?' big':'');
+    const v=document.createElement('video');v.controls=true;v.preload='none';v.playsInline=true;v.poster=`media/posters/${f}.jpg`;v.src=`media/video/${f}.mp4`;v.setAttribute('aria-label',name);
+    const cap=document.createElement('div');cap.className='cap';
+    cap.innerHTML='<b></b><span class="m"></span><p></p>';
+    cap.querySelector('b').textContent=name;cap.querySelector('.m').textContent=`${dur} · 1920×1080 · `;
+    const dl=document.createElement('a');dl.href=`media/video/${f}.mp4`;dl.textContent='下载 MP4';cap.querySelector('.m').appendChild(dl);
+    cap.querySelector('p').textContent=desc;
+    a.appendChild(v);a.appendChild(cap);g.appendChild(a);});
+  box.appendChild(g);});
+})();
+</script>
+</body>
+</html>

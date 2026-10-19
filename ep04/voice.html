@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>磁生电旁白稿</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: same workshop-notebook system. Script blocks read like a teleprompter: big serif voice text, slim meta row with timing check. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --warn:#a4501a; --good:#3d7a3a;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--warn:#f0a36a;--good:#8cc47f;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--warn:#f0a36a;--good:#8cc47f;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 56px}
+.wrap{max-width:860px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+header{padding-block:40px 12px;display:grid;gap:12px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(34px,7vw,52px);font-weight:900}
+.lead{color:var(--muted);max-width:40em}
+.stats{display:flex;flex-wrap:wrap;gap:8px}
+.stats div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:6px 12px;font-size:14px}
+.stats b{font-family:var(--mono);font-variant-numeric:tabular-nums}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:14px;color:var(--ink);background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:6px 14px;cursor:pointer;min-height:36px}
+button:hover{border-color:var(--copper);color:var(--copper)}
+button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.blk{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:grid;gap:8px}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500;background:var(--field-soft);color:var(--field)}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.fit{font-family:var(--mono);font-size:12px;margin-left:auto}
+.fit.ok{color:var(--good)}
+.fit.over{color:var(--warn)}
+.vo{font-family:var(--display);font-size:19px;line-height:1.85}
+.note{font-size:13px;color:var(--muted);border-left:3px solid var(--field);padding-left:10px;border-radius:0}
+.blk button{justify-self:start;font-size:13px;min-height:32px;padding:4px 12px}
+.rules{margin:0;padding-left:1.2em;display:grid;gap:4px;font-size:15px}
+.ai{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:grid;gap:10px}
+.ai h3{font-size:18px;font-weight:900}
+.ai .where{font-size:13px;color:var(--muted)}
+.ai .params{display:flex;flex-wrap:wrap;gap:6px}
+.ai .params span{font-family:var(--mono);font-size:12px;background:var(--paper);border-radius:4px;padding:2px 8px;color:var(--muted)}
+.prompt{font-size:14px;background:var(--paper);border-radius:8px;padding:10px 12px;line-height:1.7}
+.prompt small{display:block;font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.08em;margin-bottom:2px}
+ol.how{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+</style>
+
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../electricity/">从零造电</a><a href="../ep04/">磁生电拍摄本</a><a href="../ep04/voice.html">磁生电旁白稿</a><a href="../b1/">指南鱼拍摄本</a><a href="../#videos">视频</a></nav>
+<header>
+  <div class="eyebrow">从零造物 · 第 04 集 · 旁白与 AI 镜头</div>
+  <h1>磁生电旁白稿</h1>
+  <p class="lead">整集旁白按 20 个镜头分段，每段估算念完需要多久，超出镜头时长的会标出来。下半部分是 AI 氛围镜头的提示词，只用来营造氛围，不代替实验镜头。</p>
+  <div class="stats" id="stats"></div>
+</header>
+
+<section>
+  <h2>怎样用这份稿子</h2>
+  <ol class="how">
+    <li><b>自己录</b>：一段一段对着念，每段单独录一条，剪辑时比较好对齐。</li>
+    <li><b>AI 配音</b>：点「复制全部旁白」，在剪映里新建文本并粘贴，选择「朗读」后挑一个音色。也可以按段复制，每段单独生成。</li>
+    <li>估算按每秒 4.2 个字计算。语速因人而异，最终以实际录音长度为准，画面跟着旁白调。</li>
+  </ol>
+  <div class="row"><button class="primary" id="copyAll">复制全部旁白</button><span class="lead" id="copyMsg" style="font-size:13px"></span></div>
+</section>
+
+<section>
+  <h2>逐字稿</h2>
+  <div id="script" style="display:grid;gap:10px"></div>
+</section>
+
+<section>
+  <h2>AI 氛围镜头</h2>
+  <p class="lead">在可灵、即梦、海螺这类视频模型里生成。每段 3–5 秒，叠在旁白下面当过渡画面用。</p>
+  <ul class="rules">
+    <li>只做氛围和叙事，绝不用来代替实验结果。指针、磁铁、灯泡亮起这些证据镜头必须实拍。</li>
+    <li>画面里不要出现能辨认的文字。模型生成的汉字常常是乱码，或者会被误认成真实古籍。</li>
+    <li>每条多生成几次，挑最稳定的一条；手部和细铜线最容易出错，要仔细检查。</li>
+    <li>发布时按平台要求标注「含 AI 生成内容」。</li>
+  </ul>
+  <div id="ai" style="display:grid;gap:10px"></div>
+</section>
+</div>
+
+<script>
+(function(){
+const SH=[
+ [1,'0:00',6,'real','磁铁就在线圈里，线圈接着电流表。可你看，指针一动不动。'],
+ [2,'0:06',6,'real','但只要我一抽……指针跳了。'],
+ [3,'0:12',8,'card','这一集只讲一句话：磁场不发电，变化才发电。'],
+ [4,'0:20',20,'title','北宋，大约公元一〇九〇年。沈括在《梦溪笔谈》里写下：用磁石磨针，针尖就能指南。前三集，我们起了电，叠出了电堆，还让电流变成了磁。今天，第四步。','可叠 AI 镜头 A1（工坊）和 A2（磁针）'],
+ [5,'0:40',30,'real','先回到上一集的实验。导线沿南北方向放在指南针正上方，一接通电堆，磁针就转了。一八二〇年，丹麦的奥斯特就是这样发现的：电流周围有磁场，电能生磁。','画面字幕加安全提示：这种接法接近短路，只能短时间接通。'],
+ [6,'1:10',10,'card','那反过来想：磁，能不能生电？先停一下，在弹幕里说说你的答案。'],
+ [7,'1:20',40,'real','我的第一反应是：把磁铁放进线圈，线圈里就有磁场，应该就有电了吧？我们来试。磁铁放进去……等五秒……指针始终是零。磁场明明就在这里，电却没有出现。','「等五秒」时真的停顿，画面上只留指针。'],
+ [8,'2:00',40,'real','换个做法。左边慢慢插，右边快速插。同一块磁铁，同一个线圈：插得越快，指针跳得越高。关键不在磁铁有多强，而在于它变得有多快。'],
+ [9,'2:40',30,'real','再看方向。插进去，指针往右；拔出来，指针往左。电流的方向反了。记住这个细节，后面要用。'],
+ [10,'3:10',40,'anim','为什么会这样？我们可以把磁铁周围的磁感线，想象成一根一根的线。穿过线圈的线有多少根，就叫磁通量。磁铁靠近，穿过的根数变多；磁铁远离，根数变少。'],
+ [11,'3:50',50,'web','把磁通量和电压放在一起看，有个反直觉的地方：磁铁正好在线圈中间时，穿过的根数最多，电压却是零，因为这一刻根数没有在变。电压最高的时候，是磁铁冲过线圈边缘、根数变得最快的那一瞬间。这也就解释了开头的问题：磁铁一直待在线圈里，根数不变，所以没有电。'],
+ [12,'4:40',40,'card','把这些发现写成一个式子，就是法拉第电磁感应定律。ε 是感应电压，N 是线圈匝数，ΔΦ 是磁通量的变化，Δt 是用了多长时间；前面的负号，表示感应电流总是阻碍这个变化。翻译成一句话：电压，等于匝数乘以磁通量变化的快慢。'],
+ [13,'5:20',40,'real','那就来验证匝数。五匝的线圈和五十匝的线圈，用同样的速度插入同一块磁铁。五十匝的这一边，指针跳得高得多。','如果指针打满了，换用 20 匝对比，或者把磁铁插得慢一点。'],
+ [14,'6:00',60,'anim','可是，电子为什么会动起来？把镜头放大到导线里面。金属里有大量能自由移动的电子。导线不动时，它们只是乱动，没有整体方向。导线在磁场里一运动，每个电子都会受到一个侧向的力，叫洛伦兹力，被推向导线的一端。一端电子多，另一端电子少，两端之间就有了电压。导线一停下，推力消失，电压也就没了。'],
+ [15,'7:00',20,'card','问题来了：要一直有电，就得让磁通量一直变化。总不能一直用手推拉吧？'],
+ [16,'7:20',50,'real','答案是：让它转起来。把磁铁装在转轴上，让两极轮流扫过线圈。摇得越快，灯泡越亮。这就是发电机的雏形。在北宋，这根转轴可以接到水车上，让河水替我们来摇。','结尾可叠 AI 镜头 A4（水车）'],
+ [17,'8:10',40,'anim','还记得指针会反向吗？磁铁转一圈，N 极和 S 极各扫过线圈一次，电流就一会儿正、一会儿负，这就是交流电。转得越快，变化越快，电压也越高。'],
+ [18,'8:50',30,'anim','一八三一年八月二十九日，法拉第在一个铁环两边各绕了一组线圈。他发现，只有在电流接通和断开的那一瞬间，另一组线圈里才有电流。这个问题他从一八二五年起就在琢磨，好几年都没有找到答案。'],
+ [19,'9:20',25,'title','第四步，解锁：磁生电。不过我摇手柄的时候发现，灯泡一接上，手柄就明显变沉了。为什么？下一集揭晓。'],
+ [20,'9:45',15,'card','这一集的互动演示放在简介里，你可以自己调速度和匝数试试。我们下集见。','可叠 AI 镜头 A5（夜景收尾）']
+];
+const KIND={real:['实拍','real'],card:['字幕卡',''],title:['片头片尾',''],anim:['动画',''],web:['网页录屏','']};
+const CPS=4.2;
+function chars(s){return s.replace(/[，。、：；？！……——“”「」《》\s]/g,'').length;}
+const box=document.getElementById('script');let total=0,over=0,tc=0;
+SH.forEach(s=>{const n=chars(s[4]),est=n/CPS;total+=est;tc+=n;const ok=est<=s[2];if(!ok)over++;
+ const k=KIND[s[3]];
+ const d=document.createElement('article');d.className='blk';
+ d.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]} · 镜头 ${s[2]} 秒</span><span class="tag ${k[1]}">${k[0]}</span><span class="fit ${ok?'ok':'over'}">约 ${est.toFixed(0)} 秒${ok?'':' · 超出 '+(est-s[2]).toFixed(0)+' 秒'}</span></div><p class="vo"></p>${s[5]?'<p class="note"></p>':''}<button type="button">复制这一段</button>`;
+ d.querySelector('.vo').textContent=s[4];if(s[5])d.querySelector('.note').textContent=s[5];
+ const b=d.querySelector('button');b.onclick=()=>copy(s[4],b);box.appendChild(d);});
+document.getElementById('stats').innerHTML=`<div>旁白 <b>${tc}</b> 字</div><div>估算朗读 <b>${Math.floor(total/60)}:${String(Math.round(total%60)).padStart(2,'0')}</b></div><div>画面总长 <b>10:00</b></div><div>超时段落 <b>${over}</b> 段</div>`;
+function copy(t,btn){const lab=btn.textContent;const done=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,()=>fallback())}else fallback();
+ function fallback(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done()}catch(e){btn.textContent='请长按文字手动复制'}document.body.removeChild(ta);}}
+const all=document.getElementById('copyAll');all.onclick=()=>copy(SH.map(s=>s[4]).join('\n\n'),all);
+
+const AI=[
+ ['A1','北宋工坊 · 开场','镜头 4 前半段，旁白「北宋，大约公元一〇九〇年」','5 秒 · 16:9 · 缓慢推镜',
+  '清晨，北宋木结构工坊内景。粗木桌上摆着铜片、陶碗、一块黑色磁石和一卷缠好的铜线，窗格透进柔和的晨光，光束中有浮尘飘动。镜头从门口缓慢向桌面推进。写实电影质感，暖铜色与深青灰色调，浅景深。画面中没有人物，也没有任何文字。',
+  'Early morning interior of a Song-dynasty Chinese wooden workshop. On a rough wooden table: copper plates, a clay bowl, a black lodestone and a coil of copper wire. Soft dawn light through lattice windows, dust floating in the beams. Slow dolly-in from the doorway toward the table. Realistic cinematic look, warm copper and deep blue-grey palette, shallow depth of field. No people, no text.'],
+ ['A2','磁针指南','镜头 4 中段，旁白「用磁石磨针，针尖就能指南」','4 秒 · 16:9 · 微距横移',
+  '油灯光下的微距特写：一根细钢针用丝线悬挂在木架上，缓缓转动后停下，指向一个方向。背景虚化，能看到摊开的宣纸，纸上的墨迹模糊、不可辨认。镜头缓慢横移。写实，暖色调，浅景深。',
+  'Macro close-up under oil-lamp light: a thin steel needle hanging from a silk thread on a small wooden stand slowly turns and settles, pointing in one direction. Blurred background with open rice paper, ink marks soft and unreadable. Slow lateral camera move. Realistic, warm tones, shallow depth of field.'],
+ ['A3','油灯下绕线圈','镜头 15 到 16 之间的过渡，旁白「总不能一直用手推拉吧」之后','5 秒 · 16:9 · 手部特写环绕',
+  '夜晚，油灯下只拍一双手：手把细铜线一圈一圈整齐地绕在竹管上，袖口是粗麻布。铜线反射着灯光。镜头特写，缓慢环绕。写实，暖铜色调，背景很暗。',
+  'Night, oil-lamp light, hands only: two hands neatly wind thin copper wire turn by turn around a bamboo tube; coarse hemp sleeves. The copper glints in the lamplight. Close-up, slow orbiting camera. Realistic, warm copper tones, dark background.'],
+ ['A4','河边水车','镜头 16 结尾，旁白「让河水替我们来摇」','5 秒 · 16:9 · 低机位缓慢上升',
+  '清晨薄雾中，河边一架木制水车缓慢转动，水从叶片上溅落，转轴伸进旁边的木屋。镜头从贴近水面的低角度仰拍，缓慢上升。写实电影质感，青灰色调，雾气柔和。',
+  'A wooden waterwheel turning slowly beside a river in light morning mist, water splashing from its paddles, its axle running into a small timber house. Low angle from just above the water, slow upward crane. Realistic cinematic look, blue-grey palette, soft mist.'],
+ ['A5','夜色中的工坊','镜头 20，旁白「我们下集见」','4 秒 · 16:9 · 固定远景',
+  '夜晚远景：山脚下的小村庄，一间木屋的窗户透出温暖的光，其余房屋都是暗的。天空有稀疏的星星，远处有河流反光。固定机位，画面里只有窗光微微闪动。写实，深蓝与暖橙对比。',
+  'Night wide shot: a small village at the foot of a hill; one wooden house has warm light glowing in its window while the other houses are dark. Sparse stars, a river glinting in the distance. Locked-off camera; only the window light flickers slightly. Realistic, deep blue against warm orange.']
+];
+const aibox=document.getElementById('ai');
+AI.forEach(a=>{const d=document.createElement('article');d.className='ai';
+ d.innerHTML=`<h3></h3><p class="where"></p><div class="params"></div><div class="prompt"><small>中文提示词</small><span class="zh"></span></div><div class="row"><button type="button" class="czh">复制中文</button></div><div class="prompt"><small>English prompt</small><span class="en"></span></div><div class="row"><button type="button" class="cen">复制英文</button></div>`;
+ d.querySelector('h3').textContent=a[0]+' · '+a[1];d.querySelector('.where').textContent='用在：'+a[2];
+ d.querySelector('.params').innerHTML=a[3].split(' · ').map(p=>`<span>${p}</span>`).join('');
+ d.querySelector('.zh').textContent=a[4];d.querySelector('.en').textContent=a[5];
+ const z=d.querySelector('.czh'),e=d.querySelector('.cen');z.onclick=()=>copy(a[4],z);e.onclick=()=>copy(a[5],e);aibox.appendChild(d);});
+})();
+</script>

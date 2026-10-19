@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>从零造物总方案</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: workshop-notebook system shared by every page in the project. One reading column; catalog and tables get their own scroll containers. Copper = energy/materials, field blue = invisible things and links. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:1000px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:44px 12px;display:grid;gap:14px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(40px,8vw,66px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(19px,3.2vw,25px);font-weight:500;max-width:32em}
+nav.toc{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+nav.toc a{font-size:13px;text-decoration:none;color:var(--ink);background:var(--sheet);border:1px solid var(--line);border-radius:999px;padding:4px 12px}
+nav.toc a b{font-family:var(--mono);font-size:11px;color:var(--copper);margin-right:4px}
+section{border-top:2px solid var(--ink);padding-block:26px 6px;display:grid;gap:16px;margin-top:24px;scroll-margin-top:12px}
+.sh{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:end}
+.sh .n{font-family:var(--display);font-weight:900;font-size:44px;line-height:.9;color:var(--copper)}
+h2{font-size:clamp(22px,4vw,30px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:44em}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:10px}
+.box{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:14px;min-width:0;display:grid;gap:6px;align-content:start}
+.box b{font-size:16px}
+.box p{font-size:14px;color:var(--muted);line-height:1.65}
+.k{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--copper);text-transform:uppercase}
+/* status strip */
+.status{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:8px}
+.status div{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 12px;display:grid;gap:2px}
+.status span{font-size:12px;color:var(--muted)}
+.status strong{font-family:var(--display);font-size:18px;font-weight:900}
+.status .you{border-color:var(--copper);background:var(--copper-soft)}
+/* method */
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+ul.crit{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+ul.crit li{display:grid;grid-template-columns:2em minmax(0,1fr);gap:10px;font-size:15px}
+ul.crit li::before{content:"✓";color:var(--good);font-weight:700;text-align:center}
+/* tree */
+.track{display:grid;grid-template-columns:150px minmax(0,1fr);gap:14px;padding:12px 0;border-bottom:1px dashed var(--line)}
+.track:last-child{border-bottom:0}
+.tname{display:grid;gap:2px;align-content:start}
+.tname b{font-family:var(--display);font-size:18px;font-weight:900}
+.tname small{font-size:12px;color:var(--muted);line-height:1.5}
+.chain{display:flex;flex-wrap:wrap;gap:6px;align-items:center;min-width:0}
+.ep{font-size:14px;background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:3px 10px}
+.ep.done{border-color:var(--good);background:var(--good-soft)}
+.ep.plan{border-color:var(--copper);background:var(--copper-soft)}
+.arr{color:var(--muted);font-size:13px}
+.link{font-size:12px;color:var(--field);background:var(--field-soft);border-radius:4px;padding:2px 8px}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--muted)}
+.legend span{display:inline-flex;gap:6px;align-items:center}
+.sw{width:14px;height:14px;border-radius:3px;border:1px solid var(--line);background:var(--sheet)}
+.sw.done{border-color:var(--good);background:var(--good-soft)}
+.sw.plan{border-color:var(--copper);background:var(--copper-soft)}
+/* catalog */
+.filters{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.filters .lbl{font-size:13px;color:var(--muted);margin-right:2px}
+.filters button{font:inherit;font-size:13px;color:var(--ink);background:var(--sheet);border:1px solid var(--line);border-radius:999px;padding:4px 12px;cursor:pointer;min-height:34px}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.filters button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+.count{font-family:var(--mono);font-size:12px;color:var(--muted);margin-left:auto}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:10px}
+.card{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;align-content:start;min-width:0}
+.card .top{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.card .vol{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.card h3{font-family:var(--display);font-size:18px;font-weight:900}
+.card .hook{font-family:var(--display);font-size:15px;border-left:3px solid var(--copper);padding-left:8px;border-radius:0}
+.card dl{margin:0;display:grid;grid-template-columns:3.4em minmax(0,1fr);gap:2px 8px;font-size:13px}
+.card dt{color:var(--muted)}
+.card dd{margin:0}
+.pill{font-size:11px;border-radius:4px;padding:1px 7px;font-weight:500;margin-left:auto}
+.s-low{background:var(--good-soft);color:var(--good)}
+.s-mid{background:var(--copper-soft);color:var(--copper)}
+.s-high{background:var(--warn-soft);color:var(--warn)}
+.st{font-size:11px;border-radius:4px;padding:1px 7px;background:var(--field-soft);color:var(--field)}
+.era{font-size:12px;color:var(--warn);background:var(--warn-soft);border-radius:6px;padding:4px 8px}
+/* tables */
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:640px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.who{display:inline-block;font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500;white-space:nowrap}
+.who.me{background:var(--field-soft);color:var(--field)}
+.who.you{background:var(--copper-soft);color:var(--copper)}
+.who.both{background:var(--good-soft);color:var(--good)}
+/* pipeline */
+ol.pipe{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:8px;counter-reset:p}
+ol.pipe li{counter-increment:p;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:14px;line-height:1.55;min-width:0;display:grid;gap:4px}
+ol.pipe li::before{content:counter(p);font-family:var(--display);font-weight:900;font-size:22px;color:var(--copper);line-height:1}
+ol.pipe b{font-size:15px}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px}
+.simple{background:var(--copper-soft);border:1px solid var(--copper);border-radius:10px;padding:14px 16px;display:grid;gap:6px}
+.simple b{font-family:var(--display);font-size:19px}
+/* roadmap */
+.phases{display:grid;gap:8px}
+.phase{display:grid;grid-template-columns:6.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px}
+.phase .p{font-family:var(--display);font-weight:900;color:var(--copper)}
+.phase.now{border-color:var(--copper)}
+.phase p{font-size:14px;color:var(--muted)}
+.phase b{font-size:15px}
+.next{display:grid;gap:8px}
+.next label{display:flex;gap:10px;align-items:flex-start;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:15px}
+.next input{width:20px;height:20px;accent-color:var(--copper);flex:none;margin-top:4px}
+.next .who{margin-left:auto;flex:none}
+ol.log{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+ol.log li{display:grid;grid-template-columns:minmax(0,1fr);gap:2px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:14px}
+ol.log b{font-size:15px}
+ol.log span{color:var(--muted)}
+@media (max-width:560px){.track{grid-template-columns:1fr;gap:6px}.phase{grid-template-columns:1fr;gap:2px}}
+</style>
+
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../electricity/">从零造电</a><a href="../ep04/">磁生电拍摄本</a><a href="../ep04/voice.html">磁生电旁白稿</a><a href="../b1/">指南鱼拍摄本</a><a href="../#videos">视频</a></nav>
+<header>
+  <div class="eyebrow">项目全书 · 第 5 版 · 2026 年 10 月 18 日</div>
+  <h1>从零造物</h1>
+  <p class="thesis">两条线：带着现代知识穿越回古代，造出当时还没有的东西；再反过来，用现代原理解开古人早已做到、我们却已经陌生的技艺。每一步都讲清楚为什么能做成。</p>
+  <nav class="toc" aria-label="目录">
+    <a href="#s1"><b>01</b>一页看懂</a><a href="#s2"><b>02</b>定位</a><a href="#s3"><b>03</b>方法</a><a href="#s3b"><b>+</b>双线结构</a><a href="#s4"><b>04</b>科技树</a><a href="#s5"><b>05</b>选题库</a><a href="#s6"><b>06</b>呈现形式</a><a href="#s7"><b>07</b>素材分工</a><a href="#s8"><b>08</b>制作流程</a><a href="#s9"><b>09</b>需要什么</a><a href="#s10"><b>10</b>品牌包装</a><a href="#s11"><b>11</b>发布与复盘</a><a href="#s12"><b>12</b>风险与合规</a><a href="#s13"><b>13</b>已完成</a><a href="#s14"><b>14</b>路线图</a><a href="#s15"><b>15</b>决定记录</a>
+  </nav>
+</header>
+
+<section id="s1">
+  <div class="sh"><div class="n">01</div><h2>一页看懂</h2></div>
+  <div class="status">
+    <div><span>系列规模</span><strong>两条线 · 8 卷 · 68 个选题</strong></div>
+    <div><span>首发卷</span><strong>第一卷 · 电</strong></div>
+    <div><span>试播集</span><strong>第 04 集 · 磁生电</strong></div>
+    <div><span>试播集进度</span><strong>方案、动画、旁白全部就绪</strong></div>
+    <div class="you"><span>现在卡在</span><strong>买道具，拍 8 段实验</strong></div>
+  </div>
+  <div class="grid">
+    <div class="box"><span class="k">做什么</span><b>穿越造物 + 古法解密</b><p>A 线：造出那个时代还没有、但用当时材料能做出来的东西。B 线：解开古人已经做到的技艺，讲清楚他们没有现代科学，为什么也能做对。</p></div>
+    <div class="box"><span class="k">怎么讲</span><b>不只给成品，还讲为什么</b><p>每个原理都追问三层，每个结构设计都说出理由；先让观众的误解当场失效，再给出答案。</p></div>
+    <div class="box"><span class="k">怎么呈现</span><b>一个选题，四种产出</b><p>互动网页、横屏长视频、竖屏短视频、图文卡片。</p></div>
+    <div class="box"><span class="k">怎么分工</span><b>你拍实验，其余交给我</b><p>你只需要买道具、用手机拍实验，再录或生成配音；脚本、动画、网页、拼接成片都由我来做。</p></div>
+  </div>
+</section>
+
+<section id="s2">
+  <div class="sh"><div class="n">02</div><h2>定位</h2></div>
+  <div class="grid">
+    <div class="box"><span class="k">观众</span><b>学过但没真懂的人</b><p>学过高中物理和化学的人、科普爱好者，以及喜欢「穿越造物」题材的观众。</p></div>
+    <div class="box"><span class="k">差异点</span><b>理解的过程本身就是内容</b><p>同类内容大多只展示「怎么做」。我们展示「为什么必须这样做」，让观众看到自己是怎么想通的。</p></div>
+    <div class="box"><span class="k">观众收获</span><b>看完能用自己的话讲出来</b><p>每集设一个明确目标，例如第 04 集：说出「电压 = 匝数 × 磁通量变化的快慢」，并解释发电机为什么要转。</p></div>
+    <div class="box"><span class="k">长期价值</span><b>一棵越点越亮的科技树</b><p>每集解锁一个节点，前面造出的东西后面接着用，观众能看到整个系列在往哪里走。</p></div>
+  </div>
+</section>
+
+<section id="s3">
+  <div class="sh"><div class="n">03</div><h2>方法</h2></div>
+  <p class="lead">这是系列风格的核心，每一集都用同样的工具来组织内容。</p>
+  <h3>1. 三层「为什么」</h3>
+  <div class="layers">
+    <div class="layer"><span>现象层</span><p>会发生什么？磁铁抽出线圈的瞬间，电流表指针跳了一下。</p></div>
+    <div class="layer"><span>规律层</span><p>遵循什么规律？电压 = 匝数 × 磁通量变化的快慢。</p></div>
+    <div class="layer"><span>本质层</span><p>微观上发生了什么？导线里的电子被洛伦兹力推向一端。</p></div>
+  </div>
+  <h3>2. 原理 → 设计决策</h3>
+  <p class="lead">每个结构都要有理由。例：电压和变化速度成正比 → 磁铁要动得快 → 一直推拉太累，改成旋转 → 接到水车上，让河水来摇。</p>
+  <h3>3. 理解路径：先让误解失效</h3>
+  <p class="lead">一集拆成约 5 个台阶。每个台阶先说出观众最常见的误解，再用实拍或动画当场打破它。例：「磁铁放进线圈就有电」→ 实拍磁铁静止不动，指针始终为 0。</p>
+  <h3>4. 时代设定与生存难题</h3>
+  <p class="lead">每集标明穿越到哪一年、哪个地方，开头抛出一个具体难题；片尾用一句话说明真实历史上是怎样的。第一卷定在北宋，约公元 1090 年：沈括刚在《梦溪笔谈》里写下磁针指南，而电磁感应要到 1831 年才被发现。</p>
+  <h3>5. 选题标准</h3>
+  <ul class="crit">
+    <li><span><b>A 线：那个时代还没有</b>（硬性要求）：对设定的年代来说是真正的创新。</span></li>
+    <li><span><b>B 线：古人确实做到了</b>（硬性要求）：有可靠的史料或文物证据，而且背后有能讲清的原理。</span></li>
+    <li><span><b>当时的材料能做出来</b>（硬性要求）：做不出来的技术，可以反过来讲「为什么抄不了」。</span></li>
+    <li><span><b>有反直觉的钩子</b>：例如「磁铁在线圈里却不发电」「盐不能靠降温结晶」。</span></li>
+    <li><span><b>在家能安全拍</b>：高温、熔融金属、有毒气体只用动画，或者去专业工坊拍。</span></li>
+    <li><span><b>影响大</b>：一条知识能救很多人或养活很多人。</span></li>
+  </ul>
+</section>
+
+<section id="s3b">
+  <div class="sh"><div class="n">双</div><h2>双线结构</h2></div>
+  <div class="grid">
+    <div class="box"><span class="k">A 线 · 穿越造物</span><b>我们带知识回古代</b><p>造出那个时代还没有的东西。钩子的格式：「只用古代的材料，能不能造出 X？」例：磁生电、伏打电堆、口服补液。对应第一到第七卷。</p></div>
+    <div class="box"><span class="k">B 线 · 古法解密</span><b>古人已经做到的，我们来解开</b><p>古人没有现代科学，却靠经验做对了。钩子的格式：「古人不懂 X，为什么能做对？」例：指南鱼、都江堰、豆腐点卤。对应第八卷。</p></div>
+  </div>
+  <h3>B 线的讲法：三层揭秘</h3>
+  <div class="layers">
+    <div class="layer"><span>古人的做法</span><p>史料或文物里记录了什么。例：《武经总要》记载，把铁片烧红，沿南北方向放好后淬入水中。</p></div>
+    <div class="layer"><span>当时的理解</span><p>古人自己怎么解释，哪些对、哪些只是经验。这一步最能引起观众的好奇。</p></div>
+    <div class="layer"><span>现代原理</span><p>用今天的科学讲清楚为什么能成。例：铁在冷却时被地磁场磁化。</p></div>
+  </div>
+  <h3>两条线怎样互相接上</h3>
+  <div class="tw"><table>
+    <thead><tr><th>B 线（古人已经做到的）</th><th>A 线（我们接着造的）</th><th>怎么衔接</th></tr></thead>
+    <tbody>
+      <tr><td>指南鱼（北宋）</td><td>第一卷 03 电生磁、04 磁生电</td><td>古人已经会磁化铁；我们接着让磁变成电</td></tr>
+      <tr><td>水排（东汉）</td><td>第二卷 水车发电、第三卷 炼铁</td><td>古人已经让河水干活；我们把转轴接到发电机上</td></tr>
+      <tr><td>卓筒井（北宋）</td><td>第三卷 制盐</td><td>古人已经打出深井取卤；我们讲清楚怎样从卤水里得到盐</td></tr>
+      <tr><td>冰鉴与藏冰</td><td>第五卷 蒸发冷却罐</td><td>古人靠存冰；我们不用冰，靠蒸发造冷</td></tr>
+      <tr><td>漏刻</td><td>第七卷 摆钟</td><td>古人靠水位计时；我们用摆的等时性计时</td></tr>
+      <tr><td>被中香炉（西汉）</td><td>第六卷 机械</td><td>同一个常平架原理，今天用在相机稳定器上</td></tr>
+    </tbody>
+  </table></div>
+  <h3>B 线在制作上的不同</h3>
+  <div class="grid">
+    <div class="box"><span class="k">素材</span><b>多了实地和文物</b><p>可以去博物馆、景区、非遗工坊拍。文物照片要用开放授权的，或者由我重画成示意图。</p></div>
+    <div class="box"><span class="k">实验</span><b>大多能在家用模型复现</b><p>豆腐、鱼洗、漏刻、榫卯、拱桥模型，道具便宜，制作成本比 A 线还低。</p></div>
+    <div class="box"><span class="k">证据边界</span><b>失传的东西要说清楚</b><p>指南车、地动仪的原物都已失传，要说明讲的是复原方案，不能说成定论。</p></div>
+    <div class="box"><span class="k">排期</span><b>两条线交替更新</b><p>A 线两集之间穿插一集 B 线。B 线制作快，可以缓解 A 线实拍的压力。</p></div>
+  </div>
+</section>
+
+<section id="s4">
+  <div class="sh"><div class="n">04</div><h2>科技树</h2></div>
+  <p class="lead">7 卷，卷内按依赖关系排序。蓝色标签是卷与卷之间的连接点。</p>
+  <div class="legend"><span><i class="sw done"></i>拍摄方案和动画已完成</span><span><i class="sw plan"></i>网页已有章节</span><span><i class="sw"></i>待策划</span></div>
+  <div>
+    <div class="track"><div class="tname"><b>一 · 电</b><small>首发卷 · 北宋 1090</small></div>
+      <div class="chain"><span class="ep plan">01 摩擦起电</span><span class="arr">→</span><span class="ep plan">02 伏打电堆</span><span class="arr">→</span><span class="ep plan">03 电生磁</span><span class="arr">→</span><span class="ep done">04 磁生电</span><span class="arr">→</span><span class="ep plan">05 手摇发电机</span></div></div>
+    <div class="track"><div class="tname"><b>二 · 能量从哪来</b><small>同一台发电机换动力</small></div>
+      <div class="chain"><span class="link">接 第一卷 05</span><span class="ep">水车</span><span class="ep">风车</span><span class="ep">畜力与人力</span><span class="ep">重力</span><span class="ep">蒸汽</span><span class="ep">化学电</span><span class="ep">热电</span><span class="ep">压电</span><span class="ep">静电机</span></div></div>
+    <div class="track"><div class="tname"><b>三 · 火与材料</b><small>没有高温就没有金属</small></div>
+      <div class="chain"><span class="ep">生火</span><span class="arr">→</span><span class="ep">木炭与制陶</span><span class="arr">→</span><span class="ep">炼铜</span><span class="arr">→</span><span class="ep">炼铁</span><span class="arr">→</span><span class="ep">煤与焦炭</span><span class="link">接 第二卷 蒸汽</span><span class="ep">制盐</span><span class="ep">玻璃</span><span class="ep">肥皂</span><span class="ep">纸</span><span class="ep">石灰与水泥</span></div></div>
+    <div class="track"><div class="tname"><b>四 · 水与农业</b><small>让地多产粮</small></div>
+      <div class="chain"><span class="ep">螺旋提水</span><span class="ep">虹吸</span><span class="ep">陶罐滴灌</span><span class="ep">水车提水</span><span class="link">接 第二卷 水车</span><span class="ep">轮作固氮</span><span class="ep">选种与嫁接</span></div></div>
+    <div class="track"><div class="tname"><b>五 · 救命的知识</b><small>成本最低、影响最大</small></div>
+      <div class="chain"><span class="ep">口服补液</span><span class="ep">洗手</span><span class="ep">防坏血病</span><span class="ep">净水</span><span class="ep">种痘</span><span class="ep">煤气中毒</span><span class="link">接 第三卷 煤</span><span class="ep">罐藏</span><span class="ep">蒸发冷却罐</span></div></div>
+    <div class="track"><div class="tname"><b>六 · 机械与交通</b><small>放大力、改变运动</small></div>
+      <div class="chain"><span class="ep">杠杆与滑轮组</span><span class="ep">曲柄连杆</span><span class="ep">齿轮与轴承</span><span class="ep">马轭</span><span class="ep">逆风航行</span><span class="ep">热气球</span></div></div>
+    <div class="track"><div class="tname"><b>七 · 信息与测量</b><small>所有技术的地基</small></div>
+      <div class="chain"><span class="ep">摆钟</span><span class="ep">温度计</span><span class="ep">用影子测地球</span><span class="ep">数字与 0</span><span class="ep">复式记账</span><span class="ep">光学电报</span></div></div>
+    <div class="track"><div class="tname"><b>八 · 古法解密</b><small>B 线 · 古人已经做到的</small></div>
+      <div class="chain"><span class="ep">指南鱼</span><span class="link">接 第一卷</span><span class="ep">卓筒井</span><span class="ep">活字印刷</span><span class="ep">水排</span><span class="ep">都江堰</span><span class="ep">赵州桥</span><span class="ep">榫卯</span><span class="ep">被中香炉</span><span class="ep">鱼洗</span><span class="ep">透光镜</span><span class="ep">一钟双音</span><span class="ep">冰鉴</span><span class="ep">漏刻</span><span class="ep">豆腐点卤</span><span class="ep">酿酒与酿醋</span><span class="ep">瓷器</span><span class="ep">指南车</span><span class="ep">地动仪</span></div></div>
+  </div>
+</section>
+
+<section id="s5">
+  <div class="sh"><div class="n">05</div><h2>选题库</h2></div>
+  <p class="lead">每个选题都列出钩子、核心原理、实拍道具和安全等级，可以按卷或安全等级筛选。标了「时代提醒」的选题，在 A 线设定的年代里已经存在，可以换个年代，也可以放进 B 线来讲。第八卷的卡片标注了它和 A 线怎么衔接。</p>
+  <div class="filters" role="group" aria-label="按卷筛选" id="fv"></div>
+  <div class="filters" role="group" aria-label="按安全等级筛选" id="fs"></div>
+  <div class="cards" id="cards"></div>
+</section>
+
+<section id="s6">
+  <div class="sh"><div class="n">06</div><h2>呈现形式</h2></div>
+  <p class="lead">一个选题产出四种内容，它们用的是同一套证据和素材。</p>
+  <div class="tw"><table>
+    <thead><tr><th>形式</th><th>平台</th><th>规格</th><th>作用</th><th>负责</th></tr></thead>
+    <tbody>
+      <tr><td>横屏长视频</td><td>B站、YouTube</td><td>16:9，1080p，6–10 分钟</td><td>主内容，完整的理解路径</td><td><span class="who both">一起</span></td></tr>
+      <tr><td>竖屏短视频</td><td>抖音、视频号、小红书</td><td>9:16，每条 1 分钟内，每集 2–3 条</td><td>引流：反常开场、关键对比、结论</td><td><span class="who me">我</span></td></tr>
+      <tr><td>图文卡片</td><td>小红书、公众号、微博</td><td>3:4，每集 8 张 + 正文</td><td>一张卡讲一个台阶，方便收藏转发</td><td><span class="who both">一起</span></td></tr>
+      <tr><td>互动网页</td><td>放在简介和置顶评论</td><td>手机和 iPad 都能打开</td><td>观众自己调参数，看懂之后再动手玩</td><td><span class="who me">我</span></td></tr>
+    </tbody>
+  </table></div>
+  <h3>每集的配套文件</h3>
+  <div class="grid">
+    <div class="box"><span class="k">策划</span><b>拍摄本</b><p>理解路径、分镜、素材清单、图文文案、发布清单。</p></div>
+    <div class="box"><span class="k">声音</span><b>旁白稿</b><p>按镜头分段的逐字稿，估算好时长，可以一键复制去生成配音。</p></div>
+    <div class="box"><span class="k">画面</span><b>动画与字幕卡</b><p>按物理公式渲染的 1080p 视频，以及片头片尾模板。</p></div>
+    <div class="box"><span class="k">样片</span><b>粗剪样片</b><p>整集按顺序排好，缺的镜头用占位画面标明要拍什么。</p></div>
+  </div>
+</section>
+
+<section id="s7">
+  <div class="sh"><div class="n">07</div><h2>素材分工</h2></div>
+  <p class="lead">三类画面各有分工，不能互相代替。</p>
+  <div class="tw"><table>
+    <thead><tr><th>类型</th><th>负责什么</th><th>怎么做</th><th>原则</th></tr></thead>
+    <tbody>
+      <tr><td>实拍</td><td>让人相信：实验现象和证据</td><td>你用手机俯拍桌面实验</td><td>实验结果必须真实拍摄，绝不能用 AI 生成</td></tr>
+      <tr><td>代码动画</td><td>让人看见看不见的东西：磁感线、电子、曲线</td><td>我按物理公式渲染</td><td>数字和曲线都要算出来，不能凭感觉画</td></tr>
+      <tr><td>字幕卡</td><td>让人停下来想：问题、结论、公式</td><td>我渲染成视频</td><td>每张只放一句话</td></tr>
+      <tr><td>AI 视频</td><td>营造氛围：古代工坊、水车、夜景</td><td>你在可灵、即梦、海螺这类工具里，用我写的提示词生成</td><td>不出现人脸、可辨认的文字和实验结果；发布时标注 AI 生成</td></tr>
+      <tr><td>配音</td><td>串起整集</td><td>自己录，或用剪映「朗读」生成</td><td>剪辑时以旁白长度为准</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="s8">
+  <div class="sh"><div class="n">08</div><h2>制作流程</h2></div>
+  <div class="simple"><b>你只需要做两件事：买道具、用手机拍实验</b><p>拍好的视频和配音直接发到对话里，我来替换占位画面、对齐配音，拼成成片发回给你。你不用学剪辑。</p></div>
+  <ol class="pipe">
+    <li><b>选题卡</b>钩子、三层为什么、原理→设计决策、时代设定</li>
+    <li><b>查证</b>每个史实和数据都附来源</li>
+    <li><b>网页章节</b>可互动的演示</li>
+    <li><b>拍摄本</b>理解路径、分镜、道具清单</li>
+    <li><b>旁白稿</b>按镜头分段的逐字稿</li>
+    <li><b>动画与片头片尾</b>渲染成视频</li>
+    <li><b>粗剪样片</b>缺的镜头用占位画面</li>
+    <li><b>实拍与配音</b>由你来拍、来录</li>
+    <li><b>拼接成片</b>由我替换占位、对齐配音</li>
+    <li><b>图文与切片</b>截帧做卡片，拆出竖屏短视频</li>
+    <li><b>发布与复盘</b>整理评论里的疑问，用到下一集</li>
+  </ol>
+</section>
+
+<section id="s9">
+  <div class="sh"><div class="n">09</div><h2>需要什么</h2></div>
+  <div class="two">
+    <div class="tw"><table style="min-width:0">
+      <thead><tr><th>第 04 集道具</th><th>用途</th></tr></thead>
+      <tbody>
+        <tr><td>钕磁铁棒（直径约 1 厘米）</td><td>插拔、旋转发电</td></tr>
+        <tr><td>漆包线（0.2–0.3 毫米）</td><td>绕 5 匝和 50 匝两个线圈</td></tr>
+        <tr><td>指针式灵敏电流计</td><td>看清电流的大小和方向</td></tr>
+        <tr><td>指南针、电池、导线</td><td>重现奥斯特实验</td></tr>
+        <tr><td>小灯泡或 LED、转轴支架</td><td>手摇发电演示</td></tr>
+        <tr><td>砂纸、纸筒或笔管</td><td>磨漆、绕线圈</td></tr>
+        <tr><td>木桌、粗布、陶碗</td><td>「穿越工坊」布景</td></tr>
+      </tbody>
+    </table></div>
+    <div class="tw"><table style="min-width:0">
+      <thead><tr><th>设备和软件</th><th>用途</th></tr></thead>
+      <tbody>
+        <tr><td>手机 + 俯拍支架</td><td>拍桌面实验</td></tr>
+        <tr><td>两盏带柔光罩的补光灯</td><td>避免表盘反光</td></tr>
+        <tr><td>领夹麦（可选）</td><td>自己录旁白</td></tr>
+        <tr><td>iPad + Claude App / Safari</td><td>看方案、打开网页、录屏</td></tr>
+        <tr><td>剪映</td><td>AI 配音；需要时也可自己剪</td></tr>
+        <tr><td>Keynote（可选）</td><td>临时做字幕卡</td></tr>
+        <tr><td>可灵 / 即梦 / 海螺（可选）</td><td>生成 AI 氛围镜头</td></tr>
+        <tr><td>B站、YouTube、小红书、抖音账号</td><td>发布</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <p class="lead">道具和支架、补光灯加起来，大约几百元。AI 视频工具大多有免费额度，具体价格以各家当前政策为准。</p>
+</section>
+
+<section id="s10">
+  <div class="sh"><div class="n">10</div><h2>品牌包装</h2></div>
+  <div class="grid">
+    <div class="box"><span class="k">固定开场</span><b>15 秒说清年代、难题和目标</b><p>例：「北宋，沈括刚在书里写下指南针。今天，我们用磁石和铜线，让指南针旁边亮起第一盏灯。」</p></div>
+    <div class="box"><span class="k">片头片尾</span><b>科技树点亮动画（已做好模板）</b><p>片头：已解锁的节点亮起，本集节点闪烁；片尾：点亮本集，下一集出现问号和预告。</p></div>
+    <div class="box"><span class="k">固定栏目</span><b>「古代可行度」三项评分</b><p>每集结尾给材料难度、工艺难度、影响力各打 1–5 分，攒够几集后做排名特辑。</p></div>
+    <div class="box"><span class="k">视觉规范</span><b>铜色、场蓝、深色底、宋体标题</b><p>铜色代表能量和材料，蓝色代表看不见的东西。实拍统一用木桌、粗布、陶器布景，画面里不出现塑料和商标。</p></div>
+    <div class="box"><span class="k">人设</span><b>只带知识、不带工具的穿越者</b><p>同一个穿越者贯穿全系列；实拍只拍手部，也可以由你本人出镜。</p></div>
+    <div class="box"><span class="k">诚实边界</span><b>片尾一句「真实历史」</b><p>说明哪里做了简化、真实历史是怎样的，既显得专业，也能挡住大部分挑错。</p></div>
+  </div>
+</section>
+
+<section id="s11">
+  <div class="sh"><div class="n">11</div><h2>发布与复盘</h2></div>
+  <div class="tw"><table>
+    <thead><tr><th>项目</th><th>做法</th></tr></thead>
+    <tbody>
+      <tr><td>更新节奏</td><td>长视频每两周一集，中间那周发竖屏切片和图文。先保证能持续更新，再追求频率。</td></tr>
+      <tr><td>试播期</td><td>先发 3 集再判断方向，单集数据的波动太大。</td></tr>
+      <tr><td>看什么数据</td><td>前 30 秒留存（钩子是否有效）、完播率（节奏是否拖沓）、评论里的疑问（哪里没讲清）。</td></tr>
+      <tr><td>复盘</td><td>每集发布一周后，把评论里的疑问和挑错发给我。没讲清的点，放进下一集的「误解」台阶。</td></tr>
+      <tr><td>观众参与</td><td>让观众投票选下一集；互动网页链接放在简介和置顶评论里。</td></tr>
+      <tr><td>标题与封面</td><td>用反常画面配问句，例如镜头 1 的特写，配上「磁铁就在线圈里，为什么不发电？」。</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="s12">
+  <div class="sh"><div class="n">12</div><h2>风险与合规</h2></div>
+  <div class="tw"><table>
+    <thead><tr><th>风险</th><th>做法</th></tr></thead>
+    <tbody>
+      <tr><td>网页公开访问</td><td>已解决：所有网页通过 GitHub Pages 公开发布，视频简介里可以直接放链接。</td></tr>
+      <tr><td>危险实验</td><td>安全提示同时放在画面字幕和简介里。高温、熔融金属、有毒气体只用动画或去专业工坊拍。标题和封面不渲染危险感。</td></tr>
+      <tr><td>事实错误</td><td>每个史实附来源；发现错误后在置顶评论里勘误，网页同步修改。</td></tr>
+      <tr><td>时代穿帮</td><td>选题前先查这项技术在设定的年代是否已经存在，比如北宋已有活字印刷和水车。已经存在的技术放进 B 线来讲。</td></tr>
+      <tr><td>文物与复原</td><td>文物照片用开放授权的素材或重画示意图；失传文物只讲复原方案及其依据，不说成定论。</td></tr>
+      <tr><td>AI 内容</td><td>AI 只用于氛围镜头；发布时按平台要求标注。</td></tr>
+      <tr><td>版权</td><td>历史图片、配乐用可商用素材，或者由我重画成示意图。我渲染的动画可以放心使用。</td></tr>
+      <tr><td>健康类选题</td><td>只讲原理和历史意义，注明「现实中请遵医嘱」，不给具体配方和用药指导。</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="s13">
+  <div class="sh"><div class="n">13</div><h2>已完成</h2></div>
+  <div class="tw"><table>
+    <thead><tr><th>成果</th><th>形式</th><th>内容</th></tr></thead>
+    <tbody>
+      <tr><td><a href="../electricity/">从零造电</a></td><td>互动网页</td><td>第一卷 5 章：三层为什么、古代材料、原理→设计决策、可操作的演示、17 条来源</td></tr>
+      <tr><td><a href="../ep04/">磁生电拍摄本</a></td><td>网页</td><td>第 04 集：理解路径、20 个分镜（可按素材筛选）、素材清单、iPad 流程、图文文案、发布清单</td></tr>
+      <tr><td><a href="../ep04/voice.html">磁生电旁白稿</a></td><td>网页</td><td>按镜头分段的逐字稿（含时长估算、一键复制）+ 5 条 AI 氛围镜头提示词</td></tr>
+            <tr><td><a href="../#videos">动画与字幕卡 × 9</a></td><td>MP4</td><td>镜头 3、6、10、12、14、15、17、18、20</td></tr>
+      <tr><td><a href="../#videos">片头、片尾</a></td><td>MP4</td><td>科技树点亮模板，替代镜头 4 和 19</td></tr>
+      <tr><td><a href="../b1/">指南鱼拍摄本</a></td><td>网页</td><td>B 线试播集：原文、两种学术解释、四组对照实验和现场记录表、三种结论旁白、分镜与旁白</td></tr>
+      <tr><td><a href="../#videos">B1 动画、字幕卡与片头片尾 × 7</a></td><td>MP4</td><td>原文卡、热剩磁、两种解释、两张问题卡、B 线片头片尾</td></tr>
+      <tr><td><a href="../media/video/b1-rough-cut.mp4">B1_指南鱼_粗剪样片.mp4</a></td><td>MP4</td><td>约 5 分 30 秒，剩 8 段占位：6 段实拍、两段待实验结果</td></tr>
+      <tr><td><a href="../media/video/ep04-rough-cut.mp4">第04集_磁生电_粗剪样片.mp4</a></td><td>MP4</td><td>整集按顺序排好，剩 9 段占位：8 段实拍、1 段网页录屏（镜头 11）</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="s14">
+  <div class="sh"><div class="n">14</div><h2>路线图</h2></div>
+  <div class="phases">
+    <div class="phase now"><span class="p">阶段 1 · 现在</span><div><b>试播集：第 04 集 磁生电</b><p>买道具、拍 8 段实验、生成配音，由我拼成成片。确认网页能否公开分享，然后发布。</p></div></div>
+    <div class="phase"><span class="p">阶段 2</span><div><b>补完第一卷：01、02、03、05</b><p>网页章节已有，按第 04 集的流程补拍摄本、旁白和动画。中间可以穿插第一集 B 线「指南鱼」：它和第一卷同在北宋，正好当前传。凑满 3 集后看数据，判断方向，也看观众更喜欢哪条线。</p></div></div>
+    <div class="phase"><span class="p">阶段 3</span><div><b>第二卷 · 能量从哪来</b><p>复用第 05 集的发电机，每集只换动力，制作成本最低。</p></div></div>
+    <div class="phase"><span class="p">阶段 4</span><div><b>由观众投票决定</b><p>从第三到第七卷里，挑观众最想看、最适合在家拍的选题，比如制盐、虹吸、蒸发冷却罐、摆钟。</p></div></div>
+    <div class="phase"><span class="p">长期</span><div><b>特辑与合集</b><p>「最值得带回古代的知识」排名、每卷合集、完整科技树互动网页。</p></div></div>
+  </div>
+  <h3>下一步清单</h3>
+  <div class="next">
+    <label><input type="checkbox" id="n1">买齐第 04 集道具<span class="who you">你</span></label>
+    <label><input type="checkbox" id="n2">绕 5 匝和 50 匝两个线圈，接上电流计<span class="who you">你</span></label>
+    <label><input type="checkbox" id="n3">按拍摄本拍 8 段实拍（镜头 1、2、5、7、8、9、13、16）<span class="who you">你</span></label>
+    <label><input type="checkbox" id="n4">录网页第 04 章演示（镜头 11）<span class="who you">你</span></label>
+    <label><input type="checkbox" id="n5">用旁白稿生成或录制配音<span class="who you">你</span></label>
+    <label><input type="checkbox" id="n6">把视频和配音发到对话里，由我拼成成片<span class="who me">我</span></label>
+    <label><input type="checkbox" id="n7">确认网页能否公开分享<span class="who you">你</span></label>
+    <label><input type="checkbox" id="n8">做竖屏切片和 8 张图文卡片<span class="who both">一起</span></label>
+    <label><input type="checkbox" id="n9">发布试播集，一周后把评论发给我复盘<span class="who you">你</span></label>
+  </div>
+</section>
+
+<section id="s15">
+  <div class="sh"><div class="n">15</div><h2>决定记录</h2></div>
+  <p class="lead">这段时间做过的关键决定和原因，方便以后回头查。</p>
+  <ol class="log">
+    <li><b>先做横屏长视频，再拆短视频</b><span>长视频适合讲清理解过程；短视频负责引流。</span></li>
+    <li><b>先把一集做精，作为模板</b><span>选了第 04 集「磁生电」：钩子最强，也最能体现「先打破误解」的方法。</span></li>
+    <li><b>所有方案改用网页或 PDF</b><span>可编辑文档在 iPad 版 Claude App 里打不开。</span></li>
+    <li><b>第一卷定在北宋，约公元 1090 年</b><span>沈括已经记录了磁针指南和磁偏角，而电磁感应要到 1831 年才被发现。北宋时锌很难得到，所以电堆用铁片。</span></li>
+    <li><b>实验镜头必须实拍，AI 只做氛围</b><span>科普的实验镜头是证据，生成的画面既可能出错，也等于伪造。</span></li>
+    <li><b>原理动画用代码渲染，而不是用视频模型</b><span>磁感线根数、电压曲线都按公式计算，准确，而且能精确修改。</span></li>
+    <li><b>修正一处史实</b><span>法拉第并非「花了几个月」，而是从 1825 年起琢磨了好几年，到 1831 年才做成。</span></li>
+    <li><b>成片可能在 6–7 分钟</b><span>旁白念完约 4 分半，最终以实际录音为准，画面跟着旁白走。</span></li>
+    <li><b>由我负责拼接成片</b><span>你只需要拍实验和准备配音，不用学剪辑。</span></li>
+    <li><b>增加 B 线「古法解密」</b><span>古人已经做到、今天却很少有人懂的技艺，讲清楚原理同样有价值。原来标「时代提醒」的选题有了去处，两条线还能互相接上。</span></li>
+  </ol>
+</section>
+</div>
+
+<script>
+(function(){
+const V=['一 · 电','二 · 能量','三 · 火与材料','四 · 水与农业','五 · 救命的知识','六 · 机械与交通','七 · 信息与测量','八 · 古法解密（B 线）'];
+// [vol, title, hook, principle, props, safety(l/m/h), status, era-note]
+const T=[
+ [0,'01 摩擦起电与莱顿瓶','琥珀一擦，为什么能吸起稻草？','电子从一种材料转移到另一种；莱顿瓶用绝缘层把正负电荷隔开储存','琥珀或塑料棒、毛皮、玻璃瓶、锡箔','l','网页已有章节'],
+ [0,'02 伏打电堆','两块金属加盐水，为什么能持续出电？','锌（或铁）比铜更容易失去电子；串联叠加，电压相加','铜片、铁片、盐水、布片','l','网页已有章节'],
+ [0,'03 电生磁','通电导线为什么能拨动指南针？','电流周围有环形磁场；绕成线圈再加铁芯，就是电磁铁','指南针、电池、导线、铁钉','l','网页已有章节'],
+ [0,'04 磁生电','磁铁就在线圈里，为什么不发电？','法拉第定律：电压 = 匝数 × 磁通量变化的快慢','钕磁铁、漆包线、指针式电流计','l','方案和动画已完成'],
+ [0,'05 手摇发电机','灯泡一接上，手柄为什么变沉了？','旋转让磁通量持续变化；楞次定律其实就是能量守恒','磁铁转轴、线圈、小灯泡','l','网页已有章节'],
+ [1,'水车发电','落差和流量，哪个更重要？','水的势能 → 转动 → 电','小水轮模型、水管','l','待策划','北宋已有水车，创新点在于「接上发电机」'],
+ [1,'风车发电','风速翻一倍，电能涨多少？','风的功率和风速的三次方成正比','纸风车、电扇','l','待策划'],
+ [1,'畜力与人力','点亮一盏灯，人要蹬多累？','功率与做功；楞次定律的体感','自行车发电机、灯泡','l','待策划'],
+ [1,'重力发电','一袋石头落下，灯能亮多久？','势能 = 重量 × 高度','重物、滑轮、小发电机','l','待策划'],
+ [1,'蒸汽发电','烧开一壶水，怎么变成电？','热 → 蒸汽推动 → 转动 → 电；火电和核电的原型','动画为主，小蒸汽机模型','m','待策划'],
+ [1,'化学电：土豆和大地','土豆为什么能点亮 LED？','和伏打电堆同一个原理，土豆只是电解质','土豆或柠檬、铜片、铁钉','l','待策划'],
+ [1,'热电','金属一头烧热，为什么就有电压？','塞贝克效应：两种金属的结点受热产生电压','两种金属丝、蜡烛','m','待策划'],
+ [1,'压电','敲一下石头，为什么会冒火花？','压电效应：挤压某些晶体会产生电压','打火机里的点火器','l','待策划'],
+ [1,'静电机','怎样让静电源源不断？','转动的盘子靠感应持续分离电荷','动画为主','m','待策划'],
+ [2,'生火','钻木为什么能起火？','燃烧三要素：可燃物、氧气、温度；灭火就是拿掉其中一样','火石火镰、放大镜、火塞','m','待策划'],
+ [2,'木炭与制陶','木炭为什么比木头烧得更热？','隔绝空气加热，去掉水分和杂质；陶器靠高温烧结','动画 + 户外小样','m','待策划'],
+ [2,'炼铜','绿色的石头怎么变成铜？','木炭夺走矿石里的氧（还原反应）','去工坊拍，或用动画','h','待策划','北宋已有炼铜，适合放在更早的年代'],
+ [2,'炼铁','铁矿石其实就是铁锈？','一氧化碳夺走铁锈里的氧；含碳量决定软铁、钢和生铁','去铁匠铺拍，原理用动画','h','待策划','北宋已有，可讲「为什么这样炼」的原理'],
+ [2,'煤与焦炭','有煤，为什么还要烧木炭炼铁？','煤里的硫让铁变脆；先烧成焦炭再用','动画为主','h','待策划'],
+ [2,'制盐','盐为什么不能像糖那样靠降温结晶？','盐的溶解度几乎不随温度变化，只能把水蒸发掉；莲子测卤就是密度计','浓盐水、锅、鸡蛋','l','待策划','北宋已有井盐，可讲莲子测卤的原理'],
+ [2,'玻璃','沙子怎么变透明？','高温熔融，加助熔剂降低熔点','动画或去工坊拍','h','待策划'],
+ [2,'肥皂','油加草木灰，为什么能去污？','皂化反应；肥皂分子一头亲水、一头亲油','动画为主（强碱有腐蚀性）','m','待策划'],
+ [2,'纸','树皮怎么变成纸？','纤维在水里分散后重新交织','废纸、纱网、盆','l','待策划','北宋已有，适合放在更早的年代'],
+ [2,'石灰与水泥','烧过的石头，为什么还能变回石头？','石灰的循环：烧掉二氧化碳，再从空气里吸回来','动画为主','m','待策划'],
+ [3,'螺旋提水','一根木螺旋，怎么把水送上高处？','倾斜的螺旋把水一格一格托上去','塑料软管绕瓶子','l','待策划'],
+ [3,'虹吸','水为什么能先往上爬，再翻过堤坝？','大气压把水推过最高点','软管、两个桶','l','待策划'],
+ [3,'陶罐滴灌','埋一个罐子，为什么能省很多水？','没上釉的陶罐让水慢慢渗出，直接送到根部','素烧陶罐、花盆','l','待策划'],
+ [3,'水车提水','河水怎么自己爬上田埂？','水流推动轮子，轮上的斗把水带上去','水车模型','l','待策划','北宋已有，可作为第二卷水车发电的前传'],
+ [3,'轮作固氮','种过豆子的地，为什么更肥？','豆科植物根上的根瘤菌能固定空气里的氮','豆苗根瘤特写','l','待策划'],
+ [3,'选种与嫁接','不懂基因，怎么改良品种？','人工选择一代代筛选；嫁接让伤口愈合连通','果树枝条、种子','l','待策划'],
+ [4,'口服补液','喝水止不住的脱水，为什么加点盐和糖就行？','钠和葡萄糖一起被肠道吸收，同时把水带进身体','只讲原理，不给配方','m','待策划'],
+ [4,'洗手','医生洗手，为什么能救下产妇？','1847 年塞麦尔维斯的观察：手上带着致病物质','演示用荧光粉模拟细菌','l','待策划'],
+ [4,'防坏血病','史上最早的对照实验之一','1747 年林德把病人分组对照，柑橘组好转；缺的是维生素 C','柑橘、对照分组示意','l','待策划'],
+ [4,'净水','晒一瓶水，为什么能消毒？','过滤去掉杂质，煮沸和阳光里的紫外线杀菌','沙石过滤瓶、透明瓶','l','待策划'],
+ [4,'种痘','用一场小病，换来对大病的免疫','牛痘和天花相似，免疫系统会「认出」后者','动画为主','m','待策划','中国明清已有人痘法，可讲牛痘为何更安全'],
+ [4,'煤气中毒与通风','关紧门窗烧炭，为什么危险？','燃烧不充分产生一氧化碳，和血红蛋白结合','只用动画，绝不实拍','h','待策划'],
+ [4,'罐藏','比细菌学早几十年的保鲜法','加热杀菌，再密封隔绝','玻璃罐、热水','m','待策划'],
+ [4,'蒸发冷却罐','不用电的冰箱','水蒸发时带走热量','两个陶罐、湿沙、温度计','l','待策划'],
+ [5,'杠杆与滑轮组','一个人怎么吊起一头牛？','省力就要费距离，做的功不变','滑轮、绳子、重物','l','待策划'],
+ [5,'曲柄连杆','来回运动怎么变成转动？','曲柄把直线运动转换成圆周运动','纸板模型','l','待策划'],
+ [5,'齿轮与轴承','怎么让转速变快或变慢？','齿数比决定转速比；滚动摩擦比滑动摩擦小','齿轮模型、珠子','l','待策划'],
+ [5,'马轭','换一副套具，马为什么能多拉几倍？','旧式套具勒住马的脖子；马轭把力转到肩膀上','动画为主','l','待策划','中国很早就有胸带挽具，适合放在欧洲中世纪早期'],
+ [5,'逆风航行','帆船为什么能逆风前进？','帆产生升力，龙骨抵消侧推，走「之」字形','模型船、电扇','l','待策划'],
+ [5,'热气球','一团热空气，怎么把人带上天？','热空气密度小，受到浮力','塑料袋、吹风机（不用明火）','m','待策划'],
+ [6,'摆钟','摆一次的时间为什么只看摆长？','摆的等时性：周期和摆幅基本无关','绳子、重物、计时器','l','待策划'],
+ [6,'温度计','怎样从零定义「一度」？','热胀冷缩 + 两个固定点（冰水和沸水）','细玻璃管、色水','l','待策划'],
+ [6,'用影子测地球','一根杆子，怎么量出地球有多大？','两地同一时刻的影子角度差','杆子、两地日影照片','l','待策划'],
+ [6,'数字与 0','为什么换了写法，算账就变快了？','位值制：同一个数字放在不同位置代表不同大小','纸、笔','l','待策划'],
+ [6,'复式记账','怎样让账永远算不错？','每笔账同时记两边，两边总数必须相等','账本示意','l','待策划'],
+ [6,'光学电报','不用电，怎么把消息传到百里之外？','编码 + 中继站接力','旗子、手电','l','待策划'],
+ [7,'指南鱼','不用磁石，北宋人怎么让铁片指南？','热剩磁：烧红后冷却时按周围磁场磁化。学界对磁场来自地磁场还是铁钳有争议，用四组对照实验检验','无镚层薄钢片、铁钳、铜夹子、卡式炉、指南针','m','方案和动画已完成','和第一卷同在北宋（《武经总要》有记载），可作为第一卷的前传'],
+ [7,'卓筒井','没有钢铁钻机，北宋人怎么打出很深的盐井？','重锤反复下落冲击岩石；竹筒做井壁和汲卤筒，筒底单向阀只进不出','动画为主；竹筒单向阀可以做模型','l','待策划','接 A 线「制盐」'],
+ [7,'活字印刷','一千年前，怎么不靠电脑排出一本书？','把字拆成能反复使用的单元；用松脂、蜡和纸灰固定在铁板上，加热就能拆下','黏土或橡皮刻字、印泥、纸','l','待策划','沈括在《梦溪笔谈》里记录了毕昇的方法'],
+ [7,'水排','一条河，怎么替人拉风箱？','水轮的转动经过曲柄连杆，变成来回的推拉','纸板模型 + 动画','l','待策划','东汉杜诗；接 A 线「水车发电」「炼铁」'],
+ [7,'都江堰','两千多年前修的水利工程，为什么至今还在用？','顺着地形和弯道水流，自动分水、排沙，不靠大坝拦水','沙盘：托盘、沙子、水','l','待策划'],
+ [7,'赵州桥','一千四百年的石拱桥，两肩为什么要开四个小拱？','敞肩拱：减轻桥身自重，洪水时还能让水从小拱流过','纸板或积木拱桥模型','l','待策划'],
+ [7,'榫卯','不用一根钉子，木头为什么能咬得这么紧？','靠形状互相卡住和木材摩擦受力，还能吸收晃动','榫卯积木','l','待策划'],
+ [7,'被中香炉','在被窝里滚来滚去，香炉为什么洒不出来？','几层互相垂直的圆环各自转动，炉身重心始终朝下；今天船用罗盘、相机稳定器的常平架就是这个原理','纸环或铁丝模型','l','待策划','西汉；接 A 线机械卷'],
+ [7,'鱼洗','搓一搓盆耳，水为什么会喷起来？','摩擦让盆壁振动形成驻波，振动最强的地方把水激起','鱼洗仿品','l','待策划'],
+ [7,'透光镜','实心铜镜，为什么能把背面的花纹「照」到墙上？','镜面有肉眼看不出的微小起伏，反射光把它放大','动画为主','l','待策划','西汉'],
+ [7,'一钟双音','同一口编钟，敲两个位置为什么音不同？','合瓦形的截面让两种振动分开，各发一个音','动画 + 授权录音','l','待策划','战国曾侯乙编钟'],
+ [7,'冰鉴与藏冰','没有冰箱，古人夏天怎么吃上冰？','冬天采冰，地窖里用稻草隔热，减慢融化','冰块、稻草、对照箱','l','待策划','接 A 线「蒸发冷却罐」'],
+ [7,'漏刻','没有钟表，怎么把一天分得很准？','多级水壶让最下面一级的水位几乎不变，流速也就稳定','几个塑料瓶串联','l','待策划','接 A 线「摆钟」'],
+ [7,'豆腐点卤','一锅豆浆，加一点卤水为什么就凝固了？','盐卤或石膏让蛋白质聚成网，把水锁在里面','豆浆、盐卤或石膏、锅','l','待策划'],
+ [7,'酿酒与酿醋','同一缸粮食，怎么先变成酒、再变成醋？','酵母把糖变成酒精，醋酸菌再把酒精变成醋酸','米酒、纱布、玻璃罐','l','待策划'],
+ [7,'瓷器','同样是泥，瓷为什么比陶硬、还不吸水？','特定的瓷土加上更高的烧成温度，让内部玻化','去窑口或工坊拍','h','待策划','接 A 线「木炭与制陶」'],
+ [7,'指南车','车怎么转弯，车上木人的手都一直指南？','差动齿轮：左右轮转动的差值，正好抵消车身的转向','齿轮或积木模型','l','待策划','原物失传，要说明讲的是复原方案'],
+ [7,'张衡地动仪','它真的能测出远方的地震吗？','原物失传，只有文字记载；比较几种复原方案各自的依据','动画为主','l','待策划','复原方案有争议，要讲清楚证据的边界']
+];
+const SAFE={l:['安全','s-low'],m:['需注意','s-mid'],h:['只用动画或工坊','s-high']};
+let fv='all',fs='all';
+try{fv=localStorage.getItem('mp-fv')||'all';fs=localStorage.getItem('mp-fs')||'all'}catch(e){}
+function btns(el,opts,cur,cb){el.innerHTML='';const l=document.createElement('span');l.className='lbl';l.textContent=el.id==='fv'?'卷':'安全';el.appendChild(l);
+ opts.forEach(([v,t])=>{const b=document.createElement('button');b.type='button';b.textContent=t;b.setAttribute('aria-pressed',String(v===cur));b.onclick=()=>{cb(v);};el.appendChild(b);});}
+function draw(){
+ btns(document.getElementById('fv'),[['all','全部'],...V.map((v,i)=>[String(i),v])],fv,v=>{fv=v;save();draw();});
+ btns(document.getElementById('fs'),[['all','全部'],['l','安全'],['m','需注意'],['h','只用动画或工坊']],fs,v=>{fs=v;save();draw();});
+ const c=document.getElementById('fs');const cnt=document.createElement('span');cnt.className='count';c.appendChild(cnt);
+ const box=document.getElementById('cards');box.innerHTML='';let n=0;
+ T.forEach(t=>{if(fv!=='all'&&String(t[0])!==fv)return;if(fs!=='all'&&t[5]!==fs)return;n++;
+  const s=SAFE[t[5]];const a=document.createElement('article');a.className='card';
+  a.innerHTML=`<div class="top"><span class="vol"></span><span class="pill ${s[1]}">${s[0]}</span></div><h3></h3><p class="hook"></p><dl><dt>原理</dt><dd class="p"></dd><dt>道具</dt><dd class="r"></dd><dt>状态</dt><dd><span class="st"></span></dd></dl>${t[7]?'<p class="era"></p>':''}`;
+  a.querySelector('.vol').textContent=V[t[0]];a.querySelector('h3').textContent=t[1];a.querySelector('.hook').textContent=t[2];
+  a.querySelector('.p').textContent=t[3];a.querySelector('.r').textContent=t[4];a.querySelector('.st').textContent=t[6];
+  if(t[7])a.querySelector('.era').textContent=(t[0]===7?'说明：':'时代提醒：')+t[7];box.appendChild(a);});
+ cnt.textContent=n+' 个选题';}
+function save(){try{localStorage.setItem('mp-fv',fv);localStorage.setItem('mp-fs',fs)}catch(e){}}
+draw();
+document.querySelectorAll('.next input').forEach(function(i){
+  try{i.checked=localStorage.getItem('mp4-'+i.id)==='1'}catch(e){}
+  i.addEventListener('change',function(){try{localStorage.setItem('mp4-'+i.id,i.checked?'1':'0')}catch(e){}});
+});
+})();
+</script>

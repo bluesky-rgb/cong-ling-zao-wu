@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>磁生电拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: same workshop-notebook system as 从零造电. Shot cards in a 2-col grid on iPad landscape, 1-col on phone; sticky filter bar for shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --card-soft:#e6e9ea;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--card-soft:#262f33;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--card-soft:#262f33;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+.wrap{max-width:980px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 20px;display:grid;gap:12px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(20px,3.4vw,26px);font-weight:500;max-width:30em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;margin-top:6px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 8px;display:grid;gap:16px;margin-top:20px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:40em}
+/* ladder */
+.ladder{display:grid;gap:8px}
+.step{display:grid;grid-template-columns:48px minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px}
+.step .n{font-family:var(--display);font-weight:900;font-size:30px;color:var(--copper);line-height:1}
+.step .myth{font-size:14px;color:var(--muted)}
+.step .myth s{color:var(--muted)}
+.step .fix{font-size:15px}
+/* filter */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);padding-block:10px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;border-bottom:1px solid var(--line)}
+.bar .lbl{font-size:13px;color:var(--muted);margin-right:4px}
+button{font:inherit;font-size:14px;color:var(--ink);background:var(--sheet);border:1px solid var(--line);border-radius:999px;padding:6px 14px;cursor:pointer;min-height:36px}
+button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+.count{font-family:var(--mono);font-size:12px;color:var(--muted);margin-left:auto}
+/* shots */
+.chap{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--copper);grid-column:1/-1;padding-top:8px}
+.shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr));gap:12px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:14px;display:grid;gap:8px;min-width:0;align-content:start}
+.shot .top{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.shot .no{font-family:var(--display);font-weight:900;font-size:22px}
+.shot .tc{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.tag{font-size:12px;border-radius:4px;padding:2px 8px;font-weight:500;margin-left:auto}
+.t-real{background:var(--copper-soft);color:var(--copper)}
+.t-anim{background:var(--field-soft);color:var(--field)}
+.t-card{background:var(--card-soft);color:var(--ink)}
+.shot .pic{font-size:15px}
+.shot .vo{font-family:var(--display);font-size:16px;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+.shot .goal{font-size:13px;color:var(--muted)}
+.shot .goal b{color:var(--ink);font-weight:500}
+.shot .how{font-size:13px;color:var(--muted);background:var(--paper);border-radius:6px;padding:6px 10px}
+/* tables */
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:640px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+/* ipad flow */
+ol.flow{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;counter-reset:f}
+ol.flow li{counter-increment:f;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px;font-size:14px;line-height:1.6;min-width:0}
+ol.flow li::before{content:counter(f);display:block;font-family:var(--display);font-weight:900;font-size:24px;color:var(--copper);line-height:1.2}
+ol.flow b{display:block;font-size:15px}
+/* image cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,200px),1fr));gap:12px}
+.ic{aspect-ratio:3/4;max-width:100%;background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:8px}
+.ic .k{font-family:var(--mono);font-size:11px;color:var(--copper);letter-spacing:.08em}
+.ic .big{font-family:var(--display);font-weight:900;font-size:19px;line-height:1.35}
+.ic .small{font-size:13px;color:var(--muted)}
+.ic .src{margin-top:auto;font-size:12px;color:var(--field);border-top:1px dashed var(--line);padding-top:6px}
+blockquote{margin:0;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:14px 16px;font-size:15px;display:grid;gap:10px}
+.copy{justify-self:start;border-radius:6px}
+pre{margin:0;font-family:var(--mono);font-size:13px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;overflow-x:auto;line-height:1.7}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px}
+ul.plain{margin:0;padding-left:1.2em;font-size:14px;display:grid;gap:4px}
+.check label{display:flex;gap:10px;align-items:flex-start;font-size:14px;padding:6px 0;border-bottom:1px dashed var(--line)}
+.check input{width:20px;height:20px;accent-color:var(--copper);flex:none;margin-top:3px}
+footer{font-size:13px;color:var(--muted);display:grid;gap:6px}
+footer li{overflow-wrap:anywhere}
+</style>
+
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../electricity/">从零造电</a><a href="../ep04/">磁生电拍摄本</a><a href="../ep04/voice.html">磁生电旁白稿</a><a href="../b1/">指南鱼拍摄本</a><a href="../#videos">视频</a></nav>
+<header>
+  <div class="eyebrow">从零造电 · 第 04 集 · 拍摄本</div>
+  <h1>磁生电</h1>
+  <p class="thesis">磁场本身不发电，变化的磁场才发电。</p>
+  <div class="facts">
+    <div><span>暂定标题</span>磁铁就在线圈里，为什么不发电？</div>
+    <div><span>平台与画幅</span>B站 / YouTube · 16:9 横屏</div>
+    <div><span>时长</span>约 10 分钟 · 20 个镜头</div>
+    <div><span>观众看完能做到</span>说出「电压 = 匝数 × 磁通量变化的快慢」，并解释发电机为什么要转</div>
+  </div>
+</header>
+
+<section>
+  <h2>理解路径</h2>
+  <p class="lead">不直接给结论。每一级先说出观众最常见的误解，再用一段素材当场打破它，让观众亲眼看到自己是怎么想通的。</p>
+  <div class="ladder">
+    <div class="step"><div class="n">1</div><div><p class="myth">误解：<s>电和磁是两回事</s></p><p class="fix">通电导线拨动指南针 → 电能生磁</p></div></div>
+    <div class="step"><div class="n">2</div><div><p class="myth">误解：<s>把磁铁放进线圈就有电</s></p><p class="fix">磁铁静止放在线圈里，指针一动不动 → 制造悬念</p></div></div>
+    <div class="step"><div class="n">3</div><div><p class="myth">误解：<s>磁铁越强，电越多</s></p><p class="fix">慢插和快插分屏对比 → 关键是快慢</p></div></div>
+    <div class="step"><div class="n">4</div><div><p class="myth">误解：<s>磁感线是真实存在的线</s></p><p class="fix">动画中给穿过线圈的磁感线计数 → 磁通量是可以数的「根数」</p></div></div>
+    <div class="step"><div class="n">5</div><div><p class="myth">误解：<s>推拉一下就够了</s></p><p class="fix">手摇磁铁旋转 + 波形 → 发电机必须转</p></div></div>
+  </div>
+</section>
+
+<section>
+  <h2>分镜</h2>
+  <p class="lead">拍摄当天按素材类型筛选：先集中拍完全部实拍，再录动画，最后做字幕卡。</p>
+  <div class="bar" role="group" aria-label="按素材筛选">
+    <span class="lbl">素材</span>
+    <button id="f-all" aria-pressed="true" data-f="all">全部</button>
+    <button id="f-real" aria-pressed="false" data-f="real">实拍</button>
+    <button id="f-anim" aria-pressed="false" data-f="anim">动画</button>
+    <button id="f-card" aria-pressed="false" data-f="card">字幕卡</button>
+    <span class="count" id="count"></span>
+  </div>
+  <div class="shots" id="shots"></div>
+</section>
+
+<section>
+  <h2>素材清单</h2>
+  <p class="lead">实拍负责「让人相信」，动画负责「让人看见看不见的东西」，字幕卡负责「让人停下来想」。能实拍的现象，就不要用动画代替。</p>
+  <h3>实拍器材</h3>
+  <div class="tw"><table>
+    <thead><tr><th>器材</th><th>镜头</th><th>目的</th><th>怎么准备 / 怎么拍</th></tr></thead>
+    <tbody>
+      <tr><td>钕磁铁棒（直径约 1 cm）</td><td>1–2、7–9、13</td><td>指针偏转明显，镜头里看得清</td><td>网购即可；口播一句「古代用磁石，效果更弱」</td></tr>
+      <tr><td>天然磁石一块</td><td>4</td><td>对应「古代能找到什么」的设定</td><td>只拍特写当道具，实验仍用钕磁铁</td></tr>
+      <tr><td>漆包线线圈：5 匝、50 匝、200 匝各一个</td><td>7–9、13</td><td>让匝数成为看得见的变量</td><td>绕在纸管上；线头用砂纸磨掉漆层后再接线</td></tr>
+      <tr><td>指针式灵敏电流计</td><td>1–2、7–9</td><td>指针摆动能直接看出方向，比数字更直观</td><td>必须用指针式，不要用数字万用表</td></tr>
+      <tr><td>指南针 + 电池 + 导线</td><td>5</td><td>重现奥斯特实验</td><td>导线沿南北方向放在指南针正上方；只能短时间接通，导线会发热</td></tr>
+      <tr><td>手摇旋转磁铁支架 + 小灯泡或 LED</td><td>16</td><td>把原理变成一台「机器」</td><td>自制更有说服力；用 LED 时要把转速拍出来</td></tr>
+      <tr><td>木桌、粗布、陶碗</td><td>全片</td><td>统一「穿越工坊」的视觉风格</td><td>画面里不要出现塑料和商标</td></tr>
+    </tbody>
+  </table></div>
+  <h3>动画与字幕</h3>
+  <div class="tw"><table>
+    <thead><tr><th>素材</th><th>镜头</th><th>目的</th><th>在 iPad 上怎么做</th></tr></thead>
+    <tbody>
+      <tr><td>「从零造电」网页录屏</td><td>4、11、19</td><td>复用已有的互动演示，系列风格保持一致</td><td>控制中心「屏幕录制」；iPad 横放，双指放大到只剩演示区；录前打开勿扰模式</td></tr>
+      <tr><td>磁感线计数动画</td><td>10</td><td>把磁通量变成可以数的根数</td><td>由我做成可播放的网页，你在 Safari 里打开后录屏</td></tr>
+      <tr><td>导线内的电子动画</td><td>14</td><td>展示看不见的本质：洛伦兹力</td><td>同上；电子用蓝点表示，受力方向用铜色箭头</td></tr>
+      <tr><td>公式卡</td><td>12</td><td>公式里的每个符号都对应一个已拍过的镜头</td><td>Keynote 制作；符号高亮时，在角落小窗回放对应的实拍片段</td></tr>
+      <tr><td>问题字幕卡</td><td>3、6、15</td><td>让观众停下来猜，带动弹幕互动</td><td>Keynote 做全屏大字，停留 2 秒，配「叮」声</td></tr>
+      <tr><td>音效</td><td>全片</td><td>让指针跳动有声音反馈</td><td>指针跳动时配「咔哒」声；出现反常的那一刻切成静音</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>iPad 制作流程</h2>
+  <p class="lead">不需要电脑，全部都能在 iPad 上完成。</p>
+  <ol class="flow">
+    <li><b>实拍</b>用 iPhone 或 iPad 后置摄像头俯拍；镜头 2 用「慢动作」模式。</li>
+    <li><b>动画</b>镜头 10、14、17 由我做成网页，你在 Safari 里打开并「屏幕录制」。</li>
+    <li><b>字幕卡</b>用 Keynote 制作，导出为视频或图片。</li>
+    <li><b>旁白</b>用领夹麦或耳机麦克风，在剪辑软件里直接录。</li>
+    <li><b>剪辑</b>剪映、LumaFusion 或 iPad 版 Final Cut Pro；镜头 7–8 的分屏用「画中画」拼。</li>
+    <li><b>图文</b>从剪辑软件导出截帧，套进下面 8 张卡片的版式。</li>
+  </ol>
+</section>
+
+<section>
+  <h2>图文版</h2>
+  <p class="lead">8 张 3:4 竖版卡片（小红书、公众号、微博通用），一张卡片讲一个台阶。画面都用视频里的截帧，这样图文和视频用的是同一套证据。</p>
+  <div class="cards">
+    <div class="ic"><span class="k">1 · 封面</span><p class="big">磁铁就在线圈里，为什么不发电？</p><p class="small">穿越古代造电 · 第 4 步</p><p class="src">镜头 1 截帧</p></div>
+    <div class="ic"><span class="k">2 · 前提</span><p class="big">电能生磁</p><p class="small">1820 年，奥斯特用通电导线拨动了指南针。</p><p class="src">镜头 5 截帧</p></div>
+    <div class="ic"><span class="k">3 · 猜想</span><p class="big">那磁能生电吗？</p><p class="small">先猜一下：把磁铁放进线圈，会有电吗？</p><p class="src">问号大字卡</p></div>
+    <div class="ic"><span class="k">4 · 反常</span><p class="big">不动，就没电</p><p class="small">等了 5 秒，指针一动不动。</p><p class="src">镜头 7 分屏截帧</p></div>
+    <div class="ic"><span class="k">5 · 关键</span><p class="big">越快，电越多</p><p class="small">慢插时指针微动，快插时指针猛跳。</p><p class="src">镜头 8 左右对比</p></div>
+    <div class="ic"><span class="k">6 · 规律</span><p class="big">电压 = 匝数 × 变化的快慢</p><p class="small">磁通量最大时，电压反而是 0。</p><p class="src">镜头 11 曲线截图</p></div>
+    <div class="ic"><span class="k">7 · 本质</span><p class="big">是磁场在推电子</p><p class="small">导线里的自由电子受洛伦兹力，被推向一端。</p><p class="src">镜头 14 动画截帧</p></div>
+    <div class="ic"><span class="k">8 · 结论</span><p class="big">所以发电机必须转</p><p class="small">下一步：用水车带动磁铁，造一台古代发电机。</p><p class="src">镜头 16 截帧 + 网页链接</p></div>
+  </div>
+  <h3>配套正文</h3>
+  <blockquote id="post">
+    <p>把一块强磁铁插进线圈，接上电流表——指针一动不动。但只要把磁铁快速抽出来，指针就会猛跳。</p>
+    <p>秘密在于：磁场本身不发电，变化的磁场才发电。变得越快、线圈绕得越多，电压就越高。这就是 1831 年法拉第发现的电磁感应。</p>
+    <p>所以，假如穿越到古代想发电，光有磁石不够，还得让它一直动起来——这就是发电机必须旋转的原因。</p>
+    <p>互动网页可以自己调速度和匝数，链接在评论区。</p>
+    <p>#物理 #电磁感应 #科普 #穿越造物 #法拉第</p>
+    <button class="copy" id="copyBtn">复制正文</button>
+  </blockquote>
+</section>
+
+<section>
+  <h2>发布</h2>
+  <div class="two">
+    <div style="display:grid;gap:10px;min-width:0">
+      <h3>简介里的章节时间戳</h3>
+      <pre id="ts">00:00 磁铁在线圈里却不发电
+00:40 前情：电能生磁
+01:10 磁能生电吗？
+02:00 关键是快慢
+03:10 磁通量是什么
+04:40 法拉第定律
+06:00 导线里发生了什么
+07:00 为什么发电机必须转
+09:20 下集预告</pre>
+      <button class="copy" id="copyTs">复制时间戳</button>
+      <h3>安全提示（视频字幕和简介里都要写）</h3>
+      <ul class="plain">
+        <li>钕磁铁吸力很强，两块相撞可能夹伤手指，磁铁也可能崩裂；远离心脏起搏器、手机和银行卡</li>
+        <li>镜头 5 的电池接法接近短路，只能短时间接通，导线会发热</li>
+        <li>不要用家用电做任何演示</li>
+      </ul>
+    </div>
+    <div class="check" style="min-width:0">
+      <h3>发布前自查</h3>
+      <label><input type="checkbox" id="c1">镜头 7 实拍时确实等了 5 秒以上，指针始终不动</label>
+      <label><input type="checkbox" id="c2">镜头 13 的匝数对比中，电压变化在画面里清晰可见</label>
+      <label><input type="checkbox" id="c3">历史日期和人名与下方来源一致</label>
+      <label><input type="checkbox" id="c4">简介附上「从零造电」互动网页链接</label>
+      <label><input type="checkbox" id="c5">封面使用镜头 1 的特写，配大字问句</label>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>来源</h2>
+  <footer><ol>
+    <li><a href="https://archive.copper.org/education/history/60centuries/electrical/faradays.php">Copper Development Association：Faraday's Famous Ten Days</a>（1831 年铁环与铜盘实验）</li>
+    <li><a href="https://graphsearch.epfl.ch/en/concept/65888">EPFL Graph Search：Electromagnetic induction</a>（磁铁插拔线圈产生瞬时电流）</li>
+    <li><a href="https://aps.org/apsnews/2008/07/1820-oersted-electromagnetism">APS News：July 1820, Oersted &amp; Electromagnetism</a></li>
+    <li><a href="https://nationalmaglab.org/magnet-academy/watch-play/interactive-tutorials/pixii-machine/">National MagLab：Pixii Machine</a></li>
+    <li><a href="https://k12.libretexts.org/Bookshelves/Science_and_Technology/Physics/19%3A_Electromagnetism/19.05%3A_Lenz's_Law">LibreTexts：Lenz's Law</a></li>
+  </ol></footer>
+</section>
+</div>
+
+<script>
+(function(){
+const S=[
+ ['开场 · 反常','0:00',1,'real','磁铁静止插在线圈中，电流表特写，指针为 0','「这块磁铁就在线圈里，为什么一点电都没有？」','3 秒内抛出反常，留住观众','微距俯拍，对焦锁在指针上'],
+ ['开场 · 反常','0:06',2,'real','快速抽出磁铁，指针猛跳','「但我一抽——」配金属摩擦音效','用对比制造悬念','「慢动作」模式拍摄'],
+ ['开场 · 反常','0:12',3,'card','字幕卡：「磁场不发电，变化才发电」','「今天只讲这一句话。」','交代本集核心','Keynote 全屏大字'],
+ ['开场 · 反常','0:20',4,'anim','科技树：前 3 步亮起，第 4 步闪烁','「上集我们用电堆做出了电磁铁……」','告诉观众这集在系列里的位置','已渲染成视频：片头_第04集.mp4'],
+ ['台阶 1 · 电能生磁','0:40',5,'real','电堆 + 导线 + 指南针，接通电流的瞬间','「1820 年，奥斯特发现：电能生磁。」','建立前提','导线沿南北方向放在指南针正上方，俯拍'],
+ ['台阶 2 · 制造悬念','1:10',6,'card','字幕问题：「那反过来，磁能生电吗？」','「先停一下，你觉得呢？」','引导观众用弹幕猜','停留 2 秒，配「叮」声'],
+ ['台阶 2 · 制造悬念','1:20',7,'real','线圈接电流表，磁铁放进去不动，等 5 秒','「很多人以为放进去就行。等等……」','让误解当场失效','两个机位：左边拍磁铁，右边拍指针，剪辑时用画中画拼'],
+ ['台阶 3 · 关键是快慢','2:00',8,'real','慢插 vs 快插，左右分屏同时播放','「同一块磁铁，插得越快，指针跳得越高。」','把变量锁定在「快慢」','两条分开拍，剪辑时对齐'],
+ ['台阶 3 · 关键是快慢','2:40',9,'real','插入和拔出对比，指针分别向左、向右偏','「方向也反了——记住这个，后面要用。」','埋下交流电的伏笔','指针特写'],
+ ['台阶 4 · 磁通量','3:10',10,'anim','磁感线动画，线圈里的计数器随之变化','「把穿过线圈的磁感线当成根数来数。」','把抽象的磁通量变成可数的东西','由我做成网页，你录屏'],
+ ['台阶 4 · 磁通量','3:50',11,'anim','网页第 04 章：磁通量曲线和电压曲线上下对照','「磁通量最大的时候，电压反而是 0。」','解释开头的反常，形成闭环','录「从零造电」第 04 章演示'],
+ ['台阶 4 · 磁通量','4:40',12,'card','公式卡：ε = −N · ΔΦ / Δt，各符号依次高亮','「电压 = 匝数 × 磁通量变化的快慢。」','给出规律层的完整表达','Keynote；高亮时角落小窗回放对应的实拍'],
+ ['台阶 4 · 磁通量','5:20',13,'real','5 匝和 50 匝线圈，用同样速度插入磁铁','「多绕几圈，电压就翻倍。」','验证公式里的 N','两个线圈并排放，同一个机位拍'],
+ ['本质层','6:00',14,'anim','导线内部电子动画：电子被推向导线一端','「为什么会这样？把镜头放大到导线里面……」','讲清本质：洛伦兹力','由我做成网页，你录屏'],
+ ['台阶 5 · 必须转','7:00',15,'card','字幕：「一直推拉太累了，怎么办？」','「要持续发电，就得让磁通量一直变。」','从原理推出下一步设计','Keynote 全屏大字'],
+ ['台阶 5 · 必须转','7:20',16,'real','手摇磁铁旋转扫过线圈，小灯泡一闪一闪','「转起来——这就是发电机的雏形。」','让原理变成一台机器','侧面 45° 打光，同时拍出转速和灯泡'],
+ ['台阶 5 · 必须转','8:10',17,'anim','交流电波形动画，正负交替','「还记得指针会反向吗？这就是交流电。」','回收镜头 9 的伏笔','录「从零造电」第 05 章'],
+ ['收尾','8:50',18,'anim','1831 年法拉第铁环实验示意图','「这个问题他从一八二五年起就在琢磨，好几年都没有找到答案。」','让观众感到自己走了和法拉第同一条路','已渲染成视频：镜头18_法拉第铁环.mp4'],
+ ['收尾','9:20',19,'anim','科技树：第 4 步亮起，第 5 步出现问号','「下集：为什么接上灯泡，手柄就变沉了？」','为下一集留钩子','已渲染成视频：片尾_第04集.mp4'],
+ ['收尾','9:45',20,'card','网页二维码和链接','「简介里可以自己动手调参数。」','把观众引到互动页面','Keynote 制作']
+];
+const TAG={real:['实拍','t-real'],anim:['动画','t-anim'],card:['字幕卡','t-card']};
+const box=document.getElementById('shots'),cnt=document.getElementById('count');
+function esc(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+function render(f){let h='',last='',n=0;S.forEach(s=>{if(f!=='all'&&s[3]!==f)return;n++;if(s[0]!==last){h+=`<div class="chap">${esc(s[0])}</div>`;last=s[0];}
+ const t=TAG[s[3]];h+=`<article class="shot"><div class="top"><span class="no">镜头 ${s[2]}</span><span class="tc">${s[1]}</span><span class="tag ${t[1]}">${t[0]}</span></div><p class="pic">${esc(s[4])}</p><p class="vo">${esc(s[5])}</p><p class="goal"><b>目的</b>　${esc(s[6])}</p><p class="how">${esc(s[7])}</p></article>`;});
+ box.innerHTML=h;cnt.textContent=n+' 个镜头';}
+let cur='all';try{cur=localStorage.getItem('ep4f')||'all'}catch(e){}
+document.querySelectorAll('.bar button').forEach(b=>{b.setAttribute('aria-pressed',b.dataset.f===cur);b.onclick=()=>{cur=b.dataset.f;document.querySelectorAll('.bar button').forEach(x=>x.setAttribute('aria-pressed',x===b));render(cur);try{localStorage.setItem('ep4f',cur)}catch(e){}};});
+render(cur);
+function copier(btn,getText){btn.onclick=()=>{const t=getText();const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=btn.dataset.l,1500)};btn.dataset.l=btn.dataset.l||btn.textContent;
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,()=>sel())}else sel();
+ function sel(){const r=document.createRange();r.selectNodeContents(btn.closest('blockquote,div'));const s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='已选中，请手动复制';}};}
+copier(document.getElementById('copyBtn'),()=>[...document.querySelectorAll('#post p')].map(p=>p.textContent).join('\n\n'));
+copier(document.getElementById('copyTs'),()=>document.getElementById('ts').textContent);
+document.querySelectorAll('.check input').forEach(i=>{try{i.checked=localStorage.getItem('ep4'+i.id)==='1'}catch(e){}i.onchange=()=>{try{localStorage.setItem('ep4'+i.id,i.checked?'1':'0')}catch(e){}};});
+})();
+</script>

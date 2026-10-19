@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>从零造电</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a workshop notebook. One reading column, each chapter = phenomenon → three layers of why → ancient materials → design decisions → bench demo. Copper accent, field-blue secondary. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --spark:#e8a317;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#12181b; --sheet:#1a2226; --ink:#e3eaec; --muted:#97a6ab; --line:#2c383d;
+  --copper:#e08a52; --copper-soft:#3a281d; --field:#6fb0de; --field-soft:#1c3040; --spark:#f2bd45; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#12181b; --sheet:#1a2226; --ink:#e3eaec; --muted:#97a6ab; --line:#2c383d;
+  --copper:#e08a52; --copper-soft:#3a281d; --field:#6fb0de; --field-soft:#1c3040; --spark:#f2bd45; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.8;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+.wrap{max-width:740px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+a{color:var(--field)}
+header{padding-block:48px 28px;display:grid;gap:14px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(40px,9vw,64px);font-weight:900;letter-spacing:.02em}
+.lede{font-size:18px;color:var(--muted);max-width:34em;margin:0}
+.formula{font-family:var(--mono);font-size:14px;color:var(--ink);background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:10px 14px;display:inline-block}
+nav.tree{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-block:8px 32px}
+nav.tree a{display:flex;gap:8px;align-items:baseline;text-decoration:none;color:var(--ink);background:var(--sheet);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:14px}
+nav.tree a:hover,nav.tree a:focus-visible{border-color:var(--copper);outline:none}
+nav.tree b{font-family:var(--mono);font-weight:600;color:var(--copper);font-size:12px}
+nav.tree .arr{color:var(--muted);font-size:13px}
+section.ch{border-top:2px solid var(--ink);padding-block:28px 12px;display:grid;gap:18px}
+.chhead{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:end}
+.num{font-family:var(--display);font-weight:900;font-size:56px;line-height:.9;color:var(--copper)}
+h2{font-size:clamp(24px,5vw,30px);font-weight:900}
+.meta{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.04em}
+h3{font-size:17px;font-weight:500;display:flex;gap:8px;align-items:baseline}
+h3 .tag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+p{margin:0}
+.why{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.why li{display:grid;grid-template-columns:3.2em minmax(0,1fr);gap:10px}
+.why .lv{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:4px;letter-spacing:.04em}
+.mats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.mat{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:10px 12px;font-size:14px;line-height:1.6;min-width:0}
+.mat b{display:block;font-weight:700;margin-bottom:2px}
+.dec{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.dec li{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:10px;align-items:center;font-size:14px;line-height:1.6;padding:8px 0;border-bottom:1px dashed var(--line)}
+.dec .to{color:var(--copper);font-family:var(--mono)}
+.bench{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:14px;display:grid;gap:12px}
+.bench .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+canvas{width:100%;height:auto;display:block;border-radius:6px;background:var(--paper)}
+.ctrl{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;font-size:14px}
+.ctrl label{display:flex;gap:8px;align-items:center;flex:1 1 220px;color:var(--muted)}
+.ctrl input[type=range]{flex:1;accent-color:var(--copper);min-width:0}
+.ctrl output{font-family:var(--mono);color:var(--ink);min-width:2.5em;font-size:13px}
+button{font:inherit;font-size:14px;color:var(--ink);background:transparent;border:1px solid var(--muted);border-radius:6px;padding:6px 14px;cursor:pointer}
+button:hover{border-color:var(--copper);color:var(--copper)}
+button:focus-visible,input:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+button[aria-pressed="true"]{background:var(--copper-soft);border-color:var(--copper);color:var(--copper)}
+.readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px}
+.readout div{background:var(--paper);border-radius:6px;padding:6px 10px}
+.readout span{display:block;font-size:12px;color:var(--muted)}
+.readout strong{font-family:var(--mono);font-size:18px;font-weight:600;font-variant-numeric:tabular-nums}
+.note{font-size:13px;color:var(--muted);line-height:1.6}
+.hist{font-size:14px;color:var(--muted);border-left:3px solid var(--field);padding-left:12px;border-radius:0}
+.src{font-size:12px;color:var(--muted)}
+.src a{font-family:var(--mono)}
+footer{border-top:2px solid var(--ink);margin-top:24px;padding-top:20px;display:grid;gap:10px}
+footer ol{margin:0;padding-left:1.4em;font-size:13px;line-height:1.7;color:var(--muted)}
+footer li{overflow-wrap:anywhere}
+@media (max-width:520px){.dec li{grid-template-columns:1fr;gap:2px}.dec .to{transform:rotate(90deg);width:1em}.num{font-size:44px}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../electricity/">从零造电</a><a href="../ep04/">磁生电拍摄本</a><a href="../ep04/voice.html">磁生电旁白稿</a><a href="../b1/">指南鱼拍摄本</a><a href="../#videos">视频</a></nav>
+<header>
+  <div class="eyebrow">文明重建手册 · 第一卷 · 电</div>
+  <h1>从零造电</h1>
+  <p class="lede">假如回到古代，手边只有琥珀、陶罐、铜、盐水和天然磁石，怎样一步步造出一台发电机？每一步都先讲清楚“为什么会这样”，再讲“所以要这样做”。</p>
+  <div class="formula">贯穿全卷的一条规律：ε = −N · ΔΦ / Δt</div>
+</header>
+
+<nav class="tree" aria-label="科技树">
+  <a href="#c1"><b>01</b>摩擦起电</a><span class="arr">→</span>
+  <a href="#c2"><b>02</b>伏打电堆</a><span class="arr">→</span>
+  <a href="#c3"><b>03</b>电生磁</a><span class="arr">→</span>
+  <a href="#c4"><b>04</b>磁生电</a><span class="arr">→</span>
+  <a href="#c5"><b>05</b>手摇发电机</a>
+</nav>
+
+<!-- 01 -->
+<section class="ch" id="c1">
+  <div class="chhead"><div class="num">01</div><div><div class="meta">约公元前600年 → 1745年</div><h2>摩擦起电与莱顿瓶</h2></div></div>
+  <p><b>现象：</b>用毛皮摩擦琥珀，琥珀能吸起稻草和灰尘。古希腊人记下了这个现象，“电”的西方词源就来自希腊语的“琥珀”。</p>
+  <h3>为什么<span class="tag">three layers</span></h3>
+  <ul class="why">
+    <li><span class="lv">现象层</span><span>两种不同材料接触再分开后，一个带正电、一个带负电。摩擦并不是必需的，只是让接触更充分。</span></li>
+    <li><span class="lv">规律层</span><span>不同材料“抓电子”的能力不同，可以排成一张“摩擦起电序列”。两种材料在序列中相距越远，带的电越多。</span></li>
+    <li><span class="lv">本质层</span><span>电子从抓得弱的一方转移到抓得强的一方。至于绝缘体之间具体是怎么转移的，物理学界直到今天仍有争论。</span></li>
+  </ul>
+  <h3>古代材料</h3>
+  <div class="mats">
+    <div class="mat"><b>琥珀 / 毛皮 / 丝绸</b>起电材料。琥珀被毛皮摩擦会带负电。</div>
+    <div class="mat"><b>玻璃瓶或釉面陶罐</b>做绝缘层。莱顿瓶的关键是“两个导体，中间隔一层绝缘体”。</div>
+    <div class="mat"><b>金箔或锡箔</b>贴在瓶的内壁和外壁，作为两个导体。最早的莱顿瓶直接用水当内导体。</div>
+  </div>
+  <h3>原理 → 设计决策</h3>
+  <ul class="dec">
+    <li><span>电荷会从人手漏走</span><span class="to">→</span><span>用绝缘把手握持，天气干燥时做实验</span></li>
+    <li><span>摩擦得到的电很快散掉</span><span class="to">→</span><span>做莱顿瓶，用绝缘层把正负电荷隔开存起来</span></li>
+    <li><span>导体面积越大，存得越多</span><span class="to">→</span><span>多个瓶子并联，富兰克林把这叫作“电池”</span></li>
+  </ul>
+  <div class="bench">
+    <div class="lbl">工作台 · 摩擦、存电、放电</div>
+    <canvas id="cv1" width="680" height="220"></canvas>
+    <div class="ctrl"><button id="rub">摩擦一次</button><button id="store">存入莱顿瓶</button><button id="zap">放电</button></div>
+    <div class="readout"><div><span>琥珀电荷</span><strong id="r1a">0</strong></div><div><span>瓶中电荷</span><strong id="r1b">0</strong></div><div><span>上次火花</span><strong id="r1c">—</strong></div></div>
+    <p class="note">琥珀本身只能存少量电荷（上限 10）。莱顿瓶可以一次次累积，所以放电时火花大得多。</p>
+  </div>
+  <p class="hist">1745 年，德国的冯·克莱斯特和荷兰莱顿的穆森布罗克各自独立发现了这种储电瓶。穆森布罗克描述自己被电得全身震颤，以为自己要死了。<span class="src"> [3][4]</span></p>
+  <p class="src">局限：静电电压很高，但只能一次性放完，没法持续供电。这就是下一步的动机。来源 [1][2][3][4]</p>
+</section>
+
+<!-- 02 -->
+<section class="ch" id="c2">
+  <div class="chhead"><div class="num">02</div><div><div class="meta">1800年 · 伏打</div><h2>伏打电堆：第一次持续电流</h2></div></div>
+  <p><b>现象：</b>把锌片、浸过盐水的布片、铜片一层层叠起来，用导线连接两端，导线里就会持续有电流流过。</p>
+  <h3>为什么<span class="tag">three layers</span></h3>
+  <ul class="why">
+    <li><span class="lv">现象层</span><span>任何两种不同金属，中间夹上潮湿的导电物质，都能产生电。伽伐尼原以为蛙腿抽动是“动物电”，伏打证明电其实来自金属。</span></li>
+    <li><span class="lv">规律层</span><span>每一组“锌—盐水—铜”是一个电池单元。用盐水时，单元约 0.76 伏；串联叠起来，电压就会相加。</span></li>
+    <li><span class="lv">本质层</span><span>锌比铜更容易失去电子。锌原子变成离子溶进盐水，留下的电子经过外部导线流到铜片，在那里和氢离子结合，生成氢气。</span></li>
+  </ul>
+  <h3>古代材料</h3>
+  <div class="mats">
+    <div class="mat"><b>铜片</b>古代很容易得到，可以用铜钱。</div>
+    <div class="mat"><b>锌片（或铁片）</b>锌比较难冶炼。实在没有的话，可以用铁片代替，电压会低一些。</div>
+    <div class="mat"><b>盐水或醋</b>浸湿皮革、厚纸或布片，作为电解质。</div>
+  </div>
+  <h3>原理 → 设计决策</h3>
+  <ul class="dec">
+    <li><span>单个单元电压很低</span><span class="to">→</span><span>串联叠成一堆，电压逐层相加</span></li>
+    <li><span>叠太高会把下层盐水压出来</span><span class="to">→</span><span>改用“杯冠”：一排盛盐水的杯子</span></li>
+    <li><span>铜片上积累的氢气泡会阻碍反应</span><span class="to">→</span><span>定期取出擦拭，或更换电解液</span></li>
+  </ul>
+  <div class="bench">
+    <div class="lbl">工作台 · 叠电堆</div>
+    <canvas id="cv2" width="680" height="240"></canvas>
+    <div class="ctrl"><label for="cells">单元数<input type="range" id="cells" min="1" max="30" step="1" value="4"><output id="cellsO">4</output></label></div>
+    <div class="readout"><div><span>总电压</span><strong id="r2a">0 V</strong></div><div><span>能做到</span><strong id="r2b" style="font-size:14px">—</strong></div></div>
+    <p class="note">电压按每单元约 0.76 V 估算，没有考虑内阻和气泡造成的损耗。</p>
+  </div>
+  <p class="hist">1800 年 3 月 20 日，伏打写信给伦敦皇家学会，描述了这个装置。很快就有人用它分解了水，开创了电化学。<span class="src"> [5][6]</span></p>
+  <p class="src">来源 [5][6][7]</p>
+</section>
+
+<!-- 03 -->
+<section class="ch" id="c3">
+  <div class="chhead"><div class="num">03</div><div><div class="meta">1820年 · 奥斯特 / 1825年 · 斯特金</div><h2>电生磁：指南针被电流拨动</h2></div></div>
+  <p><b>现象：</b>通电导线放在指南针上方，磁针会偏转，转到和导线垂直的方向。电流反向，磁针也反向偏转。</p>
+  <h3>为什么<span class="tag">three layers</span></h3>
+  <ul class="why">
+    <li><span class="lv">现象层</span><span>电流周围存在磁场。中间隔着木头或玻璃，这种作用也挡不住。</span></li>
+    <li><span class="lv">规律层</span><span>磁感线是绕着导线的一圈圈同心圆，强度和电流大小成正比。把导线绕成线圈，每一圈的磁场叠加起来，就像一根条形磁铁。</span></li>
+    <li><span class="lv">本质层</span><span>运动的电荷会产生磁场。铁芯里有无数“小磁畴”，平时方向杂乱、互相抵消；线圈的磁场会把它们排整齐，所以加了铁芯，磁性会强很多。</span></li>
+  </ul>
+  <h3>古代材料</h3>
+  <div class="mats">
+    <div class="mat"><b>指南针</b>古代中国早就有。它就是这个实验的“检测仪”。</div>
+    <div class="mat"><b>软铁马蹄形铁芯</b>表面涂漆来绝缘。斯特金用的就是这种方法。</div>
+    <div class="mat"><b>丝线缠绕的铜丝</b>早期没有绝缘导线，后来的改进者用丝线把铜丝裹起来。</div>
+  </div>
+  <h3>原理 → 设计决策</h3>
+  <ul class="dec">
+    <li><span>一根导线的磁场很弱</span><span class="to">→</span><span>绕成多匝线圈</span></li>
+    <li><span>铁能把磁场放大</span><span class="to">→</span><span>线圈里加软铁芯，做成电磁铁</span></li>
+    <li><span>裸铜丝紧挨着会短路</span><span class="to">→</span><span>铁芯涂漆、铜丝缠丝，然后才能密绕</span></li>
+  </ul>
+  <div class="bench">
+    <div class="lbl">工作台 · 奥斯特实验</div>
+    <canvas id="cv3" width="680" height="240"></canvas>
+    <div class="ctrl"><button id="sw" aria-pressed="false">接通电流</button><button id="rev">电流反向</button><label for="amp">电流强度<input type="range" id="amp" min="1" max="10" step="1" value="5"><output id="ampO">5</output></label></div>
+    <p class="note">导线沿南北方向放在磁针正上方。断电时磁针指北；通电后，它会在地磁场和电流磁场的共同作用下偏转。</p>
+  </div>
+  <p class="hist">1820 年 4 月，奥斯特在讲课准备时注意到磁针轻轻动了一下，幅度小到听众都没察觉。五年后，斯特金做出一块约 200 克的电磁铁，只用一节电池就吸起了约 4 千克的铁。<span class="src"> [8][9][10]</span></p>
+  <p class="src">来源 [8][9][10]</p>
+</section>
+
+<!-- 04 -->
+<section class="ch" id="c4">
+  <div class="chhead"><div class="num">04</div><div><div class="meta">1831年 · 法拉第</div><h2>磁生电：变化才是关键</h2></div></div>
+  <p><b>现象：</b>磁铁插进线圈或拔出来的瞬间，电流表指针会跳一下；磁铁不动时，指针就不动。</p>
+  <h3>为什么<span class="tag">three layers</span></h3>
+  <ul class="why">
+    <li><span class="lv">现象层</span><span>不是“有磁场”就能发电，而是“磁场在变化”才能发电。法拉第自己的结论是：电只由磁铁的运动产生，静止的磁铁不行。</span></li>
+    <li><span class="lv">规律层</span><span>法拉第电磁感应定律：感应电压 = 匝数 × 磁通量的变化速度。磁通量可以理解为“穿过线圈的磁感线有多少条”。</span></li>
+    <li><span class="lv">本质层</span><span>导线中的自由电子随导线在磁场中运动时，会受到洛伦兹力，被推向导线一端；换个参考系看，变化的磁场会在周围激发出环形电场，推动电子流动。麦克斯韦后来把它写成了他的四个方程之一。</span></li>
+  </ul>
+  <h3>古代材料</h3>
+  <div class="mats">
+    <div class="mat"><b>天然磁石</b>能用，但比较弱。更好的办法是用第 02 步的电堆加第 03 步的电磁铁。</div>
+    <div class="mat"><b>长铜丝</b>需要拉丝工艺，并且要绝缘，这样才能绕出很多匝。</div>
+    <div class="mat"><b>检流计</b>在线圈旁放一枚指南针，就是最简单的电流检测仪。</div>
+  </div>
+  <h3>原理 → 设计决策</h3>
+  <ul class="dec">
+    <li><span>电压 ∝ 匝数</span><span class="to">→</span><span>线圈尽量多绕几圈</span></li>
+    <li><span>电压 ∝ 变化速度</span><span class="to">→</span><span>磁铁要动得快</span></li>
+    <li><span>只在变化时有电</span><span class="to">→</span><span>不能只推一下，必须让它持续运动</span></li>
+  </ul>
+  <div class="bench">
+    <div class="lbl">工作台 · 磁铁穿线圈</div>
+    <canvas id="cv4" width="680" height="240"></canvas>
+    <div class="ctrl"><label for="sp4">磁铁速度<input type="range" id="sp4" min="0" max="10" step="1" value="4"><output id="sp4O">4</output></label><label for="tn4">线圈匝数<input type="range" id="tn4" min="1" max="10" step="1" value="5"><output id="tn4O">5</output></label></div>
+    <div class="readout"><div><span>磁通量</span><strong id="r4a">0</strong></div><div><span>感应电压</span><strong id="r4b">0</strong></div><div><span>灯泡亮度</span><strong id="r4c">0%</strong></div></div>
+    <p class="note">磁铁在线圈正中间时磁通量最大，但电压几乎为零，因为那一刻磁通量没有在变化。电压最高的时刻，是磁铁冲过线圈边缘的时候。</p>
+  </div>
+  <p class="hist">1831 年 8 月 29 日，法拉第在一个铁环两侧各绕一组线圈。他发现电池接通和断开的瞬间，另一组线圈里会出现电流，这就是第一台变压器。同年 10 月 28 日，他在磁铁两极之间转动铜盘，得到了持续的电流。<span class="src"> [11][12][13]</span></p>
+  <p class="src">来源 [11][12][13]</p>
+</section>
+
+<!-- 05 -->
+<section class="ch" id="c5">
+  <div class="chhead"><div class="num">05</div><div><div class="meta">1832年 · 皮克西</div><h2>手摇发电机：把旋转变成电</h2></div></div>
+  <p><b>现象：</b>摇动手柄让磁铁旋转，磁铁的两极轮流扫过线圈，线圈里就会产生一阵阵电流，而且方向来回变化。</p>
+  <h3>为什么<span class="tag">three layers</span></h3>
+  <ul class="why">
+    <li><span class="lv">现象层</span><span>N 极扫过时电流朝一个方向，S 极扫过时朝反方向。磁铁每转一圈，就有两次方向相反的电流脉冲，这就是交流电。</span></li>
+    <li><span class="lv">规律层</span><span>旋转让磁通量周而复始地变化，所以电能源源不断。接上灯泡后，手柄会明显变沉，这就是楞次定律：感应电流的磁场总是阻碍引起它的变化。</span></li>
+    <li><span class="lv">本质层</span><span>楞次定律其实就是能量守恒。如果感应电流反过来帮磁铁转，就能无中生有地产生能量。所以灯泡亮得越多，你的手就要出越多力：电能来自你做的功。</span></li>
+  </ul>
+  <h3>古代材料</h3>
+  <div class="mats">
+    <div class="mat"><b>水车或畜力</b>替代手摇。中国古代已有水排（水力鼓风），可以借鉴现成的传动结构。</div>
+    <div class="mat"><b>齿轮</b>用来提高转速。转速越快，电压越高。</div>
+    <div class="mat"><b>换向器</b>转轴上的一组铜片开关，每半圈把接线对调一次，把交流电变成方向不变的脉冲直流。</div>
+  </div>
+  <h3>原理 → 设计决策</h3>
+  <ul class="dec">
+    <li><span>需要持续变化的磁通量</span><span class="to">→</span><span>采用旋转结构，而不是来回推拉</span></li>
+    <li><span>电压 ∝ 转速</span><span class="to">→</span><span>加齿轮增速，用水车提供稳定动力</span></li>
+    <li><span>电解、电镀需要单向电流</span><span class="to">→</span><span>加换向器</span></li>
+    <li><span>负载越大，转起来越费力</span><span class="to">→</span><span>按负载大小来选动力源</span></li>
+  </ul>
+  <div class="bench">
+    <div class="lbl">工作台 · 皮克西发电机</div>
+    <canvas id="cv5" width="680" height="260"></canvas>
+    <div class="ctrl">
+      <label for="rpm">转速<input type="range" id="rpm" min="0" max="10" step="1" value="5"><output id="rpmO">5</output></label>
+      <button id="ld0" aria-pressed="true">空载</button><button id="ld1" aria-pressed="false">接灯泡</button><button id="ld2" aria-pressed="false">短路</button>
+      <button id="comm" aria-pressed="false">换向器</button>
+    </div>
+    <div class="readout"><div><span>输出电压</span><strong id="r5a">0</strong></div><div><span>手柄阻力</span><strong id="r5b">0</strong></div><div><span>电流方向</span><strong id="r5c" style="font-size:14px">—</strong></div></div>
+    <p class="note">切换负载就能看到楞次定律：转速不变时，空载几乎不费力，短路时最费力。打开换向器后，波形的负半周会被翻到上面。</p>
+  </div>
+  <p class="hist">1832 年，巴黎仪器匠皮克西做出了第一台手摇发电机：转动马蹄形磁铁，让它的两极扫过带铁芯的线圈。后来他听从安培的建议加了换向器，让输出变成直流。今天几乎所有发电站，不管烧煤、用水还是核能，原理都和它一样。<span class="src"> [14][15][16]</span></p>
+  <p class="src">来源 [14][15][16][17]</p>
+</section>
+
+<footer>
+  <h3>来源</h3>
+  <ol>
+    <li><a href="https://education.mrsec.wisc.edu/triboelectricity/">UW–Madison MRSEC：Triboelectricity</a></li>
+    <li><a href="https://en.wikipedia.org/wiki/Triboelectric_effect">Wikipedia：Triboelectric effect</a></li>
+    <li><a href="https://nationalmaglab.org/magnet-academy/history-of-electricity-magnetism/museum/leyden-jars-1745/">National MagLab：Leyden Jars – 1745</a></li>
+    <li><a href="https://www.sciencehistory.org/distillations/magazine/leyden-jar-battery">Science History Institute：Leyden Jar Battery</a></li>
+    <li><a href="https://en.wikipedia.org/wiki/Voltaic_pile">Wikipedia：Voltaic pile</a></li>
+    <li><a href="https://nationalmaglab.org/magnet-academy/history-of-electricity-magnetism/museum/voltaic-pile-1800/">National MagLab：Voltaic Pile – 1800</a></li>
+    <li><a href="https://www.acs.org/content/dam/acsorg/education/outreach/ncw/plan-an-event/educational-resources/building-a-voltaic-pile-hist.pdf">ACS：Building a Voltaic Pile</a></li>
+    <li><a href="https://aps.org/apsnews/2008/07/1820-oersted-electromagnetism">APS News：July 1820, Oersted &amp; Electromagnetism</a></li>
+    <li><a href="https://spark.iop.org/oersted-electric-current-and-magnetism">IOP Spark：Oersted, electric current and magnetism</a></li>
+    <li><a href="https://en.wikipedia.org/wiki/Electromagnet">Wikipedia：Electromagnet</a></li>
+    <li><a href="https://archive.copper.org/education/history/60centuries/electrical/faradays.php">Copper Development Association：Faraday's Famous Ten Days</a></li>
+    <li><a href="https://ebsco.com/research-starters/history/faraday-converts-magnetic-force-electricity">EBSCO：Faraday Converts Magnetic Force into Electricity</a></li>
+    <li><a href="https://graphsearch.epfl.ch/en/concept/65888">EPFL Graph Search：Electromagnetic induction</a></li>
+    <li><a href="https://en.wikipedia.org/wiki/Hippolyte_Pixii">Wikipedia：Hippolyte Pixii</a></li>
+    <li><a href="https://nationalmaglab.org/magnet-academy/watch-play/interactive-tutorials/pixii-machine/">National MagLab：Pixii Machine</a></li>
+    <li><a href="https://k12.libretexts.org/Bookshelves/Science_and_Technology/Physics/19%3A_Electromagnetism/19.05%3A_Lenz's_Law">LibreTexts：Lenz's Law</a></li>
+    <li><a href="https://physics.it.com/dictionary/lenzs-law-term">Physics dictionary：Lenz's law</a></li>
+  </ol>
+</footer>
+</div>
+
+<script>
+(function(){
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const C=()=>({ink:css('--ink'),muted:css('--muted'),line:css('--line'),cu:css('--copper'),fd:css('--field'),sp:css('--spark'),paper:css('--paper')});
+function setup(id){const c=document.getElementById(id);const W=c.width,H=c.height,d=window.devicePixelRatio||1;c.width=W*d;c.height=H*d;const x=c.getContext('2d');x.scale(d,d);return{c,x,W,H};}
+const $=id=>document.getElementById(id);
+function bindRange(id){const r=$(id),o=$(id+'O');r.addEventListener('input',()=>o.textContent=r.value);return r;}
+
+/* 01 static */
+const s1=setup('cv1');let amber=0,jar=0,flash=0,rubAnim=0,lastSpark=0;
+$('rub').onclick=()=>{amber=Math.min(10,amber+1);rubAnim=1;};
+$('store').onclick=()=>{jar+=amber;amber=0;};
+$('zap').onclick=()=>{lastSpark=jar;flash=jar>0?1:0;jar=0;$('r1c').textContent=lastSpark?('强度 '+lastSpark):'无';};
+function draw1(){const{x,W,H}=s1,k=C();x.clearRect(0,0,W,H);
+ const off=Math.sin(performance.now()/40)*rubAnim*14;rubAnim*=0.92;
+ x.fillStyle=k.muted;x.globalAlpha=.35;x.fillRect(60+off,40,150,26);x.globalAlpha=1;
+ x.fillStyle='#d99a3a';x.fillRect(40,70,190,30);
+ x.fillStyle=k.ink;x.font='13px sans-serif';x.fillText('琥珀棒',40,124);x.fillText('毛皮',60+off,34);
+ for(let i=0;i<amber;i++){x.fillStyle=k.fd;x.beginPath();x.arc(52+i*18,85,5,0,7);x.fill();x.fillStyle=k.paper;x.fillRect(49+i*18,84,6,2);}
+ const jx=430,jy=40;x.strokeStyle=k.ink;x.lineWidth=2;x.strokeRect(jx,jy+30,110,140);
+ x.fillStyle=k.muted;x.globalAlpha=.4;x.fillRect(jx+6,jy+90,98,76);x.globalAlpha=1;
+ x.beginPath();x.moveTo(jx+55,jy+30);x.lineTo(jx+55,jy-5);x.stroke();x.beginPath();x.arc(jx+55,jy-12,8,0,7);x.stroke();
+ const lvl=Math.min(jar/40,1);x.fillStyle=k.fd;x.globalAlpha=.6;x.fillRect(jx+12,jy+164-lvl*70,86,lvl*70);x.globalAlpha=1;
+ x.fillStyle=k.ink;x.fillText('莱顿瓶（内外贴金属箔）',jx-10,jy+190);
+ if(flash>0.02){x.strokeStyle=k.sp;x.lineWidth=1+lastSpark/6;x.globalAlpha=flash;x.beginPath();let px=jx+64,py=jy-12;x.moveTo(px,py);for(let i=0;i<6;i++){px+=12;py+=(i%2?-1:1)*(6+Math.random()*10);x.lineTo(px,py);}x.stroke();x.globalAlpha=1;flash*=0.9;}
+ $('r1a').textContent=amber+(amber>=10?' 满':'');$('r1b').textContent=jar;}
+
+/* 02 pile */
+const s2=setup('cv2');const cells=bindRange('cells');
+function draw2(){const{x,W,H}=s2,k=C(),n=+cells.value;x.clearRect(0,0,W,H);
+ const h=Math.min(10,190/n/3),bx=80,base=220;
+ for(let i=0;i<n;i++){const y=base-(i+1)*h*3;x.fillStyle=k.cu;x.fillRect(bx,y+2*h,140,h);x.fillStyle='#8fa6ad';x.fillRect(bx+4,y+h,132,h);x.fillStyle='#9aa3a8';x.globalAlpha=.9;x.fillRect(bx,y,140,h);x.globalAlpha=1;}
+ x.fillStyle=k.ink;x.font='12px sans-serif';x.fillText('锌',bx+150,base-n*h*3+h);x.fillText('盐水布',bx+150,base-h*1.5);x.fillText('铜',bx+150,base-h*0.3);
+ const V=n*0.76;const top=base-n*h*3;
+ x.strokeStyle=k.muted;x.lineWidth=1.5;x.beginPath();x.moveTo(bx+70,top);x.lineTo(bx+70,top-8);x.lineTo(470,top-8);x.lineTo(470,90);x.moveTo(bx+70,base);x.lineTo(bx+70,base+6);x.lineTo(560,base+6);x.lineTo(560,90);x.stroke();
+ x.strokeStyle=k.ink;x.beginPath();x.arc(515,80,40,Math.PI,0);x.stroke();
+ const ang=-Math.PI/2+Math.min(V/23,1)*1.3;x.beginPath();x.moveTo(515,80);x.lineTo(515+34*Math.cos(Math.PI+ (Math.PI)*Math.min(V/23,1)),80+34*Math.sin(Math.PI+Math.PI*Math.min(V/23,1)));x.stroke();
+ x.fillStyle=k.muted;x.fillText('0',470,96);x.fillText('23 V',545,96);x.fillText('电压表',496,112);
+ $('r2a').textContent=V.toFixed(2)+' V';
+ let t='电流表微微偏转';if(n>=2)t='电解盐水，铜片冒气泡';if(n>=4)t='可点亮一颗 LED（现代对照）';if(n>=20)t='接近伏打原版，手浸水能感到电击';$('r2b').textContent=t;}
+
+/* 03 oersted */
+const s3=setup('cv3');let on=false,dir=1,needle=-Math.PI/2;const amp=bindRange('amp');
+$('sw').onclick=e=>{on=!on;e.target.setAttribute('aria-pressed',on);e.target.textContent=on?'断开电流':'接通电流';};
+$('rev').onclick=()=>{dir=-dir;};
+function draw3(){const{x,W,H}=s3,k=C();x.clearRect(0,0,W,H);const cx=340,cy=125;
+ x.strokeStyle=k.line;x.lineWidth=2;x.beginPath();x.arc(cx,cy,85,0,7);x.stroke();
+ x.fillStyle=k.muted;x.font='12px sans-serif';x.textAlign='center';x.fillText('北',cx,cy-92);x.fillText('南',cx,cy+104);x.fillText('东',cx+98,cy+4);x.fillText('西',cx-98,cy+4);
+ const I=on?(+amp.value)*dir:0;const target=-Math.PI/2+Math.atan(I*0.6)*1;needle+=(target-needle)*0.08;
+ x.save();x.translate(cx,cy);x.rotate(needle+Math.PI/2);x.fillStyle='#d84b3a';x.beginPath();x.moveTo(0,-70);x.lineTo(8,0);x.lineTo(-8,0);x.fill();x.fillStyle=k.muted;x.beginPath();x.moveTo(0,70);x.lineTo(8,0);x.lineTo(-8,0);x.fill();x.restore();
+ x.strokeStyle=on?k.cu:k.muted;x.lineWidth=5;x.globalAlpha=.85;x.beginPath();x.moveTo(cx,10);x.lineTo(cx,H-10);x.stroke();x.globalAlpha=1;
+ if(on){const t=performance.now()/400*dir;x.fillStyle=k.cu;for(let i=0;i<6;i++){const y=((i*40+t*40)%(H-20)+(H-20))%(H-20)+10;x.beginPath();x.moveTo(cx-6,y-6*dir);x.lineTo(cx+6,y-6*dir);x.lineTo(cx,y+6*dir);x.fill();}
+  x.strokeStyle=k.fd;x.lineWidth=1.2;x.globalAlpha=.7;for(let r=1;r<=3;r++){x.beginPath();x.ellipse(110,125,r*16,r*9,0,0,7);x.stroke();}x.globalAlpha=1;
+  x.fillStyle=k.fd;x.textAlign='center';x.fillText('导线截面看：磁感线绕成圈',110,200);
+  x.beginPath();x.arc(110,125,4,0,7);x.fill();}
+ x.textAlign='left';x.fillStyle=k.ink;x.fillText(on?('电流 '+(dir>0?'由北向南':'由南向北')):'断电',470,40);x.fillText('偏转 '+Math.round(Math.abs(needle+Math.PI/2)*180/Math.PI)+'°',470,60);}
+
+/* 04 induction */
+const s4=setup('cv4');const sp4=bindRange('sp4'),tn4=bindRange('tn4');let ph4=0,prev4=null,em4=0;
+const flux=(xx,c)=>{const d=(xx-c)/55;return 1/(1+d*d);};
+function draw4(dt){const{x,W,H}=s4,k=C();x.clearRect(0,0,W,H);const v=+sp4.value,N=+tn4.value,cx=300,cy=105;
+ ph4+=dt*v*0.6;const mx=v===0?(prev4??170):cx+130*Math.sin(ph4);const f=flux(mx,cx),fp=prev4===null?f:flux(prev4,cx);
+ const e=dt>0?-N*(f-fp)/dt*0.2:0;em4+=(e-em4)*0.3;prev4=mx;
+ x.strokeStyle=k.fd;x.lineWidth=1;x.globalAlpha=.4;for(let i=1;i<=3;i++){x.beginPath();x.ellipse(mx,cy,50+i*22,i*15,0,0,7);x.stroke();}x.globalAlpha=1;
+ for(let i=0;i<N;i++){const xx=N===1?cx:cx-45+i*(90/(N-1));x.strokeStyle=k.cu;x.lineWidth=3;x.beginPath();x.ellipse(xx,cy,7,42,0,0,7);x.stroke();}
+ x.fillStyle='#d84b3a';x.fillRect(mx-44,cy-13,44,26);x.fillStyle='#3d78b8';x.fillRect(mx,cy-13,44,26);
+ x.fillStyle='#fff';x.font='600 13px sans-serif';x.textAlign='center';x.textBaseline='middle';x.fillText('N',mx-22,cy);x.fillText('S',mx+22,cy);x.textBaseline='alphabetic';
+ x.strokeStyle=k.muted;x.lineWidth=1.5;x.beginPath();x.moveTo(cx-48,cy+42);x.lineTo(cx-48,215);x.lineTo(560,215);x.lineTo(560,180);x.moveTo(cx+48,cy+42);x.lineTo(cx+48,200);x.lineTo(545,200);x.stroke();
+ const b=Math.min(Math.abs(em4)/6,1);x.beginPath();x.arc(575,165,16,0,7);x.fillStyle=k.sp;x.globalAlpha=.1+b*.9;x.fill();x.globalAlpha=1;x.strokeStyle=k.muted;x.stroke();
+ x.beginPath();x.arc(90,215,28,Math.PI,0);x.stroke();const a=-Math.PI/2+Math.max(-1,Math.min(1,em4/6))*1.2;x.strokeStyle=k.ink;x.lineWidth=2;x.beginPath();x.moveTo(90,215);x.lineTo(90+24*Math.cos(a),215+24*Math.sin(a));x.stroke();
+ x.fillStyle=k.muted;x.font='12px sans-serif';x.fillText('电流表',90,236);x.fillText('灯泡',575,140);x.fillText('线圈',cx,50);
+ $('r4a').textContent=(f*N).toFixed(1);$('r4b').textContent=em4.toFixed(1);$('r4c').textContent=Math.round(b*100)+'%';}
+
+/* 05 generator */
+const s5=setup('cv5');const rpm=bindRange('rpm');let load=0,comm=false,th=0,hist=[];
+const lds=['ld0','ld1','ld2'];lds.forEach((id,i)=>$(id).onclick=()=>{load=i;lds.forEach((j,n)=>$(j).setAttribute('aria-pressed',n===i));});
+$('comm').onclick=e=>{comm=!comm;e.target.setAttribute('aria-pressed',comm);};
+function draw5(dt){const{x,W,H}=s5,k=C();x.clearRect(0,0,W,H);const w=+rpm.value;th+=dt*w*0.9;
+ let v=w*Math.sin(th)*0.9;if(comm)v=Math.abs(v);hist.push(v);if(hist.length>240)hist.shift();
+ const cx=110,cy=120;x.strokeStyle=k.line;x.lineWidth=1;x.beginPath();x.arc(cx,cy,70,0,7);x.stroke();
+ x.save();x.translate(cx,cy);x.rotate(th);x.fillStyle='#d84b3a';x.fillRect(-10,-62,20,52);x.fillStyle='#3d78b8';x.fillRect(-10,10,20,52);x.fillStyle=k.muted;x.fillRect(-10,-12,20,24);
+ x.fillStyle='#fff';x.font='600 12px sans-serif';x.textAlign='center';x.fillText('N',0,-40);x.fillText('S',0,48);x.restore();
+ x.strokeStyle=k.cu;x.lineWidth=2;x.fillStyle=k.cu;x.fillRect(cx-26,22,52,14);x.strokeRect(cx-26,22,52,14);
+ x.fillStyle=k.ink;x.font='12px sans-serif';x.textAlign='center';x.fillText('线圈（带铁芯）',cx,16);x.fillText('旋转磁铁',cx,214);
+ const gx=230,gy=40,gw=420,gh=170,mid=gy+(comm?gh*0.85:gh/2),sc=comm?gh*0.8/9:gh/2/9.5;
+ x.strokeStyle=k.line;x.lineWidth=1;x.strokeRect(gx,gy,gw,gh);x.beginPath();x.moveTo(gx,mid);x.lineTo(gx+gw,mid);x.stroke();
+ x.strokeStyle=k.fd;x.lineWidth=2;x.beginPath();hist.forEach((p,i)=>{const px=gx+i*(gw/240),py=mid-p*sc;i?x.lineTo(px,py):x.moveTo(px,py);});x.stroke();
+ x.fillStyle=k.muted;x.textAlign='left';x.fillText('输出电压随时间',gx,gy-8);x.fillText('0',gx-14,mid+4);
+ const lf=[0.05,1,2.6][load];const effort=Math.round(w*lf*10);
+ const bx=gx,by=232;x.fillStyle=k.line;x.fillRect(bx,by,gw,10);x.fillStyle=k.cu;x.fillRect(bx,by,Math.min(effort/260,1)*gw,10);x.fillStyle=k.muted;x.fillText('手柄阻力',bx,by+24);
+ if(load===1){const b=Math.min(Math.abs(v)/8,1);x.beginPath();x.arc(30,40,12,0,7);x.fillStyle=k.sp;x.globalAlpha=.1+b*.9;x.fill();x.globalAlpha=1;x.strokeStyle=k.muted;x.stroke();x.fillStyle=k.muted;x.fillText('灯',22,66);}
+ $('r5a').textContent=v.toFixed(1);$('r5b').textContent=effort;$('r5c').textContent=w===0?'—':(comm?'单向（脉冲直流）':(v>=0?'正向':'反向'));}
+
+let last=performance.now();const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function loop(t){const dt=Math.min((t-last)/1000,0.05);last=t;draw1();draw2();draw3();draw4(dt);draw5(dt);requestAnimationFrame(loop);}
+requestAnimationFrame(loop);
+})();
+</script>
