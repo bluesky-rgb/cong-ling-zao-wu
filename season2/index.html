@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>第二季特辑拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第二季特辑</div>
+<h1>第二季特辑</h1>
+<p class="thesis">回顾第二季 12 集：从一碗卤水到一炉铁水，按需要的温度排成一架「温度阶梯」，再按实测结果给每集打「古代可行度」分。</p>
+<div class="facts">
+<div><span>暂定标题</span>这些技艺，哪一样最难在家复现？</div>
+<div><span>时长</span>约 3 分 47 秒 · 9 个镜头</div>
+<div><span>前提</span>第二季 12 集拍完、记录表填好</div>
+<div><span>衔接</span>→ 第三季 水与农业</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">温度阶梯</p><p class="p">酿酒、酿醋约 30 ℃；煮盐 100 ℃；木头约 300 ℃ 前后炭化；烧陶、煅烧石灰约 900 ℃；铜约 1084 ℃ 熔化；生铁约 1147 ℃ 熔化；瓷约 1200–1300 ℃；纯铁 1538 ℃（古代炉子达不到）。</p></div>
+<div class="ol"><p class="o">打分依据</p><p class="p">与第一季相同：材料、难度按史料判断，效果完全来自各集实验记录表。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>古人只是运气好</s> → 每一步都依赖上一步的燃料和炉窑</span></li>
+<li><span class="k">2</span><span><s>温度越高越难</s> → 还要看材料能不能扛住</span></li>
+<li><span class="k">3</span><span><s>在家什么都做不了</s> → 很多关键原理在家就能复现</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>哪些在家做成了，哪些只能去工坊拍</p></div>
+<div class="layer"><span>规律层</span><p>温度是贯穿第二季的主线</p></div>
+<div class="layer"><span>本质层</span><p>燃料、鼓风、炉窑、耐火材料四样一起进步</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>排名不预设结论：先填完打分表，再按分数写旁白。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">每项 1–5 分，三项相加，满分 15 分。</p>
+<div class="tw"><table><thead><tr>
+<th>项目</th>
+<th>怎么打分</th>
+<th>依据</th>
+</tr></thead><tbody>
+<tr><td>材料</td><td>北宋能不能找到</td><td>各集「背景」与「道具」</td></tr>
+<tr><td>难度</td><td>普通工匠能不能做出来</td><td>实拍时的制作难度</td></tr>
+<tr><td>效果</td><td>我们实测的效果</td><td>各集「实验记录」</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>把 12 集拍摄本里的实验记录表截图汇总。</li>
+<li>按下面的表格打分，填完截图发给 Claude，排名和旁白会按分数生成。</li>
+<li>从各集实拍里挑 8–10 个瞬间做高光剪辑。</li>
+<li>录一段 30 秒口播：这一季最意外的发现。</li>
+<li>从评论区挑 3 个问题，在特辑里回答。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>材料</th><th>难度</th><th>效果</th><th>总分</th><th>备注</th></tr></thead><tbody>
+<tr><td>20 制盐</td><td><input type="text" inputmode="decimal" data-k="s2-0-0" aria-label="20 制盐 材料"></td><td><input type="text" inputmode="decimal" data-k="s2-0-1" aria-label="20 制盐 难度"></td><td><input type="text" inputmode="decimal" data-k="s2-0-2" aria-label="20 制盐 效果"></td><td><input type="text" inputmode="decimal" data-k="s2-0-3" aria-label="20 制盐 总分"></td><td><input type="text" data-k="s2-0-n" aria-label="20 制盐 备注"></td></tr>
+<tr><td>15 生火</td><td><input type="text" inputmode="decimal" data-k="s2-1-0" aria-label="15 生火 材料"></td><td><input type="text" inputmode="decimal" data-k="s2-1-1" aria-label="15 生火 难度"></td><td><input type="text" inputmode="decimal" data-k="s2-1-2" aria-label="15 生火 效果"></td><td><input type="text" inputmode="decimal" data-k="s2-1-3" aria-label="15 生火 总分"></td><td><input type="text" data-k="s2-1-n" aria-label="15 生火 备注"></td></tr>
+<tr><td>16 木炭与制陶</td><td><input type="text" inputmode="decimal" data-k="s2-2-0" aria-label="16 木炭与制陶 材料"></td><td><input type="text" inputmode="decimal" data-k="s2-2-1" aria-label="16 木炭与制陶 难度"></td><td><input type="text" inputmode="decimal" data-k="s2-2-2" aria-label="16 木炭与制陶 效果"></td><td><input type="text" inputmode="decimal" data-k="s2-2-3" aria-label="16 木炭与制陶 总分"></td><td><input type="text" data-k="s2-2-n" aria-label="16 木炭与制陶 备注"></td></tr>
+<tr><td>B16 瓷器</td><td><input type="text" inputmode="decimal" data-k="s2-3-0" aria-label="B16 瓷器 材料"></td><td><input type="text" inputmode="decimal" data-k="s2-3-1" aria-label="B16 瓷器 难度"></td><td><input type="text" inputmode="decimal" data-k="s2-3-2" aria-label="B16 瓷器 效果"></td><td><input type="text" inputmode="decimal" data-k="s2-3-3" aria-label="B16 瓷器 总分"></td><td><input type="text" data-k="s2-3-n" aria-label="B16 瓷器 备注"></td></tr>
+<tr><td>23 纸</td><td><input type="text" inputmode="decimal" data-k="s2-4-0" aria-label="23 纸 材料"></td><td><input type="text" inputmode="decimal" data-k="s2-4-1" aria-label="23 纸 难度"></td><td><input type="text" inputmode="decimal" data-k="s2-4-2" aria-label="23 纸 效果"></td><td><input type="text" inputmode="decimal" data-k="s2-4-3" aria-label="23 纸 总分"></td><td><input type="text" data-k="s2-4-n" aria-label="23 纸 备注"></td></tr>
+<tr><td>B3 活字印刷</td><td><input type="text" inputmode="decimal" data-k="s2-5-0" aria-label="B3 活字印刷 材料"></td><td><input type="text" inputmode="decimal" data-k="s2-5-1" aria-label="B3 活字印刷 难度"></td><td><input type="text" inputmode="decimal" data-k="s2-5-2" aria-label="B3 活字印刷 效果"></td><td><input type="text" inputmode="decimal" data-k="s2-5-3" aria-label="B3 活字印刷 总分"></td><td><input type="text" data-k="s2-5-n" aria-label="B3 活字印刷 备注"></td></tr>
+<tr><td>22 肥皂</td><td><input type="text" inputmode="decimal" data-k="s2-6-0" aria-label="22 肥皂 材料"></td><td><input type="text" inputmode="decimal" data-k="s2-6-1" aria-label="22 肥皂 难度"></td><td><input type="text" inputmode="decimal" data-k="s2-6-2" aria-label="22 肥皂 效果"></td><td><input type="text" inputmode="decimal" data-k="s2-6-3" aria-label="22 肥皂 总分"></td><td><input type="text" data-k="s2-6-n" aria-label="22 肥皂 备注"></td></tr>
+<tr><td>B15 酿酒与酿醋</td><td><input type="text" inputmode="decimal" data-k="s2-7-0" aria-label="B15 酿酒与酿醋 材料"></td><td><input type="text" inputmode="decimal" data-k="s2-7-1" aria-label="B15 酿酒与酿醋 难度"></td><td><input type="text" inputmode="decimal" data-k="s2-7-2" aria-label="B15 酿酒与酿醋 效果"></td><td><input type="text" inputmode="decimal" data-k="s2-7-3" aria-label="B15 酿酒与酿醋 总分"></td><td><input type="text" data-k="s2-7-n" aria-label="B15 酿酒与酿醋 备注"></td></tr>
+<tr><td>24 石灰与灰浆</td><td><input type="text" inputmode="decimal" data-k="s2-8-0" aria-label="24 石灰与灰浆 材料"></td><td><input type="text" inputmode="decimal" data-k="s2-8-1" aria-label="24 石灰与灰浆 难度"></td><td><input type="text" inputmode="decimal" data-k="s2-8-2" aria-label="24 石灰与灰浆 效果"></td><td><input type="text" inputmode="decimal" data-k="s2-8-3" aria-label="24 石灰与灰浆 总分"></td><td><input type="text" data-k="s2-8-n" aria-label="24 石灰与灰浆 备注"></td></tr>
+<tr><td>17 炼铜</td><td><input type="text" inputmode="decimal" data-k="s2-9-0" aria-label="17 炼铜 材料"></td><td><input type="text" inputmode="decimal" data-k="s2-9-1" aria-label="17 炼铜 难度"></td><td><input type="text" inputmode="decimal" data-k="s2-9-2" aria-label="17 炼铜 效果"></td><td><input type="text" inputmode="decimal" data-k="s2-9-3" aria-label="17 炼铜 总分"></td><td><input type="text" data-k="s2-9-n" aria-label="17 炼铜 备注"></td></tr>
+<tr><td>B4 水排</td><td><input type="text" inputmode="decimal" data-k="s2-10-0" aria-label="B4 水排 材料"></td><td><input type="text" inputmode="decimal" data-k="s2-10-1" aria-label="B4 水排 难度"></td><td><input type="text" inputmode="decimal" data-k="s2-10-2" aria-label="B4 水排 效果"></td><td><input type="text" inputmode="decimal" data-k="s2-10-3" aria-label="B4 水排 总分"></td><td><input type="text" data-k="s2-10-n" aria-label="B4 水排 备注"></td></tr>
+<tr><td>18 炼铁</td><td><input type="text" inputmode="decimal" data-k="s2-11-0" aria-label="18 炼铁 材料"></td><td><input type="text" inputmode="decimal" data-k="s2-11-1" aria-label="18 炼铁 难度"></td><td><input type="text" inputmode="decimal" data-k="s2-11-2" aria-label="18 炼铁 效果"></td><td><input type="text" inputmode="decimal" data-k="s2-11-3" aria-label="18 炼铁 总分"></td><td><input type="text" data-k="s2-11-n" aria-label="18 炼铁 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>每集「效果」分是否都有记录表数据支撑</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>特辑不新做实验；回顾画面里的明火、化学品镜头保留原有的安全提示字幕。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>第二季全部道具</td><td>开场全景</td></tr>
+<tr><td>各集实拍素材</td><td>高光剪辑</td></tr>
+<tr><td>填好的打分表</td><td>排名揭晓</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:47。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://bluesky-rgb.github.io/cong-ling-zao-wu/episodes/">选题详案 · 第二季播出计划</a> <span>12 集的顺序与衔接</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "工作台全景：第二季 12 集的道具摆满一桌，镜头慢慢推进", "第二季，十二集，从一碗卤水到一炉铁水。"], [2, "0:08", "done", "动画：温度阶梯：第二季各项技艺按所需温度排列", "把第二季的每一项技艺，按需要的温度排一排：三十度的酒缸，一百度的盐锅，九百度的陶窑和石灰窑，一千零八十度的铜水，一千一百多度的铁水，一千二三百度的瓷窑。每往上爬一级，都要更好的燃料、更强的鼓风、更好的炉窑。"], [3, "0:36", "done", "问题卡：第二季这些技艺，哪一样最难在家复现？", ""], [4, "0:42", "res", "高光剪辑：从各集实拍里挑 8–10 个瞬间，每个 3–4 秒", "（按实拍素材写：每个瞬间一句话）"], [5, "1:22", "done", "资料卡：「古代可行度」三项打分", "和第一季一样，每集打三项分：材料、难度、实测效果。"], [6, "1:42", "res", "排名揭晓：录屏拍摄本里的打分表，从第 12 名倒数到第 1 名", "（按实际打分写：倒数揭晓，每集一句理由）"], [7, "2:42", "res", "作者出镜：这一季最意外的发现", "（作者按亲身经历讲）"], [8, "3:12", "res", "观众问答：从评论里挑 3 个问题", "（从评论区挑选问题后补写）"], [9, "3:40", "done", "结论卡：第二季完结，下一季：水与农业", "第二季完结。下一季，我们去管水、种地：水车提水、虹吸、都江堰。"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>

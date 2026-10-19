@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>炼铁拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第三卷 · 第 18 集</div>
+<h1>炼铁</h1>
+<p class="thesis">铁矿石就是铁和氧的结合。高炉里一氧化碳把氧抢走，铁吸碳后熔点降到约 1150 ℃，熔成铁水；碳的多少决定了铁是软、是韧还是脆。</p>
+<div class="facts">
+<div><span>暂定标题</span>铁矿石其实就是铁锈？</div>
+<div><span>时长</span>约 3 分 38 秒 · 13 个镜头</div>
+<div><span>时代</span>春秋晚期生铁 · 北宋铁业</div>
+<div><span>衔接</span>← 16 木炭、B4 水排、24 石灰；第二季高潮</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">生铁</p><p class="p">中国在公元前 5 世纪已有生铁铸件，铸铁农具和兵器广泛使用；高炉能连续生产生铁。欧洲长期使用块炼铁（铁不熔化）。</p></div>
+<div class="ol"><p class="o">碳与熔点</p><p class="p">纯铁约 1538 ℃ 熔化；含碳约 4.3% 时约 1147 ℃ 开始熔化，这让古代高炉能得到铁水。</p></div>
+<div class="ol"><p class="o">北宋</p><p class="p">11 世纪铁业由木炭逐步转向煤和焦炭，节省了大量林木；焦炭可能早在 4 世纪就开始使用。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>铁矿就是纯铁</s> → 是铁的氧化物</span></li>
+<li><span class="k">2</span><span><s>烧化就行</s> → 要先把氧夺走，还要吸碳降熔点</span></li>
+<li><span class="k">3</span><span><s>铁都一样</s> → 含碳量决定软硬</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>钢丝球会生锈、能燃烧；铁丝软、钢尺韧、铸铁脆</p></div>
+<div class="layer"><span>规律层</span><p>一氧化碳还原氧化铁；含碳量改变熔点和硬度</p></div>
+<div class="layer"><span>本质层</span><p>碳原子嵌入铁晶格，阻碍位错滑移</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>温度不够 → 木炭 + 水排鼓风；杂质多 → 加石灰石造渣；生铁太脆 → 炒钢脱碳；要硬又要韧 → 控制碳量、淬火。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">高炉炼铁只在工坊或博物馆拍；家里的实验只用钢丝球、铁丝、钢尺和缝衣针。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>湿 / 干钢丝球倒扣在水盘里</td><td>生锈吃掉氧气</td></tr>
+<tr><td>B</td><td>钢丝球燃烧前后称重</td><td>铁 + 氧 → 变重</td></tr>
+<tr><td>C</td><td>铁丝、钢尺、铸铁片对比</td><td>碳量与性格</td></tr>
+<tr><td>D</td><td>缝衣针慢冷 vs 淬火</td><td>热处理（可选）</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>A：钢丝球一份浸湿、一份保持干燥，分别塞进两个玻璃杯底，倒扣在加了水的盘子里，每天标一次杯内水面。</li>
+<li>B：户外铁盘上放一团细钢丝球（000 号最好烧），称重后用 9 伏电池两极碰一下点燃，烧完冷却再称。</li>
+<li>C：手掰铁丝和钢尺，比较弯曲后能否弹回；铸铁片（旧铸铁锅碎片）只轻敲，不要用力砸。</li>
+<li>D：用钳子夹住缝衣针，在卡式炉上烧到通红；一根离火慢冷，一根立刻浸入冷水；冷却后分别用钳子弯折。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>结果</th><th>备注</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 湿钢丝球：3 天后杯内水面上升（毫米）</td><td><input type="text" inputmode="decimal" data-k="e18-0-0" aria-label="A 湿钢丝球：3 天后杯内水面上升（毫米） 结果"></td><td><input type="text" inputmode="decimal" data-k="e18-0-1" aria-label="A 湿钢丝球：3 天后杯内水面上升（毫米） 备注"></td><td><input type="text" data-k="e18-0-n" aria-label="A 湿钢丝球：3 天后杯内水面上升（毫米） 备注"></td></tr>
+<tr><td>A 干钢丝球：3 天后杯内水面上升（毫米）</td><td><input type="text" inputmode="decimal" data-k="e18-1-0" aria-label="A 干钢丝球：3 天后杯内水面上升（毫米） 结果"></td><td><input type="text" inputmode="decimal" data-k="e18-1-1" aria-label="A 干钢丝球：3 天后杯内水面上升（毫米） 备注"></td><td><input type="text" data-k="e18-1-n" aria-label="A 干钢丝球：3 天后杯内水面上升（毫米） 备注"></td></tr>
+<tr><td>B 燃烧前 / 后重量（克）</td><td><input type="text" inputmode="decimal" data-k="e18-2-0" aria-label="B 燃烧前 / 后重量（克） 结果"></td><td><input type="text" inputmode="decimal" data-k="e18-2-1" aria-label="B 燃烧前 / 后重量（克） 备注"></td><td><input type="text" data-k="e18-2-n" aria-label="B 燃烧前 / 后重量（克） 备注"></td></tr>
+<tr><td>C 铁丝 / 钢尺 / 铸铁片的表现</td><td><input type="text" inputmode="decimal" data-k="e18-3-0" aria-label="C 铁丝 / 钢尺 / 铸铁片的表现 结果"></td><td><input type="text" inputmode="decimal" data-k="e18-3-1" aria-label="C 铁丝 / 钢尺 / 铸铁片的表现 备注"></td><td><input type="text" data-k="e18-3-n" aria-label="C 铁丝 / 钢尺 / 铸铁片的表现 备注"></td></tr>
+<tr><td>D 慢冷的针：能否弯</td><td><input type="text" inputmode="decimal" data-k="e18-4-0" aria-label="D 慢冷的针：能否弯 结果"></td><td><input type="text" inputmode="decimal" data-k="e18-4-1" aria-label="D 慢冷的针：能否弯 备注"></td><td><input type="text" data-k="e18-4-n" aria-label="D 慢冷的针：能否弯 备注"></td></tr>
+<tr><td>D 淬火的针：能否弯</td><td><input type="text" inputmode="decimal" data-k="e18-5-0" aria-label="D 淬火的针：能否弯 结果"></td><td><input type="text" inputmode="decimal" data-k="e18-5-1" aria-label="D 淬火的针：能否弯 备注"></td><td><input type="text" data-k="e18-5-n" aria-label="D 淬火的针：能否弯 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>钢丝球燃烧后增重是否明显</li>
+<li>杯内水面上升是否接近五分之一（空气中氧气约占 21%）</li>
+<li>淬火后的针是否一弯就断</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>钢丝球燃烧会飞溅火星，只在户外、远离易燃物，由成年人操作；9 伏电池碰过后立刻拿开，不要放进口袋。</li>
+<li>烧红的针和钳子很烫，淬火时水会溅起，戴护目镜和手套。</li>
+<li>高炉炼铁只在专业场所拍摄。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>细钢丝球（000 号）、9 伏电池、铁盘</td><td>铁能燃烧</td></tr>
+<tr><td>玻璃杯、盘子、记号笔</td><td>生锈吃氧</td></tr>
+<tr><td>铁丝、钢尺、铸铁片（可选）</td><td>软硬对比</td></tr>
+<tr><td>缝衣针、钳子、卡式炉、冷水</td><td>淬火（可选）</td></tr>
+<tr><td>护目镜、手套、厨房秤</td><td>安全与称重</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:38。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://en.wikipedia.org/wiki/Blast_furnace">Wikipedia：Blast furnace</a> <span>公元前 5 世纪的铸铁、碳降低熔点、宋代用煤和焦炭</span></li>
+<li><a href="https://acoup.blog/2020/11/06/collections-iron-how-did-they-make-it-addendum-crucible-steel-and-cast-iron/">ACOUP：Crucible steel and cast iron</a></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "户外：一团钢丝球被 9 伏电池一碰，火星四溅地烧起来", "铁，竟然能烧。"], [2, "0:08", "done", "问题卡：铁矿石其实就是「铁锈」？", ""], [3, "0:14", "done", "片头：第三卷科技树，第 18 集闪烁", "北宋，约公元一〇九〇年。第二季的最后一步：铁。"], [4, "0:21", "done", "资料卡：春秋生铁、汉代炒钢、北宋用煤", "中国人很早就会把铁熔成铁水来浇铸：春秋晚期就有生铁铸件，比欧洲普遍使用铸铁早得多。汉代发明了炒钢，把生铁里的碳炒掉一部分。到了北宋，铁的产量大增，人们开始用煤和焦炭代替木炭。"], [5, "0:45", "real", "实验 1：两个瓶子分别放湿钢丝球和干钢丝球，倒扣在水盘里；几天后对比生锈和瓶内水面", "湿的钢丝球生锈了，瓶里的水面也升高了：铁吃掉了瓶里的氧气。（按实测描述水面上升多少）"], [6, "1:15", "done", "动画：高炉里一氧化碳把氧化铁还原成铁，铁吸碳后熔化成铁水", "铁锈就是铁和氧的结合，铁矿石也是。炼铁，就是把氧拿走。矿石、木炭、石灰石从炉顶加进去，鼓风从下面吹进来，木炭烧成一氧化碳，一路往上，把氧从氧化铁身上抢走。铁一边往下走，一边吸进碳，熔点降到约一千一百五十度，熔成铁水。"], [7, "1:39", "real", "实验 2（户外、成年人）：钢丝球燃烧前后称重", "钢丝球烧完，反而变重了：……（按实测描述）。它吸收了空气里的氧，变回了「矿石」。"], [8, "2:04", "done", "问题卡：同样是铁，为什么有软有硬？", ""], [9, "2:10", "done", "动画：含碳量与熔化温度；熟铁、钢、生铁；碳原子挤进铁的晶格", "秘密还是碳。碳越多，铁越容易熔化；可碳也决定了软硬：熟铁软，能锻打；钢又硬又韧；生铁硬而脆，适合浇铸。碳原子塞进铁的晶格，挡住了铁原子层的滑动。炼钢，就是把碳调到刚好。"], [10, "2:32", "real", "实验 3：铁丝（软，一掰就弯）、钢尺（弯了会弹回）、铸铁锅碎片（敲击易崩，可选）对比", "三块铁，三种性格：……（按实拍描述）"], [11, "3:02", "real", "实验 4（户外、成年人，可选）：两根缝衣针烧红，一根慢慢冷却、一根直接淬进冷水，再分别弯折", "同一根针：慢慢冷却的能弯，淬过火的一弯就断。（按实拍描述）"], [12, "3:24", "done", "结论卡：碳把铁从矿石里请出来，碳的多少决定了铁的性格", "碳把铁从矿石里请出来，碳的多少又决定了铁的性格。第二季，从一碗卤水走到了一炉铁水。"], [13, "3:31", "done", "片尾：点亮第 18 集，预告第二季特辑", "下集：第二季特辑。"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>
