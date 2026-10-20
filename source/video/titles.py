@@ -5,7 +5,7 @@ from lib import *
 def tree(c, eps, lit, blink, t, y=520):
     n = len(eps)
     x0, x1 = 300, 1620
-    xs = [x0 + (x1 - x0) * k / (n - 1) for k in range(n)]
+    xs = [x0 + (x1 - x0) * k / (n - 1) for k in range(n)] if n > 1 else [(x0 + x1) / 2]
     c.line([(xs[0], y), (xs[-1], y)], LINE, 4)
     for k in range(1, n):
         if lit[k] > 0:

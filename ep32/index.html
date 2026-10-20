@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>洗手拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../ep30/">30</a><a href="../b6/">B6</a><a href="../season3/">特辑3</a><a href="../ep32/">32</a><a href="../ep33/">33</a><a href="../b19/">B19</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第四季 · 第 32 集</div>
+<h1>洗手</h1>
+<p class="thesis">病菌常裹在手上的油里，光冲水带不走；肥皂分子一头亲水、一头亲油，把油滴连同病菌一起从皮肤上拽下来。1847 年，一次洗手让产妇死亡率骤降。</p>
+<div class="facts">
+<div><span>暂定标题</span>看起来干净的手，为什么能害死人？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>1847 年 · 维也纳 · 塞麦尔维斯</div>
+<div><span>衔接</span>← 22 肥皂；→ 33 防坏血病</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">塞麦尔维斯</p><p class="p">维也纳总医院第一产科由医生和医学生接生，他们常常刚做完尸体解剖就进产房。1847 年 5 月中旬起，他要求进产房前用漂白粉溶液洗手。</p></div>
+<div class="ol"><p class="o">数据</p><p class="p">第一产科 1841–1846 年的年死亡率在 6.9%–15.8% 之间；1847 年 4 月为 18.3%，6 月 2.2%、7 月 1.2%、8 月 1.9%（维基百科转引）。</p></div>
+<div class="ol"><p class="o">洗多久</p><p class="p">常见的公共卫生建议是用肥皂至少搓洗 20 秒；拍摄前请再核对一次当前的官方建议。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>看起来干净就是干净</s> → 病菌小到看不见</span></li>
+<li><span class="k">2</span><span><s>冲水就够了</s> → 病菌裹在油里，要肥皂才带得走</span></li>
+<li><span class="k">3</span><span><s>洗一下就行</s> → 要搓够时间，指尖、指缝、拇指最容易漏</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>洗过的手在紫外灯下几乎不发光，面包也不容易发霉</p></div>
+<div class="layer"><span>规律层</span><p>肥皂乳化油脂，搓洗和流水把病菌冲走</p></div>
+<div class="layer"><span>本质层</span><p>表面活性剂分子一端亲水、一端亲油，包裹油滴形成胶束</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>看不见的病菌 → 用荧光粉代替，紫外灯显形；比较洗法 → 每次重新抹同样多的荧光粉；证明有活的微生物 → 面包发霉对照。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">荧光粉只是「代替病菌」的演示，不能说明真实的杀菌效果；面包实验才涉及真实的微生物。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>荧光粉 + 握手</td><td>病菌怎样传播</td></tr>
+<tr><td>B</td><td>三种洗法 + 紫外灯</td><td>洗法和时长</td></tr>
+<tr><td>C</td><td>油 + 水 + 肥皂</td><td>乳化</td></tr>
+<tr><td>D</td><td>四片面包装袋</td><td>真实的微生物</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>A：荧光粉均匀抹在一个人手上，和三个人依次握手，关灯后用紫外手电拍每个人的手。</li>
+<li>B：每次洗前重新抹同量荧光粉；分别清水冲 5 秒、肥皂 5 秒、肥皂搓 20 秒，擦干后紫外灯特写。</li>
+<li>C：透明碗装水，滴一勺食用油，搅拌后静置；再加几滴肥皂液搅拌，对比。</li>
+<li>D：同一袋白面包取 4 片，用干净夹子放进密封袋作对照；其余三片分别由没洗手、清水冲过、肥皂洗过的手各摸一遍，封袋标注，放在温暖处，每两天拍一次（建议提前开始）。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>结果</th><th>备注</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 握手后几个人手上有荧光</td><td><input type="text" inputmode="decimal" data-k="e32-0-0" aria-label="A 握手后几个人手上有荧光 结果"></td><td><input type="text" inputmode="decimal" data-k="e32-0-1" aria-label="A 握手后几个人手上有荧光 备注"></td><td><input type="text" data-k="e32-0-n" aria-label="A 握手后几个人手上有荧光 备注"></td></tr>
+<tr><td>B 清水 5 秒：残留部位</td><td><input type="text" inputmode="decimal" data-k="e32-1-0" aria-label="B 清水 5 秒：残留部位 结果"></td><td><input type="text" inputmode="decimal" data-k="e32-1-1" aria-label="B 清水 5 秒：残留部位 备注"></td><td><input type="text" data-k="e32-1-n" aria-label="B 清水 5 秒：残留部位 备注"></td></tr>
+<tr><td>B 肥皂 5 秒：残留部位</td><td><input type="text" inputmode="decimal" data-k="e32-2-0" aria-label="B 肥皂 5 秒：残留部位 结果"></td><td><input type="text" inputmode="decimal" data-k="e32-2-1" aria-label="B 肥皂 5 秒：残留部位 备注"></td><td><input type="text" data-k="e32-2-n" aria-label="B 肥皂 5 秒：残留部位 备注"></td></tr>
+<tr><td>B 肥皂 20 秒：残留部位</td><td><input type="text" inputmode="decimal" data-k="e32-3-0" aria-label="B 肥皂 20 秒：残留部位 结果"></td><td><input type="text" inputmode="decimal" data-k="e32-3-1" aria-label="B 肥皂 20 秒：残留部位 备注"></td><td><input type="text" data-k="e32-3-n" aria-label="B 肥皂 20 秒：残留部位 备注"></td></tr>
+<tr><td>D 第几天开始发霉（四片分别）</td><td><input type="text" inputmode="decimal" data-k="e32-4-0" aria-label="D 第几天开始发霉（四片分别） 结果"></td><td><input type="text" inputmode="decimal" data-k="e32-4-1" aria-label="D 第几天开始发霉（四片分别） 备注"></td><td><input type="text" data-k="e32-4-n" aria-label="D 第几天开始发霉（四片分别） 备注"></td></tr>
+<tr><td>D 两周后霉斑对比</td><td><input type="text" inputmode="decimal" data-k="e32-5-0" aria-label="D 两周后霉斑对比 结果"></td><td><input type="text" inputmode="decimal" data-k="e32-5-1" aria-label="D 两周后霉斑对比 备注"></td><td><input type="text" data-k="e32-5-n" aria-label="D 两周后霉斑对比 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>紫外灯下差别是否明显，能否拍清</li>
+<li>面包实验能否在两周内看出差别</li>
+<li>哪些部位最容易漏洗</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>紫外手电不要直视、不要照眼睛。</li>
+<li>发霉的面包不要打开闻、不要食用，拍完连袋丢弃。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>荧光洗手粉或荧光乳液、紫外手电</td><td>病菌示意</td></tr>
+<tr><td>肥皂、计时器</td><td>洗法对比</td></tr>
+<tr><td>透明碗、食用油</td><td>乳化</td></tr>
+<tr><td>白面包、密封袋、记号笔</td><td>真实微生物</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://en.wikipedia.org/wiki/Ignaz_Semmelweis">Wikipedia：Ignaz Semmelweis</a> <span>1841–1847 年第一产科死亡率</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Hand_washing">Wikipedia：Hand washing</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Soap">Wikipedia：Soap</a></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "手上抹荧光乳液（或荧光洗手粉），日光下看起来很干净；关灯、紫外手电一照，满手发光", "这双手，看起来很干净。"], [2, "0:08", "done", "问题卡：看起来干净的手，为什么能害死人？", ""], [3, "0:14", "done", "片头：第四季科技树，第 32 集闪烁", "一八四七年，维也纳。一位产科医生发现：医生的手，可能正在杀死产妇。"], [4, "0:21", "done", "资料卡：1847 洗手、1861 专著、1860 年代病菌学说", "塞麦尔维斯要求医生进产房前用漂白粉溶液洗手。可他的发现长期没人接受，要等到巴斯德、李斯特之后，「病菌致病」才慢慢成为常识。"], [5, "0:45", "real", "实验 1：一人手上抹荧光粉，依次和三个人握手；紫外灯下拍每个人的手，再拍他们摸过的门把手", "一次握手，「病菌」就到了下一个人手上……（按实拍描述传了几个人）"], [6, "1:10", "done", "动画：第一产科 1841–1847 年死亡率柱状图", "第一产科每年大约有十分之一的产妇死于产褥热。一八四七年五月中旬开始洗手，六月的死亡率从四月的百分之十八点三降到二点二。"], [7, "1:32", "real", "实验 2：三种洗法：清水冲 5 秒 / 肥皂 5 秒 / 肥皂搓 20 秒；每次洗前重新抹荧光粉，紫外灯下特写指尖、指甲缝、拇指", "只冲水……；肥皂五秒……；搓满二十秒……（按实拍描述残留）"], [8, "2:02", "done", "问题卡：光用水冲，为什么不够？", ""], [9, "2:08", "real", "实验 3：一碗水里滴一勺食用油，搅拌后油又浮起来；加一点肥皂液再搅，油被打散成小滴", "油和水搅不到一起；加了肥皂……（按实拍描述）"], [10, "2:33", "done", "动画：肥皂分子包住油滴，搓洗后被流水带走", "手上的细菌常常裹在一层油里。肥皂分子一头亲水、一头亲油，把油滴团团围住；搓洗把它们从皮肤纹路里拽出来，流水一冲就走了。"], [11, "2:55", "real", "实验 4：四片面包：没洗手摸、清水冲后摸、肥皂洗后摸、不摸（对照），各装密封袋，一到两周后对比发霉", "一到两周后：……（按实拍描述哪片霉得最多）"], [12, "3:22", "done", "结论卡：病菌看不见，却会搭手的便车", "病菌看不见，却会搭手的便车。肥皂搓够二十秒，再用流水冲掉。"], [13, "3:29", "done", "片尾：点亮第 32 集，预告第 33 集", "下集：史上最早的对照实验之一。"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>
