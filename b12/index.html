@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>冰鉴与藏冰拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 古法解密 · B12</div>
+<h1>冰鉴与藏冰</h1>
+<p class="thesis">冰窖靠深埋、厚土和稻草挡住热量，冰本身熔化要吸收大量热；曾侯乙铜鉴缶夹层放冰，用来冰镇酒。</p>
+<div class="facts">
+<div><span>暂定标题</span>没有冰箱，古人夏天怎么吃上冰？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>先秦凌阴 · 战国铜鉴缶</div>
+<div><span>衔接</span>← 34 净水；→ 38 蒸发冷却罐</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">凌阴与凌人</p><p class="p">《诗经·豳风·七月》有「纳于凌阴」；《周礼·天官》设凌人掌取冰、藏冰、用冰。汉代多称冰室，明清称冰窖，凤翔、新郑都发现过凌阴遗址。</p></div>
+<div class="ol"><p class="o">曾侯乙铜鉴缶</p><p class="p">1978 年湖北随县擂鼓墩曾侯乙墓出土，由方鉴和方尊缶套合而成。有学者认为它不是储存食物的「冰箱」，而是在鉴中放冰、冰镇缶中酒醴的器具。</p></div>
+<div class="ol"><p class="o">物理</p><p class="p">冰的熔化热约 334 焦/克，足以把同样质量的水从 0 ℃ 加热到约 80 ℃；稻草、干草中静止的空气导热很差。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>冰到夏天早化了</s> → 地窖加稻草，隔热减慢融化</span></li>
+<li><span class="k">2</span><span><s>冰鉴是古代冰箱</s> → 更像一只冰镇酒的冰桶</span></li>
+<li><span class="k">3</span><span><s>冰会散发冷气</s> → 是热量从周围流进冰</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>包了干草的冰化得慢；冰鉴里的酒变凉</p></div>
+<div class="layer"><span>规律层</span><p>隔热减慢热量传入；冰熔化吸收大量热</p></div>
+<div class="layer"><span>本质层</span><p>热量总是从高温流向低温；静止空气导热系数很低</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>冰化得快 → 深埋地下、厚土覆盖；四周传热 → 稻草隔热；表面积大化得快 → 大块紧堆；要冰镇 → 冰贴着容器、外面再隔热。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">冰块用保鲜盒提前冻一夜，每块重量尽量相同（约 500 克）。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>冰块裸放 / 包报纸 / 包 10 厘米干草</td><td>隔热</td></tr>
+<tr><td>B</td><td>整块冰 vs 碎冰</td><td>表面积</td></tr>
+<tr><td>C</td><td>自制冰鉴冰镇果汁 vs 室温</td><td>冰鉴的作用</td></tr>
+<tr><td>D</td><td>冰鉴外包毛巾 vs 不包</td><td>外层隔热</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>干草可以用宠物店的提摩西草或干稻草；包好后放进同一个纸箱，避免阳光直射。</li>
+<li>每小时取出称重（倒掉化出的水），记录剩余重量，直到裸放的那块化完。</li>
+<li>自制冰鉴：大不锈钢盆里放一个小玻璃罐，罐里装 300 毫升常温果汁，盆和罐之间塞满冰块；另一罐果汁放在旁边作对照。</li>
+<li>每 5 分钟用温度计测一次果汁温度，持续 30 分钟。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>1 小时</th><th>2 小时</th><th>3 小时</th><th>4 小时</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 裸放（克）</td><td><input type="text" inputmode="decimal" data-k="b12-0-0" aria-label="A 裸放（克） 1 小时"></td><td><input type="text" inputmode="decimal" data-k="b12-0-1" aria-label="A 裸放（克） 2 小时"></td><td><input type="text" inputmode="decimal" data-k="b12-0-2" aria-label="A 裸放（克） 3 小时"></td><td><input type="text" inputmode="decimal" data-k="b12-0-3" aria-label="A 裸放（克） 4 小时"></td><td><input type="text" data-k="b12-0-n" aria-label="A 裸放（克） 备注"></td></tr>
+<tr><td>A 包报纸（克）</td><td><input type="text" inputmode="decimal" data-k="b12-1-0" aria-label="A 包报纸（克） 1 小时"></td><td><input type="text" inputmode="decimal" data-k="b12-1-1" aria-label="A 包报纸（克） 2 小时"></td><td><input type="text" inputmode="decimal" data-k="b12-1-2" aria-label="A 包报纸（克） 3 小时"></td><td><input type="text" inputmode="decimal" data-k="b12-1-3" aria-label="A 包报纸（克） 4 小时"></td><td><input type="text" data-k="b12-1-n" aria-label="A 包报纸（克） 备注"></td></tr>
+<tr><td>A 包干草（克）</td><td><input type="text" inputmode="decimal" data-k="b12-2-0" aria-label="A 包干草（克） 1 小时"></td><td><input type="text" inputmode="decimal" data-k="b12-2-1" aria-label="A 包干草（克） 2 小时"></td><td><input type="text" inputmode="decimal" data-k="b12-2-2" aria-label="A 包干草（克） 3 小时"></td><td><input type="text" inputmode="decimal" data-k="b12-2-3" aria-label="A 包干草（克） 4 小时"></td><td><input type="text" data-k="b12-2-n" aria-label="A 包干草（克） 备注"></td></tr>
+<tr><td>B 整块 / 碎冰剩余（克）</td><td><input type="text" inputmode="decimal" data-k="b12-3-0" aria-label="B 整块 / 碎冰剩余（克） 1 小时"></td><td><input type="text" inputmode="decimal" data-k="b12-3-1" aria-label="B 整块 / 碎冰剩余（克） 2 小时"></td><td><input type="text" inputmode="decimal" data-k="b12-3-2" aria-label="B 整块 / 碎冰剩余（克） 3 小时"></td><td><input type="text" inputmode="decimal" data-k="b12-3-3" aria-label="B 整块 / 碎冰剩余（克） 4 小时"></td><td><input type="text" data-k="b12-3-n" aria-label="B 整块 / 碎冰剩余（克） 备注"></td></tr>
+<tr><td>C 冰鉴里的果汁（℃）</td><td><input type="text" inputmode="decimal" data-k="b12-4-0" aria-label="C 冰鉴里的果汁（℃） 1 小时"></td><td><input type="text" inputmode="decimal" data-k="b12-4-1" aria-label="C 冰鉴里的果汁（℃） 2 小时"></td><td><input type="text" inputmode="decimal" data-k="b12-4-2" aria-label="C 冰鉴里的果汁（℃） 3 小时"></td><td><input type="text" inputmode="decimal" data-k="b12-4-3" aria-label="C 冰鉴里的果汁（℃） 4 小时"></td><td><input type="text" data-k="b12-4-n" aria-label="C 冰鉴里的果汁（℃） 备注"></td></tr>
+<tr><td>C 室温的果汁（℃）</td><td><input type="text" inputmode="decimal" data-k="b12-5-0" aria-label="C 室温的果汁（℃） 1 小时"></td><td><input type="text" inputmode="decimal" data-k="b12-5-1" aria-label="C 室温的果汁（℃） 2 小时"></td><td><input type="text" inputmode="decimal" data-k="b12-5-2" aria-label="C 室温的果汁（℃） 3 小时"></td><td><input type="text" inputmode="decimal" data-k="b12-5-3" aria-label="C 室温的果汁（℃） 4 小时"></td><td><input type="text" data-k="b12-5-n" aria-label="C 室温的果汁（℃） 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>包干草的冰能比裸放的多撑多久</li>
+<li>自制冰鉴 30 分钟能把果汁降到几度</li>
+<li>外层包毛巾的效果</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>冰块边缘锋利，徒手长时间拿冰会冻伤，戴手套。</li>
+<li>地面会有化冰的水，注意防滑。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>保鲜盒、冰块</td><td>冰</td></tr>
+<tr><td>报纸、干草、纸箱</td><td>隔热</td></tr>
+<tr><td>厨房秤、温度计</td><td>测量</td></tr>
+<tr><td>大不锈钢盆、小玻璃罐、果汁</td><td>自制冰鉴</td></tr>
+<tr><td>毛巾</td><td>外层隔热</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://www.thepaper.cn/newsDetail_forward_1743113">澎湃新闻：古代藏冰与曾侯乙铜鉴缶</a> <span>凌阴、凌人、鉴缶结构与用途</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Ice_house_(building)">Wikipedia：Ice house (building)</a></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "延时拍摄：两块同样的冰，一块裸放，一块用干草厚厚包住", "两块一样的冰，一块光着，一块裹着干草。"], [2, "0:08", "done", "问题卡：没有冰箱，古人夏天怎么吃上冰？", ""], [3, "0:14", "done", "片头：B 线科技树，B12 闪烁", "古法解密。把冬天，存到夏天。"], [4, "0:21", "done", "资料卡：《诗经》凌阴、《周礼》凌人、曾侯乙铜鉴缶", "《诗经》里写：「二之日凿冰冲冲，三之日纳于凌阴。」冬天凿冰，存进冰窖。《周礼》里专门设了一个官叫「凌人」，管取冰、藏冰、用冰。一九七八年，湖北随县的曾侯乙墓里，还出土了一件夹层放冰的青铜器。"], [5, "0:45", "real", "实验 1：三块同样的大冰块（用保鲜盒冻），分别裸放、包三层报纸、包 10 厘米厚的干草，放在同一个纸箱里，每小时称一次", "三块冰：光着的、包报纸的、包干草的，每小时称一次：……（按实测描述）"], [6, "1:15", "done", "动画：凌阴剖面：热量从地面往下钻；稻草层里不流动的空气挡住热量；冰的熔化热", "冰窖修在地下，上面盖厚土，冰的四周塞满稻草。稻草里全是不流动的空气，热传得很慢。冰本身也很「耐化」：化掉一千克冰要的热量，足够把一千克水从零度烧到八十度。"], [7, "1:37", "real", "实验 2：一整块冰 vs 同样重量的碎冰，放在同样的盘子里，比谁先化完", "同样重的冰，一整块和一堆碎冰：……（按实测描述）。堆得越大、越紧，化得越慢。"], [8, "2:02", "done", "问题卡：冰鉴到底是怎么用的？", ""], [9, "2:08", "real", "实验 3：大盆里套一个小罐，小罐装常温果汁，大盆夹层放冰；每 5 分钟测一次果汁温度；对照：另一罐果汁放在室温", "照着冰鉴做一个：外面一个大盆，里面一个小罐，夹层塞满冰。果汁的温度：……（按实测描述）"], [10, "2:38", "done", "动画：曾侯乙铜鉴缶剖面：缶里装酒，鉴的夹层放冰，热量从酒流进冰", "曾侯乙的这件铜器，外面是方鉴，里面套着方缶。缶里装酒，夹层放冰：热量从酒里流出，被冰吸走。它其实不是冷藏柜，而是一只冰镇酒的「冰桶」。"], [11, "2:58", "real", "实验 4：大盆外面包一条毛巾 vs 不包，对比冰化完的时间", "给外面的盆裹一条毛巾：冰能多撑……（按实测描述）"], [12, "3:22", "done", "结论卡：挡住热量，冰就能撑得更久", "冰不会自己变冷，能做的只有一件事：挡住热量。古人的冰窖，靠的就是泥土和稻草。"], [13, "3:29", "done", "片尾：点亮 B12，预告第 38 集", "下集：没有冰，也能降温。"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>
