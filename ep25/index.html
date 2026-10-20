@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>螺旋提水拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第三季 · 第 25 集</div>
+<h1>螺旋提水</h1>
+<p class="thesis">螺旋每一圈的底部都是一个小水洼，水始终在往下流；螺旋一转，所有水洼整体上移。太陡了水洼会消失，所以只能斜着放。</p>
+<div class="facts">
+<div><span>暂定标题</span>一根螺旋，怎么把水送上高处？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>北宋没有 · 「穿越」带去的机械</div>
+<div><span>衔接</span>← 28 水车提水；→ 26 虹吸</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">起源</p><p class="p">传统上归于阿基米德（约前 250 年）；也有学者认为埃及更早已有，亚述学者达利认为辛那赫里布时代已用铜螺旋灌溉，但仍有争议。</p></div>
+<div class="ol"><p class="o">传播</p><p class="p">古罗马用于矿井排水和尼罗河三角洲灌溉；约 3 世纪后在欧洲衰落，文艺复兴时重新流行，后来传到中国和日本。北宋时中国尚无此物，属于本系列「穿越」带去的机械。</p></div>
+<div class="ol"><p class="o">原理</p><p class="p">螺旋与外管不必完全密封，只要每转一圈舀起的水比漏回的多就能工作。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>水不能往高处走</s> → 螺旋把水一格一格托上去</span></li>
+<li><span class="k">2</span><span><s>转得越快越好</s> → 太快水会被甩乱，倾角同样关键</span></li>
+<li><span class="k">3</span><span><s>越陡送得越高</s> → 陡到一定程度，水洼消失，提不上水</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>转动螺旋管，水从高处流出</p></div>
+<div class="layer"><span>规律层</span><p>每一格都是一个局部的低处，转动让低处整体上移</p></div>
+<div class="layer"><span>本质层</span><p>水始终在往下流，只是整体被抬高了；倾角超过临界值，局部最低点消失</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>水要能被「兜住」→ 倾角不能太陡；漏水 → 螺旋和管壁贴紧；省力 → 用风车或畜力带动。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">软管内径 8–10 毫米最好，太细会因为表面张力堵住。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>软管绕瓶做螺旋泵</td><td>能否提水</td></tr>
+<tr><td>B</td><td>加色素慢动作</td><td>一格一格上升</td></tr>
+<tr><td>C</td><td>倾角 20° / 35° / 50° / 65°</td><td>临界倾角</td></tr>
+<tr><td>D</td><td>慢 / 中 / 快转速</td><td>转速与出水量</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>约 2 米透明软管沿 1.5 升塑料瓶外壁绕 6–8 圈，每圈用胶带固定，两端各留 10 厘米。</li>
+<li>瓶子两端的瓶盖中心各钻一个孔，穿一根竹签当轴，架在两个支点上，下端软管口泡进水盆。</li>
+<li>用量角器摆好倾角，按同一方向匀速转动，转 30 圈后量出水量。</li>
+<li>转错方向水会往下走，这本身也是一个好镜头。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>出水量（毫升）</th><th>备注</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 35°，30 圈</td><td><input type="text" inputmode="decimal" data-k="e25-0-0" aria-label="A 35°，30 圈 出水量（毫升）"></td><td><input type="text" inputmode="decimal" data-k="e25-0-1" aria-label="A 35°，30 圈 备注"></td><td><input type="text" data-k="e25-0-n" aria-label="A 35°，30 圈 备注"></td></tr>
+<tr><td>C 20°，30 圈</td><td><input type="text" inputmode="decimal" data-k="e25-1-0" aria-label="C 20°，30 圈 出水量（毫升）"></td><td><input type="text" inputmode="decimal" data-k="e25-1-1" aria-label="C 20°，30 圈 备注"></td><td><input type="text" data-k="e25-1-n" aria-label="C 20°，30 圈 备注"></td></tr>
+<tr><td>C 50°，30 圈</td><td><input type="text" inputmode="decimal" data-k="e25-2-0" aria-label="C 50°，30 圈 出水量（毫升）"></td><td><input type="text" inputmode="decimal" data-k="e25-2-1" aria-label="C 50°，30 圈 备注"></td><td><input type="text" data-k="e25-2-n" aria-label="C 50°，30 圈 备注"></td></tr>
+<tr><td>C 65°，30 圈</td><td><input type="text" inputmode="decimal" data-k="e25-3-0" aria-label="C 65°，30 圈 出水量（毫升）"></td><td><input type="text" inputmode="decimal" data-k="e25-3-1" aria-label="C 65°，30 圈 备注"></td><td><input type="text" data-k="e25-3-n" aria-label="C 65°，30 圈 备注"></td></tr>
+<tr><td>D 慢速 30 秒</td><td><input type="text" inputmode="decimal" data-k="e25-4-0" aria-label="D 慢速 30 秒 出水量（毫升）"></td><td><input type="text" inputmode="decimal" data-k="e25-4-1" aria-label="D 慢速 30 秒 备注"></td><td><input type="text" data-k="e25-4-n" aria-label="D 慢速 30 秒 备注"></td></tr>
+<tr><td>D 中速 30 秒</td><td><input type="text" inputmode="decimal" data-k="e25-5-0" aria-label="D 中速 30 秒 出水量（毫升）"></td><td><input type="text" inputmode="decimal" data-k="e25-5-1" aria-label="D 中速 30 秒 备注"></td><td><input type="text" data-k="e25-5-n" aria-label="D 中速 30 秒 备注"></td></tr>
+<tr><td>D 快速 30 秒</td><td><input type="text" inputmode="decimal" data-k="e25-6-0" aria-label="D 快速 30 秒 出水量（毫升）"></td><td><input type="text" inputmode="decimal" data-k="e25-6-1" aria-label="D 快速 30 秒 备注"></td><td><input type="text" data-k="e25-6-n" aria-label="D 快速 30 秒 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>自制螺旋泵的临界倾角大约是多少</li>
+<li>转速与出水量是否成正比</li>
+<li>软管内径对效果的影响</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>在水盆或浴缸边做，地面防滑。</li>
+<li>钻瓶盖时注意手。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>透明软管 2 米（内径 8–10 毫米）</td><td>螺旋</td></tr>
+<tr><td>1.5 升塑料瓶、竹签、胶带</td><td>螺旋泵</td></tr>
+<tr><td>水盆、接水杯、量杯</td><td>水与测量</td></tr>
+<tr><td>量角器、食用色素</td><td>倾角与观察</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://en.wikipedia.org/wiki/Archimedes%27_screw">Wikipedia：Archimedes&#x27; screw</a> <span>起源、传播、工作原理</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "透明软管绕在塑料瓶上做成的螺旋泵，转动瓶子，水从上端一股股流出", "一根绕成螺旋的软管，转一转，水就自己爬上来了。"], [2, "0:08", "done", "问题卡：一根螺旋，怎么把水送上高处？", ""], [3, "0:14", "done", "片头：第三季科技树，第 25 集闪烁", "北宋，约公元一〇九〇年。这一集，我们带来一样北宋还没有的机械。"], [4, "0:21", "done", "资料卡：阿基米德、古罗马、传入东亚", "螺旋提水器，传说是公元前三世纪的阿基米德发明的，古罗马人用它排矿井的水、灌溉尼罗河边的田。可它在欧洲沉寂了很久，文艺复兴以后才重新流行，又过了很久才传到中国和日本。北宋的田里，还没有它。"], [5, "0:45", "real", "实验 1：做螺旋泵：约 2 米透明软管沿 1.5 升塑料瓶外壁绕 6–8 圈，用胶带固定；斜放，下端插进水盆，转动瓶子", "做一个：软管绕在瓶子上，斜着放，下端泡进水里，转……（按实拍描述）"], [6, "1:15", "done", "动画：螺旋每一圈的底部是一个小「水洼」，转动时水洼整体上移", "秘密在每一圈螺旋的底部：那是一个局部的最低点，一个小水洼。水始终待在水洼里，一直在往下流。可螺旋一转，所有的水洼都往上挪了一格。水没有往上走，是「低处」被抬高了。"], [7, "1:39", "real", "实验 2：水里加几滴食用色素，慢动作拍水在软管里一格一格上升", "加点颜色，用慢动作看：……（按实拍描述）"], [8, "2:00", "done", "问题卡：放得越陡，是不是送得越高？", ""], [9, "2:06", "real", "实验 3：同一个螺旋泵分别放 20°、35°、50°、65°，各转 30 圈，量出水量", "换几个角度，各转三十圈：……（按实测描述出水量和失效的角度）"], [10, "2:36", "done", "动画：三种倾角下的「水洼」：越陡越浅，最后消失", "越陡，每一格的水洼越浅，能装的水越少；陡到一定程度，水洼消失，水一滴也提不上去。所以螺旋提水器总是斜着放，而且不太陡。"], [11, "2:56", "real", "实验 4：慢、中、快三种转速各转 30 秒，量出水量", "转得快，提得多吗？……（按实测描述）"], [12, "3:22", "done", "结论卡：水一直在往下流，是螺旋把「低处」整体抬高了", "水一直在往下流，是螺旋把「低处」整体抬高了。如果北宋有了它，会用在哪里？"], [13, "3:29", "done", "片尾：点亮第 25 集，预告第 26 集", "下集：不用机器，水也能翻过堤坝。"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>

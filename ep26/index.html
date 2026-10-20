@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>虹吸拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第三季 · 第 26 集</div>
+<h1>虹吸</h1>
+<p class="thesis">灌满水的管子只要出口低于水面，水就会先上后下翻过堤坝；高差决定流速，大气压决定它最多只能翻过约 10 米。</p>
+<div class="facts">
+<div><span>暂定标题</span>水为什么能先往上爬，再翻过去？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>东汉「渴乌」· 北宋</div>
+<div><span>衔接</span>← 25 螺旋提水；→ B5 都江堰</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">渴乌</p><p class="p">东汉毕岚曾造翻车与「渴乌」，「渴乌」一般被解释为虹吸管。唐代杜佑《通典》中也有用竹筒相接、隔山引水的「渴乌」记载，具体原文拍摄前请核对。</p></div>
+<div class="ol"><p class="o">原理</p><p class="p">出口低于源水面时，管内两侧水柱的重量差驱动水流，大气压把水推进管中；理想情况下流速约为 √(2g·高差)。</p></div>
+<div class="ol"><p class="o">极限</p><p class="p">一个标准大气压约能支撑 10.3 米高的水柱；管顶超过这个高度，水柱断开，虹吸停止。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>水不会往上走</s> → 管子注满水就能翻过去</span></li>
+<li><span class="k">2</span><span><s>管子越高越好</s> → 超过约十米就会断流</span></li>
+<li><span class="k">3</span><span><s>流得快慢看管子</s> → 主要看出口和水面的高差</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>注满水的软管，把水引过高处</p></div>
+<div class="layer"><span>规律层</span><p>出口低于水面就会持续流动，高差越大流得越快</p></div>
+<div class="layer"><span>本质层</span><p>大气压把水推上去，另一侧水柱的重力把水拉下来</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>需要先注满 → 引水（灌满或吸一口）；要流得快 → 出口放得更低；要翻高处 → 不能超过约 10 米。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">软管内径约 1 厘米、长 2–3 米；两只水桶一高一低。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>空管 vs 灌满的管</td><td>需要先注满</td></tr>
+<tr><td>B</td><td>出口低 20 / 50 / 100 厘米</td><td>高差与流速</td></tr>
+<tr><td>C</td><td>出口抬到水面以上</td><td>断流</td></tr>
+<tr><td>D</td><td>楼梯间翻 1、2、3 米……</td><td>翻越高度</td></tr>
+<tr><td>E</td><td>公道杯</td><td>自动虹吸</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>灌满软管的办法：整根浸在桶里排出气泡，用拇指堵住一端拿出来；不要用嘴吸。</li>
+<li>每次测量都把出口放进量杯，计时接满 1 升。</li>
+<li>楼梯间实验：高桶放在下层台阶，软管沿扶手往上绕再下来，逐级抬高管顶，观察是否断流（实际极限会因气泡和漏气低很多）。</li>
+<li>公道杯可以网购仿品，先慢慢倒水到刚好不漏，再多倒一点。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>用时（秒）/ 结果</th><th>备注</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 空管：是否流</td><td><input type="text" inputmode="decimal" data-k="e26-0-0" aria-label="A 空管：是否流 用时（秒）/ 结果"></td><td><input type="text" inputmode="decimal" data-k="e26-0-1" aria-label="A 空管：是否流 备注"></td><td><input type="text" data-k="e26-0-n" aria-label="A 空管：是否流 备注"></td></tr>
+<tr><td>B 低 20 厘米：接满 1 升</td><td><input type="text" inputmode="decimal" data-k="e26-1-0" aria-label="B 低 20 厘米：接满 1 升 用时（秒）/ 结果"></td><td><input type="text" inputmode="decimal" data-k="e26-1-1" aria-label="B 低 20 厘米：接满 1 升 备注"></td><td><input type="text" data-k="e26-1-n" aria-label="B 低 20 厘米：接满 1 升 备注"></td></tr>
+<tr><td>B 低 50 厘米：接满 1 升</td><td><input type="text" inputmode="decimal" data-k="e26-2-0" aria-label="B 低 50 厘米：接满 1 升 用时（秒）/ 结果"></td><td><input type="text" inputmode="decimal" data-k="e26-2-1" aria-label="B 低 50 厘米：接满 1 升 备注"></td><td><input type="text" data-k="e26-2-n" aria-label="B 低 50 厘米：接满 1 升 备注"></td></tr>
+<tr><td>B 低 100 厘米：接满 1 升</td><td><input type="text" inputmode="decimal" data-k="e26-3-0" aria-label="B 低 100 厘米：接满 1 升 用时（秒）/ 结果"></td><td><input type="text" inputmode="decimal" data-k="e26-3-1" aria-label="B 低 100 厘米：接满 1 升 备注"></td><td><input type="text" data-k="e26-3-n" aria-label="B 低 100 厘米：接满 1 升 备注"></td></tr>
+<tr><td>C 出口高于水面</td><td><input type="text" inputmode="decimal" data-k="e26-4-0" aria-label="C 出口高于水面 用时（秒）/ 结果"></td><td><input type="text" inputmode="decimal" data-k="e26-4-1" aria-label="C 出口高于水面 备注"></td><td><input type="text" data-k="e26-4-n" aria-label="C 出口高于水面 备注"></td></tr>
+<tr><td>D 能翻越的最大高度（米）</td><td><input type="text" inputmode="decimal" data-k="e26-5-0" aria-label="D 能翻越的最大高度（米） 用时（秒）/ 结果"></td><td><input type="text" inputmode="decimal" data-k="e26-5-1" aria-label="D 能翻越的最大高度（米） 备注"></td><td><input type="text" data-k="e26-5-n" aria-label="D 能翻越的最大高度（米） 备注"></td></tr>
+<tr><td>E 公道杯：开始漏的水位</td><td><input type="text" inputmode="decimal" data-k="e26-6-0" aria-label="E 公道杯：开始漏的水位 用时（秒）/ 结果"></td><td><input type="text" inputmode="decimal" data-k="e26-6-1" aria-label="E 公道杯：开始漏的水位 备注"></td><td><input type="text" data-k="e26-6-n" aria-label="E 公道杯：开始漏的水位 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>流速是否随高差明显增大（理论上与高差的平方根成正比）</li>
+<li>家用软管实际能翻多高</li>
+<li>公道杯仿品的效果</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>不要用嘴吸软管引水，尤其不要用来吸任何非清水的液体（如汽油、清洁剂）。</li>
+<li>楼梯间实验注意地面防滑，水桶放稳，由成年人操作。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>软管 2–3 米（楼梯实验需 10 米左右）</td><td>虹吸管</td></tr>
+<tr><td>两只水桶、量杯</td><td>水源与测量</td></tr>
+<tr><td>秒表、卷尺</td><td>计时与量高差</td></tr>
+<tr><td>公道杯仿品（可选）</td><td>自动虹吸</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://en.wikipedia.org/wiki/Siphon">Wikipedia：Siphon</a> <span>原理与约 10 米极限</span></li>
+<li><a href="https://www.cdstm.cn/theme/nytd/nyjx/201407/t20140710_462032.html">中国数字科技馆：翻车</a> <span>毕岚</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "一根软管从高处的桶搭到低处的桶，灌满后水哗哗地翻过去", "一根管子搭过去，水自己先往上爬，再翻过去。"], [2, "0:08", "done", "问题卡：水为什么能先往上爬，再翻过去？", ""], [3, "0:14", "done", "片头：第三季科技树，第 26 集闪烁", "北宋，约公元一〇九〇年。这一招，东汉人就会。"], [4, "0:21", "done", "资料卡：东汉渴乌、唐代通典、今天的虹吸", "东汉的毕岚造过一种叫「渴乌」的东西，一般认为就是虹吸管。唐代杜佑的《通典》里，也有用竹筒相接、隔山引水的记载。今天的鱼缸换水、马桶水箱，用的还是它。"], [5, "0:43", "real", "实验 1：两只桶一高一低，空软管搭过去：不流；把软管整根灌满水、捏住两端放好再松开：开始流", "先放一根空管子：水不动。把管子灌满水再放进去……（按实拍描述）"], [6, "1:08", "done", "动画：灌满的管子、高差、大气压；出口抬高到水面以上就断流", "关键是高差：出口比水面低，出口那一侧的水更重，把水往下拉；大气压压着水面，把水推进管里。只要出口比水面低，水就一直流；出口一抬到水面以上，立刻断流。"], [7, "1:30", "real", "实验 2：出口比水面低 20、50、100 厘米，分别测流满 1 升需要几秒；再把出口抬到水面以上", "出口越低，流得越快：二十厘米……五十厘米……一米……（按实测描述）。抬到水面以上：停了。"], [8, "2:05", "done", "问题卡：一根管子，能翻多高的山？", ""], [9, "2:11", "done", "动画：管顶逐渐抬高，约 10 米时管顶出现真空，断流", "那能翻多高？大气压最多能托起大约十米高的水柱。管顶超过十米，水就被「拉断」了，顶上出现一段真空。虹吸能翻过堤坝，翻不过高山。"], [10, "2:29", "real", "实验 3（成年人操作）：在楼梯间用长软管，测试翻越 1 米、2 米、3 米……是否还能流", "我们在楼梯间试试能翻多高：……（按实测描述）"], [11, "2:59", "real", "实验 4：公道杯（可买仿品）：水倒到一定高度以下滴水不漏，超过就全部漏光", "再看一只公道杯：倒得太满，酒会一下子全漏光。杯子中间藏着一根虹吸管。（按实拍描述）"], [12, "3:22", "done", "结论卡：出口比水面低，水就会翻过去，但翻不过十米", "出口比水面低，水就会翻过去；可再高也翻不过十米。古人用它引水灌田，也用它做了一只劝人别贪杯的杯子。"], [13, "3:29", "done", "片尾：点亮第 26 集，预告 B5 都江堰", "下集：两千年还在用的都江堰。"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>

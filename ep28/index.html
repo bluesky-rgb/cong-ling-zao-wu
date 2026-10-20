@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>水车提水拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第三季 · 第 28 集</div>
+<h1>水车提水</h1>
+<p class="thesis">翻车用一串刮板把水一节节推上斜槽，靠人踩；筒车立在河里，靠河水推动，让竹筒在下面灌满、在顶上倒出。</p>
+<div class="facts">
+<div><span>暂定标题</span>水只会往低处流，怎么把它送上田埂？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>东汉翻车 · 唐代筒车 · 北宋</div>
+<div><span>衔接</span>← 06 水车发电、B4 水排；第三季开篇</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">翻车</p><p class="p">东汉毕岚发明，三国马钧改进推广，又称龙骨水车，是刮板式连续提水机械，被认为是中国古代链传动的最早应用之一；可用人力、畜力、水力或风力驱动。</p></div>
+<div class="ol"><p class="o">筒车</p><p class="p">唐代前期出现，又称天车：立式水轮、竹筒、支架和水槽组成，河水冲动水轮，竹筒取水倒入水槽，实现自流灌溉。</p></div>
+<div class="ol"><p class="o">能量</p><p class="p">提水所需的功 = 水的重量 × 提升高度；筒车用的是河水的动能，所以只能把一部分水抬高。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>水只能往低处流</s> → 水流推动轮子，斗把水带上去</span></li>
+<li><span class="k">2</span><span><s>轮子越大越好</s> → 提得越高，每分钟提的水越少</span></li>
+<li><span class="k">3</span><span><s>筒车是自己转的永动机</s> → 它用的是河水的能量</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>翻车、筒车把水从河里送上田埂</p></div>
+<div class="layer"><span>规律层</span><p>提升的势能来自人力或河水的动能</p></div>
+<div class="layer"><span>本质层</span><p>能量守恒：大量水的动能 → 少量水的势能</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>人力有限 → 用脚踩，力气更大；不想用人 → 让河水推动（筒车）；要提得高 → 更大的轮子或更长的槽，代价是更费力。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">模型用塑料槽、绳子、卡片、纸盘、小纸杯；在水池或浴缸边做。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>自制翻车：塑料槽 + 刮板绳</td><td>刮板提水</td></tr>
+<tr><td>B</td><td>翻车倾角 20° / 35° / 50°</td><td>高度与水量的取舍</td></tr>
+<tr><td>C</td><td>自制筒车放在水流下</td><td>水力自动提水</td></tr>
+<tr><td>D</td><td>测筒车每分钟提水量和高度</td><td>能量的账</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>翻车：塑料线槽或半截水管当槽，长约 60 厘米；绳子上每隔 5 厘米粘一张略窄于槽的硬卡片。</li>
+<li>槽的下端泡进水盆，上端架在高处的接水盒上，匀速拉绳 1 分钟，量接到的水。</li>
+<li>筒车：直径 20 厘米的纸盘（或旧自行车轮）边缘斜绑 8–12 个小纸杯，轴穿一根筷子架起来，让水龙头的水冲在轮子一侧。</li>
+<li>在轮子顶部偏一侧放一个接水槽，调整杯子的倾斜角度，让它们刚好在顶上倒水。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>结果</th><th>备注</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 1 分钟提水（毫升）</td><td><input type="text" inputmode="decimal" data-k="e28-0-0" aria-label="A 1 分钟提水（毫升） 结果"></td><td><input type="text" inputmode="decimal" data-k="e28-0-1" aria-label="A 1 分钟提水（毫升） 备注"></td><td><input type="text" data-k="e28-0-n" aria-label="A 1 分钟提水（毫升） 备注"></td></tr>
+<tr><td>B 20°：提水量 / 高度</td><td><input type="text" inputmode="decimal" data-k="e28-1-0" aria-label="B 20°：提水量 / 高度 结果"></td><td><input type="text" inputmode="decimal" data-k="e28-1-1" aria-label="B 20°：提水量 / 高度 备注"></td><td><input type="text" data-k="e28-1-n" aria-label="B 20°：提水量 / 高度 备注"></td></tr>
+<tr><td>B 35°：提水量 / 高度</td><td><input type="text" inputmode="decimal" data-k="e28-2-0" aria-label="B 35°：提水量 / 高度 结果"></td><td><input type="text" inputmode="decimal" data-k="e28-2-1" aria-label="B 35°：提水量 / 高度 备注"></td><td><input type="text" data-k="e28-2-n" aria-label="B 35°：提水量 / 高度 备注"></td></tr>
+<tr><td>B 50°：提水量 / 高度</td><td><input type="text" inputmode="decimal" data-k="e28-3-0" aria-label="B 50°：提水量 / 高度 结果"></td><td><input type="text" inputmode="decimal" data-k="e28-3-1" aria-label="B 50°：提水量 / 高度 备注"></td><td><input type="text" data-k="e28-3-n" aria-label="B 50°：提水量 / 高度 备注"></td></tr>
+<tr><td>C 筒车能否自己转并倒水</td><td><input type="text" inputmode="decimal" data-k="e28-4-0" aria-label="C 筒车能否自己转并倒水 结果"></td><td><input type="text" inputmode="decimal" data-k="e28-4-1" aria-label="C 筒车能否自己转并倒水 备注"></td><td><input type="text" data-k="e28-4-n" aria-label="C 筒车能否自己转并倒水 备注"></td></tr>
+<tr><td>D 每分钟提水（毫升）/ 提升高度（厘米）</td><td><input type="text" inputmode="decimal" data-k="e28-5-0" aria-label="D 每分钟提水（毫升）/ 提升高度（厘米） 结果"></td><td><input type="text" inputmode="decimal" data-k="e28-5-1" aria-label="D 每分钟提水（毫升）/ 提升高度（厘米） 备注"></td><td><input type="text" data-k="e28-5-n" aria-label="D 每分钟提水（毫升）/ 提升高度（厘米） 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>自制翻车的刮板会不会漏水太多</li>
+<li>筒车模型能否靠水龙头的水流自己转</li>
+<li>倾角对提水量的影响</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>在水池或浴缸边操作，注意地面防滑。</li>
+<li>用自行车轮时注意辐条夹手。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>塑料线槽或半截水管、绳子、硬卡片</td><td>翻车</td></tr>
+<tr><td>纸盘或旧自行车轮、小纸杯、筷子</td><td>筒车</td></tr>
+<tr><td>水盆、接水盒</td><td>水源与接水</td></tr>
+<tr><td>量杯、量角器、秒表</td><td>测量</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://www.cdstm.cn/theme/nytd/nyjx/201407/t20140710_462032.html">中国数字科技馆：翻车</a> <span>毕岚发明、马钧改进</span></li>
+<li><a href="https://www.cdstm.cn/theme/nytd/nyjx/201407/t20140710_462040.html">中国数字科技馆：筒车</a> <span>唐代前期出现、结构</span></li>
+<li><a href="https://www.stdaily.com/web/English/2023-09/22/content_1936662.html">科技日报：Dragonbone Water Lift</a></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "自制筒车模型在水流下转动，小杯子把水一杯杯倒进高处的水槽", "水往低处流，可这个轮子，偏偏把水送上了高处。"], [2, "0:08", "done", "问题卡：水只会往低处流，怎么把它送上田埂？", ""], [3, "0:14", "done", "片头：第三季科技树，第 28 集闪烁", "北宋，约公元一〇九〇年。第三季：水与农业。先让水爬上田埂。"], [4, "0:21", "done", "资料卡：毕岚翻车、唐代筒车、北宋田间", "东汉的毕岚发明了翻车，也叫龙骨水车，三国时马钧又把它改进、推广开来。到了唐代，河边出现了筒车：水流推它转，竹筒自己取水。北宋的田间，这两种水车已经随处可见。"], [5, "0:45", "real", "实验 1：自制翻车：一条塑料槽斜放，绳子上每隔 5 厘米粘一张卡片当刮板，手拉绳子把水刮上去", "用一条塑料槽和一串卡片做个翻车：拉动绳子，水被一格一格刮上来。（按实拍描述）"], [6, "1:15", "done", "动画：翻车的刮板在木槽里上行，把一节节水推上田埂", "翻车是一条斜放的木槽，一串用链子连起来的木板。人踩动上面的轮子，木板在槽里往上走，每块板推着前面一小段水，一节一节送上去，倒进田埂上的水渠。"], [7, "1:37", "real", "实验 2：槽的倾角分别为 20°、35°、50°，同样拉 1 分钟，量提上来的水", "槽放得越陡，送得越高，可每分钟提上来的水……（按实测描述）"], [8, "2:02", "done", "问题卡：不想用人踩，能不能让河水自己干？", ""], [9, "2:08", "real", "实验 3：自制筒车：纸盘或自行车轮边上斜绑小纸杯，放在水龙头水流下，看它能否把水带到高处倒进槽里", "换成筒车：让水流冲着轮子转，轮边的小杯子在下面灌满，转到上面倒出来。（按实拍描述）"], [10, "2:38", "done", "动画：筒车一半泡在河里，河水推动，竹筒在下面灌满、在顶上倒出；能量的账", "筒车一半泡在河里，河水推着它转，竹筒在水里灌满，转到顶上倒进水槽。水不能自己往高处走：是大量河水失去一点速度，把少量的水抬高了几米。它和第六集发电的水车，是同一个轮子。"], [11, "3:00", "real", "实验 4：测一测：筒车模型每分钟能提多少水、提多高", "这个小筒车，每分钟能提……毫升，提高……厘米。（按实测描述）"], [12, "3:22", "done", "结论卡：翻车靠人力，筒车靠河水", "翻车靠人力，筒车靠河水，做的是同一件事：把水一节一节送上去。"], [13, "3:29", "done", "片尾：点亮第 28 集，预告第 25 集", "下集：一样北宋还没有的机械，螺旋。"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>
