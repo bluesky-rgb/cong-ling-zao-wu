@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>指南车拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../ep30/">30</a><a href="../b6/">B6</a><a href="../season3/">特辑3</a><a href="../ep32/">32</a><a href="../ep33/">33</a><a href="../b19/">B19</a><a href="../ep37/">37</a><a href="../ep31/">31</a><a href="../ep35/">35</a><a href="../ep36/">36</a><a href="../season4/">特辑4</a><a href="../ep39/">39</a><a href="../b8/">B8</a><a href="../ep40/">40</a><a href="../ep41/">41</a><a href="../b17/">B17</a><a href="../b7/">B7</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 古法解密 · B17</div>
+<h1>指南车</h1>
+<p class="thesis">车转弯时，外侧轮比内侧轮多走「轮距 × 转角」；用齿轮把这段差变成木人反方向的转动，木人就始终指着原来的方向。它不靠磁石。</p>
+<div class="facts">
+<div><span>暂定标题</span>车怎么转弯，木人的手都一直指南？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>北宋 · 1027 年 · 燕肃</div>
+<div><span>衔接</span>← 41 齿轮；→ B7 榫卯</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">记载</p><p class="p">三国魏明帝青龙年间（233–237）马钧造指南车，是较可靠的最早记载。《宋史·舆服志》记录了 1027 年燕肃和 1107 年吴德仁造的指南车，包括各齿轮的齿数。</p></div>
+<div class="ol"><p class="o">宋代的做法</p><p class="p">据《宋史》的描述，车辕在转弯时通过绳索、滑轮和重锤，使一侧的小齿轮与中央转盘咬合，把外侧轮的转动传给木人；直行时两边都脱开（属非差动设计）。</p></div>
+<div class="ol"><p class="o">现代复原</p><p class="p">20 世纪以来不少复原模型采用差动齿轮。古代是否用过差动齿轮尚无定论。原物都没有保存下来。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>里面藏着磁石</s> → 靠的全是齿轮</span></li>
+<li><span class="k">2</span><span><s>两个轮子转得一样多</s> → 转弯时外侧轮多走</span></li>
+<li><span class="k">3</span><span><s>做出来就一直准</s> → 轮子差一点点，误差就越积越大</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>转弯后木人仍指着原来的方向</p></div>
+<div class="layer"><span>规律层</span><p>外侧轮多走的路程 = 轮距 × 转角</p></div>
+<div class="layer"><span>本质层</span><p>把两轮转动之差按比例反向传给转盘（离合或差动）</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>要知道车转了多少 → 比较两个轮子走的路；要让木人不跟着转 → 把这个差反向加给木人；要可靠 → 两轮必须做得一样大。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">没有乐高差速器也能拍：实验 1、2、4 只需要瓶盖、竹签和一张大纸。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>瓶盖车轴转弯留弧线</td><td>两轮路程差</td></tr>
+<tr><td>B</td><td>量弧长、算轮距 × 转角</td><td>公式</td></tr>
+<tr><td>C</td><td>乐高差速器（可选）</td><td>差动</td></tr>
+<tr><td>D</td><td>一轮缠胶带直推</td><td>累积误差</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>A：两个同样的瓶盖钻孔，穿在一根竹签两端（瓶盖要能随竹签一起转）；瓶盖边缘蘸水彩，在铺开的大纸上推着车轴转一个 90° 的弯。</li>
+<li>B：用细线沿两条弧线量长度，算差值；量两瓶盖间距（轮距），乘以 1.57，对比。</li>
+<li>C：用乐高差速器，按住一边输出轴，转另一边，拍中间齿轮。</li>
+<li>D：给一个瓶盖缠一圈胶带，沿直尺方向推 2 米，量终点偏了多少。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>结果</th><th>备注</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 外弧长（厘米）</td><td><input type="text" inputmode="decimal" data-k="b17-0-0" aria-label="A 外弧长（厘米） 结果"></td><td><input type="text" inputmode="decimal" data-k="b17-0-1" aria-label="A 外弧长（厘米） 备注"></td><td><input type="text" data-k="b17-0-n" aria-label="A 外弧长（厘米） 备注"></td></tr>
+<tr><td>A 内弧长（厘米）</td><td><input type="text" inputmode="decimal" data-k="b17-1-0" aria-label="A 内弧长（厘米） 结果"></td><td><input type="text" inputmode="decimal" data-k="b17-1-1" aria-label="A 内弧长（厘米） 备注"></td><td><input type="text" data-k="b17-1-n" aria-label="A 内弧长（厘米） 备注"></td></tr>
+<tr><td>B 轮距（厘米）</td><td><input type="text" inputmode="decimal" data-k="b17-2-0" aria-label="B 轮距（厘米） 结果"></td><td><input type="text" inputmode="decimal" data-k="b17-2-1" aria-label="B 轮距（厘米） 备注"></td><td><input type="text" data-k="b17-2-n" aria-label="B 轮距（厘米） 备注"></td></tr>
+<tr><td>B 轮距 × 1.57（厘米）</td><td><input type="text" inputmode="decimal" data-k="b17-3-0" aria-label="B 轮距 × 1.57（厘米） 结果"></td><td><input type="text" inputmode="decimal" data-k="b17-3-1" aria-label="B 轮距 × 1.57（厘米） 备注"></td><td><input type="text" data-k="b17-3-n" aria-label="B 轮距 × 1.57（厘米） 备注"></td></tr>
+<tr><td>D 推 2 米偏离（厘米）</td><td><input type="text" inputmode="decimal" data-k="b17-4-0" aria-label="D 推 2 米偏离（厘米） 结果"></td><td><input type="text" inputmode="decimal" data-k="b17-4-1" aria-label="D 推 2 米偏离（厘米） 备注"></td><td><input type="text" data-k="b17-4-n" aria-label="D 推 2 米偏离（厘米） 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>弧线能否清楚留在纸上</li>
+<li>实测差值与公式是否接近</li>
+<li>缠一圈胶带是否足以看出跑偏</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>竹签尖端剪平或包胶带。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>瓶盖 2 个、竹签、水彩、大白纸</td><td>车轴</td></tr>
+<tr><td>细线、尺子</td><td>量弧长</td></tr>
+<tr><td>乐高差速器（可选）</td><td>差动</td></tr>
+<tr><td>胶带</td><td>误差实验</td></tr>
+<tr><td>玩具车、纸做的小手臂</td><td>开场</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://en.wikipedia.org/wiki/South-pointing_chariot">Wikipedia：South-pointing chariot</a> <span>马钧、燕肃 1027、吴德仁 1107、两种复原方案</span></li>
+<li><a href="https://zh.wikisource.org/wiki/%E5%AE%8B%E5%8F%B2/%E5%8D%B7149">维基文库：宋史·舆服志一</a> <span>原文（拍摄前核对卷次）</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "玩具车上竖一根纸做的小手臂，指向桌子另一头；推着车绕桌子转个弯：手臂跟着车转，不再指着原来的方向", "普通的车一转弯，车上的手臂就跟着转了。"], [2, "0:08", "done", "问题卡：车怎么转弯，木人的手为什么一直指南？", ""], [3, "0:14", "done", "片头：B 线科技树，B17 闪烁", "古法解密。北宋，一〇二七年，燕肃造了一辆指南车。"], [4, "0:21", "done", "资料卡：马钧、燕肃、吴德仁", "三国时马钧造过指南车。北宋的燕肃、吴德仁也造过，《宋史》连各个齿轮的齿数都记了下来。它不用磁石，靠的全是齿轮。"], [5, "0:45", "real", "实验 1：两个瓶盖穿在一根竹签两端做车轴，轮边蘸一点颜料，在大纸上推着转一个 90° 的弯，留下两条弧线", "推着车轴转一个直角弯，纸上留下两条弧线：外面长，里面短。"], [6, "1:10", "done", "动画：转弯时外侧轮比内侧轮多走「轮距 × 转角」", "车往右转，外侧轮绕大圈，内侧轮绕小圈。多走的那一段，正好等于轮距乘以转过的角度。"], [7, "1:32", "real", "实验 2：用线量两条弧线的长度，算差值；再量轮距，乘以 1.57（90° 的弧度），对比", "两条弧线差了……厘米；轮距……厘米乘一点五七，是……（按实测描述）"], [8, "1:57", "done", "问题卡：车里的齿轮，到底怎么排？", ""], [9, "2:03", "real", "实验 3（可选）：乐高差速器：一边轮子按住不动、转另一边，看中间的齿轮怎么转；没有乐高可用汽车模型的差速器图片", "按住一边，转另一边：中间的齿轮……（按实拍描述）"], [10, "2:33", "done", "动画：离合齿轮（宋代记载）与差动齿轮（现代复原）", "《宋史》里的指南车，靠绳索和重锤在转弯时让小齿轮咬合；今天很多复原模型改用差动齿轮，汽车的差速器也是这个原理。原物都没有留下。"], [11, "2:55", "real", "实验 4：两个瓶盖轮，其中一个缠一圈胶带变大一点，沿直线推 2 米：车会慢慢跑偏", "两个轮子只差一点点，走两米就……（按实拍描述）：这就是指南车最难的地方，轮子必须做得一模一样。"], [12, "3:22", "done", "结论卡：两轮走的路程差，记下了车转了多少", "两轮走的路程差，记下了车转了多少；指南车靠齿轮，不靠磁石。"], [13, "3:29", "done", "片尾：点亮 B17，预告 B7", "下集：不用一根钉子的木头。"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>

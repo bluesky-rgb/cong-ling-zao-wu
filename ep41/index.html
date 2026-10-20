@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>齿轮与轴承拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../ep30/">30</a><a href="../b6/">B6</a><a href="../season3/">特辑3</a><a href="../ep32/">32</a><a href="../ep33/">33</a><a href="../b19/">B19</a><a href="../ep37/">37</a><a href="../ep31/">31</a><a href="../ep35/">35</a><a href="../ep36/">36</a><a href="../season4/">特辑4</a><a href="../ep39/">39</a><a href="../b8/">B8</a><a href="../ep40/">40</a><a href="../ep41/">41</a><a href="../b17/">B17</a><a href="../b7/">B7</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第五季 · 第 41 集</div>
+<h1>齿轮与轴承</h1>
+<p class="thesis">两个齿轮咬合，转速比等于齿数的反比：转得快就力气小，转得慢就有劲。轴承把「滑」变成「滚」，大大减少摩擦。</p>
+<div class="facts">
+<div><span>暂定标题</span>怎么让转速变快或变慢？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>穿越北宋 · 水车接发电机</div>
+<div><span>衔接</span>← 40 曲柄连杆；← 06 水车发电；→ B17 指南车</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">齿轮</p><p class="p">汉代已有青铜、铁制齿轮出土；北宋苏颂、韩公廉 1088–1092 年造水运仪象台，用水轮和齿轮系带动浑仪、浑象和报时装置。</p></div>
+<div class="ol"><p class="o">齿数比</p><p class="p">咬合的两个齿轮，每转过一个齿对方也转过一个齿，所以转速比等于齿数的反比，转向相反。</p></div>
+<div class="ol"><p class="o">轴承</p><p class="p">滚动摩擦通常远小于滑动摩擦；把滚珠或滚柱装在轴和轴套之间就是滚动轴承。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>齿轮越大转得越快</s> → 大的带小的，小的更快</span></li>
+<li><span class="k">2</span><span><s>转得快就更有力</s> → 转得快，力气就小</span></li>
+<li><span class="k">3</span><span><s>摩擦没办法</s> → 把滑动换成滚动</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>大齿轮转一圈，小齿轮转三圈；垫铅笔拖书更轻</p></div>
+<div class="layer"><span>规律层</span><p>转速比 = 齿数反比；功率不变时转矩与转速成反比</p></div>
+<div class="layer"><span>本质层</span><p>滚动时接触面不再互相刮擦，能量损失小得多</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>水车转得慢、发电机要转得快 → 大齿轮带小齿轮增速；轴磨损发热 → 加轴承。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">玩具齿轮（乐高或网购齿轮套装）最方便；纸板齿轮也可以，但要剪得整齐。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>36 齿带 12 齿</td><td>齿数比</td></tr>
+<tr><td>B</td><td>自行车数齿、数圈</td><td>真实的变速</td></tr>
+<tr><td>C</td><td>拖书 vs 垫铅笔</td><td>滑动与滚动</td></tr>
+<tr><td>D</td><td>弹珠转盘</td><td>滚珠轴承</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>A：两齿轮装在硬纸板上（图钉作轴），大齿轮做红点，转一圈，数小齿轮圈数。</li>
+<li>B：自行车倒置，数前齿盘和后飞轮当前挡位的齿数；后轮贴胶带，慢慢踩一圈，数后轮圈数。换一个挡再做一次。</li>
+<li>C：一摞书（约 2 公斤）系上橡皮筋，在桌上匀速拖动，量橡皮筋伸长；再在书下垫 6–8 支圆铅笔重复。</li>
+<li>D：两个同样的罐头盖（或瓶盖）之间放一圈弹珠，上面压几本书转动；再拿掉弹珠对比。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>结果</th><th>备注</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 大齿轮 1 圈，小齿轮（圈）</td><td><input type="text" inputmode="decimal" data-k="e41-0-0" aria-label="A 大齿轮 1 圈，小齿轮（圈） 结果"></td><td><input type="text" inputmode="decimal" data-k="e41-0-1" aria-label="A 大齿轮 1 圈，小齿轮（圈） 备注"></td><td><input type="text" data-k="e41-0-n" aria-label="A 大齿轮 1 圈，小齿轮（圈） 备注"></td></tr>
+<tr><td>B 前齿 / 后齿 / 理论比</td><td><input type="text" inputmode="decimal" data-k="e41-1-0" aria-label="B 前齿 / 后齿 / 理论比 结果"></td><td><input type="text" inputmode="decimal" data-k="e41-1-1" aria-label="B 前齿 / 后齿 / 理论比 备注"></td><td><input type="text" data-k="e41-1-n" aria-label="B 前齿 / 后齿 / 理论比 备注"></td></tr>
+<tr><td>B 实测后轮圈数</td><td><input type="text" inputmode="decimal" data-k="e41-2-0" aria-label="B 实测后轮圈数 结果"></td><td><input type="text" inputmode="decimal" data-k="e41-2-1" aria-label="B 实测后轮圈数 备注"></td><td><input type="text" data-k="e41-2-n" aria-label="B 实测后轮圈数 备注"></td></tr>
+<tr><td>C 直接拖：橡皮筋伸长（厘米）</td><td><input type="text" inputmode="decimal" data-k="e41-3-0" aria-label="C 直接拖：橡皮筋伸长（厘米） 结果"></td><td><input type="text" inputmode="decimal" data-k="e41-3-1" aria-label="C 直接拖：橡皮筋伸长（厘米） 备注"></td><td><input type="text" data-k="e41-3-n" aria-label="C 直接拖：橡皮筋伸长（厘米） 备注"></td></tr>
+<tr><td>C 垫铅笔：橡皮筋伸长（厘米）</td><td><input type="text" inputmode="decimal" data-k="e41-4-0" aria-label="C 垫铅笔：橡皮筋伸长（厘米） 结果"></td><td><input type="text" inputmode="decimal" data-k="e41-4-1" aria-label="C 垫铅笔：橡皮筋伸长（厘米） 备注"></td><td><input type="text" data-k="e41-4-n" aria-label="C 垫铅笔：橡皮筋伸长（厘米） 备注"></td></tr>
+<tr><td>D 有无弹珠的差别</td><td><input type="text" inputmode="decimal" data-k="e41-5-0" aria-label="D 有无弹珠的差别 结果"></td><td><input type="text" inputmode="decimal" data-k="e41-5-1" aria-label="D 有无弹珠的差别 备注"></td><td><input type="text" data-k="e41-5-n" aria-label="D 有无弹珠的差别 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>纸板齿轮能否顺畅咬合</li>
+<li>橡皮筋伸长的差别是否明显</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>倒置自行车要放稳，手指远离链条和辐条。</li>
+<li>弹珠不要让小孩放进嘴里。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>玩具齿轮或纸板齿轮、图钉</td><td>齿数比</td></tr>
+<tr><td>自行车</td><td>变速</td></tr>
+<tr><td>书、橡皮筋、圆铅笔、尺子</td><td>滑动与滚动</td></tr>
+<tr><td>罐头盖、弹珠</td><td>轴承</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://en.wikipedia.org/wiki/Gear">Wikipedia：Gear</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Su_Song">Wikipedia：Su Song（水运仪象台）</a> <span>1088–1092</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Rolling-element_bearing">Wikipedia：Rolling-element bearing</a></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "自行车倒置：后轮贴一条胶带，踩一圈脚蹬，数后轮转了几圈", "踩一圈脚蹬，后轮转了……圈。"], [2, "0:08", "done", "问题卡：同样踩一圈，为什么换个挡，轮子转得不一样？", ""], [3, "0:14", "done", "片头：第五季科技树，第 41 集闪烁", "穿越北宋：想让水车带动发电机，可水车转得太慢了。"], [4, "0:21", "done", "资料卡：汉代齿轮、安提基特拉机械、苏颂水运仪象台", "汉代已有青铜和铁做的齿轮；北宋的苏颂和韩公廉造了水运仪象台，用水轮和一整套齿轮带动天文仪器。"], [5, "0:45", "real", "实验 1：纸板齿轮（或玩具齿轮）36 齿和 12 齿咬合，大齿轮上做红点，转一圈数小齿轮转几圈", "大齿轮转一圈，小齿轮转了……圈。"], [6, "1:10", "done", "动画：36 齿与 12 齿咬合，转速比 3:1", "两个齿轮咬在一起，每转过一个齿，对方也转过一个齿。三十六齿的转一圈，十二齿的要转三圈。转得快，力气就小；反过来，慢而有劲。"], [7, "1:32", "real", "实验 2：数自行车前齿盘和后飞轮的齿数，算出齿数比；踩一圈数后轮圈数，换一个挡再数", "前面……齿，后面……齿，算出来是……；实测……（按实测描述）"], [8, "1:57", "done", "问题卡：同一块重物，为什么滚着走比拖着走省力？", ""], [9, "2:03", "real", "实验 3：一摞书用橡皮筋拉：直接拖 vs 下面垫一排圆铅笔，比较橡皮筋拉长了多少", "直接拖，橡皮筋拉长……厘米；垫上铅笔……（按实测描述）"], [10, "2:33", "done", "动画：滑动摩擦 vs 滚动摩擦；轴承", "直接拖，两个表面的凸起互相卡住、刮擦；垫上滚子，就一点一点滚过去。轴承就是把这个办法装进轮子的轴里。"], [11, "2:55", "real", "实验 4：两个罐头盖之间夹一圈弹珠做成转盘，上面压几本书转动；对比不放弹珠", "夹了弹珠的……没夹的……（按实拍描述）"], [12, "3:22", "done", "结论卡：齿数比决定转速和力气", "齿数比决定转速和力气；把「滑」变成「滚」，省力得多。"], [13, "3:29", "done", "片尾：点亮第 41 集，预告 B17", "下集：车怎么转弯，木人的手都指南？"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>
