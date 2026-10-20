@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>赵州桥拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../ep30/">30</a><a href="../b6/">B6</a><a href="../season3/">特辑3</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 古法解密 · B6</div>
+<h1>赵州桥</h1>
+<p class="thesis">拱把重量变成沿弧线的压力，让石头只受压；扁拱让桥面平缓，敞肩的四个小拱减轻自重、让洪水穿过。</p>
+<div class="facts">
+<div><span>暂定标题</span>一千四百年的石拱桥，为什么还没塌？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>隋 · 595–605 年 · 李春</div>
+<div><span>衔接</span>← 24 石灰；第三季 B 线收尾</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">赵州桥</p><p class="p">又名安济桥，595 年开工、605 年完工，李春主持修建。主跨约 37 米，全长约 50.8 米，宽约 9.6 米。</p></div>
+<div class="ol"><p class="o">扁拱</p><p class="p">赵州桥是坦弧拱，拱高只有 7 米多，远低于半圆拱，桥面坡度小，便于车马通行；但扁拱的水平推力更大，对桥台要求更高。</p></div>
+<div class="ol"><p class="o">敞肩</p><p class="p">大拱两肩各开两个小拱：减轻自重、节省石料，洪水时增加过水面积。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>实心才结实</s> → 敞肩拱更轻，还能泄洪</span></li>
+<li><span class="k">2</span><span><s>拱越高越好</s> → 扁拱桥面平，代价是推力大</span></li>
+<li><span class="k">3</span><span><s>石头靠灰浆粘着</s> → 靠的是拱形让石头互相挤紧</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>纸弯成拱能撑住硬币；两端不顶住就塌</p></div>
+<div class="layer"><span>规律层</span><p>拱把竖向荷载变成沿拱轴的压力，拱脚产生水平推力</p></div>
+<div class="layer"><span>本质层</span><p>石材抗压强、抗拉弱，拱形让截面只受压</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>石头怕拉 → 用拱；车马要过 → 拱压扁；拱脚推力大 → 厚实的桥台；自重太大、洪水冲击 → 敞肩开小拱。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">纸和硬纸板模型即可；硬币用同一面值。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>平纸 vs 纸拱放硬币</td><td>拱的作用</td></tr>
+<tr><td>B</td><td>纸拱两端顶住 vs 不顶住</td><td>拱脚推力</td></tr>
+<tr><td>C</td><td>硬纸板实肩桥 vs 敞肩桥加砝码</td><td>自重与承重</td></tr>
+<tr><td>D</td><td>风扇吹两座桥的侧面</td><td>泄洪（用风模拟）</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>A：两摞书相距 15 厘米，A4 纸平放在上面，中间逐枚放一元硬币；再把纸弯成拱，两端抵住书的内侧。</li>
+<li>B：同样的纸拱放在光滑桌面上，两端不抵住，再加硬币。</li>
+<li>C：用硬纸板剪出两座同样尺寸的拱桥侧板（一座两肩实心，一座两肩各挖两个小拱），两块侧板之间用纸条连成桥面；称重后在桥面中央放水杯逐次加水。</li>
+<li>D：电风扇低档对着桥的侧面吹，比较哪座先被吹动（下面垫光滑的纸）。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>结果</th><th>备注</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 平纸能放（枚）</td><td><input type="text" inputmode="decimal" data-k="b6-0-0" aria-label="A 平纸能放（枚） 结果"></td><td><input type="text" inputmode="decimal" data-k="b6-0-1" aria-label="A 平纸能放（枚） 备注"></td><td><input type="text" data-k="b6-0-n" aria-label="A 平纸能放（枚） 备注"></td></tr>
+<tr><td>A 纸拱能放（枚）</td><td><input type="text" inputmode="decimal" data-k="b6-1-0" aria-label="A 纸拱能放（枚） 结果"></td><td><input type="text" inputmode="decimal" data-k="b6-1-1" aria-label="A 纸拱能放（枚） 备注"></td><td><input type="text" data-k="b6-1-n" aria-label="A 纸拱能放（枚） 备注"></td></tr>
+<tr><td>B 不顶住时</td><td><input type="text" inputmode="decimal" data-k="b6-2-0" aria-label="B 不顶住时 结果"></td><td><input type="text" inputmode="decimal" data-k="b6-2-1" aria-label="B 不顶住时 备注"></td><td><input type="text" data-k="b6-2-n" aria-label="B 不顶住时 备注"></td></tr>
+<tr><td>C 实肩桥自重 / 最大承重（克）</td><td><input type="text" inputmode="decimal" data-k="b6-3-0" aria-label="C 实肩桥自重 / 最大承重（克） 结果"></td><td><input type="text" inputmode="decimal" data-k="b6-3-1" aria-label="C 实肩桥自重 / 最大承重（克） 备注"></td><td><input type="text" data-k="b6-3-n" aria-label="C 实肩桥自重 / 最大承重（克） 备注"></td></tr>
+<tr><td>C 敞肩桥自重 / 最大承重（克）</td><td><input type="text" inputmode="decimal" data-k="b6-4-0" aria-label="C 敞肩桥自重 / 最大承重（克） 结果"></td><td><input type="text" inputmode="decimal" data-k="b6-4-1" aria-label="C 敞肩桥自重 / 最大承重（克） 备注"></td><td><input type="text" data-k="b6-4-n" aria-label="C 敞肩桥自重 / 最大承重（克） 备注"></td></tr>
+<tr><td>D 风扇档位 / 哪座先动</td><td><input type="text" inputmode="decimal" data-k="b6-5-0" aria-label="D 风扇档位 / 哪座先动 结果"></td><td><input type="text" inputmode="decimal" data-k="b6-5-1" aria-label="D 风扇档位 / 哪座先动 备注"></td><td><input type="text" data-k="b6-5-n" aria-label="D 风扇档位 / 哪座先动 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>纸拱比平纸能多撑多少</li>
+<li>敞肩桥减重多少、承重是否明显下降</li>
+<li>风扇模拟洪水是否能看出差别</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>剪硬纸板注意刀具安全。</li>
+<li>风扇使用时手指远离扇叶。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>A4 纸、书、一元硬币</td><td>拱的作用</td></tr>
+<tr><td>硬纸板、美工刀、胶水</td><td>桥模型</td></tr>
+<tr><td>水杯、量杯、厨房秤</td><td>加载</td></tr>
+<tr><td>电风扇</td><td>模拟洪水</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://structurae.net/structures/20000258">Structurae：Zhaozhou Bridge</a> <span>595–605 年、跨度约 37 米、全长 50.82 米、宽 9.6 米</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Anji_Bridge">Wikipedia：Anji Bridge</a></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "一张纸弯成拱形顶在两摞书之间，上面一枚枚加硬币，居然撑得住", "一张纸，弯成拱，就能撑起一堆硬币。"], [2, "0:08", "done", "问题卡：一千四百年的石拱桥，为什么还没塌？", ""], [3, "0:14", "done", "片头：B 线科技树，B6 闪烁", "古法解密。隋代，河北赵县。"], [4, "0:21", "done", "资料卡：李春、数字、敞肩", "赵州桥，又叫安济桥，隋代工匠李春主持修建，公元五九五年动工，六〇五年完工。主跨约三十七米，全长约五十米。大拱两肩各开两个小拱，是现存最早的敞肩石拱桥之一。"], [5, "0:45", "real", "实验 1：一张 A4 纸平放架在两摞书之间，放硬币，记录几枚就塌；再弯成拱形、两端顶住书，记录能放多少枚", "平放的纸，放……枚就塌了；弯成拱，放了……枚。（按实测描述）"], [6, "1:10", "done", "动画：拱把重量传向两端，每块石头只受压；压扁的拱推力更大", "石头不怕压，最怕拉。拱把上面的重量沿着弧线一路传下去，每块石头都被挤着，只受压。赵州桥的拱很扁：跨度三十七米，拱高只有七米多，桥面平缓，车马好走。代价是拱脚向外推得更狠，两头的桥台必须结实。"], [7, "1:32", "real", "实验 2：同一个纸拱，两端不顶住（放在光滑桌面上）vs 用书顶住：不顶住一压就向外滑开塌掉", "拱脚不顶住会怎样？……（按实拍描述）"], [8, "1:57", "done", "问题卡：大拱两肩，为什么要开四个小拱？", ""], [9, "2:03", "real", "实验 3：用硬纸板或积木做两座拱桥：实肩和敞肩；称各自重量，再逐渐加砝码到塌", "实肩的桥重……敞肩的桥重……能承受的重量：……（按实测描述）"], [10, "2:33", "done", "动画：实肩与敞肩：敞肩更轻，洪水从小拱穿过", "两肩开出小拱，桥身轻了，压在大拱和地基上的重量也就小了。发洪水时，水能从小拱里穿过去，不会整个拍在桥身上。省料、减重、泄洪，一举三得。"], [11, "2:55", "real", "实验 4：用电风扇对着两座纸板桥的侧面吹（代替洪水），对比哪座先被吹动", "用风代替洪水：……（按实拍描述）"], [12, "3:22", "done", "结论卡：拱让石头只受压，敞肩让桥更轻、更不怕洪水", "拱让石头只受压，敞肩让桥更轻、更不怕洪水。一千四百年后，它还站在那里。"], [13, "3:29", "done", "片尾：点亮 B6，预告第三季特辑", "下集：第三季特辑。"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>
