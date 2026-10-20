@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>马轭拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../ep30/">30</a><a href="../b6/">B6</a><a href="../season3/">特辑3</a><a href="../ep32/">32</a><a href="../ep33/">33</a><a href="../b19/">B19</a><a href="../ep37/">37</a><a href="../ep31/">31</a><a href="../ep35/">35</a><a href="../ep36/">36</a><a href="../season4/">特辑4</a><a href="../ep39/">39</a><a href="../b8/">B8</a><a href="../ep40/">40</a><a href="../ep41/">41</a><a href="../b17/">B17</a><a href="../b7/">B7</a><a href="../ep42/">42</a><a href="../ep43/">43</a><a href="../ep44/">44</a><a href="../season5/">特辑5</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第五季 · 第 42 集</div>
+<h1>马轭</h1>
+<p class="thesis">同样的拉力，压在细带上和宽垫上，压强差很多；马轭卡在肩上，把力分散到大块骨头上，拉点也更低，马才使得上全力。</p>
+<div class="facts">
+<div><span>暂定标题</span>换一副套具，马能多拉几倍？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>北魏壁画 · 穿越北宋</div>
+<div><span>衔接</span>← B7 榫卯；→ 43 逆风航行</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">颈带</p><p class="p">古希腊罗马常见颈带（喉带）挽具。20 世纪初有学者用复原挽具做实验，认为它会勒住马、限制拉力；后来更准确的复原实验认为差距没有那么大。片中按「有争议」处理。</p></div>
+<div class="ol"><p class="o">胸带与马轭</p><p class="p">中国古代较早使用胸带挽具；硬质带衬垫的马轭最早清晰的形象见于敦煌莫高窟第 257 窟北魏壁画（477–499 年）。欧洲约在公元 1000 年前后普遍使用马轭。</p></div>
+<div class="ol"><p class="o">原理</p><p class="p">压强 = 力 ÷ 面积；马轭贴合肩部，受力面积大，且拉点低，更适合犁地和拖重物。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>马的力气是固定的</s> → 套具决定它能使出多少</span></li>
+<li><span class="k">2</span><span><s>绳子越结实越好</s> → 要看压在哪、压的面积多大</span></li>
+<li><span class="k">3</span><span><s>古人都用一样的套具</s> → 东西方差别很大</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>细绳压出深痕，宽垫几乎没痕</p></div>
+<div class="layer"><span>规律层</span><p>压强 = 力 ÷ 面积；受力点位置影响稳定</p></div>
+<div class="layer"><span>本质层</span><p>肩胛部有大块骨骼和肌肉承力，不压迫气管和血管</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>马使不上力 → 别勒脖子；压得疼 → 加宽、加衬垫；绳子乱滑 → 做成硬质的轭卡住肩膀。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">所有「勒」的实验只用海绵、纸板马和自己的手掌（几秒钟），不对任何动物做实验。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>细绳 vs 宽木片压海绵</td><td>压强</td></tr>
+<tr><td>B</td><td>量压痕深度</td><td>数据</td></tr>
+<tr><td>C</td><td>纸板马：绳圈套喉咙</td><td>颈带上滑</td></tr>
+<tr><td>D</td><td>纸板马：胸带、硬轭</td><td>受力点稳定</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>A：两块同样的厚海绵；一根筷子用细绳吊一个 1.5 升水瓶压在海绵上，另一块用 3 厘米宽的木片垫着压同一个水瓶。</li>
+<li>B：取下后立即用尺子量压痕深度。</li>
+<li>C：硬纸板剪一个侧面的马（脖子斜向上约 45°），固定在桌上；绳圈套在喉咙位置，从后方水平拉绳，拍绳圈的移动。</li>
+<li>D：绳圈换到胸前；再用硬纸板做一个 U 形「轭」卡在肩部，分别拉。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>结果</th><th>备注</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 细绳压痕深度（毫米）</td><td><input type="text" inputmode="decimal" data-k="e42-0-0" aria-label="A 细绳压痕深度（毫米） 结果"></td><td><input type="text" inputmode="decimal" data-k="e42-0-1" aria-label="A 细绳压痕深度（毫米） 备注"></td><td><input type="text" data-k="e42-0-n" aria-label="A 细绳压痕深度（毫米） 备注"></td></tr>
+<tr><td>A 宽木片压痕深度（毫米）</td><td><input type="text" inputmode="decimal" data-k="e42-1-0" aria-label="A 宽木片压痕深度（毫米） 结果"></td><td><input type="text" inputmode="decimal" data-k="e42-1-1" aria-label="A 宽木片压痕深度（毫米） 备注"></td><td><input type="text" data-k="e42-1-n" aria-label="A 宽木片压痕深度（毫米） 备注"></td></tr>
+<tr><td>C 绳圈是否上滑</td><td><input type="text" inputmode="decimal" data-k="e42-2-0" aria-label="C 绳圈是否上滑 结果"></td><td><input type="text" inputmode="decimal" data-k="e42-2-1" aria-label="C 绳圈是否上滑 备注"></td><td><input type="text" data-k="e42-2-n" aria-label="C 绳圈是否上滑 备注"></td></tr>
+<tr><td>D 胸带是否稳定</td><td><input type="text" inputmode="decimal" data-k="e42-3-0" aria-label="D 胸带是否稳定 结果"></td><td><input type="text" inputmode="decimal" data-k="e42-3-1" aria-label="D 胸带是否稳定 备注"></td><td><input type="text" data-k="e42-3-n" aria-label="D 胸带是否稳定 备注"></td></tr>
+<tr><td>D 硬轭是否稳定</td><td><input type="text" inputmode="decimal" data-k="e42-4-0" aria-label="D 硬轭是否稳定 结果"></td><td><input type="text" inputmode="decimal" data-k="e42-4-1" aria-label="D 硬轭是否稳定 备注"></td><td><input type="text" data-k="e42-4-n" aria-label="D 硬轭是否稳定 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>海绵压痕差别是否明显</li>
+<li>纸板马能否清楚演示绳圈上滑</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>手提重物只提几秒，手掌不舒服就放下。</li>
+<li>不对任何动物做实验。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>厚海绵 2 块、筷子、细绳、宽木片、水瓶</td><td>压强</td></tr>
+<tr><td>硬纸板、绳子、图钉</td><td>纸板马</td></tr>
+<tr><td>大米袋、毛巾</td><td>开场</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://en.wikipedia.org/wiki/Horse_collar">Wikipedia：Horse collar</a> <span>北魏 477–499、颈带争议、欧洲约 1000 年</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Horse_harness">Wikipedia：Horse harness</a></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "同一袋 5 公斤大米：用细塑料提手提，手掌勒出深印；垫一条毛巾再提，几乎没有印子（只提几秒）", "同样的重量，勒在细绳上和垫着毛巾，感觉完全不一样。"], [2, "0:08", "done", "问题卡：换一副套具，马为什么能多拉几倍？", ""], [3, "0:14", "done", "片头：第五季科技树，第 42 集闪烁", "穿越到北宋：想让马拉得更重，先看看它身上的套具。"], [4, "0:21", "done", "资料卡：颈带、胸带、马轭", "古希腊罗马用颈带，有人认为它会勒住马的气管，不过这个说法有争议。中国很早就用胸带；北魏敦煌壁画里已经能看到硬质的马轭，欧洲要到一千年前后才普遍使用。"], [5, "0:47", "real", "实验 1：两块同样的海绵：一块上用细绳（勒在筷子上）吊水瓶压下去，一块用宽木片垫着压同一个水瓶；比较压痕深度", "细绳压下去……宽木片……（按实测描述压痕深度）"], [6, "1:12", "done", "动画：同样 10 千克，细绳 vs 宽垫，压强 = 力 ÷ 面积", "同样的力，压在细绳上，海绵陷得很深；分散到宽垫上，几乎压不出印子。压强等于力除以面积。"], [7, "1:34", "real", "实验 2：用尺子量两块海绵的压痕深度，拍特写", "细绳……毫米，宽木片……毫米。"], [8, "1:57", "done", "问题卡：同样一匹马，套在哪里才使得上力？", ""], [9, "2:03", "real", "实验 3：硬纸板剪一个侧面的马，脖子斜向上；绳圈套在喉咙位置，从后面拉绳：绳圈顺着脖子往上滑", "绳圈套在喉咙前面，一拉……（按实拍描述往上滑）"], [10, "2:33", "done", "动画：颈带、胸带、马轭三种挽具", "颈带一用力就往上滑；胸带横在胸前，不勒脖子；马轭卡在肩上，力压在大块骨头上，拉点也更低，适合犁地和重车。"], [11, "2:55", "real", "实验 4：同一纸板马，绳圈换到胸前，再换成卡在肩部的硬纸「轭」，分别拉", "换到胸前……卡在肩上……（按实拍描述位置是否稳定）"], [12, "3:22", "done", "结论卡：力压在哪里，决定马能不能使全力", "力压在哪里，决定马能不能使全力。马轭把力分散到肩膀的大骨头上。"], [13, "3:29", "done", "片尾：点亮第 42 集，预告第 43 集", "下集：帆船为什么能逆风前进？"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>
