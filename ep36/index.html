@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>煤气中毒与通风拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../ep30/">30</a><a href="../b6/">B6</a><a href="../season3/">特辑3</a><a href="../ep32/">32</a><a href="../ep33/">33</a><a href="../b19/">B19</a><a href="../ep37/">37</a><a href="../ep31/">31</a><a href="../ep35/">35</a><a href="../ep36/">36</a><a href="../season4/">特辑4</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第四季 · 第 36 集</div>
+<h1>煤气中毒与通风</h1>
+<p class="thesis">氧气不足时，炭和煤燃烧不完全，生成无色无味的一氧化碳；它抢占血红蛋白上运氧的位置，让血液运不了氧。通风和报警器是最便宜的保护。</p>
+<div class="facts">
+<div><span>暂定标题</span>关紧门窗烧炭，为什么危险？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>北宋 · 汴京 · 家家烧煤</div>
+<div><span>衔接</span>← 35 种痘；← 19 煤与焦炭；→ 第四季特辑</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">北宋烧煤</p><p class="p">北宋时煤已在北方城市普遍使用。庄绰《鸡肋编》有「昔汴都数百万家，尽仰石炭，无一家然薪者」之说（拍摄前核对原文）。</p></div>
+<div class="ol"><p class="o">一氧化碳</p><p class="p">碳燃烧时氧气不足，就会生成一氧化碳。它无色、无味，与血红蛋白结合的能力比氧气强两百多倍。</p></div>
+<div class="ol"><p class="o">症状与应对</p><p class="p">早期头痛、头晕、恶心、犯困，睡着的人往往来不及醒。发现有人不适：开窗、离开现场、拨打急救电话。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>炭火没有烟就安全</s> → 没烟也会产生一氧化碳</span></li>
+<li><span class="k">2</span><span><s>闻得到才危险</s> → 一氧化碳没有气味</span></li>
+<li><span class="k">3</span><span><s>开一条缝就够了</s> → 上下都有开口，空气才流得动</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>冷勺子伸进火焰会积黑，罐子盖紧蜡烛很快熄灭</p></div>
+<div class="layer"><span>规律层</span><p>氧气不足 → 燃烧不完全 → 一氧化碳和碳黑</p></div>
+<div class="layer"><span>本质层</span><p>一氧化碳与血红蛋白的亲和力远高于氧气</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>一氧化碳绝不实拍 → 用碳黑说明「燃烧不完全」，用罩蜡烛说明「缺氧」，用线香烟说明「通风」；中毒过程只用动画。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">本集绝不在室内点炭、烧煤，也不制造或测量任何一氧化碳；所有明火实验由成年人在通风处做，旁边备一杯水。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>冷勺子伸进烛焰</td><td>燃烧不完全</td></tr>
+<tr><td>B</td><td>三个罐子罩蜡烛</td><td>氧气多少</td></tr>
+<tr><td>C</td><td>纸箱小屋 + 线香</td><td>怎样通风</td></tr>
+<tr><td>D</td><td>报警器开箱测试</td><td>保护</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>A：小蜡烛放在瓷盘上，把冷的不锈钢勺伸进火焰中部 3 秒，拍勺底。</li>
+<li>B：三支同样的生日蜡烛放在瓷盘上，分别用同样的玻璃罐罩住：盖紧 / 盖子下垫一枚硬币 / 不盖；同时点燃、计时。</li>
+<li>C：鞋盒大小的纸箱，一面开一个窗；另一个纸箱上下各开一个窗。箱内放一支点燃的线香（插在装沙的小碗里），从侧面打光拍烟的走向。拍完立即熄灭。</li>
+<li>D：报警器只做开箱、读说明书上的安装位置、按测试键。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>结果</th><th>备注</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 勺底是否积黑</td><td><input type="text" inputmode="decimal" data-k="e36-0-0" aria-label="A 勺底是否积黑 结果"></td><td><input type="text" inputmode="decimal" data-k="e36-0-1" aria-label="A 勺底是否积黑 备注"></td><td><input type="text" data-k="e36-0-n" aria-label="A 勺底是否积黑 备注"></td></tr>
+<tr><td>B 盖紧：熄灭时间（秒）</td><td><input type="text" inputmode="decimal" data-k="e36-1-0" aria-label="B 盖紧：熄灭时间（秒） 结果"></td><td><input type="text" inputmode="decimal" data-k="e36-1-1" aria-label="B 盖紧：熄灭时间（秒） 备注"></td><td><input type="text" data-k="e36-1-n" aria-label="B 盖紧：熄灭时间（秒） 备注"></td></tr>
+<tr><td>B 留缝：熄灭时间</td><td><input type="text" inputmode="decimal" data-k="e36-2-0" aria-label="B 留缝：熄灭时间 结果"></td><td><input type="text" inputmode="decimal" data-k="e36-2-1" aria-label="B 留缝：熄灭时间 备注"></td><td><input type="text" data-k="e36-2-n" aria-label="B 留缝：熄灭时间 备注"></td></tr>
+<tr><td>B 不盖：熄灭时间</td><td><input type="text" inputmode="decimal" data-k="e36-3-0" aria-label="B 不盖：熄灭时间 结果"></td><td><input type="text" inputmode="decimal" data-k="e36-3-1" aria-label="B 不盖：熄灭时间 备注"></td><td><input type="text" data-k="e36-3-n" aria-label="B 不盖：熄灭时间 备注"></td></tr>
+<tr><td>C 一个窗：烟的走向</td><td><input type="text" inputmode="decimal" data-k="e36-4-0" aria-label="C 一个窗：烟的走向 结果"></td><td><input type="text" inputmode="decimal" data-k="e36-4-1" aria-label="C 一个窗：烟的走向 备注"></td><td><input type="text" data-k="e36-4-n" aria-label="C 一个窗：烟的走向 备注"></td></tr>
+<tr><td>C 上下两个窗：烟的走向</td><td><input type="text" inputmode="decimal" data-k="e36-5-0" aria-label="C 上下两个窗：烟的走向 结果"></td><td><input type="text" inputmode="decimal" data-k="e36-5-1" aria-label="C 上下两个窗：烟的走向 备注"></td><td><input type="text" data-k="e36-5-n" aria-label="C 上下两个窗：烟的走向 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>罩蜡烛的时间差是否明显</li>
+<li>纸箱里的烟能否拍清</li>
+<li>报警器说明书推荐的安装位置</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>绝不在室内或密闭空间点炭、烧煤，不制造、不测量一氧化碳。</li>
+<li>明火实验由成年人在通风处操作，远离纸张，旁边备水。</li>
+<li>玻璃罐罩过蜡烛后会很烫，戴隔热手套。</li>
+<li>若有人头晕、头痛、犯困：开窗、离开现场、拨打急救电话。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>生日蜡烛、瓷盘、不锈钢勺</td><td>实验 A、B</td></tr>
+<tr><td>三个同样的玻璃罐、硬币</td><td>实验 B</td></tr>
+<tr><td>两个纸箱、线香、沙、手电</td><td>实验 C</td></tr>
+<tr><td>一氧化碳报警器</td><td>实验 D</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://en.wikipedia.org/wiki/Carbon_monoxide_poisoning">Wikipedia：Carbon monoxide poisoning</a> <span>症状、与血红蛋白的结合</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Carboxyhemoglobin">Wikipedia：Carboxyhemoglobin</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Coal">Wikipedia：Coal（History）</a> <span>宋代用煤</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "冬夜，紧闭的窗户；屋里一只没点燃的炭盆和一堆木炭（只摆拍，绝不点燃）", "冬天，门窗关紧，屋里摆一盆炭火。看起来又暖和又安全。"], [2, "0:08", "done", "问题卡：炭火没有烟，为什么还会让人中毒？", ""], [3, "0:14", "done", "片头：第四季科技树，第 36 集闪烁", "北宋的汴京，已经是一座烧煤的城市。"], [4, "0:21", "done", "资料卡：北宋烧煤、贝尔纳、报警器", "北宋时，汴京城里普遍烧煤取暖、做饭。可一氧化碳到底怎么伤人，要到十九世纪中期才被说清楚。"], [5, "0:45", "real", "实验 1（成年人操作、通风处）：点一支蜡烛，把冷的不锈钢勺伸进火焰中间几秒，勺底立刻积黑", "火焰里伸进一把冷勺子，勺底马上黑了：那是没烧完的碳。"], [6, "1:10", "done", "动画：氧气充足生成二氧化碳；氧气不足生成一氧化碳", "每个碳原子要抢两个氧原子，变成二氧化碳。氧气不够，它只抢到一个，变成一氧化碳：没有颜色，没有气味。"], [7, "1:32", "real", "实验 2：三个同样的玻璃罐罩住三支同样的小蜡烛：盖紧 / 盖子垫一枚硬币留缝 / 不盖；计时多久熄灭", "盖紧的……留缝的……不盖的……（按实测描述熄灭时间。说明：蜡烛熄灭是因为缺氧，但缺氧之前，燃烧已经越来越不完全）"], [8, "1:57", "done", "问题卡：没有颜色、没有气味，它是怎么伤人的？", ""], [9, "2:03", "real", "实验 3：纸箱「小屋」：只开一个窗 vs 上下各开一个窗；箱内放一支点燃的线香，看烟怎么走（成年人操作，通风处）", "只开一个窗，烟……；上下各开一个，烟……（按实拍描述：热空气从上面出去，新鲜空气从下面进来）"], [10, "2:33", "done", "动画：血红蛋白的 4 个座位被一氧化碳占据", "血红蛋白像运氧的小车。一氧化碳抢座位的本事比氧气强两百多倍，坐上去就不太下来。车还在跑，却运不了氧。"], [11, "2:55", "real", "实验 4：一氧化碳报警器开箱：说明书上的安装位置、按测试键听报警声", "几十块钱的报警器，按一下测试键：……"], [12, "3:22", "done", "结论卡：炭火没烟，也会产生一氧化碳", "炭火没烟，也会产生一氧化碳。开窗通风，装一个报警器；有人头晕犯困，先开窗、离开、求救。"], [13, "3:29", "done", "片尾：点亮第 36 集，预告第四季特辑", "下集：第四季特辑。"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>
