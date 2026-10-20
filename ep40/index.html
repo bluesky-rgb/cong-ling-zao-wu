@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>曲柄连杆拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../ep30/">30</a><a href="../b6/">B6</a><a href="../season3/">特辑3</a><a href="../ep32/">32</a><a href="../ep33/">33</a><a href="../b19/">B19</a><a href="../ep37/">37</a><a href="../ep31/">31</a><a href="../ep35/">35</a><a href="../ep36/">36</a><a href="../season4/">特辑4</a><a href="../ep39/">39</a><a href="../b8/">B8</a><a href="../ep40/">40</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第五季 · 第 40 集</div>
+<h1>曲柄连杆</h1>
+<p class="thesis">曲柄转一圈，连杆把滑块推出去、拉回来一次；反过来，推拉也能变成转动。曲柄和连杆成一直线时是「死点」，靠飞轮的惯性冲过去。</p>
+<div class="facts">
+<div><span>暂定标题</span>来回运动，怎么变成转动？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>西汉风扇车 · 东汉水排</div>
+<div><span>衔接</span>← B4 水排；→ 41 齿轮与轴承</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">曲柄</p><p class="p">西汉墓葬出土的风扇车陶模型上已有曲柄摇手，是已知最早的曲柄之一。</p></div>
+<div class="ol"><p class="o">水排</p><p class="p">东汉建武七年（31 年）杜诗造水排，用水轮经曲柄连杆推动鼓风的风箱（见 B4）。</p></div>
+<div class="ol"><p class="o">蒸汽机</p><p class="p">18 世纪后，蒸汽机用曲柄连杆把活塞的往复运动变成飞轮的转动。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>来回只能是来回</s> → 曲柄把来回变成转动</span></li>
+<li><span class="k">2</span><span><s>推得越用力越好</s> → 在死点推再用力也没用</span></li>
+<li><span class="k">3</span><span><s>飞轮只是装饰</s> → 飞轮的惯性帮它冲过死点</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>转轮子滑块来回，推滑块轮子转</p></div>
+<div class="layer"><span>规律层</span><p>滑块行程等于曲柄半径的两倍</p></div>
+<div class="layer"><span>本质层</span><p>死点处推力的力臂为零，力矩为零</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>要让往复变旋转 → 曲柄连杆；会卡在死点 → 加飞轮或用两个错开的曲柄（如自行车左右脚蹬）。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">纸板模型即可；转轴用图钉，注意别扎手。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>转轮子看滑块</td><td>转动变往复</td></tr>
+<tr><td>B</td><td>推滑块看轮子</td><td>往复变转动</td></tr>
+<tr><td>C</td><td>停在死点推</td><td>死点</td></tr>
+<tr><td>D</td><td>加硬币飞轮</td><td>惯性</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>用直径 12 厘米的圆纸板作轮，图钉钉在泡沫板上作轴；距轮心 3 厘米处用图钉连一根 12 厘米长的纸条作连杆；连杆另一端连一个小纸块，放在两根吸管夹成的滑轨里。</li>
+<li>A：手转轮子，拍滑块来回。</li>
+<li>B：手推拉滑块，量滑块的行程。</li>
+<li>C：把曲柄转到与连杆一直线（滑块离轮最远或最近处），推滑块。</li>
+<li>D：轮子边缘用胶带粘一圈硬币，快速推拉滑块，看能否连续转动。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>结果</th><th>备注</th><th>备注</th></tr></thead><tbody>
+<tr><td>曲柄半径（厘米）</td><td><input type="text" inputmode="decimal" data-k="e40-0-0" aria-label="曲柄半径（厘米） 结果"></td><td><input type="text" inputmode="decimal" data-k="e40-0-1" aria-label="曲柄半径（厘米） 备注"></td><td><input type="text" data-k="e40-0-n" aria-label="曲柄半径（厘米） 备注"></td></tr>
+<tr><td>B 滑块行程（厘米）</td><td><input type="text" inputmode="decimal" data-k="e40-1-0" aria-label="B 滑块行程（厘米） 结果"></td><td><input type="text" inputmode="decimal" data-k="e40-1-1" aria-label="B 滑块行程（厘米） 备注"></td><td><input type="text" data-k="e40-1-n" aria-label="B 滑块行程（厘米） 备注"></td></tr>
+<tr><td>C 死点处推滑块的结果</td><td><input type="text" inputmode="decimal" data-k="e40-2-0" aria-label="C 死点处推滑块的结果 结果"></td><td><input type="text" inputmode="decimal" data-k="e40-2-1" aria-label="C 死点处推滑块的结果 备注"></td><td><input type="text" data-k="e40-2-n" aria-label="C 死点处推滑块的结果 备注"></td></tr>
+<tr><td>D 加飞轮后能否连续转</td><td><input type="text" inputmode="decimal" data-k="e40-3-0" aria-label="D 加飞轮后能否连续转 结果"></td><td><input type="text" inputmode="decimal" data-k="e40-3-1" aria-label="D 加飞轮后能否连续转 备注"></td><td><input type="text" data-k="e40-3-n" aria-label="D 加飞轮后能否连续转 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>纸板模型能否顺畅转动</li>
+<li>加硬币后是否明显能冲过死点</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>图钉朝向泡沫板，别扎手。</li>
+<li>拍缝纫机或自行车时，手指远离转动部件。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>硬纸板、图钉、泡沫板、吸管、胶带</td><td>曲柄滑块模型</td></tr>
+<tr><td>硬币若干</td><td>飞轮</td></tr>
+<tr><td>缝纫机踏板或自行车</td><td>开场</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://en.wikipedia.org/wiki/Crank_(mechanism)">Wikipedia：Crank (mechanism)</a> <span>西汉风扇车</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Fengshanche">Wikipedia：Fengshanche</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Slider-crank_linkage">Wikipedia：Slider-crank linkage</a></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "老式缝纫机踏板（或自行车脚蹬）特写：脚上下踩，轮子一直转", "脚只是上下踩，轮子却一直在转。"], [2, "0:08", "done", "问题卡：来回的运动，怎么变成转圈？", ""], [3, "0:14", "done", "片头：第五季科技树，第 40 集闪烁", "曲柄，中国人用了两千多年。"], [4, "0:21", "done", "资料卡：风扇车、水排、蒸汽机", "西汉的风扇车陶模型上已经有曲柄摇手；东汉杜诗造水排，用水轮带动曲柄连杆推拉风箱；十八世纪的蒸汽机，又用它把活塞的来回变成轮子的转动。"], [5, "0:45", "real", "实验 1：硬纸板曲柄滑块模型：圆纸板轮、图钉作轴、纸条连杆、吸管作滑轨；转动轮子", "转轮子，滑块就来回走。"], [6, "1:10", "done", "动画：曲柄、连杆、滑块；滑块位置曲线", "轮子上偏离中心的销子叫曲柄，它和滑块之间用连杆连着。曲柄转一整圈，滑块就被推出去、拉回来一次。"], [7, "1:32", "real", "实验 2：反过来推拉滑块，轮子跟着转；量滑块来回一次走了多远，和曲柄半径比较", "推滑块，轮子也转了。滑块走的距离……正好是曲柄半径的两倍。（按实测描述）"], [8, "1:57", "done", "问题卡：推得再用力，轮子为什么不动？", ""], [9, "2:03", "real", "实验 3：把曲柄停在和连杆一条直线的位置，推滑块：卡住不动", "停在这个位置，怎么推都……（按实拍描述）"], [10, "2:33", "done", "动画：死点；加飞轮冲过死点", "曲柄和连杆连成一条直线时，推力正对着轮心，这叫死点。装一个沉重的飞轮，靠惯性就能冲过去。"], [11, "2:55", "real", "实验 4：在纸板轮边缘粘一圈硬币当飞轮，再快速推拉滑块，看能否连续转过死点", "加了硬币的轮子……（按实拍描述）"], [12, "3:22", "done", "结论卡：曲柄连杆：转动和来回互相转换", "曲柄连杆让转动和来回互相转换；飞轮带它冲过死点。缝纫机、自行车、蒸汽机，都离不开它。"], [13, "3:29", "done", "片尾：点亮第 40 集，预告第 41 集", "下集：怎么让转速变快或变慢？"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>

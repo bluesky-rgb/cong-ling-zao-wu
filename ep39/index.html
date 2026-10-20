@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>杠杆与滑轮组拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../ep30/">30</a><a href="../b6/">B6</a><a href="../season3/">特辑3</a><a href="../ep32/">32</a><a href="../ep33/">33</a><a href="../b19/">B19</a><a href="../ep37/">37</a><a href="../ep31/">31</a><a href="../ep35/">35</a><a href="../ep36/">36</a><a href="../season4/">特辑4</a><a href="../ep39/">39</a><a href="../b8/">B8</a><a href="../ep40/">40</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第五季 · 第 39 集</div>
+<h1>杠杆与滑轮组</h1>
+<p class="thesis">重物 × 短臂 = 用力 × 长臂；滑轮组每多一股绳分担重量，拉力就少一份。省力就要费距离，做的功不变。</p>
+<div class="facts">
+<div><span>暂定标题</span>一个人，怎么吊起一头牛？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>穿越北宋 · 约 1090 年</div>
+<div><span>衔接</span>→ B8 被中香炉；→ 40 曲柄连杆</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">杠杆</p><p class="p">《墨经》中有关于「衡」（杠杆、秤）平衡的论述，拍摄前请对照原文核对具体字句。桔槔是井边提水的杠杆，一头挂桶、一头绑配重。</p></div>
+<div class="ol"><p class="o">滑轮</p><p class="p">定滑轮只改变力的方向；动滑轮随重物一起移动，两股绳各担一半。</p></div>
+<div class="ol"><p class="o">功</p><p class="p">拉力 × 拉绳长度 ≈ 重量 × 升高的高度（再加上摩擦损耗）。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>力气大小是固定的</s> → 换个支点、换个绕法就变了</span></li>
+<li><span class="k">2</span><span><s>滑轮越多越省力，白赚</s> → 省了力，就要多拉绳子</span></li>
+<li><span class="k">3</span><span><s>定滑轮也省力</s> → 定滑轮只改方向</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>支点靠近重物，另一头更轻松</p></div>
+<div class="layer"><span>规律层</span><p>力矩平衡；绳子股数分担重量</p></div>
+<div class="layer"><span>本质层</span><p>能量守恒：功 = 力 × 距离</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>要吊重物 → 用杠杆或滑轮；力气不够 → 加长力臂或增加绳子股数；代价 → 多走距离。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">硬币用同一面值；弹簧秤量程 5 公斤以上即可。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>直尺杠杆找平衡</td><td>力 × 力臂</td></tr>
+<tr><td>B</td><td>桔槔模型</td><td>古人的杠杆</td></tr>
+<tr><td>C</td><td>1 / 2 / 4 股绳测拉力</td><td>滑轮组</td></tr>
+<tr><td>D</td><td>量拉绳长度</td><td>省力费距离</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>A：圆铅笔放桌上，直尺的 15 厘米刻度压在铅笔上；左边 10 厘米处（距支点 5 厘米）叠 6 枚硬币，右边在距支点 5、10、15 厘米处加硬币直到平衡。</li>
+<li>B：长筷子用线吊在横杆上当支点，一头挂装水的小瓶盖桶，一头绑橡皮泥配重，演示轻松提起。</li>
+<li>C：挂钩上固定滑轮，2 升水瓶挂在动滑轮下；分别用 1、2、4 股绳吊起，记录弹簧秤读数（先称水瓶和动滑轮的总重）。</li>
+<li>D：每种绕法让水瓶升高 10 厘米，量拉出的绳长。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>结果</th><th>备注</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 5 厘米处需要（枚）</td><td><input type="text" inputmode="decimal" data-k="e39-0-0" aria-label="A 5 厘米处需要（枚） 结果"></td><td><input type="text" inputmode="decimal" data-k="e39-0-1" aria-label="A 5 厘米处需要（枚） 备注"></td><td><input type="text" data-k="e39-0-n" aria-label="A 5 厘米处需要（枚） 备注"></td></tr>
+<tr><td>A 10 厘米处需要（枚）</td><td><input type="text" inputmode="decimal" data-k="e39-1-0" aria-label="A 10 厘米处需要（枚） 结果"></td><td><input type="text" inputmode="decimal" data-k="e39-1-1" aria-label="A 10 厘米处需要（枚） 备注"></td><td><input type="text" data-k="e39-1-n" aria-label="A 10 厘米处需要（枚） 备注"></td></tr>
+<tr><td>A 15 厘米处需要（枚）</td><td><input type="text" inputmode="decimal" data-k="e39-2-0" aria-label="A 15 厘米处需要（枚） 结果"></td><td><input type="text" inputmode="decimal" data-k="e39-2-1" aria-label="A 15 厘米处需要（枚） 备注"></td><td><input type="text" data-k="e39-2-n" aria-label="A 15 厘米处需要（枚） 备注"></td></tr>
+<tr><td>C 水瓶 + 动滑轮总重（克）</td><td><input type="text" inputmode="decimal" data-k="e39-3-0" aria-label="C 水瓶 + 动滑轮总重（克） 结果"></td><td><input type="text" inputmode="decimal" data-k="e39-3-1" aria-label="C 水瓶 + 动滑轮总重（克） 备注"></td><td><input type="text" data-k="e39-3-n" aria-label="C 水瓶 + 动滑轮总重（克） 备注"></td></tr>
+<tr><td>C 1 / 2 / 4 股拉力</td><td><input type="text" inputmode="decimal" data-k="e39-4-0" aria-label="C 1 / 2 / 4 股拉力 结果"></td><td><input type="text" inputmode="decimal" data-k="e39-4-1" aria-label="C 1 / 2 / 4 股拉力 备注"></td><td><input type="text" data-k="e39-4-n" aria-label="C 1 / 2 / 4 股拉力 备注"></td></tr>
+<tr><td>D 1 / 2 / 4 股拉绳长度（厘米）</td><td><input type="text" inputmode="decimal" data-k="e39-5-0" aria-label="D 1 / 2 / 4 股拉绳长度（厘米） 结果"></td><td><input type="text" inputmode="decimal" data-k="e39-5-1" aria-label="D 1 / 2 / 4 股拉绳长度（厘米） 备注"></td><td><input type="text" data-k="e39-5-n" aria-label="D 1 / 2 / 4 股拉绳长度（厘米） 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>滑轮摩擦让实测拉力比理论大多少</li>
+<li>4 股绳是否能明显看出省力</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>重物挂高处时下面不站人；挂钩要牢固。</li>
+<li>绳子不要缠在手指上。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>直尺、圆铅笔、硬币</td><td>杠杆</td></tr>
+<tr><td>长筷子、线、橡皮泥、小桶</td><td>桔槔</td></tr>
+<tr><td>小滑轮 3–4 个、绳子、弹簧秤、2 升水瓶</td><td>滑轮组</td></tr>
+<tr><td>卷尺</td><td>量距离</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://en.wikipedia.org/wiki/Lever">Wikipedia：Lever</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Block_and_tackle">Wikipedia：Block and tackle</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Shadoof">Wikipedia：Shadoof（桔槔）</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Mohism">Wikipedia：Mohism（墨经）</a></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "一桶 10 升的水：直接拎很吃力；挂上滑轮组，一只手轻轻拉起来", "同一桶水，直接拎和用滑轮拉，感觉完全不一样。"], [2, "0:08", "done", "问题卡：一个人，怎么吊起一头牛？", ""], [3, "0:14", "done", "片头：第五季科技树，第 39 集闪烁", "穿越到北宋，手里没有起重机，要把一头牛吊上船。"], [4, "0:21", "done", "资料卡：《墨经》、桔槔辘轳、阿基米德", "战国的《墨经》就讨论过杠杆的平衡；井边的桔槔和辘轳，用的也是这个道理。阿基米德那句「给我一个支点」，多半是后人转述的传说。"], [5, "0:45", "real", "实验 1：30 厘米直尺架在圆铅笔上，一边 6 枚硬币放在 5 厘米处；另一边在 5、10、15 厘米处找平衡，各需要几枚", "离支点 5 厘米要……枚，10 厘米……枚，15 厘米……枚。（按实测描述）"], [6, "1:10", "done", "动画：支点挪动，所需的力变小；省力费距离", "重物乘短臂，等于用力乘长臂。支点往重物那边挪，另一头需要的力就越小。可这头压下去一大段，那头才抬起一点点。"], [7, "1:32", "real", "实验 2：桔槔模型：一根长筷子架在支点上，一头挂小水桶，一头绑石头配重；演示提水", "古人在井边立一根长杆：一头挂桶，一头绑石头。……（按实拍描述）"], [8, "1:57", "done", "问题卡：多绕几股绳子，为什么就省力了？", ""], [9, "2:03", "real", "实验 3：五金店小滑轮 + 弹簧秤，吊一瓶 2 升水：1 股、2 股、4 股绳分别测拉力", "一股绳……两股……四股……（按实测描述弹簧秤读数）"], [10, "2:33", "done", "动画：定滑轮、动滑轮、两定两动", "定滑轮只改方向；每多一股绳分担重量，拉力就少一份。四股绳一起吊，拉力只要四分之一。"], [11, "2:55", "real", "实验 4：让水瓶升高 10 厘米，分别量 1 股、2 股、4 股要拉多长绳子", "升高十厘米，一股拉了……两股……四股……（按实测描述）拉力乘绳长，和重量乘高度差不多。"], [12, "3:22", "done", "结论卡：省力，就要费距离", "省力，就要费距离；做的功一点没少。这就是所有机械的规矩。"], [13, "3:29", "done", "片尾：点亮第 39 集，预告 B8", "下集：在被窝里滚来滚去的香炉。"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>
