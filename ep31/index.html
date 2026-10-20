@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>口服补液拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../ep30/">30</a><a href="../b6/">B6</a><a href="../season3/">特辑3</a><a href="../ep32/">32</a><a href="../ep33/">33</a><a href="../b19/">B19</a><a href="../ep37/">37</a><a href="../ep31/">31</a><a href="../ep35/">35</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第四季 · 第 31 集</div>
+<h1>口服补液</h1>
+<p class="thesis">肠道里有一种「门」，钠和葡萄糖必须一起进，水靠渗透跟着进去；霍乱时它照样工作。这一集只讲原理，配方请用药店的口服补液盐。</p>
+<div class="facts">
+<div><span>暂定标题</span>光喝白水补不回来，为什么加点盐和糖就行？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>1971 年 · 难民营 · 霍乱</div>
+<div><span>衔接</span>← 37 罐藏；→ 35 种痘</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">原理</p><p class="p">小肠上皮细胞膜上的钠-葡萄糖协同转运蛋白，把钠和葡萄糖一起运进细胞，水随之经渗透被吸收。霍乱毒素让肠道大量分泌盐和水，但这条通路基本不受影响。</p></div>
+<div class="ol"><p class="o">临床</p><p class="p">1960 年代末，达卡和加尔各答几乎同时开展口服补液的临床研究。</p></div>
+<div class="ol"><p class="o">1971 年</p><p class="p">孟加拉战争期间约千万难民涌入边境营地，霍乱暴发。马哈拉诺比斯在营地里改用口服补液，病死率约 3%，只靠静脉输液的营地为 20%–30%（世卫组织公报）。《柳叶刀》1978 年社论对其评价极高（原话待核）。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>脱水了多喝水就行</s> → 肠道吸不进去</span></li>
+<li><span class="k">2</span><span><s>越咸越好、越甜越好</s> → 比例很关键，所以用现成的补液盐</span></li>
+<li><span class="k">3</span><span><s>糖只是为了好喝</s> → 葡萄糖是带着钠进门的「搭档」</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>盐水里的土豆条变软变轻</p></div>
+<div class="layer"><span>规律层</span><p>水总是往浓度高的一侧渗透</p></div>
+<div class="layer"><span>本质层</span><p>钠-葡萄糖协同转运：一次带两个钠离子和一个葡萄糖分子</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>要让观众看见「水往哪边走」→ 土豆条、去壳蛋、软糖三种渗透实验；协同转运看不见 → 只用动画。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">本集所有实验都不入口；不演示、不念任何自制补液的配方或用量。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>土豆条：清水 vs 浓盐水</td><td>渗透</td></tr>
+<tr><td>B</td><td>去壳蛋：清水 vs 糖浆</td><td>半透膜</td></tr>
+<tr><td>C</td><td>补液盐成分表</td><td>盐和糖</td></tr>
+<tr><td>D</td><td>软糖：清水、盐水、糖水</td><td>浓度决定方向</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>A：切两根同样大小的土豆条，称重；一根泡清水，一根泡浓盐水（一杯水加两勺盐），30 分钟后擦干称重、弯折。</li>
+<li>B：两个生鸡蛋泡白醋 1–2 天，蛋壳溶掉只剩膜；轻轻冲洗，一个放清水，一个放浓糖浆，一天后对比。</li>
+<li>C：只拍包装上的成分表，不拍、不念用量。</li>
+<li>D：三颗同样的小熊软糖，分别放清水、淡盐水、浓糖水，过夜后量长度。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>前</th><th>后</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 清水土豆条重量（克）</td><td><input type="text" inputmode="decimal" data-k="e31-0-0" aria-label="A 清水土豆条重量（克） 前"></td><td><input type="text" inputmode="decimal" data-k="e31-0-1" aria-label="A 清水土豆条重量（克） 后"></td><td><input type="text" data-k="e31-0-n" aria-label="A 清水土豆条重量（克） 备注"></td></tr>
+<tr><td>A 盐水土豆条重量（克）</td><td><input type="text" inputmode="decimal" data-k="e31-1-0" aria-label="A 盐水土豆条重量（克） 前"></td><td><input type="text" inputmode="decimal" data-k="e31-1-1" aria-label="A 盐水土豆条重量（克） 后"></td><td><input type="text" data-k="e31-1-n" aria-label="A 盐水土豆条重量（克） 备注"></td></tr>
+<tr><td>B 清水蛋（周长或观察）</td><td><input type="text" inputmode="decimal" data-k="e31-2-0" aria-label="B 清水蛋（周长或观察） 前"></td><td><input type="text" inputmode="decimal" data-k="e31-2-1" aria-label="B 清水蛋（周长或观察） 后"></td><td><input type="text" data-k="e31-2-n" aria-label="B 清水蛋（周长或观察） 备注"></td></tr>
+<tr><td>B 糖浆蛋</td><td><input type="text" inputmode="decimal" data-k="e31-3-0" aria-label="B 糖浆蛋 前"></td><td><input type="text" inputmode="decimal" data-k="e31-3-1" aria-label="B 糖浆蛋 后"></td><td><input type="text" data-k="e31-3-n" aria-label="B 糖浆蛋 备注"></td></tr>
+<tr><td>D 清水软糖长度（毫米）</td><td><input type="text" inputmode="decimal" data-k="e31-4-0" aria-label="D 清水软糖长度（毫米） 前"></td><td><input type="text" inputmode="decimal" data-k="e31-4-1" aria-label="D 清水软糖长度（毫米） 后"></td><td><input type="text" data-k="e31-4-n" aria-label="D 清水软糖长度（毫米） 备注"></td></tr>
+<tr><td>D 盐水软糖长度</td><td><input type="text" inputmode="decimal" data-k="e31-5-0" aria-label="D 盐水软糖长度 前"></td><td><input type="text" inputmode="decimal" data-k="e31-5-1" aria-label="D 盐水软糖长度 后"></td><td><input type="text" data-k="e31-5-n" aria-label="D 盐水软糖长度 备注"></td></tr>
+<tr><td>D 糖水软糖长度</td><td><input type="text" inputmode="decimal" data-k="e31-6-0" aria-label="D 糖水软糖长度 前"></td><td><input type="text" inputmode="decimal" data-k="e31-6-1" aria-label="D 糖水软糖长度 后"></td><td><input type="text" data-k="e31-6-n" aria-label="D 糖水软糖长度 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>土豆条的重量差是否明显</li>
+<li>去壳蛋能否完整保留</li>
+<li>软糖在三种液体中的差别</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>不提供、不演示任何自制补液配方或用量；需要时请用药店的口服补液盐并照说明书。</li>
+<li>儿童、老人腹泻严重，或尿少、精神差，要及时就医。</li>
+<li>实验用的食物都不入口；去壳蛋易破，处理后洗手。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>土豆、盐、厨房秤</td><td>实验 A</td></tr>
+<tr><td>生鸡蛋、白醋、糖</td><td>实验 B</td></tr>
+<tr><td>口服补液盐一盒（只拍包装）</td><td>实验 C</td></tr>
+<tr><td>小熊软糖、尺子</td><td>实验 D</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://scielosp.org/article/bwho/2001.v79n5/471-472">世卫组织公报：Public Health Classics（ORT 与 1971 年难民营）</a> <span>约 3% 与 20%–30%</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Oral_rehydration_therapy">Wikipedia：Oral rehydration therapy</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Sodium-glucose_transport_proteins">Wikipedia：Sodium-glucose transport proteins</a></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "桌上一杯白开水，旁边一盒药店买的口服补液盐（只拍包装，不拍用量）", "一杯白开水，和一包盐加糖的粉末。"], [2, "0:08", "done", "问题卡：拉肚子脱水，为什么光喝白水补不回来？", ""], [3, "0:14", "done", "片头：第四季科技树，第 31 集闪烁", "一九七一年，印度和孟加拉边境的难民营，霍乱暴发。"], [4, "0:21", "done", "资料卡：协同转运、临床试验、1971 年难民营", "一九六〇年前后，科学家发现肠道会把钠和葡萄糖一起搬进细胞。随后的临床试验证明，喝下去的补液效果接近静脉输液。一九七一年的难民营里，以口服补液为主的营地，霍乱病死率降到约百分之三。"], [5, "0:47", "real", "实验 1：两根同样大小的土豆条，一根泡清水、一根泡浓盐水；30 分钟后称重、弯折对比", "清水里的土豆条……盐水里的……（按实测描述重量和软硬）"], [6, "1:12", "done", "动画：半透膜两侧，水往浓盐水一侧走", "水分子会往溶解的东西更多的一边跑，这叫渗透。身体吸水也离不开它：盐先进去，水才会跟着进去。"], [7, "1:34", "real", "实验 2：两个泡白醋两天、去了壳只剩膜的鸡蛋，一个放清水、一个放浓糖浆，一天后对比", "放清水的……放糖浆的……（按实拍描述胀大和瘪下）"], [8, "1:57", "done", "问题卡：为什么要盐和糖一起？", ""], [9, "2:03", "real", "实验 3：口服补液盐包装背面成分表特写：氯化钠、葡萄糖、氯化钾、枸橼酸钠（只拍成分）", "包装上写着：氯化钠，就是盐；还有葡萄糖……"], [10, "2:30", "done", "动画：霍乱把水排进肠道；钠和葡萄糖一起进门，水跟着进去", "霍乱让肠道把盐和水大量排出去。可肠壁上有一种门：钠和葡萄糖一起进，水就跟着进去，而且霍乱时它照样工作。"], [11, "2:52", "real", "实验 4：三颗小熊软糖，分别放清水、淡盐水、浓糖水，过夜对比大小", "同样的软糖，放进不同的水里：……（按实拍描述）"], [12, "3:16", "done", "结论卡：要让水进身体，得先让盐进去", "要让水进身体，得先让盐进去；盐和糖一起，走的是同一扇门。配方请用药店的口服补液盐、照说明书；腹泻严重，一定要就医。"], [13, "3:29", "done", "片尾：点亮第 31 集，预告第 35 集", "下集：用一场小病，换来对大病的免疫。"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>

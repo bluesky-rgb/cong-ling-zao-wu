@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>罐藏拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../ep30/">30</a><a href="../b6/">B6</a><a href="../season3/">特辑3</a><a href="../ep32/">32</a><a href="../ep33/">33</a><a href="../b19/">B19</a><a href="../ep37/">37</a><a href="../ep31/">31</a><a href="../ep35/">35</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第四季 · 第 37 集</div>
+<h1>罐藏</h1>
+<p class="thesis">加热杀死食物里的微生物，密封挡住新来的；巴斯德的鹅颈瓶证明，让食物变坏的是外面来的微生物，而不是食物自己。</p>
+<div class="facts">
+<div><span>暂定标题</span>比细菌学早半个世纪的保鲜法</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>1810 年 · 巴黎 · 阿佩尔</div>
+<div><span>衔接</span>← B19 银钗验毒；→ 31 口服补液</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">阿佩尔</p><p class="p">糖果师傅阿佩尔把食物装进玻璃瓶、软木塞封口，在沸水里加热。1810 年他公布方法，获得法国政府 12000 法郎奖金。</p></div>
+<div class="ol"><p class="o">马口铁罐</p><p class="p">同年英国人杜兰德为马口铁罐申请专利，罐头逐渐用于海军和远征。</p></div>
+<div class="ol"><p class="o">巴斯德</p><p class="p">1859–1862 年前后，巴斯德用鹅颈瓶做实验，反驳「自然发生说」，说明变质来自空气中的微生物。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>食物放久了自己会坏</s> → 是微生物进去繁殖</span></li>
+<li><span class="k">2</span><span><s>盖紧就行</s> → 先要加热杀菌</span></li>
+<li><span class="k">3</span><span><s>通着空气就一定会坏</s> → 鹅颈瓶通着空气也不坏</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>加热并密封的那瓶一直清亮</p></div>
+<div class="layer"><span>规律层</span><p>加热杀死微生物，密封阻止再次进入</p></div>
+<div class="layer"><span>本质层</span><p>微生物在营养丰富的汤里快速分裂；高温使其蛋白质变性</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>要证明加热和密封各自有用 → 三瓶对照；要证明「通空气」本身不是原因 → 弯管和直管对照。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">实验用的汤全部不食用；任何鼓起的盖子都不要打开。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>加热 + 密封</td><td>罐藏</td></tr>
+<tr><td>B</td><td>加热 + 敞口</td><td>外来的微生物</td></tr>
+<tr><td>C</td><td>不加热 + 密封</td><td>原有的微生物</td></tr>
+<tr><td>D</td><td>弯管 vs 直管</td><td>鹅颈瓶</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>玻璃瓶和盖子先用沸水烫过；瓶子预热，避免倒热汤时炸裂。</li>
+<li>A：汤煮沸 5 分钟，趁热装到离瓶口 1 厘米，拧紧；整瓶放进沸水锅里再煮 15 分钟，取出放凉。</li>
+<li>B：同一锅汤装瓶，不盖盖子。C：生的（或已放凉、未再煮的）汤装瓶拧紧。</li>
+<li>三瓶贴标签放在温暖处，第 1、3、5、7 天用手电从背后照着拍。</li>
+<li>D：两只瓶装刚煮沸的米汤，各插一根耐热软管，一根弯成 S 形、一根直；瓶口用锡箔包紧。一周后对比，再把弯管瓶倾斜让汤碰到弯管底部。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>结果</th><th>备注</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 第 3 / 5 / 7 天</td><td><input type="text" inputmode="decimal" data-k="e37-0-0" aria-label="A 第 3 / 5 / 7 天 结果"></td><td><input type="text" inputmode="decimal" data-k="e37-0-1" aria-label="A 第 3 / 5 / 7 天 备注"></td><td><input type="text" data-k="e37-0-n" aria-label="A 第 3 / 5 / 7 天 备注"></td></tr>
+<tr><td>B 第 3 / 5 / 7 天</td><td><input type="text" inputmode="decimal" data-k="e37-1-0" aria-label="B 第 3 / 5 / 7 天 结果"></td><td><input type="text" inputmode="decimal" data-k="e37-1-1" aria-label="B 第 3 / 5 / 7 天 备注"></td><td><input type="text" data-k="e37-1-n" aria-label="B 第 3 / 5 / 7 天 备注"></td></tr>
+<tr><td>C 第 3 / 5 / 7 天</td><td><input type="text" inputmode="decimal" data-k="e37-2-0" aria-label="C 第 3 / 5 / 7 天 结果"></td><td><input type="text" inputmode="decimal" data-k="e37-2-1" aria-label="C 第 3 / 5 / 7 天 备注"></td><td><input type="text" data-k="e37-2-n" aria-label="C 第 3 / 5 / 7 天 备注"></td></tr>
+<tr><td>D 弯管瓶一周后</td><td><input type="text" inputmode="decimal" data-k="e37-3-0" aria-label="D 弯管瓶一周后 结果"></td><td><input type="text" inputmode="decimal" data-k="e37-3-1" aria-label="D 弯管瓶一周后 备注"></td><td><input type="text" data-k="e37-3-n" aria-label="D 弯管瓶一周后 备注"></td></tr>
+<tr><td>D 直管瓶一周后</td><td><input type="text" inputmode="decimal" data-k="e37-4-0" aria-label="D 直管瓶一周后 结果"></td><td><input type="text" inputmode="decimal" data-k="e37-4-1" aria-label="D 直管瓶一周后 备注"></td><td><input type="text" data-k="e37-4-n" aria-label="D 直管瓶一周后 备注"></td></tr>
+<tr><td>D 倾斜后几天</td><td><input type="text" inputmode="decimal" data-k="e37-5-0" aria-label="D 倾斜后几天 结果"></td><td><input type="text" inputmode="decimal" data-k="e37-5-1" aria-label="D 倾斜后几天 备注"></td><td><input type="text" data-k="e37-5-n" aria-label="D 倾斜后几天 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>A 瓶能保持多久不浑</li>
+<li>简化鹅颈瓶能否在家做出对比</li>
+<li>天气温度对速度的影响</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>自制罐藏的食物可能滋生肉毒杆菌，实验品一律不食用。</li>
+<li>鼓起的盖子不要打开，连瓶装进密封袋丢弃。</li>
+<li>沸水和热玻璃瓶小心烫伤。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>耐热玻璃瓶 5 个（带盖）</td><td>装汤</td></tr>
+<tr><td>米汤或清汤、锅</td><td>样品</td></tr>
+<tr><td>耐热软管 2 根、锡箔</td><td>鹅颈瓶</td></tr>
+<tr><td>手电、标签</td><td>记录</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://www.history.com/news/what-it-says-on-the-tin-a-brief-history-of-canned-food">History.com：A brief history of canned food</a> <span>阿佩尔、12000 法郎、1810 年出版</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Nicolas_Appert">Wikipedia：Nicolas Appert</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Swan_neck_flask">Wikipedia：Swan neck flask</a></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "一罐超市罐头特写：保质期两三年；旁边一碗放了两天、表面起膜的汤", "一碗汤放两天就坏了，这罐汤却能放好几年。"], [2, "0:08", "done", "问题卡：一罐汤，为什么能放好几年不坏？", ""], [3, "0:14", "done", "片头：第四季科技树，第 37 集闪烁", "一八一〇年，巴黎。一个糖果师傅公布了他保存食物的办法。"], [4, "0:21", "done", "资料卡：阿佩尔、杜兰德、巴斯德", "阿佩尔把食物装进瓶子、封好口，放进沸水里加热，就能保存很久。他并不知道为什么，要等五十年后，巴斯德才说清楚：让食物变坏的是微生物。"], [5, "0:45", "real", "实验 1：同一锅米汤（或清汤）装三个耐热玻璃瓶：A 煮沸后趁热装满、拧紧，整瓶再放沸水里煮 15 分钟；B 煮沸后敞口；C 不煮直接拧紧；放温暖处", "三瓶同一锅汤：一瓶加热后密封，一瓶敞口，一瓶不加热就密封。"], [6, "1:10", "done", "动画：三个罐子，几天后的变化", "煮开，热量杀死了大多数微生物。敞口的，空气里的微生物又落进去；没煮的，里面的微生物一直在。只有先加热、再密封的那一罐，能放很久。"], [7, "1:32", "real", "实验 2：第 3、5、7 天：手电从瓶后照透明度，特写浑浊、气泡、表面的膜；全程不开封、不闻、不吃", "第三天……第五天……第七天……（按实拍描述）"], [8, "1:57", "done", "问题卡：瓶口一直开着，汤就一定会坏吗？", ""], [9, "2:03", "real", "实验 3：简化版鹅颈瓶：两瓶刚煮沸的米汤，一瓶插一根弯成 S 形的耐热软管，一瓶插直管；瓶口与管子周围用锡箔包紧", "一根弯管，一根直管，瓶子都和外面的空气相通。"], [10, "2:33", "done", "动画：鹅颈瓶：灰尘卡在弯管低处；折断后汤变浑", "巴斯德把瓶颈拉成弯弯的鹅颈。灰尘和微生物落进瓶口，却卡在弯管最低处，汤一直清亮；把弯管折断，汤很快就浑了。"], [11, "2:55", "real", "实验 4：一周后对比两瓶；再把弯管瓶倾斜，让汤流进弯管低处再流回，之后几天继续观察", "直管的……弯管的……让汤碰到弯管底部以后……（按实拍描述）"], [12, "3:22", "done", "结论卡：先加热杀菌，再密封隔绝", "先加热杀菌，再密封隔绝。让食物变坏的，是外面来的微生物。"], [13, "3:29", "done", "片尾：点亮第 37 集，预告第 31 集", "下集：光喝水补不回来，为什么加点盐和糖就行？"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>
