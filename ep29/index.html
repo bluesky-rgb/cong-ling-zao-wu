@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>轮作固氮拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第三季 · 第 29 集</div>
+<h1>轮作固氮</h1>
+<p class="thesis">豆科植物根瘤里的根瘤菌能把空气中的氮气变成氨，豆子长完翻进土里，就给下一季庄稼留下了氮肥。</p>
+<div class="facts">
+<div><span>暂定标题</span>种过豆子的地，为什么更肥？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>北魏《齐民要术》· 北宋</div>
+<div><span>衔接</span>← 27 陶罐滴灌；→ 34 净水</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">《齐民要术》</p><p class="p">「凡美田之法，绿豆为上，小豆、胡麻次之。悉皆五、六月中种，七月、八月犁掩杀之，为春谷田，则亩收十石，其美与蚕矢、熟粪同。」</p></div>
+<div class="ol"><p class="o">根瘤菌</p><p class="p">1888 年，德国科学家赫尔里格尔和威尔法斯证实豆科植物能借助根瘤固定空气中的氮。根瘤菌的固氮酶把氮气还原成氨；根瘤里的豆血红蛋白呈粉红色，帮助控制氧气浓度。</p></div>
+<div class="ol"><p class="o">对比</p><p class="p">空气中约 78% 是氮气，但大多数植物无法直接利用；现代化肥要靠高温高压的哈伯法合成氨。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>庄稼只会从土里吸养分</s> → 豆子能给土加氮</span></li>
+<li><span class="k">2</span><span><s>豆子自己会造肥料</s> → 是根瘤里的细菌在干活</span></li>
+<li><span class="k">3</span><span><s>氮来自土里</s> → 来自空气</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>豆科作物之后种的庄稼长得更好</p></div>
+<div class="layer"><span>规律层</span><p>根瘤菌固定空气里的氮，翻压后成为下一季的肥料</p></div>
+<div class="layer"><span>本质层</span><p>固氮酶把氮气（N≡N 三键）还原成氨，植物再合成蛋白质</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>土越种越瘦 → 插种豆科作物；要最大的肥效 → 在开花前后翻压（植株含氮最多）；要有根瘤 → 土里要有对应的根瘤菌（可用种过豆子的土「接种」）。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">实验 3 需要 6–8 周，建议和其他集并行。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>绿豆苗 vs 小麦苗的根</td><td>根瘤</td></tr>
+<tr><td>B</td><td>切开根瘤看颜色</td><td>粉红 = 正在固氮</td></tr>
+<tr><td>C</td><td>先种绿豆翻压 vs 空土，再种小白菜</td><td>绿肥效果</td></tr>
+<tr><td>D</td><td>称小白菜鲜重、比叶色</td><td>量化</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>绿豆泡一夜，种在花盆里（土里掺一把种过豆子的园土，更容易长根瘤），3–4 周后连土挖出，用水轻轻冲洗根部。</li>
+<li>用刀片切开根瘤，手机微距拍切面。</li>
+<li>C：两盆同样的土，一盆种满绿豆，4 周后把整株剪碎翻进土里，等 1 周；另一盆空置同样时间并同样浇水。</li>
+<li>两盆同时撒小白菜种子，出苗后各留 5 株，4 周后剪下称地上部分鲜重。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>结果</th><th>备注</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 绿豆根瘤数量</td><td><input type="text" inputmode="decimal" data-k="e29-0-0" aria-label="A 绿豆根瘤数量 结果"></td><td><input type="text" inputmode="decimal" data-k="e29-0-1" aria-label="A 绿豆根瘤数量 备注"></td><td><input type="text" data-k="e29-0-n" aria-label="A 绿豆根瘤数量 备注"></td></tr>
+<tr><td>A 小麦根有无根瘤</td><td><input type="text" inputmode="decimal" data-k="e29-1-0" aria-label="A 小麦根有无根瘤 结果"></td><td><input type="text" inputmode="decimal" data-k="e29-1-1" aria-label="A 小麦根有无根瘤 备注"></td><td><input type="text" data-k="e29-1-n" aria-label="A 小麦根有无根瘤 备注"></td></tr>
+<tr><td>B 根瘤切面颜色</td><td><input type="text" inputmode="decimal" data-k="e29-2-0" aria-label="B 根瘤切面颜色 结果"></td><td><input type="text" inputmode="decimal" data-k="e29-2-1" aria-label="B 根瘤切面颜色 备注"></td><td><input type="text" data-k="e29-2-n" aria-label="B 根瘤切面颜色 备注"></td></tr>
+<tr><td>C 绿肥盆小白菜：5 株鲜重（克）</td><td><input type="text" inputmode="decimal" data-k="e29-3-0" aria-label="C 绿肥盆小白菜：5 株鲜重（克） 结果"></td><td><input type="text" inputmode="decimal" data-k="e29-3-1" aria-label="C 绿肥盆小白菜：5 株鲜重（克） 备注"></td><td><input type="text" data-k="e29-3-n" aria-label="C 绿肥盆小白菜：5 株鲜重（克） 备注"></td></tr>
+<tr><td>C 对照盆小白菜：5 株鲜重（克）</td><td><input type="text" inputmode="decimal" data-k="e29-4-0" aria-label="C 对照盆小白菜：5 株鲜重（克） 结果"></td><td><input type="text" inputmode="decimal" data-k="e29-4-1" aria-label="C 对照盆小白菜：5 株鲜重（克） 备注"></td><td><input type="text" data-k="e29-4-n" aria-label="C 对照盆小白菜：5 株鲜重（克） 备注"></td></tr>
+<tr><td>D 叶色对比</td><td><input type="text" inputmode="decimal" data-k="e29-5-0" aria-label="D 叶色对比 结果"></td><td><input type="text" inputmode="decimal" data-k="e29-5-1" aria-label="D 叶色对比 备注"></td><td><input type="text" data-k="e29-5-n" aria-label="D 叶色对比 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>家里的土能否长出明显的根瘤（不行就加园土接种）</li>
+<li>绿肥盆和对照盆的小白菜差异是否明显</li>
+<li>粉红色根瘤在镜头里是否清楚</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>切根瘤用刀片小心手。</li>
+<li>园土里可能有虫卵，接触后洗手。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>绿豆、小麦种子</td><td>对照植物</td></tr>
+<tr><td>花盆 × 4、土、园土</td><td>种植</td></tr>
+<tr><td>刀片、放大镜或手机微距</td><td>看根瘤</td></tr>
+<tr><td>小白菜种子、厨房秤</td><td>绿肥实验</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://zh.wikisource.org/wiki/%E9%BD%8A%E6%B0%91%E8%A6%81%E8%A1%93/%E5%8D%B7%E7%AC%AC%E4%B8%80">维基文库：齐民要术 卷第一</a> <span>「凡美田之法，绿豆为上」</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Rhizobia">Wikipedia：Rhizobia</a> <span>根瘤菌与固氮</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Root_nodule">Wikipedia：Root nodule</a> <span>豆血红蛋白</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "从土里拔出一棵豆苗，洗净根部，特写一颗颗小圆疙瘩；切开一颗，里面是粉红色", "豆苗的根上，长着一颗颗小疙瘩。切开，是粉红色的。"], [2, "0:08", "done", "问题卡：种过豆子的地，为什么更肥？", ""], [3, "0:14", "done", "片头：第三季科技树，第 29 集闪烁", "北宋，约公元一〇九〇年。地怎么才能越种越肥？"], [4, "0:21", "done", "资料卡：《齐民要术》绿肥、做法、1888 年", "北魏的《齐民要术》里说：「凡美田之法，绿豆为上，小豆、胡麻次之。」五六月种下，七八月翻进土里，来年种谷子，肥效和蚕粪、熟粪一样。可为什么是豆子？要到一八八八年，科学家才弄清楚。"], [5, "0:45", "real", "实验 1：种绿豆、黄豆或豌豆，3–4 周后拔出，对比豆苗与小麦苗（或玉米苗）的根", "我们种了一盆绿豆、一盆小麦。一个月后拔出来：……（按实拍描述根的区别）"], [6, "1:15", "done", "动画：根瘤里的根瘤菌把空气里的氮气变成氨，和豆子交换糖", "那些小疙瘩叫根瘤，里面住着根瘤菌。它们能把空气里的氮气拆开，变成植物能吸收的氨。豆子给细菌糖，细菌给豆子氮。根瘤里的粉红色，来自一种帮细菌挡住氧气的蛋白质。"], [7, "1:39", "real", "实验 2：切开几颗根瘤，用放大镜或手机微距拍粉红色；对比发白的（不工作的）根瘤", "切开看：活跃的根瘤是粉红色的，发白的大多已经不工作了。（按实拍描述）"], [8, "2:04", "done", "问题卡：豆子的氮，是从哪里来的？", ""], [9, "2:10", "done", "动画：一直种谷子，土里的氮一季季减少；中间插一季绿豆翻压，氮补回来", "答案是空气。空气里将近八成是氮气，可庄稼用不了，只有根瘤菌这类微生物能把它变成肥料。一直种谷子，土里的氮一季季减少；中间插一季绿豆翻进土里，氮就补回来了。"], [10, "2:30", "real", "实验 3（需 6–8 周）：两盆同样的土：一盆先种绿豆 4 周后剪碎翻进土里，一盆空着；再同时种小白菜，对比长势", "最后是一个慢实验：一盆土先种绿豆、翻进土里，一盆空着，再一起种小白菜。六周后……（按实拍描述）"], [11, "3:00", "real", "实验 4：称两盆小白菜的鲜重，拍叶色对比", "称一称：……（按实测描述重量和叶色）"], [12, "3:22", "done", "结论卡：根瘤菌把空气里的氮，变成了庄稼的肥料", "根瘤菌把空气里的氮，变成了庄稼的肥料。古人不知道细菌，却知道该在什么时候种豆子。"], [13, "3:29", "done", "片尾：点亮第 29 集，预告第 34 集", "下集：晒一瓶水，为什么能消毒？"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>

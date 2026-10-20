@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>都江堰拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 古法解密 · B5</div>
+<h1>都江堰</h1>
+<p class="thesis">都江堰不拦河，靠河床的深浅自动「四六分水」，靠弯道环流「二八排沙」，用最小的工程顺着水的性子用了两千多年。</p>
+<div class="facts">
+<div><span>暂定标题</span>两千多年前修的水利工程，为什么至今还在用？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>战国 · 秦 · 李冰</div>
+<div><span>衔接</span>← 26 虹吸；→ 27 陶罐滴灌</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">四六分水</p><p class="p">鱼嘴把岷江分为内江、外江。枯水期约六成进内江保障灌溉，丰水期约六成进外江泄洪。</p></div>
+<div class="ol"><p class="o">二八排沙</p><p class="p">鱼嘴建在弯道上，离心作用使表层含沙少的水进入内江、底层含沙多的水进入外江，进内江的沙约两成、进外江的约八成。飞沙堰在丰水期再次分水排沙。</p></div>
+<div class="ol"><p class="o">今天</p><p class="p">据 2026 年报道，灌区约 1194.5 万亩，覆盖 8 市 41 县；上游紫坪铺水库建成后，已不需要每年断流岁修。治水经验「深淘滩，低作堰」流传至今（出处待核）。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>治水就要修大坝</s> → 顺着地形分水排沙，不用拦水</span></li>
+<li><span class="k">2</span><span><s>分水要靠闸门</s> → 河床深浅不同，水位一变比例就变</span></li>
+<li><span class="k">3</span><span><s>沙子跟着水走</s> → 弯道环流把底沙推向凸岸</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>鱼嘴一分为二，旱时内江多、涝时外江多；沙子大多进外江</p></div>
+<div class="layer"><span>规律层</span><p>河床深浅决定不同水位下的分流比例；弯道产生横向环流</p></div>
+<div class="layer"><span>本质层</span><p>离心力与压力梯度的不平衡在弯道底部形成指向凸岸的流动，带走推移质泥沙</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>要灌溉又要防洪 → 一深一浅两条江；泥沙多 → 鱼嘴放在弯道，内江在凹岸；洪水 → 低矮的飞沙堰溢流；不想年年大修 → 低作堰、深淘滩。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">沙盘用大塑料托盘（或收纳箱盖）、细沙、小石块；水源可用花洒或饮料瓶扎孔。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>深窄内江 + 浅宽外江，小水 / 大水</td><td>四六分水</td></tr>
+<tr><td>B</td><td>撒彩色细沙</td><td>沙子去向</td></tr>
+<tr><td>C</td><td>碗里搅水看茶叶末聚到中央</td><td>弯道环流</td></tr>
+<tr><td>D</td><td>鱼嘴放在弯道上 vs 直道上</td><td>二八排沙</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>托盘一端垫高 3–5 厘米，铺 3 厘米厚的湿沙，压出主河道和两条支流；内江挖深 2 厘米、宽 3 厘米，外江挖深 0.5 厘米、宽 8 厘米。</li>
+<li>在分叉处用石块和沙堆一个三角形鱼嘴。</li>
+<li>小水：饮料瓶扎一个小孔慢慢流；大水：花洒开大。两条支流末端各放一个杯子接水，计时 30 秒称重。</li>
+<li>彩色细沙（或咖啡渣）在上游撒一小撮，拍它们在哪里沉积。</li>
+<li>茶叶效应：碗里放水和一撮茶叶末，用勺子搅转 10 秒后拿出勺子，俯拍。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>内江</th><th>外江</th><th>备注</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 小水 30 秒接水（克）</td><td><input type="text" inputmode="decimal" data-k="b5-0-0" aria-label="A 小水 30 秒接水（克） 内江"></td><td><input type="text" inputmode="decimal" data-k="b5-0-1" aria-label="A 小水 30 秒接水（克） 外江"></td><td><input type="text" inputmode="decimal" data-k="b5-0-2" aria-label="A 小水 30 秒接水（克） 备注"></td><td><input type="text" data-k="b5-0-n" aria-label="A 小水 30 秒接水（克） 备注"></td></tr>
+<tr><td>A 大水 30 秒接水（克）</td><td><input type="text" inputmode="decimal" data-k="b5-1-0" aria-label="A 大水 30 秒接水（克） 内江"></td><td><input type="text" inputmode="decimal" data-k="b5-1-1" aria-label="A 大水 30 秒接水（克） 外江"></td><td><input type="text" inputmode="decimal" data-k="b5-1-2" aria-label="A 大水 30 秒接水（克） 备注"></td><td><input type="text" data-k="b5-1-n" aria-label="A 大水 30 秒接水（克） 备注"></td></tr>
+<tr><td>B 沙子沉积位置</td><td><input type="text" inputmode="decimal" data-k="b5-2-0" aria-label="B 沙子沉积位置 内江"></td><td><input type="text" inputmode="decimal" data-k="b5-2-1" aria-label="B 沙子沉积位置 外江"></td><td><input type="text" inputmode="decimal" data-k="b5-2-2" aria-label="B 沙子沉积位置 备注"></td><td><input type="text" data-k="b5-2-n" aria-label="B 沙子沉积位置 备注"></td></tr>
+<tr><td>D 弯道布置：进内江的沙</td><td><input type="text" inputmode="decimal" data-k="b5-3-0" aria-label="D 弯道布置：进内江的沙 内江"></td><td><input type="text" inputmode="decimal" data-k="b5-3-1" aria-label="D 弯道布置：进内江的沙 外江"></td><td><input type="text" inputmode="decimal" data-k="b5-3-2" aria-label="D 弯道布置：进内江的沙 备注"></td><td><input type="text" data-k="b5-3-n" aria-label="D 弯道布置：进内江的沙 备注"></td></tr>
+<tr><td>D 直道布置：进内江的沙</td><td><input type="text" inputmode="decimal" data-k="b5-4-0" aria-label="D 直道布置：进内江的沙 内江"></td><td><input type="text" inputmode="decimal" data-k="b5-4-1" aria-label="D 直道布置：进内江的沙 外江"></td><td><input type="text" inputmode="decimal" data-k="b5-4-2" aria-label="D 直道布置：进内江的沙 备注"></td><td><input type="text" data-k="b5-4-n" aria-label="D 直道布置：进内江的沙 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>沙盘能否做出水位越高、外江分得越多的效果</li>
+<li>弯道布置时，进内江的沙是否明显减少</li>
+<li>茶叶末是否稳定聚到碗底中央</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>沙盘实验在阳台或浴室做，注意排水和地面防滑。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>大塑料托盘、细沙、小石块</td><td>沙盘</td></tr>
+<tr><td>饮料瓶、花洒</td><td>小水与大水</td></tr>
+<tr><td>杯子、厨房秤、秒表</td><td>测分流比例</td></tr>
+<tr><td>彩色细沙或咖啡渣</td><td>示踪</td></tr>
+<tr><td>碗、勺子、茶叶末</td><td>茶叶效应</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://www.chinanews.com.cn/sh/2026/04-03/10598144.shtml">中国新闻网：从砍杩槎放水到数字孪生管水（2026）</a> <span>四六分水、二八排沙、飞沙堰、灌区面积</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Dujiangyan">Wikipedia：Dujiangyan</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Tea_leaf_paradox">Wikipedia：Tea leaf paradox</a> <span>弯道环流与茶叶效应</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "沙盘模型：水从上游流下，在一个三角形「鱼嘴」处分成两股", "一个小小的三角形，把一条江分成了两条。"], [2, "0:08", "done", "问题卡：两千多年前修的水利工程，为什么至今还在用？", ""], [3, "0:14", "done", "片头：B 线科技树，B5 闪烁", "古法解密。战国末年，秦国蜀郡。"], [4, "0:21", "done", "资料卡：李冰、三大件、今天的灌区", "秦国蜀郡太守李冰主持修建了都江堰，距今两千两百多年。它没有一道拦河大坝，只有三样东西：鱼嘴分水，飞沙堰泄洪排沙，宝瓶口引水。今天它灌溉的土地，仍有一千一百多万亩。"], [5, "0:45", "real", "实验 1：大托盘铺沙做沙盘：一条主河道，用石块堆一个「鱼嘴」分成一深一浅两条支流；分别用小水流和大水流冲，看两边分到多少", "我们在托盘里堆一个都江堰：内江挖得深而窄，外江浅而宽。小水……大水……（按实拍描述两边的水量变化）"], [6, "1:15", "done", "动画：枯水期内江约六成、丰水期外江约六成：「四六分水」", "秘密在河床的深浅。枯水期水位低，深而窄的内江分到约六成，保证灌溉；丰水期水位高，宽而浅的外江分走约六成，替成都平原泄洪。不用闸门，水自己就分好了。"], [7, "1:39", "real", "实验 2：在河道里撒一把彩色细沙，水流过后看沙子落在哪一边", "撒一把沙：……（按实拍描述沙子的去向）"], [8, "2:04", "done", "问题卡：岷江的泥沙那么多，为什么没把内江堵死？", ""], [9, "2:10", "real", "实验 3：碗里装水和少量茶叶末，用勺子搅转后停下，茶叶末聚到碗底中央（「茶叶效应」）", "先看一个厨房里的小实验：搅一碗水，停下来，茶叶末全聚到了碗底中间。（按实拍描述）"], [10, "2:35", "done", "动画：弯道环流：表层水冲向凹岸，底层水带沙流向凸岸；鱼嘴修在弯道上，「二八排沙」", "同样的道理，河水转弯时，表层的水甩向弯道外侧，底层的水带着沙子流向内侧，这叫弯道环流。鱼嘴正好修在弯道上：内江在外侧，取表层的清水；外江在内侧，带走了约八成的沙。飞沙堰还会在洪水时，把内江多余的水和沙再甩回外江。"], [11, "2:59", "real", "实验 4：沙盘上改成弯曲的主河道，鱼嘴放在弯道上 vs 直河道上，对比进入内江的沙量", "把河道弯一弯，再撒沙：……（按实拍描述哪种布置进内江的沙更少）"], [12, "3:22", "done", "结论卡：不拦水，顺着水，让地形替人分水排沙", "不拦水，顺着水，让河床的深浅和弯道替人分水排沙。古人留下一句话：「深淘滩，低作堰。」"], [13, "3:29", "done", "片尾：点亮 B5，预告第 27 集", "下集：埋一个罐子，为什么能省很多水？"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>
