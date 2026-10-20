@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>温度计拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../ep30/">30</a><a href="../b6/">B6</a><a href="../season3/">特辑3</a><a href="../ep32/">32</a><a href="../ep33/">33</a><a href="../b19/">B19</a><a href="../ep37/">37</a><a href="../ep31/">31</a><a href="../ep35/">35</a><a href="../ep36/">36</a><a href="../season4/">特辑4</a><a href="../ep39/">39</a><a href="../b8/">B8</a><a href="../ep40/">40</a><a href="../ep41/">41</a><a href="../b17/">B17</a><a href="../b7/">B7</a><a href="../ep42/">42</a><a href="../ep43/">43</a><a href="../ep44/">44</a><a href="../season5/">特辑5</a><a href="../ep45/">45</a><a href="../b11/">B11</a><a href="../b9/">B9</a><a href="../ep46/">46</a><a href="../ep47/">47</a><a href="../b10/">B10</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第六季 · 第 46 集</div>
+<h1>温度计</h1>
+<p class="thesis">液体受热膨胀，细管把微小的体积变化放大成一段液柱；再用冰水和沸水两个定点、平均分格，就得到了可以比较的「度」。</p>
+<div class="facts">
+<div><span>暂定标题</span>怎样从零定义「一度」？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>穿越北宋 · 冷热只能靠感觉吗</div>
+<div><span>衔接</span>← B9 鱼洗；→ 47 用影子测地球</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">历史</p><p class="p">伽利略约 1593 年做出验温器（没有统一刻度）；华伦海特 1714 年做出水银温度计，并提出华氏温标；摄尔修斯 1742 年提出百分温标，最初把沸点记为 0、冰点记为 100，后来才倒过来。</p></div>
+<div class="ol"><p class="o">定点</p><p class="p">冰水混合物在一个标准大气压下约 0 ℃，水的沸点约 100 ℃（随气压变化）。</p></div>
+<div class="ol"><p class="o">家里做</p><p class="p">为安全起见，本集第二个定点用约 60 ℃ 的热水，由厨房温度计测准；拍摄时说明真正的定标用沸水。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>冷热靠感觉就行</s> → 手的感觉会骗人</span></li>
+<li><span class="k">2</span><span><s>温度计里装的是什么都行</s> → 要热胀冷缩明显、变化均匀</span></li>
+<li><span class="k">3</span><span><s>一度是自然规定的</s> → 定点是自然的，分格是人定的</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>液柱随温度升降</p></div>
+<div class="layer"><span>规律层</span><p>液体体积随温度近似线性变化；细管把体积变化放大成长度</p></div>
+<div class="layer"><span>本质层</span><p>温度越高，分子热运动越剧烈，平均间距越大</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>感觉靠不住 → 找一个随温度均匀变化的量（液体体积）；变化太小 → 用细管放大；要能比较 → 两个定点 + 均分。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">不使用水银；用加色的水或酒精即可。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>冷热手放温水</td><td>感觉靠不住</td></tr>
+<tr><td>B</td><td>粗管 vs 细管</td><td>放大</td></tr>
+<tr><td>C</td><td>冰水与 60 ℃ 定标</td><td>刻度</td></tr>
+<tr><td>D</td><td>测三杯水对比</td><td>误差</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>A：左手泡 40 ℃ 左右的温热水、右手泡冰水各一分钟，再同时放进同一盆室温水。</li>
+<li>B：两只同样的小玻璃瓶灌满加色的水，分别插粗吸管和细管，橡皮泥封口（不要留气泡），一起放进同一盆温水。</li>
+<li>C：瓶子放进冰水混合物，液柱稳定后在吸管外贴的纸条上标 0；放进 60 ℃ 热水（厨房温度计确认），稳定后标 60；之间均分 6 大格。</li>
+<li>D：准备冷、温、热三杯水，自制温度计和厨房温度计同时测。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>自制读数</th><th>厨房温度计</th><th>备注</th></tr></thead><tbody>
+<tr><td>冷水</td><td><input type="text" inputmode="decimal" data-k="e46-0-0" aria-label="冷水 自制读数"></td><td><input type="text" inputmode="decimal" data-k="e46-0-1" aria-label="冷水 厨房温度计"></td><td><input type="text" data-k="e46-0-n" aria-label="冷水 备注"></td></tr>
+<tr><td>温水</td><td><input type="text" inputmode="decimal" data-k="e46-1-0" aria-label="温水 自制读数"></td><td><input type="text" inputmode="decimal" data-k="e46-1-1" aria-label="温水 厨房温度计"></td><td><input type="text" data-k="e46-1-n" aria-label="温水 备注"></td></tr>
+<tr><td>热水</td><td><input type="text" inputmode="decimal" data-k="e46-2-0" aria-label="热水 自制读数"></td><td><input type="text" inputmode="decimal" data-k="e46-2-1" aria-label="热水 厨房温度计"></td><td><input type="text" data-k="e46-2-n" aria-label="热水 备注"></td></tr>
+<tr><td>B 粗管上升（毫米）</td><td><input type="text" inputmode="decimal" data-k="e46-3-0" aria-label="B 粗管上升（毫米） 自制读数"></td><td><input type="text" inputmode="decimal" data-k="e46-3-1" aria-label="B 粗管上升（毫米） 厨房温度计"></td><td><input type="text" data-k="e46-3-n" aria-label="B 粗管上升（毫米） 备注"></td></tr>
+<tr><td>B 细管上升（毫米）</td><td><input type="text" inputmode="decimal" data-k="e46-4-0" aria-label="B 细管上升（毫米） 自制读数"></td><td><input type="text" inputmode="decimal" data-k="e46-4-1" aria-label="B 细管上升（毫米） 厨房温度计"></td><td><input type="text" data-k="e46-4-n" aria-label="B 细管上升（毫米） 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>液柱是否稳定、封口是否漏气</li>
+<li>自制温度计的误差有多大</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>热水约 60 ℃ 即可，小心烫伤；不要使用水银温度计做实验。</li>
+<li>玻璃瓶避免骤冷骤热。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>小玻璃瓶 2 个、透明吸管、细管、橡皮泥</td><td>自制温度计</td></tr>
+<tr><td>食用色素</td><td>让液柱看得清</td></tr>
+<tr><td>冰块、热水、厨房温度计</td><td>定标</td></tr>
+<tr><td>三个盆、杯子</td><td>对比</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://en.wikipedia.org/wiki/Thermometer">Wikipedia：Thermometer</a> <span>伽利略、华伦海特 1714</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Celsius">Wikipedia：Celsius</a> <span>1742 年、最初倒置的刻度</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "左手泡热水、右手泡冰水一分钟，再同时放进同一盆温水：一只手觉得凉，一只手觉得热", "同一盆水，一只手说凉，一只手说热。"], [2, "0:08", "done", "问题卡：同一盆温水，为什么两只手感觉不一样？", ""], [3, "0:14", "done", "片头：第六季科技树，第 46 集闪烁", "穿越北宋：冷热只能靠感觉吗？"], [4, "0:21", "done", "资料卡：伽利略、华伦海特、摄尔修斯", "伽利略做过能看出冷热变化的验温器，但没有统一刻度；一七一四年，华伦海特做出水银温度计；一七四二年，摄尔修斯提出了百分刻度。"], [5, "0:45", "real", "实验 1：小玻璃瓶装满加了食用色素的水，插一根透明吸管，用橡皮泥封紧瓶口；双手捂住瓶身，看液柱慢慢上升", "手一捂，液柱就往上爬。"], [6, "1:10", "done", "动画：分子受热晃得更厉害，体积变大，细管把变化放大", "液体受热，分子晃得更厉害，彼此挤开一点点，体积就变大；这一点点挤进很细的管子，就变成很长一段。"], [7, "1:32", "real", "实验 2：同样两只瓶子，一只插粗吸管、一只插细管（如咖啡搅拌管），一起放进同一盆温水，比较液柱升高多少", "粗管升了……毫米，细管升了……毫米。"], [8, "1:57", "done", "问题卡：「一度」到底是谁定的？", ""], [9, "2:03", "real", "实验 3：定标：放进冰水混合物，液柱稳定后标 0；再放进约 60 ℃ 的热水（用厨房温度计测准），标 60；中间平均分格", "冰水里标零，热水里标六十，中间平均分成六十格。"], [10, "2:33", "done", "动画：冰水定 0、沸水定 100，平均分成 100 格", "冰水里记作零，沸水里记作一百，中间平均分成一百格。两个定点是自然给的，「一度」多大，是人约定的。"], [11, "2:55", "real", "实验 4：用自制温度计测三杯不同温度的水，和厨房温度计对比", "自制的读……度，厨房温度计……度。（按实测描述误差）"], [12, "3:22", "done", "结论卡：液体热胀冷缩，细管把变化放大", "液体热胀冷缩，细管把变化放大；两个定点加平均分格，就成了刻度。"], [13, "3:29", "done", "片尾：点亮第 46 集，预告第 47 集", "下集：一根杆子，怎么量出地球多大？"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>
