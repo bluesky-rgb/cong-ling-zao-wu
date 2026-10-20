@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>复式记账拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../ep30/">30</a><a href="../b6/">B6</a><a href="../season3/">特辑3</a><a href="../ep32/">32</a><a href="../ep33/">33</a><a href="../b19/">B19</a><a href="../ep37/">37</a><a href="../ep31/">31</a><a href="../ep35/">35</a><a href="../ep36/">36</a><a href="../season4/">特辑4</a><a href="../ep39/">39</a><a href="../b8/">B8</a><a href="../ep40/">40</a><a href="../ep41/">41</a><a href="../b17/">B17</a><a href="../b7/">B7</a><a href="../ep42/">42</a><a href="../ep43/">43</a><a href="../ep44/">44</a><a href="../season5/">特辑5</a><a href="../ep45/">45</a><a href="../b11/">B11</a><a href="../b9/">B9</a><a href="../ep46/">46</a><a href="../ep47/">47</a><a href="../b10/">B10</a><a href="../ep48/">48</a><a href="../ep49/">49</a><a href="../ep50/">50</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第六季 · 第 49 集</div>
+<h1>复式记账</h1>
+<p class="thesis">每一笔交易同时记在「去向」和「来源」两边，金额相等，所以两边总数永远相等；对不上，就说明有一笔记错了。这是用守恒来查错。</p>
+<div class="facts">
+<div><span>暂定标题</span>怎样让账永远算不错？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>宋代四柱法 · 1494 年帕乔利</div>
+<div><span>衔接</span>← 48 数字与 0；→ 50 光学电报</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">四柱法</p><p class="p">唐末五代出现、宋代广泛使用的「四柱结算法」：旧管 + 新收 − 开除 = 实在，用一个等式核对一段时间的收支。</p></div>
+<div class="ol"><p class="o">复式记账</p><p class="p">意大利商人 13–14 世纪已使用；1494 年帕乔利在《算术、几何、比与比例概要》中系统介绍。</p></div>
+<div class="ol"><p class="o">龙门账</p><p class="p">明末中国出现完整的复式记账法「龙门账」。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>记下收了多少钱就够了</s> → 还要记钱去了哪里</span></li>
+<li><span class="k">2</span><span><s>记两遍是浪费</s> → 记两边才能互相核对</span></li>
+<li><span class="k">3</span><span><s>两边平了就一定没错</s> → 有些错（如两边都记错）查不出来</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>两边合计相等；不等就有错</p></div>
+<div class="layer"><span>规律层</span><p>每笔借贷金额相等，总和必然相等</p></div>
+<div class="layer"><span>本质层</span><p>守恒：资产 = 负债 + 所有者权益</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>只记一边查不出错 → 每笔记两边；要能查 → 两边合计必须相等；还要知道错在哪 → 按差额找那一笔。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">用小额的虚拟交易即可，不必用真钱。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>便利贴 T 字账</td><td>记两边</td></tr>
+<tr><td>B</td><td>模拟小卖部十笔</td><td>实际记账</td></tr>
+<tr><td>C</td><td>故意漏记一边</td><td>查错</td></tr>
+<tr><td>D</td><td>四柱法核对零花钱</td><td>古人的对账</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>A：白板上画三个 T 字（现金、货物、欠款），左边记增加、右边记减少；每笔交易贴两张同样金额的便利贴。</li>
+<li>B：家人当顾客买卖 10 次，全部记两边。</li>
+<li>C：故意把一笔只记一边，然后分别合计左右两边，用差额去找那一笔。</li>
+<li>D：拿一周的零花钱：上周剩余 + 本周收入 − 本周支出，算出应剩多少，和钱包里的实数对比。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>结果</th><th>备注</th><th>备注</th></tr></thead><tbody>
+<tr><td>B 借方合计</td><td><input type="text" inputmode="decimal" data-k="e49-0-0" aria-label="B 借方合计 结果"></td><td><input type="text" inputmode="decimal" data-k="e49-0-1" aria-label="B 借方合计 备注"></td><td><input type="text" data-k="e49-0-n" aria-label="B 借方合计 备注"></td></tr>
+<tr><td>B 贷方合计</td><td><input type="text" inputmode="decimal" data-k="e49-1-0" aria-label="B 贷方合计 结果"></td><td><input type="text" inputmode="decimal" data-k="e49-1-1" aria-label="B 贷方合计 备注"></td><td><input type="text" data-k="e49-1-n" aria-label="B 贷方合计 备注"></td></tr>
+<tr><td>C 两边差额</td><td><input type="text" inputmode="decimal" data-k="e49-2-0" aria-label="C 两边差额 结果"></td><td><input type="text" inputmode="decimal" data-k="e49-2-1" aria-label="C 两边差额 备注"></td><td><input type="text" data-k="e49-2-n" aria-label="C 两边差额 备注"></td></tr>
+<tr><td>C 找到的错误那一笔</td><td><input type="text" inputmode="decimal" data-k="e49-3-0" aria-label="C 找到的错误那一笔 结果"></td><td><input type="text" inputmode="decimal" data-k="e49-3-1" aria-label="C 找到的错误那一笔 备注"></td><td><input type="text" data-k="e49-3-n" aria-label="C 找到的错误那一笔 备注"></td></tr>
+<tr><td>D 应剩 / 实剩</td><td><input type="text" inputmode="decimal" data-k="e49-4-0" aria-label="D 应剩 / 实剩 结果"></td><td><input type="text" inputmode="decimal" data-k="e49-4-1" aria-label="D 应剩 / 实剩 备注"></td><td><input type="text" data-k="e49-4-n" aria-label="D 应剩 / 实剩 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>便利贴演示是否清楚</li>
+<li>两边都记错时是否查得出来（如实说明局限）</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>无特殊风险。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>白板、便利贴、记号笔</td><td>T 字账</td></tr>
+<tr><td>玩具货物、玩具钱</td><td>小卖部</td></tr>
+<tr><td>笔记本、计算器</td><td>对账</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://en.wikipedia.org/wiki/Four-pillar_accounting_system">Wikipedia：Four-pillar accounting system</a> <span>四柱法、龙门账</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Double-entry_bookkeeping">Wikipedia：Double-entry bookkeeping</a> <span>意大利与 1494 年帕乔利</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Luca_Pacioli">Wikipedia：Luca Pacioli</a></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "小卖部一天的流水只记「收了多少」：晚上数钱，少了 30 元，不知道错在哪", "晚上一数钱，少了三十块。可错在哪一笔？"], [2, "0:08", "done", "问题卡：账算错了，怎么知道错在哪？", ""], [3, "0:14", "done", "片头：第六季科技树，第 49 集闪烁", "宋代的官府账房，已经在用「四柱」对账。"], [4, "0:21", "done", "资料卡：四柱法、帕乔利、龙门账", "唐末五代起，中国用「四柱法」对账：旧管加新收减开除，等于实在，宋代广泛使用。一四九四年，帕乔利在书里系统介绍了复式记账；明末，中国也出现了完整复式的「龙门账」。"], [5, "0:45", "real", "实验 1：白板上用便利贴画三个 T 字账：现金、货物、欠款；记三笔交易，每笔贴两张便利贴", "买米：货物这边加一张，现金那边减一张。"], [6, "1:10", "done", "动画：每笔交易同时记在借、贷两边", "买米，米多了，钱就少了；卖米，钱多了，米少了，还多出赚的那部分；借钱，钱多了，欠别人的也多了。钱从哪来、到哪去，两边总是一样多。"], [7, "1:32", "real", "实验 2：家人当顾客，模拟一下午的小卖部，十笔交易全部记两边", "十笔交易，一笔一笔都记两边……"], [8, "1:57", "done", "问题卡：记了几百笔，怎么快速查错？", ""], [9, "2:03", "real", "实验 3：故意把其中一笔只记一边，两边各自合计：看差多少，按差额找出那一笔", "两边差了……元；正好是……那一笔。"], [10, "2:33", "done", "动画：两边合计不等 → 找到错误 → 重新平衡", "把两边加起来，应该一样多；不一样，说明中间有一笔只记了一边，或者写错了数。"], [11, "2:55", "real", "实验 4：用四柱法核对一周零花钱：上周剩余 + 本周收入 − 本周支出 = 现在剩余，和钱包里的钱对一对", "算出来应该剩……元，钱包里实际有……元。"], [12, "3:22", "done", "结论卡：每笔记两边，两边总数永远相等", "每笔记两边，两边总数永远相等；对不上，就说明有错。"], [13, "3:29", "done", "片尾：点亮第 49 集，预告第 50 集", "下集：不用电，怎么把消息传到百里之外？"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>
