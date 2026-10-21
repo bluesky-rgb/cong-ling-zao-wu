@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>重力发电拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../ep30/">30</a><a href="../b6/">B6</a><a href="../season3/">特辑3</a><a href="../ep32/">32</a><a href="../ep33/">33</a><a href="../b19/">B19</a><a href="../ep37/">37</a><a href="../ep31/">31</a><a href="../ep35/">35</a><a href="../ep36/">36</a><a href="../season4/">特辑4</a><a href="../ep39/">39</a><a href="../b8/">B8</a><a href="../ep40/">40</a><a href="../ep41/">41</a><a href="../b17/">B17</a><a href="../b7/">B7</a><a href="../ep42/">42</a><a href="../ep43/">43</a><a href="../ep44/">44</a><a href="../season5/">特辑5</a><a href="../ep45/">45</a><a href="../b11/">B11</a><a href="../b9/">B9</a><a href="../ep46/">46</a><a href="../ep47/">47</a><a href="../b10/">B10</a><a href="../ep48/">48</a><a href="../ep49/">49</a><a href="../ep50/">50</a><a href="../b18/">B18</a><a href="../season6/">特辑6</a><a href="../ep07/">07</a><a href="../ep08/">08</a><a href="../ep09/">09</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第七季 · 第 09 集</div>
+<h1>重力发电</h1>
+<p class="thesis">把重物举高，存下的势能 = 质量 × g × 高度。10 千克举高 2 米只有约 200 焦耳，能量密度很低；让它通过齿轮慢慢落下，功率变小、时间变长，就能稳定地点亮一盏小灯。</p>
+<div class="facts">
+<div><span>暂定标题</span>一袋石头落下，灯能亮多久？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>14 世纪重锤钟 · 1907 年抽水蓄能 · 2012 年重力灯</div>
+<div><span>衔接</span>← 08 畜力与人力；→ 12 热电；回扣 45 摆钟</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">重锤驱动</p><p class="p">14 世纪欧洲的机械钟用重锤缓慢下落提供动力，靠擒纵机构控制速度。</p></div>
+<div class="ol"><p class="o">抽水蓄能</p><p class="p">1907 年瑞士沙夫豪森附近建成早期抽水蓄能电站；今天它仍是电网中容量最大的储能方式，原理就是把水抽高、再放下发电。</p></div>
+<div class="ol"><p class="o">重力灯</p><p class="p">2012 年前后出现的 GravityLight：约 9 千克的袋子缓慢落下，可点亮一盏小 LED 约 20 分钟（产品数据，拍摄前核对）。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>举高就能存很多电</s> → 能量密度很低：充一部手机要举到约 550 米</span></li>
+<li><span class="k">2</span><span><s>落得快能量多</s> → 能量一样，快慢只改变功率</span></li>
+<li><span class="k">3</span><span><s>重力储能只是玩具</s> → 抽水蓄能是电网最大的储能</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>举得越高、越重，灯亮越久</p></div>
+<div class="layer"><span>规律层</span><p>势能 E = mgh；功率 = 能量 ÷ 时间</p></div>
+<div class="layer"><span>本质层</span><p>齿轮比改变力与速度；损耗与效率</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>要存能 → 举高重物；要慢慢用 → 齿轮减速、控制下落速度；要存很多 → 用很多水、很大的高差（抽水蓄能）。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">滑轮挂在牢固的门框或单杠上；重物用装水的桶，下面一定垫厚泡沫垫。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>称重、量高、算势能</td><td>E = mgh</td></tr>
+<tr><td>B</td><td>直接松手，慢动作拍</td><td>能量很快花完</td></tr>
+<tr><td>C</td><td>加齿轮减速带发电机</td><td>慢慢落、亮得久</td></tr>
+<tr><td>D</td><td>测电压电流、算效率</td><td>损耗</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>A：水桶（约 10 千克）称重；测从起点到垫子的高度（约 2 米）；算 E = 质量 × 9.8 × 高度。</li>
+<li>B：人站开，松手让桶落到厚泡沫垫上，手机慢动作拍，估算下落时间。</li>
+<li>C：绳子绕在减速齿轮箱的输入轴上，输出接小电机当发电机、接 LED；松开后计时 LED 亮了多久。</li>
+<li>D：用万用表测 LED 两端电压和电流，乘以时间得到实际电能，和 A 的势能比较。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>数值</th><th>备注</th><th>备注</th></tr></thead><tbody>
+<tr><td>水桶质量（千克）</td><td><input type="text" inputmode="decimal" data-k="e09-0-0" aria-label="水桶质量（千克） 数值"></td><td><input type="text" inputmode="decimal" data-k="e09-0-1" aria-label="水桶质量（千克） 备注"></td><td><input type="text" data-k="e09-0-n" aria-label="水桶质量（千克） 备注"></td></tr>
+<tr><td>下落高度（米）</td><td><input type="text" inputmode="decimal" data-k="e09-1-0" aria-label="下落高度（米） 数值"></td><td><input type="text" inputmode="decimal" data-k="e09-1-1" aria-label="下落高度（米） 备注"></td><td><input type="text" data-k="e09-1-n" aria-label="下落高度（米） 备注"></td></tr>
+<tr><td>势能（焦耳）</td><td><input type="text" inputmode="decimal" data-k="e09-2-0" aria-label="势能（焦耳） 数值"></td><td><input type="text" inputmode="decimal" data-k="e09-2-1" aria-label="势能（焦耳） 备注"></td><td><input type="text" data-k="e09-2-n" aria-label="势能（焦耳） 备注"></td></tr>
+<tr><td>直接下落时间（秒）</td><td><input type="text" inputmode="decimal" data-k="e09-3-0" aria-label="直接下落时间（秒） 数值"></td><td><input type="text" inputmode="decimal" data-k="e09-3-1" aria-label="直接下落时间（秒） 备注"></td><td><input type="text" data-k="e09-3-n" aria-label="直接下落时间（秒） 备注"></td></tr>
+<tr><td>齿轮下落时间（秒）</td><td><input type="text" inputmode="decimal" data-k="e09-4-0" aria-label="齿轮下落时间（秒） 数值"></td><td><input type="text" inputmode="decimal" data-k="e09-4-1" aria-label="齿轮下落时间（秒） 备注"></td><td><input type="text" data-k="e09-4-n" aria-label="齿轮下落时间（秒） 备注"></td></tr>
+<tr><td>LED 电压 × 电流</td><td><input type="text" inputmode="decimal" data-k="e09-5-0" aria-label="LED 电压 × 电流 数值"></td><td><input type="text" inputmode="decimal" data-k="e09-5-1" aria-label="LED 电压 × 电流 备注"></td><td><input type="text" data-k="e09-5-n" aria-label="LED 电压 × 电流 备注"></td></tr>
+<tr><td>实际电能 / 效率</td><td><input type="text" inputmode="decimal" data-k="e09-6-0" aria-label="实际电能 / 效率 数值"></td><td><input type="text" inputmode="decimal" data-k="e09-6-1" aria-label="实际电能 / 效率 备注"></td><td><input type="text" data-k="e09-6-n" aria-label="实际电能 / 效率 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>齿轮箱阻力可能让桶不动：先调好配重</li>
+<li>慢动作测时间只作估计</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>滑轮必须挂在承重可靠的地方，先用 2 倍重量试挂。</li>
+<li>重物下方垫厚泡沫垫，人和脚不要在下落路径上。</li>
+<li>松手实验由大人操作，孩子站在 2 米外。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>滑轮、结实的绳子</td><td>提升</td></tr>
+<tr><td>水桶（约 10 千克）、秤、卷尺</td><td>重物</td></tr>
+<tr><td>减速齿轮箱、小直流电机、LED</td><td>发电</td></tr>
+<tr><td>万用表、计时器</td><td>测量</td></tr>
+<tr><td>厚泡沫垫</td><td>安全</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://en.wikipedia.org/wiki/Potential_energy">Wikipedia：Potential energy</a> <span>E = mgh</span></li>
+<li><a href="https://en.wikipedia.org/wiki/GravityLight">Wikipedia：GravityLight</a> <span>约 9 千克、约 20 分钟</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Pumped-storage_hydroelectricity">Wikipedia：Pumped-storage hydroelectricity</a> <span>1907 年瑞士</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "一桶水（约 10 千克）挂在滑轮上，从 2 米高处慢慢放下，绳子带着一个小发电机，LED 亮起", "一桶水慢慢落下，灯亮了。"], [2, "0:08", "done", "问题卡：把石头举高，能存下多少电？", ""], [3, "0:14", "done", "片头：第七季科技树，第 09 集闪烁", "北宋没有电池。能不能把力气先「存」起来，等要用的时候再放出来？"], [4, "0:21", "done", "资料卡：重锤钟、抽水蓄能、重力灯", "十四世纪，欧洲的机械钟靠重锤慢慢下落驱动。一九〇七年，瑞士建成了早期的抽水蓄能电站。二〇一二年前后，有人做出了重力灯：一袋沙落下，点亮一盏小灯。"], [5, "0:45", "real", "实验 1：称出水桶重量，量出下落高度；用卷尺和秤把数字拍清楚，现场算势能", "十千克，两米：大约二百焦耳。"], [6, "1:10", "done", "动画：势能 = 重量 × 高度；充满一部手机要举到约 550 米", "把十千克举高两米，存下大约二百焦耳，够一盏一瓦的灯亮三分钟。要充满一部手机，得把它举到五百多米高。"], [7, "1:32", "res", "实验 2：同样的水桶直接松手（下面垫厚泡沫垫），用慢动作拍落地时间", "直接松手，不到一秒就落地了。"], [8, "1:57", "done", "问题卡：同样的能量，怎么让灯亮得更久？", ""], [9, "2:03", "real", "实验 3：绳子绕过齿轮减速箱（玩具齿轮组或旧电动螺丝刀的变速箱）再带发电机；计时 LED 亮了多久", "加了齿轮，水桶慢慢往下走，灯亮了……秒。"], [10, "2:33", "done", "动画：直接落下 0.6 秒 vs 齿轮减速 3 分钟", "同样二百焦耳：直接掉下去，零点几秒就没了；用齿轮让它慢慢落，几分钟才到底，功率很小，正好点亮一盏小灯。"], [11, "2:55", "real", "实验 4：把 LED 亮的时间、电压、电流记下，算出实际得到多少焦耳，和 200 焦耳比，算效率", "实际只拿到了……焦耳，效率大约百分之……"], [12, "3:22", "done", "结论卡：势能 = 重量 × 高度；落得慢，功率小、亮得久", "势能等于重量乘高度，能量密度很低；让它慢慢落，功率小，但亮得久。摆钟的重锤就是这样慢慢花掉重力势能的。"], [13, "3:29", "done", "片尾：点亮第 09 集，预告第 12 集", "下集：金属一头烧热，为什么就有电压？"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>
