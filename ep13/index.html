@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>压电拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../ep30/">30</a><a href="../b6/">B6</a><a href="../season3/">特辑3</a><a href="../ep32/">32</a><a href="../ep33/">33</a><a href="../b19/">B19</a><a href="../ep37/">37</a><a href="../ep31/">31</a><a href="../ep35/">35</a><a href="../ep36/">36</a><a href="../season4/">特辑4</a><a href="../ep39/">39</a><a href="../b8/">B8</a><a href="../ep40/">40</a><a href="../ep41/">41</a><a href="../b17/">B17</a><a href="../b7/">B7</a><a href="../ep42/">42</a><a href="../ep43/">43</a><a href="../ep44/">44</a><a href="../season5/">特辑5</a><a href="../ep45/">45</a><a href="../b11/">B11</a><a href="../b9/">B9</a><a href="../ep46/">46</a><a href="../ep47/">47</a><a href="../b10/">B10</a><a href="../ep48/">48</a><a href="../ep49/">49</a><a href="../ep50/">50</a><a href="../b18/">B18</a><a href="../season6/">特辑6</a><a href="../ep07/">07</a><a href="../ep08/">08</a><a href="../ep09/">09</a><a href="../ep12/">12</a><a href="../ep13/">13</a><a href="../ep14/">14</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第七季 · 第 13 集</div>
+<h1>压电</h1>
+<p class="thesis">某些晶体（石英、压电陶瓷）被挤压时，内部正负电荷的中心错开，两个表面出现电荷，产生电压（压电效应）。打火机的点火器用弹簧小锤猛敲压电陶瓷，瞬间产生几千伏；但电荷极少，所以只能点火、做传感器。反过来加电压，晶体会变形振动。</p>
+<div class="facts">
+<div><span>暂定标题</span>按一下打火机，为什么冒火花？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>1880 年居里兄弟 · 1969 年石英表</div>
+<div><span>衔接</span>← 12 热电；→ 14 静电机</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">发现</p><p class="p">1880 年皮埃尔·居里和雅克·居里兄弟发现，挤压石英、电气石等晶体，表面会出现电荷；次年李普曼从理论上预言了逆效应，随即被证实。</p></div>
+<div class="ol"><p class="o">点火器</p><p class="p">按下按钮压缩弹簧，到底时弹簧锤猛击 PZT 压电陶瓷，产生的高压跳过电极间隙形成火花；电压通常为几千伏量级（拍摄前核对）。</p></div>
+<div class="ol"><p class="o">火石不一样</p><p class="p">火镰敲火石、打火石棒刮出的火星，是金属碎屑被刮下时发热、在空气中燃烧，不是压电。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>火花是摩擦出来的</s> → 点火器的火花是压电产生的电</span></li>
+<li><span class="k">2</span><span><s>电压高就是电很多</s> → 电压高、电荷少，能量极小</span></li>
+<li><span class="k">3</span><span><s>只能把力变成电</s> → 反过来，电也能让晶体振动</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>一挤就有电，一通电就振动</p></div>
+<div class="layer"><span>规律层</span><p>正负电荷中心错开 → 极化 → 表面电荷</p></div>
+<div class="layer"><span>本质层</span><p>没有对称中心的晶体才有压电效应</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>要不用电池点火 → 猛敲压电陶瓷；要敲得猛 → 弹簧 + 锁扣蓄力；要稳定计时 → 反过来用电让石英振动。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">五金店可以单独买到燃气灶用的压电点火器配件，不需要拆打火机；压电蜂鸣片几毛钱一片。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>点火器接 LED</td><td>压电发电</td></tr>
+<tr><td>B</td><td>蜂鸣片轻敲重敲</td><td>挤得越狠电压越高</td></tr>
+<tr><td>C</td><td>蜂鸣片接耳机线放音乐</td><td>逆压电</td></tr>
+<tr><td>D</td><td>火石火星 vs 电火花</td><td>两种火花的区别</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>A：点火器两根引线分别接 LED 两脚，暗处按压；再反接一次。</li>
+<li>B：蜂鸣片两根线接万用表（电压档，有峰值保持更好）或 LED；手指轻敲、重敲各 5 次。</li>
+<li>C：把蜂鸣片接在旧耳机线的插头上（左声道和地线），手机放音乐，音量从小开起。</li>
+<li>D：户外、远离可燃物，成年人刮打火石棒；再按点火器；手机慢动作拍两种火花。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>结果</th><th>备注</th><th>备注</th></tr></thead><tbody>
+<tr><td>A LED 是否闪</td><td><input type="text" inputmode="decimal" data-k="e13-0-0" aria-label="A LED 是否闪 结果"></td><td><input type="text" inputmode="decimal" data-k="e13-0-1" aria-label="A LED 是否闪 备注"></td><td><input type="text" data-k="e13-0-n" aria-label="A LED 是否闪 备注"></td></tr>
+<tr><td>A 反接</td><td><input type="text" inputmode="decimal" data-k="e13-1-0" aria-label="A 反接 结果"></td><td><input type="text" inputmode="decimal" data-k="e13-1-1" aria-label="A 反接 备注"></td><td><input type="text" data-k="e13-1-n" aria-label="A 反接 备注"></td></tr>
+<tr><td>B 轻敲</td><td><input type="text" inputmode="decimal" data-k="e13-2-0" aria-label="B 轻敲 结果"></td><td><input type="text" inputmode="decimal" data-k="e13-2-1" aria-label="B 轻敲 备注"></td><td><input type="text" data-k="e13-2-n" aria-label="B 轻敲 备注"></td></tr>
+<tr><td>B 重敲</td><td><input type="text" inputmode="decimal" data-k="e13-3-0" aria-label="B 重敲 结果"></td><td><input type="text" inputmode="decimal" data-k="e13-3-1" aria-label="B 重敲 备注"></td><td><input type="text" data-k="e13-3-n" aria-label="B 重敲 备注"></td></tr>
+<tr><td>C 能否听见</td><td><input type="text" inputmode="decimal" data-k="e13-4-0" aria-label="C 能否听见 结果"></td><td><input type="text" inputmode="decimal" data-k="e13-4-1" aria-label="C 能否听见 备注"></td><td><input type="text" data-k="e13-4-n" aria-label="C 能否听见 备注"></td></tr>
+<tr><td>D 两种火花的样子</td><td><input type="text" inputmode="decimal" data-k="e13-5-0" aria-label="D 两种火花的样子 结果"></td><td><input type="text" inputmode="decimal" data-k="e13-5-1" aria-label="D 两种火花的样子 备注"></td><td><input type="text" data-k="e13-5-n" aria-label="D 两种火花的样子 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>蜂鸣片电压峰值很快，普通万用表可能读不到，可用 LED 代替</li>
+<li>点火器电压数值拍摄前核对</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>只用单独的点火器配件，不拆打火机、不接触燃气。</li>
+<li>点火器不要对着皮肤按，会有刺痛。</li>
+<li>打火石实验在户外由成年人做，远离可燃物。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>压电点火器配件</td><td>主实验</td></tr>
+<tr><td>LED、导线</td><td>显示</td></tr>
+<tr><td>压电蜂鸣片、旧耳机线</td><td>实验 2、3</td></tr>
+<tr><td>打火石棒</td><td>对比</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://en.wikipedia.org/wiki/Piezoelectricity">Wikipedia：Piezoelectricity</a> <span>1880 居里兄弟、朗之万声呐、石英表</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Piezo_ignition">Wikipedia：Piezo ignition</a> <span>弹簧锤敲击 PZT</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Ferrocerium">Wikipedia：Ferrocerium</a> <span>火石火星是燃烧的金属屑</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "暗处：按一下单独的压电点火器（五金店配件），两根导线之间「啪」地跳出一道蓝白色火花", "没有电池。按一下，就有火花。"], [2, "0:08", "done", "问题卡：按一下打火机，火花从哪来？", ""], [3, "0:14", "done", "片头：第七季科技树，第 13 集闪烁", "北宋人用火镰敲火石取火。可那些火星，和打火机的火花不是一回事。"], [4, "0:21", "done", "资料卡：居里兄弟、朗之万、石英表", "一八八〇年，居里兄弟发现挤压石英这样的晶体，表面会出现电荷。一九一七年前后，朗之万用石英片发出超声波去找潜艇。一九六九年，石英电子表上市。"], [5, "0:45", "real", "实验 1：点火器两根线接一只 LED，暗处按压，LED 闪一下；正反接各试一次", "按一下，LED 闪一下。反过来接……"], [6, "1:10", "done", "动画：晶体里正负电荷中心重合；一挤就错开，两面带电", "晶体里正负离子排得整整齐齐。一挤，正电和负电的中心被挤得错开，一面带正电、一面带负电，就有了电压。"], [7, "1:32", "res", "实验 2：压电蜂鸣片（几毛钱一片）接万用表或 LED，用手指轻敲、重敲，看读数或亮度", "轻轻一敲……伏，用力一敲……伏：挤得越狠，电压越高。"], [8, "1:57", "done", "问题卡：电压那么高，为什么不能当电池用？", ""], [9, "2:03", "real", "实验 3：反过来：蜂鸣片接到手机耳机线上，放一段音乐，小声也能听见：电压让它振动", "给它加电压，它就振动发声：压电是双向的。"], [10, "2:33", "done", "动画：点火器内部：压弹簧 → 小锤猛敲陶瓷 → 几千伏跳过空气", "按下按钮先压紧弹簧，压到底锁扣松开，小锤猛敲压电陶瓷。一下猛挤，几千伏的电压跳过几毫米空气。电压很高，电荷却极少。"], [11, "2:55", "real", "实验 4（户外，成年人操作）：用打火石棒刮出火星，和点火器的电火花放慢动作对比", "火石的火星，是刮下来的金属屑在空气里燃烧；点火器的火花，是电。"], [12, "3:22", "done", "结论卡：挤压晶体就有电压；电压高、电量少，适合点火和传感", "挤压晶体，正负电荷中心错开，就有电压。电压高、电量少，适合点火、做传感器；反过来加电压，它会振动。"], [13, "3:29", "done", "片尾：点亮第 13 集，预告第 14 集", "下集：怎样让静电源源不断？"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>

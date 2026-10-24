@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>静电机拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../ep30/">30</a><a href="../b6/">B6</a><a href="../season3/">特辑3</a><a href="../ep32/">32</a><a href="../ep33/">33</a><a href="../b19/">B19</a><a href="../ep37/">37</a><a href="../ep31/">31</a><a href="../ep35/">35</a><a href="../ep36/">36</a><a href="../season4/">特辑4</a><a href="../ep39/">39</a><a href="../b8/">B8</a><a href="../ep40/">40</a><a href="../ep41/">41</a><a href="../b17/">B17</a><a href="../b7/">B7</a><a href="../ep42/">42</a><a href="../ep43/">43</a><a href="../ep44/">44</a><a href="../season5/">特辑5</a><a href="../ep45/">45</a><a href="../b11/">B11</a><a href="../b9/">B9</a><a href="../ep46/">46</a><a href="../ep47/">47</a><a href="../b10/">B10</a><a href="../ep48/">48</a><a href="../ep49/">49</a><a href="../ep50/">50</a><a href="../b18/">B18</a><a href="../season6/">特辑6</a><a href="../ep07/">07</a><a href="../ep08/">08</a><a href="../ep09/">09</a><a href="../ep12/">12</a><a href="../ep13/">13</a><a href="../ep14/">14</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第七季 · 第 14 集</div>
+<h1>静电机</h1>
+<p class="thesis">带电体可以靠感应让附近的导体两端分别带上正负电；把一端接地放走、再把导体拉开，就得到电荷，带电体本身的电并没有用掉。起电盘把这件事一次一次手动做，感应起电机用转盘自动重复，再存进莱顿瓶，静电就源源不断。电的能量来自把正负电荷拉开时用的力气。</p>
+<div class="facts">
+<div><span>暂定标题</span>怎样让静电源源不断？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>1663 年格里克 · 1775 年起电盘 · 1880 年代感应起电机</div>
+<div><span>衔接</span>← 13 压电；→ 10 蒸汽；回扣 01 摩擦起电</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">摩擦起电机</p><p class="p">1663 年前后格里克用转动的硫磺球和手摩擦起电，是最早的起电机之一（年代拍摄前核对）。</p></div>
+<div class="ol"><p class="o">起电盘</p><p class="p">1762 年瑞典的维尔克发明，1775 年伏打改进并推广：摩擦一次绝缘板，可以反复用感应取电。能量来自提起金属盘时克服电荷吸引所做的功。</p></div>
+<div class="ol"><p class="o">感应起电机</p><p class="p">19 世纪 80 年代维姆斯赫斯特的感应起电机：两片反向转动的圆盘上贴金属片，靠感应不断分离电荷，经集电梳存入莱顿瓶，能跳出几厘米长的火花。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>静电只能一下一下来</s> → 感应可以反复取电</span></li>
+<li><span class="k">2</span><span><s>取一次电，板上的电就少一次</s> → 板上的电只是「借」来感应</span></li>
+<li><span class="k">3</span><span><s>电是凭空来的</s> → 是把电荷拉开的力气变来的</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>放下、碰一下、提起，就能反复取电</p></div>
+<div class="layer"><span>规律层</span><p>静电感应 + 接地；电容变小电压升高</p></div>
+<div class="layer"><span>本质层</span><p>做功分离电荷；感应起电机的正反馈</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>摩擦太费事 → 用感应；要反复 → 起电盘；要自动、连续 → 转盘 + 集电梳；要攒大火花 → 莱顿瓶储存。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">在干燥的天气效果最好；起电盘的火花很小，安全。感应起电机要去学校或科技馆，由老师操作。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>自制起电盘</td><td>一次摩擦反复取电</td></tr>
+<tr><td>B</td><td>充莱顿瓶 10 次</td><td>电荷可以攒起来</td></tr>
+<tr><td>C</td><td>干燥 vs 潮湿</td><td>水汽漏电</td></tr>
+<tr><td>D</td><td>教学用感应起电机</td><td>连续起电</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>A：泡沫板（或 PVC 板）放桌上，用羊毛或毛衣用力摩擦；铝箔餐盘中间用胶带粘一个塑料杯当把手；放上 → 手指碰一下盘面 → 拿杯子提起 → 指节靠近盘边，听「啪」；数一次摩擦能取几次。</li>
+<li>B：用提起的盘子碰第 01 集的莱顿瓶（塑料杯 + 铝箔）中心导线，重复 10 次，再用放电叉放电。</li>
+<li>C：干燥天气做一组，浴室洗完热水澡后再做一组，比较次数。</li>
+<li>D：在学校或科技馆，由老师摇感应起电机；拍摄者在 1 米外，记录摇几圈跳一次火花、火花多长。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>次数 / 长度</th><th>备注</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 一次摩擦取电次数</td><td><input type="text" inputmode="decimal" data-k="e14-0-0" aria-label="A 一次摩擦取电次数 次数 / 长度"></td><td><input type="text" inputmode="decimal" data-k="e14-0-1" aria-label="A 一次摩擦取电次数 备注"></td><td><input type="text" data-k="e14-0-n" aria-label="A 一次摩擦取电次数 备注"></td></tr>
+<tr><td>B 1 次 vs 10 次的火花</td><td><input type="text" inputmode="decimal" data-k="e14-1-0" aria-label="B 1 次 vs 10 次的火花 次数 / 长度"></td><td><input type="text" inputmode="decimal" data-k="e14-1-1" aria-label="B 1 次 vs 10 次的火花 备注"></td><td><input type="text" data-k="e14-1-n" aria-label="B 1 次 vs 10 次的火花 备注"></td></tr>
+<tr><td>C 干燥时</td><td><input type="text" inputmode="decimal" data-k="e14-2-0" aria-label="C 干燥时 次数 / 长度"></td><td><input type="text" inputmode="decimal" data-k="e14-2-1" aria-label="C 干燥时 备注"></td><td><input type="text" data-k="e14-2-n" aria-label="C 干燥时 备注"></td></tr>
+<tr><td>C 潮湿时</td><td><input type="text" inputmode="decimal" data-k="e14-3-0" aria-label="C 潮湿时 次数 / 长度"></td><td><input type="text" inputmode="decimal" data-k="e14-3-1" aria-label="C 潮湿时 备注"></td><td><input type="text" data-k="e14-3-n" aria-label="C 潮湿时 备注"></td></tr>
+<tr><td>D 跳一次火花要摇几圈</td><td><input type="text" inputmode="decimal" data-k="e14-4-0" aria-label="D 跳一次火花要摇几圈 次数 / 长度"></td><td><input type="text" inputmode="decimal" data-k="e14-4-1" aria-label="D 跳一次火花要摇几圈 备注"></td><td><input type="text" data-k="e14-4-n" aria-label="D 跳一次火花要摇几圈 备注"></td></tr>
+<tr><td>D 火花长度（厘米）</td><td><input type="text" inputmode="decimal" data-k="e14-5-0" aria-label="D 火花长度（厘米） 次数 / 长度"></td><td><input type="text" inputmode="decimal" data-k="e14-5-1" aria-label="D 火花长度（厘米） 备注"></td><td><input type="text" data-k="e14-5-n" aria-label="D 火花长度（厘米） 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>泡沫板要干燥，摩擦后不要用手摸</li>
+<li>感应起电机火花长度以实测为准</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>感应起电机接上莱顿瓶后电击很痛，只由老师操作，其他人不碰电极。</li>
+<li>戴心脏起搏器的人远离静电机。</li>
+<li>实验后用放电叉把莱顿瓶放干净再收。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>泡沫板或 PVC 板、羊毛围巾</td><td>起电</td></tr>
+<tr><td>铝箔餐盘、塑料杯、胶带</td><td>起电盘</td></tr>
+<tr><td>第 01 集的自制莱顿瓶</td><td>储电</td></tr>
+<tr><td>教学用感应起电机（借）</td><td>实验 4</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://en.wikipedia.org/wiki/Electrophorus">Wikipedia：Electrophorus</a> <span>1762 维尔克、1775 伏打；能量来自提起的功</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Wimshurst_machine">Wikipedia：Wimshurst machine</a> <span>1880 年代</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Electrostatic_generator">Wikipedia：Electrostatic generator</a> <span>格里克硫磺球</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "回到第 01 集：毛衣摩擦塑料板，吸起纸屑；手指一靠近「啪」一下，再靠近就没了", "摩擦一次，只有一下火花。想再要，就得再摩擦。"], [2, "0:08", "done", "问题卡：怎样让静电源源不断？", ""], [3, "0:14", "done", "片头：第七季科技树，第 14 集闪烁", "第 01 集里我们在北宋摩擦琥珀起电。这一集，让静电停不下来。"], [4, "0:21", "done", "资料卡：格里克、起电盘、维姆斯赫斯特", "一六六三年前后，格里克转动硫磺球，用手摩擦起电。一七六二年维尔克发明起电盘，一七七五年伏打改进并推广。一八八〇年代，维姆斯赫斯特做出感应起电机。"], [5, "0:45", "real", "实验 1：自制起电盘：泡沫板用羊毛摩擦；铝箔餐盘粘一个塑料杯当把手；放上、手指碰一下、提起，指节靠近出火花；数一次摩擦能取多少次", "放下，碰一下，提起来——啪。再来一次，还有。一次摩擦，取了……次。"], [6, "1:10", "done", "动画：起电盘四步：带电板 → 感应 → 接地 → 提起带电", "塑料板的负电把盘里的负电推到上面、正电吸到下面。手指一碰，负电流走。提起盘子，正电没处去，盘子就带了电。"], [7, "1:32", "res", "实验 2：用起电盘给第 01 集的自制莱顿瓶（塑料杯 + 铝箔）充 10 次，再放电，和一次的火花比", "充一次，小小的火花；充十次，……"], [8, "1:57", "done", "问题卡：不停地放下、提起太累，能不能交给机器？", ""], [9, "2:03", "real", "实验 3：在干燥的日子和洗完热水澡的浴室门口各做一次实验 1，比较能取几次电", "干燥时取了……次，潮湿时只有……次：水汽会把电悄悄漏掉。"], [10, "2:33", "done", "动画：感应起电机：转盘上的金属片轮流被感应、送电，存进莱顿瓶后跳火花", "转盘上的金属片一圈圈转：一边被感应，一边把电荷送到集电梳。电存进莱顿瓶，攒够了就跳一道火花。手一直摇，静电就源源不断。"], [11, "2:55", "res", "实验 4：在学校实验室或科技馆，由老师操作教学用感应起电机；拍摄者在 1 米外记录：摇多少圈跳一次火花、火花多长", "摇了……圈，跳出一道……厘米的火花。"], [12, "3:22", "done", "结论卡：感应分离电荷，力气把它们拉开；转盘一圈圈重复", "感应把电荷分开，我们的力气把它们拉远，这份力气就变成了电。转盘一圈圈重复，静电就源源不断。"], [13, "3:29", "done", "片尾：点亮第 14 集，预告第 10 集", "下集：蒸汽怎么变成电？（只用动画）"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>
