@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>玻璃拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../ep30/">30</a><a href="../b6/">B6</a><a href="../season3/">特辑3</a><a href="../ep32/">32</a><a href="../ep33/">33</a><a href="../b19/">B19</a><a href="../ep37/">37</a><a href="../ep31/">31</a><a href="../ep35/">35</a><a href="../ep36/">36</a><a href="../season4/">特辑4</a><a href="../ep39/">39</a><a href="../b8/">B8</a><a href="../ep40/">40</a><a href="../ep41/">41</a><a href="../b17/">B17</a><a href="../b7/">B7</a><a href="../ep42/">42</a><a href="../ep43/">43</a><a href="../ep44/">44</a><a href="../season5/">特辑5</a><a href="../ep45/">45</a><a href="../b11/">B11</a><a href="../b9/">B9</a><a href="../ep46/">46</a><a href="../ep47/">47</a><a href="../b10/">B10</a><a href="../ep48/">48</a><a href="../ep49/">49</a><a href="../ep50/">50</a><a href="../b18/">B18</a><a href="../season6/">特辑6</a><a href="../ep07/">07</a><a href="../ep08/">08</a><a href="../ep09/">09</a><a href="../ep12/">12</a><a href="../ep13/">13</a><a href="../ep14/">14</a><a href="../ep10/">10</a><a href="../ep19/">19</a><a href="../ep21/">21</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第七季 · 第 21 集</div>
+<h1>玻璃</h1>
+<p class="thesis">玻璃的主要原料是石英砂，纯石英约 1700 ℃ 才熔化，古代炉子够不着；加入草木灰或纯碱作助熔剂，约 1000 ℃ 就能熔化。熔体冷得快，原子来不及排成晶体就被冻住，成为非晶态的玻璃；一整块没有颗粒边界，光就能穿过。</p>
+<div class="facts">
+<div><span>暂定标题</span>沙子怎么变透明？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>约前 2500 年玻璃珠 · 战国铅钡玻璃 · 前 1 世纪吹制</div>
+<div><span>衔接</span>← 19 煤与焦炭；→ 51 青霉素；回扣 46 温度计、B16 瓷器</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">起源</p><p class="p">约公元前 2500 年美索不达米亚出现玻璃珠；公元前 1 世纪地中海东岸发明吹制玻璃，玻璃器皿开始普及。</p></div>
+<div class="ol"><p class="o">中国</p><p class="p">战国时期已有铅钡玻璃，常做成「蜻蜓眼」珠；宋代称琉璃，多为彩色、不够透明。北宋设定下讲「透明玻璃」要说明这一点。</p></div>
+<div class="ol"><p class="o">数字</p><p class="p">石英熔点约 1700 ℃；钠钙玻璃配方的熔制温度约 1000–1500 ℃ 量级；宋代窑炉最高约 1200–1300 ℃（均为量级，拍摄前核对）。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>沙子烧一烧就是玻璃</s> → 石英熔点太高，要加助熔剂</span></li>
+<li><span class="k">2</span><span><s>透明是因为成分</s> → 是因为没有颗粒边界</span></li>
+<li><span class="k">3</span><span><s>玻璃是固体</s> → 是冷得太快、来不及结晶的「凝固液体」</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>糖能熬成透明的糖玻璃</p></div>
+<div class="layer"><span>规律层</span><p>助熔剂降低熔点；快冷成非晶态</p></div>
+<div class="layer"><span>本质层</span><p>晶界散射光；玻璃化转变</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>沙子太难熔 → 加草木灰 / 纯碱；要透明 → 熔成一整块、快冷不结晶；要不炸裂 → 慢慢退火。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">真玻璃只在工坊拍；家里用糖演示「快冷成玻璃、慢冷结晶」。实验用糖不食用。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>熬糖成糖玻璃</td><td>快冷成非晶态</td></tr>
+<tr><td>B</td><td>快冷 vs 慢冷加晶种</td><td>结晶</td></tr>
+<tr><td>C</td><td>敲碎糖玻璃</td><td>颗粒边界让它发白</td></tr>
+<tr><td>D</td><td>玻璃工坊</td><td>真正的玻璃</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>A：小锅里 200 克白砂糖加 60 毫升水，中火熬，厨房温度计到约 150 ℃ 关火，倒在硅胶垫上摊薄；冷却 20 分钟。</li>
+<li>B：另熬一锅到约 120 ℃，一半倒薄，另一半留锅里放温后加几粒白砂糖不停搅拌，比较两者。</li>
+<li>C：取一块 A 的糖玻璃放进密封袋，用擀面杖敲碎，对着灯拍。</li>
+<li>D：联系玻璃吹制或灯工工坊，拍挑料、吹制、退火。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>结果</th><th>备注</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 熬到的温度</td><td><input type="text" inputmode="decimal" data-k="e21-0-0" aria-label="A 熬到的温度 结果"></td><td><input type="text" inputmode="decimal" data-k="e21-0-1" aria-label="A 熬到的温度 备注"></td><td><input type="text" data-k="e21-0-n" aria-label="A 熬到的温度 备注"></td></tr>
+<tr><td>A 是否透明</td><td><input type="text" inputmode="decimal" data-k="e21-1-0" aria-label="A 是否透明 结果"></td><td><input type="text" inputmode="decimal" data-k="e21-1-1" aria-label="A 是否透明 备注"></td><td><input type="text" data-k="e21-1-n" aria-label="A 是否透明 备注"></td></tr>
+<tr><td>B 快冷</td><td><input type="text" inputmode="decimal" data-k="e21-2-0" aria-label="B 快冷 结果"></td><td><input type="text" inputmode="decimal" data-k="e21-2-1" aria-label="B 快冷 备注"></td><td><input type="text" data-k="e21-2-n" aria-label="B 快冷 备注"></td></tr>
+<tr><td>B 慢冷 + 晶种</td><td><input type="text" inputmode="decimal" data-k="e21-3-0" aria-label="B 慢冷 + 晶种 结果"></td><td><input type="text" inputmode="decimal" data-k="e21-3-1" aria-label="B 慢冷 + 晶种 备注"></td><td><input type="text" data-k="e21-3-n" aria-label="B 慢冷 + 晶种 备注"></td></tr>
+<tr><td>C 碎末颜色</td><td><input type="text" inputmode="decimal" data-k="e21-4-0" aria-label="C 碎末颜色 结果"></td><td><input type="text" inputmode="decimal" data-k="e21-4-1" aria-label="C 碎末颜色 备注"></td><td><input type="text" data-k="e21-4-n" aria-label="C 碎末颜色 备注"></td></tr>
+<tr><td>D 工坊炉温</td><td><input type="text" inputmode="decimal" data-k="e21-5-0" aria-label="D 工坊炉温 结果"></td><td><input type="text" inputmode="decimal" data-k="e21-5-1" aria-label="D 工坊炉温 备注"></td><td><input type="text" data-k="e21-5-n" aria-label="D 工坊炉温 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>熔点、窑温数字拍摄前核对</li>
+<li>「凝固的液体」是比喻，避免「玻璃会慢慢流动」的误传</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>150 ℃ 的糖浆粘在皮肤上烫伤严重：成年人操作，孩子远离，旁边备一盆冷水。</li>
+<li>不处理真玻璃碎片；工坊里听师傅安排，保持距离。</li>
+<li>实验用糖不食用。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>白砂糖、小锅、硅胶垫</td><td>糖玻璃</td></tr>
+<tr><td>厨房温度计</td><td>测温</td></tr>
+<tr><td>密封袋、擀面杖</td><td>实验 3</td></tr>
+<tr><td>沙子、玻璃块、黑布、手电</td><td>开场</td></tr>
+<tr><td>玻璃工坊（预约）</td><td>实验 4</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://en.wikipedia.org/wiki/Glass">Wikipedia：Glass</a> <span>非晶态、助熔剂、历史</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Glassblowing">Wikipedia：Glassblowing</a> <span>公元前 1 世纪</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Chinese_glass">Wikipedia：Chinese glass</a> <span>战国铅钡玻璃</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "黑布上一把沙子、一块玻璃，手电从侧面照：沙子一片白，玻璃让光穿过去", "这两样，成分几乎一样。一个发白，一个透明。"], [2, "0:08", "done", "问题卡：沙子怎么变透明？", ""], [3, "0:14", "done", "片头：第七季科技树，第 21 集闪烁", "北宋有琉璃，可多是彩色、不透明的。能不能烧出一扇透亮的窗？"], [4, "0:21", "done", "资料卡：美索不达米亚玻璃珠、战国铅钡玻璃、吹制玻璃", "约公元前两千五百年，美索不达米亚出现玻璃珠。战国时中国已有铅钡玻璃，多做成「蜻蜓眼」。公元前一世纪，地中海东岸发明了吹制玻璃。"], [5, "0:45", "real", "实验 1（成年人操作）：白砂糖加少量水熬到约 150 ℃（厨房温度计），倒在硅胶垫上薄薄一层，冷却后得到透明的「糖玻璃」；对着灯拍", "一勺白糖，变成了一块透明的「玻璃」。（实验用糖不食用）"], [6, "1:10", "done", "动画：纯石英约 1700 ℃；加草木灰、纯碱降到约 1000 ℃；宋代窑炉约 1200–1300 ℃", "纯石英要一千七百度左右才熔化，古代的炉子够不着。掺进草木灰或纯碱，一千度上下就能熔成玻璃液。"], [7, "1:32", "res", "实验 2：同一锅糖浆一半倒薄快速冷却，另一半放在锅里慢慢冷、丢进几粒白糖搅拌，看哪一半发白结晶", "快冷的透明，慢冷又搅拌的……"], [8, "1:57", "done", "问题卡：同样的成分，为什么一个白、一个透明？", ""], [9, "2:03", "real", "实验 3：把一块糖玻璃装进密封袋敲碎：碎末一下子变白了", "一整块是透明的，敲碎就白了：和沙子一个道理。"], [10, "2:33", "done", "动画：慢冷排好队成晶体；快冷来不及排队成玻璃", "慢慢冷，原子排成整整齐齐的晶体；冷得太快，来不及排队就被冻住，这就是玻璃。一整块、没有颗粒的边界，光就能穿过去。"], [11, "2:55", "real", "实验 4（玻璃工坊）：拍师傅从炉里挑出玻璃液、吹制成型、放进退火炉", "一千多度的玻璃液，在师傅手里慢慢变成一只杯子。"], [12, "3:22", "done", "结论卡：助熔剂拉低熔点；冷得快、来不及结晶，就是玻璃", "加助熔剂，把熔点拉低到炉子够得着；冷得快、来不及结晶，就成了透明的玻璃。"], [13, "3:29", "done", "片尾：点亮第 21 集，预告第 51 集", "下集：发霉的面包，怎么变成救命药？"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>

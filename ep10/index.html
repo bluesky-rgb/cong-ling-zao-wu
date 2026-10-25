@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>蒸汽发电拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../ep30/">30</a><a href="../b6/">B6</a><a href="../season3/">特辑3</a><a href="../ep32/">32</a><a href="../ep33/">33</a><a href="../b19/">B19</a><a href="../ep37/">37</a><a href="../ep31/">31</a><a href="../ep35/">35</a><a href="../ep36/">36</a><a href="../season4/">特辑4</a><a href="../ep39/">39</a><a href="../b8/">B8</a><a href="../ep40/">40</a><a href="../ep41/">41</a><a href="../b17/">B17</a><a href="../b7/">B7</a><a href="../ep42/">42</a><a href="../ep43/">43</a><a href="../ep44/">44</a><a href="../season5/">特辑5</a><a href="../ep45/">45</a><a href="../b11/">B11</a><a href="../b9/">B9</a><a href="../ep46/">46</a><a href="../ep47/">47</a><a href="../b10/">B10</a><a href="../ep48/">48</a><a href="../ep49/">49</a><a href="../ep50/">50</a><a href="../b18/">B18</a><a href="../season6/">特辑6</a><a href="../ep07/">07</a><a href="../ep08/">08</a><a href="../ep09/">09</a><a href="../ep12/">12</a><a href="../ep13/">13</a><a href="../ep14/">14</a><a href="../ep10/">10</a><a href="../ep19/">19</a><a href="../ep21/">21</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第七季 · 第 10 集</div>
+<h1>蒸汽发电</h1>
+<p class="thesis">水变成蒸汽，体积约变成 1700 倍（100 ℃、一个大气压）。让蒸汽推动叶轮，叶轮带动发电机，就把热变成了电；用过的蒸汽在冷凝器里变回水循环使用。火电和核电都是这样「烧开水」。高压蒸汽危险，本集凡涉及压力的部分只用动画。</p>
+<div class="facts">
+<div><span>暂定标题</span>烧开一壶水，怎么变成电？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>1 世纪汽转球 · 1712 年纽科门 · 1884 年汽轮机</div>
+<div><span>衔接</span>← 14 静电机；→ 19 煤与焦炭；回扣 04 磁生电</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">汽转球</p><p class="p">约公元 1 世纪，亚历山大的希罗描述了汽转球：密封球里的蒸汽从两个弯管喷出，球就转动，当时只是奇器。</p></div>
+<div class="ol"><p class="o">蒸汽机</p><p class="p">1712 年纽科门的蒸汽机靠蒸汽冷凝、大气压推动活塞，用于煤矿抽水；1769 年起瓦特加了分离冷凝器，大大提高效率。</p></div>
+<div class="ol"><p class="o">汽轮机与发电</p><p class="p">1884 年帕森斯发明多级汽轮机，很快用于发电；今天火电厂把煤的热量约三到四成变成电（拍摄前核对），核电站把锅炉换成了反应堆。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>蒸汽只能吹风车</s> → 可以推活塞、冲叶轮</span></li>
+<li><span class="k">2</span><span><s>火越大越好</s> → 压力过高会爆炸，要安全阀</span></li>
+<li><span class="k">3</span><span><s>蒸汽是过时的技术</s> → 今天大多数电还是靠蒸汽</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>开水能吹风车，大机器带发电机</p></div>
+<div class="layer"><span>规律层</span><p>水 → 蒸汽体积约 1700 倍；压力 × 体积变化 = 做功</p></div>
+<div class="layer"><span>本质层</span><p>热机效率受冷热两端温差限制（卡诺）</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>要把热变成转动 → 蒸汽膨胀推叶轮；要更有力 → 提高压力，加安全阀；要省水省热 → 冷凝回收循环。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">本集没有任何密封加热的实验；易拉罐压瘪由成年人用长夹子操作，罐里只放一勺水。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>易拉罐压瘪</td><td>蒸汽冷凝体积骤减</td></tr>
+<tr><td>B</td><td>纸风车离壶嘴远近</td><td>蒸汽推力与散开</td></tr>
+<tr><td>C</td><td>教学蒸汽机模型（可选）</td><td>完整链条</td></tr>
+<tr><td>D</td><td>冰水碗挂水珠</td><td>冷凝器</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>A：空易拉罐里放一汤匙水，燃气灶小火烧到罐口持续冒白汽（约 1 分钟）；成年人戴护目镜，用长柄夹子夹住，罐口朝下一秒内扣进冷水盆。</li>
+<li>B：纸风车用长夹子固定在壶嘴正上方 5、20、40 厘米，各拍 10 秒，慢放数圈数。</li>
+<li>C：只拍商品化、带安全阀的教学蒸汽机模型，按说明书由成年人操作；没有条件就跳过。</li>
+<li>D：在壶嘴上方 40 厘米举一只装冰水的不锈钢碗，拍碗底凝结的水珠。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>结果</th><th>备注</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 罐子压瘪程度</td><td><input type="text" inputmode="decimal" data-k="e10-0-0" aria-label="A 罐子压瘪程度 结果"></td><td><input type="text" inputmode="decimal" data-k="e10-0-1" aria-label="A 罐子压瘪程度 备注"></td><td><input type="text" data-k="e10-0-n" aria-label="A 罐子压瘪程度 备注"></td></tr>
+<tr><td>B 5 厘米转速</td><td><input type="text" inputmode="decimal" data-k="e10-1-0" aria-label="B 5 厘米转速 结果"></td><td><input type="text" inputmode="decimal" data-k="e10-1-1" aria-label="B 5 厘米转速 备注"></td><td><input type="text" data-k="e10-1-n" aria-label="B 5 厘米转速 备注"></td></tr>
+<tr><td>B 20 厘米转速</td><td><input type="text" inputmode="decimal" data-k="e10-2-0" aria-label="B 20 厘米转速 结果"></td><td><input type="text" inputmode="decimal" data-k="e10-2-1" aria-label="B 20 厘米转速 备注"></td><td><input type="text" data-k="e10-2-n" aria-label="B 20 厘米转速 备注"></td></tr>
+<tr><td>B 40 厘米转速</td><td><input type="text" inputmode="decimal" data-k="e10-3-0" aria-label="B 40 厘米转速 结果"></td><td><input type="text" inputmode="decimal" data-k="e10-3-1" aria-label="B 40 厘米转速 备注"></td><td><input type="text" data-k="e10-3-n" aria-label="B 40 厘米转速 备注"></td></tr>
+<tr><td>C 小灯是否点亮</td><td><input type="text" inputmode="decimal" data-k="e10-4-0" aria-label="C 小灯是否点亮 结果"></td><td><input type="text" inputmode="decimal" data-k="e10-4-1" aria-label="C 小灯是否点亮 备注"></td><td><input type="text" data-k="e10-4-n" aria-label="C 小灯是否点亮 备注"></td></tr>
+<tr><td>D 水珠出现用时</td><td><input type="text" inputmode="decimal" data-k="e10-5-0" aria-label="D 水珠出现用时 结果"></td><td><input type="text" inputmode="decimal" data-k="e10-5-1" aria-label="D 水珠出现用时 备注"></td><td><input type="text" data-k="e10-5-n" aria-label="D 水珠出现用时 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>火电厂效率数值拍摄前核对</li>
+<li>1700 倍是 100 ℃、一个大气压下的值</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>绝不自制任何密封加热的容器，不堵壶嘴。</li>
+<li>蒸汽烫伤比开水更严重：手和脸远离壶嘴，用长夹子。</li>
+<li>易拉罐实验由成年人做，戴护目镜，孩子站远。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>电水壶</td><td>蒸汽源</td></tr>
+<tr><td>纸风车、长柄夹子</td><td>实验 2</td></tr>
+<tr><td>空易拉罐、冷水盆、护目镜</td><td>实验 1</td></tr>
+<tr><td>不锈钢碗、冰块</td><td>实验 4</td></tr>
+<tr><td>教学蒸汽机模型（可选）</td><td>实验 3</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://en.wikipedia.org/wiki/Aeolipile">Wikipedia：Aeolipile</a> <span>希罗汽转球</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Newcomen_atmospheric_engine">Wikipedia：Newcomen atmospheric engine</a> <span>1712 年</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Steam_turbine">Wikipedia：Steam turbine</a> <span>1884 年帕森斯</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "电水壶烧开水，壶嘴上方约 20 厘米处举着一只纸风车（长柄夹子夹住）：蒸汽一冒，风车转起来", "一壶开水，能吹动一只风车。能不能吹动一台发电机？"], [2, "0:08", "done", "问题卡：烧开一壶水，怎么变成电？", ""], [3, "0:14", "done", "片头：第七季科技树，第 10 集闪烁（只用动画）", "这一集，所有和高压蒸汽有关的部分都只用动画。家里绝对不要自制任何密封加热的容器。"], [4, "0:21", "done", "资料卡：希罗汽转球、纽科门、帕森斯", "公元一世纪，希罗就描述过蒸汽喷出、球会转的汽转球。一七一二年，纽科门的蒸汽机开始给煤矿抽水。一八八四年，帕森斯发明了汽轮机，很快就用来发电。"], [5, "0:45", "real", "实验 1（成年人操作，戴护目镜）：空易拉罐里放一勺水，燃气灶上烧到冒汽，用长夹子夹住、罐口朝下迅速扣进冷水盆：「啪」地被压瘪", "罐里的蒸汽一碰冷水，瞬间变回一点点水，体积缩小一千多倍，外面的大气压一下把罐子压瘪了。"], [6, "1:10", "done", "动画：1 毫升水变成约 1700 毫升蒸汽", "一毫升水烧成蒸汽，变成一千七百毫升左右。蒸汽想变大，就会推开挡在前面的东西；把它关住，压力就会危险地升高。"], [7, "1:32", "res", "实验 2：纸风车放在壶嘴上方 5、20、40 厘米，分别拍 10 秒，数转速", "离得近转得快，离远了……：蒸汽一离开壶嘴就散开、变凉。"], [8, "1:57", "done", "问题卡：今天的发电厂，为什么还在烧开水？", ""], [9, "2:03", "res", "实验 3（可选）：在科技馆或模型店，拍商品教学用蒸汽机模型（带安全阀）带动小发电机点灯；没有条件就用动画代替", "小锅炉、小活塞、小飞轮……灯亮了。"], [10, "2:33", "done", "动画：锅炉 → 汽轮机 → 发电机 → 冷凝器，循环", "锅炉把水烧成高压蒸汽，安全阀守着；蒸汽冲向汽轮机，带着发电机转；用过的蒸汽在冷凝器里变回水，再送回锅炉。今天大多数电，都是这么来的。"], [11, "2:55", "real", "实验 4：在壶嘴上方远处举一只装冰水的不锈钢碗，碗底很快挂满水珠：冷凝器的原理", "蒸汽一碰冷的东西，就变回水。发电厂的冷凝器，就是一个巨大的「冰水碗」。"], [12, "3:22", "done", "结论卡：水变蒸汽体积约 1700 倍；蒸汽推叶轮，叶轮带发电机", "水变成蒸汽，体积约变一千七百倍，这股劲推着叶轮转，叶轮带着发电机转。火电、核电，都是在「烧开水」。"], [13, "3:29", "done", "片尾：点亮第 10 集，预告第 19 集", "下集：有煤，为什么还要先炼成焦炭？"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>
