@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>青霉素拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../ep30/">30</a><a href="../b6/">B6</a><a href="../season3/">特辑3</a><a href="../ep32/">32</a><a href="../ep33/">33</a><a href="../b19/">B19</a><a href="../ep37/">37</a><a href="../ep31/">31</a><a href="../ep35/">35</a><a href="../ep36/">36</a><a href="../season4/">特辑4</a><a href="../ep39/">39</a><a href="../b8/">B8</a><a href="../ep40/">40</a><a href="../ep41/">41</a><a href="../b17/">B17</a><a href="../b7/">B7</a><a href="../ep42/">42</a><a href="../ep43/">43</a><a href="../ep44/">44</a><a href="../season5/">特辑5</a><a href="../ep45/">45</a><a href="../b11/">B11</a><a href="../b9/">B9</a><a href="../ep46/">46</a><a href="../ep47/">47</a><a href="../b10/">B10</a><a href="../ep48/">48</a><a href="../ep49/">49</a><a href="../ep50/">50</a><a href="../b18/">B18</a><a href="../season6/">特辑6</a><a href="../ep07/">07</a><a href="../ep08/">08</a><a href="../ep09/">09</a><a href="../ep12/">12</a><a href="../ep13/">13</a><a href="../ep14/">14</a><a href="../ep10/">10</a><a href="../ep19/">19</a><a href="../ep21/">21</a><a href="../ep51/">51</a><a href="../season7/">特辑7</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第七季 · 第 51 集</div>
+<h1>青霉素</h1>
+<p class="thesis">青霉分泌的青霉素会阻止细菌修补细胞壁，细菌被自己的内压撑破；人的细胞和病毒都没有细胞壁，所以它只对细菌有效。1928 年弗莱明看到了抑菌圈，但青霉素在培养液里浓度极低，直到 1940 年代提纯和深罐发酵量产，它才成为药。发现容易，提纯和量产才难。</p>
+<div class="facts">
+<div><span>暂定标题</span>霉菌到处都有，为什么十几年后才用上？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>1928 年弗莱明 · 1940 年代提纯与量产</div>
+<div><span>衔接</span>← 21 玻璃；→ 第七季特辑；回扣 32 洗手、37 罐藏</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">发现</p><p class="p">1928 年 9 月，弗莱明发现一只葡萄球菌培养皿被青霉污染，霉菌周围的细菌被溶解；1929 年发表。他没能提出足够纯的药，研究停了下来。</p></div>
+<div class="ol"><p class="o">提纯</p><p class="p">1939–1941 年牛津的弗洛里、钱恩和希特利把青霉素提纯，1940 年小鼠实验成功，1941 年第一位病人（一名警察）用药后一度好转，但药用完后去世；当时甚至从病人尿液里回收青霉素（细节拍摄前核对）。</p></div>
+<div class="ol"><p class="o">量产</p><p class="p">美国皮奥里亚的实验室用玉米浆培养基和深罐通气发酵，并找到更高产的菌株（据说来自市场上一只发霉的甜瓜，拍摄前核对）；1944 年前后已能大量供应。1945 年弗莱明、弗洛里、钱恩获诺贝尔奖，弗莱明在演讲中就警告了耐药性。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>发霉的东西都有毒、没用</s> → 有一种青霉能抑制细菌</span></li>
+<li><span class="k">2</span><span><s>发现了就能用</s> → 提纯和量产才是最难的</span></li>
+<li><span class="k">3</span><span><s>抗生素什么病都治</s> → 只对细菌有效，对病毒无效</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>霉菌周围细菌长不起来</p></div>
+<div class="layer"><span>规律层</span><p>青霉素阻止细菌合成细胞壁，细菌被内压撑破</p></div>
+<div class="layer"><span>本质层</span><p>β-内酰胺环抑制转肽酶；耐药菌产生 β-内酰胺酶把它拆掉</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>看到抑菌圈 → 要用于人 → 必须提纯到足够浓；培养液里浓度极低 → 找高产菌株、深罐发酵、化学提取；要长期有效 → 不滥用，防耐药。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">在家只做密封长霉、气球网兜和色素稀释；抑菌圈去学校实验室拍结果，或只用动画。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>密封袋长霉（不开封）</td><td>霉菌到处都有</td></tr>
+<tr><td>B</td><td>实验室抑菌圈（老师操作）</td><td>抗生素挡住细菌</td></tr>
+<tr><td>C</td><td>气球网兜</td><td>细胞壁与内压</td></tr>
+<tr><td>D</td><td>一滴色素进一大盆水</td><td>提纯的难处</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>A：面包片和半个橘子分别放进密封袋，挤出空气封好，袋外写日期，放在室温阴暗处 1–2 周；每两天隔着袋子拍一张；全程不开封，拍完连袋丢进垃圾桶。</li>
+<li>B：联系学校生物实验室，由老师用教学菌株和商品药敏纸片做，我们只拍培养一两天后的平板。</li>
+<li>C：气球放进网兜（水果网袋）里吹大扎口；用剪刀剪断网兜的几根线，拍气球从破口鼓出并爆开（戴护目镜）。</li>
+<li>D：透明大盆装约 20 升清水，滴一滴食用色素搅匀；拍「几乎看不见」的样子。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>结果</th><th>备注</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 面包第几天长霉</td><td><input type="text" inputmode="decimal" data-k="e51-0-0" aria-label="A 面包第几天长霉 结果"></td><td><input type="text" inputmode="decimal" data-k="e51-0-1" aria-label="A 面包第几天长霉 备注"></td><td><input type="text" data-k="e51-0-n" aria-label="A 面包第几天长霉 备注"></td></tr>
+<tr><td>A 橘子第几天长霉</td><td><input type="text" inputmode="decimal" data-k="e51-1-0" aria-label="A 橘子第几天长霉 结果"></td><td><input type="text" inputmode="decimal" data-k="e51-1-1" aria-label="A 橘子第几天长霉 备注"></td><td><input type="text" data-k="e51-1-n" aria-label="A 橘子第几天长霉 备注"></td></tr>
+<tr><td>B 抑菌圈直径（毫米）</td><td><input type="text" inputmode="decimal" data-k="e51-2-0" aria-label="B 抑菌圈直径（毫米） 结果"></td><td><input type="text" inputmode="decimal" data-k="e51-2-1" aria-label="B 抑菌圈直径（毫米） 备注"></td><td><input type="text" data-k="e51-2-n" aria-label="B 抑菌圈直径（毫米） 备注"></td></tr>
+<tr><td>C 剪几根线后爆开</td><td><input type="text" inputmode="decimal" data-k="e51-3-0" aria-label="C 剪几根线后爆开 结果"></td><td><input type="text" inputmode="decimal" data-k="e51-3-1" aria-label="C 剪几根线后爆开 备注"></td><td><input type="text" data-k="e51-3-n" aria-label="C 剪几根线后爆开 备注"></td></tr>
+<tr><td>D 色素是否还看得见</td><td><input type="text" inputmode="decimal" data-k="e51-4-0" aria-label="D 色素是否还看得见 结果"></td><td><input type="text" inputmode="decimal" data-k="e51-4-1" aria-label="D 色素是否还看得见 备注"></td><td><input type="text" data-k="e51-4-n" aria-label="D 色素是否还看得见 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>抑菌圈只在实验室拍或用动画</li>
+<li>「多少升培养液治一位病人」等数字拍摄前核对</li>
+<li>不说「古人用霉治病」之类没有证据的说法</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>密封袋全程不开封，拍完连袋丢掉；霉变食物不吃；过敏、哮喘的人不要靠近。</li>
+<li>在家不培养任何细菌。</li>
+<li>片中字幕：抗生素必须遵医嘱使用；对感冒、流感等病毒感染无效；对青霉素过敏的人不能用。</li>
+<li>自己长的霉绝不能当药，可能含有毒素。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>密封袋、面包、橘子</td><td>长霉</td></tr>
+<tr><td>气球、水果网兜、剪刀、护目镜</td><td>细胞壁模型</td></tr>
+<tr><td>大透明盆、食用色素</td><td>稀释</td></tr>
+<tr><td>学校实验室（预约）</td><td>抑菌圈</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://en.wikipedia.org/wiki/Penicillin">Wikipedia：Penicillin</a> <span>作用机制、对病毒无效</span></li>
+<li><a href="https://en.wikipedia.org/wiki/History_of_penicillin">Wikipedia：History of penicillin</a> <span>1928、牛津团队、量产</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Alexander_Fleming">Wikipedia：Alexander Fleming</a> <span>1945 诺贝尔奖、耐药性警告</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "两只密封袋：放了一到两周的面包和橘子，长满青绿色的霉（全程不开封）", "面包和橘子，放了两个星期。上面这层青绿色的东西，后来救了几千万人的命。"], [2, "0:08", "done", "问题卡：霉菌到处都有，为什么 1928 年才发现、十几年后才用上？", ""], [3, "0:14", "done", "片头：第七季科技树，第 51 集闪烁", "北宋人也见过发霉的馒头。可这团霉里藏着什么，要等到九百年后才有人看懂。"], [4, "0:21", "done", "资料卡：弗莱明、牛津团队、深罐发酵", "一九二八年，弗莱明发现青霉周围的细菌长不起来，可他提不出足够的药。一九四〇年前后，牛津的弗洛里、钱恩和希特利把它提纯，救了第一批病人。一九四四年前后，美国用深罐发酵大规模生产。一九四五年，三人获得诺贝尔奖。"], [5, "0:45", "real", "实验 1：隔着密封袋用手机微距拍霉菌：绒毛、颜色、扩散的边缘；字幕说明肉眼分不清是不是青霉", "靠近看，是一根根细丝和一团团孢子。可是哪种是青霉、哪种有毒，肉眼根本分不清。"], [6, "1:10", "done", "动画：铺满细菌的培养皿，青霉周围出现抑菌圈", "培养皿里铺满了细菌。角落里长出一团青霉，它周围一圈，细菌越来越少，最后一片干净：霉菌往外放出了一种能挡住细菌的东西。"], [7, "1:32", "res", "实验 2（学校实验室，老师操作）：用安全的教学菌株铺平板，放上商品抗生素药敏纸片，培养一到两天后拍抑菌圈；我们只拍结果", "纸片周围，出现了一圈干净的空白：和弗莱明看到的一样。"], [8, "1:57", "done", "问题卡：青霉素杀细菌，为什么不伤人？", ""], [9, "2:03", "real", "实验 3：气球套在网兜里吹大，网兜撑住气球；用剪刀剪断几根网线，气球从破口鼓出来、啪地破了", "网兜就是细菌的细胞壁。墙一破，里面的压力就把它撑爆了。"], [10, "2:33", "done", "动画：青霉素卡住细胞壁的修补，细菌被撑破；人的细胞和病毒都没有细胞壁", "青霉素卡住了修墙的那一步，细菌被自己的内压撑破。人的细胞没有这层墙，所以青霉素专挑细菌下手。病毒也没有细胞壁：感冒、流感，抗生素没用。"], [11, "2:55", "real", "实验 4：一滴食用色素滴进一大盆清水（约 20 升）搅匀，几乎看不见了：想把这一滴再「拿回来」？", "霉菌分泌的青霉素，就像这一滴色素，稀稀地散在一大罐培养液里。当年治一位病人，要从成百上千升的培养液里一点点提出来（数字拍摄前核对）。"], [12, "3:22", "done", "结论卡：青霉素拆掉细菌的「墙」，对病毒无效；发现容易，提纯和量产才难", "青霉素拆掉细菌的「墙」，对病毒无效，必须遵医嘱使用。发现它只要一只脏培养皿，用上它却要化学、工程和几千人的努力。"], [13, "3:29", "done", "片尾：点亮第 51 集，预告第七季特辑", "下集：第七季特辑，全系列回顾。"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>
