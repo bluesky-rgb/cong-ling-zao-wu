@@ -1,0 +1,1023 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>发布素材</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+
+.chk{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line)}
+.chk input{margin-top:6px;width:18px;height:18px;flex:none;accent-color:var(--copper)}
+.chk .t{min-width:0}.chk .t b{font-weight:500}.chk .t small{display:block;color:var(--muted);font-size:13px}
+.pill{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.06em;border:1px solid var(--line);border-radius:999px;padding:1px 8px;margin:2px 4px 2px 0;color:var(--muted);white-space:nowrap}
+.pill.hot{border-color:var(--warn);color:var(--warn)}.pill.ok{border-color:var(--good);color:var(--good)}
+.card{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:14px 16px;display:grid;gap:8px;min-width:0}
+.card h3{font-size:19px;font-weight:900}
+.card .k{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+.card pre{white-space:pre-wrap;font-family:var(--body);font-size:14px;margin:0;background:var(--paper);border-radius:6px;padding:10px 12px;line-height:1.7}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:12px}
+.copy{justify-self:start;font-size:13px;padding:4px 10px}
+details{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px}
+details summary{cursor:pointer;font-weight:500}
+details[open] summary{margin-bottom:8px}
+.big{font-family:var(--display);font-size:clamp(22px,4vw,30px);font-weight:900}
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../shooting/">拍摄排期</a><a href="../publish/">发布素材</a><a href="../checklist/">待核清单</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../ep30/">30</a><a href="../b6/">B6</a><a href="../season3/">特辑3</a><a href="../ep32/">32</a><a href="../ep33/">33</a><a href="../b19/">B19</a><a href="../ep37/">37</a><a href="../ep31/">31</a><a href="../ep35/">35</a><a href="../ep36/">36</a><a href="../season4/">特辑4</a><a href="../ep39/">39</a><a href="../b8/">B8</a><a href="../ep40/">40</a><a href="../ep41/">41</a><a href="../b17/">B17</a><a href="../b7/">B7</a><a href="../ep42/">42</a><a href="../ep43/">43</a><a href="../ep44/">44</a><a href="../season5/">特辑5</a><a href="../ep45/">45</a><a href="../b11/">B11</a><a href="../b9/">B9</a><a href="../ep46/">46</a><a href="../ep47/">47</a><a href="../b10/">B10</a><a href="../ep48/">48</a><a href="../ep49/">49</a><a href="../ep50/">50</a><a href="../b18/">B18</a><a href="../season6/">特辑6</a><a href="../ep07/">07</a><a href="../ep08/">08</a><a href="../ep09/">09</a><a href="../ep12/">12</a><a href="../ep13/">13</a><a href="../ep14/">14</a><a href="../ep10/">10</a><a href="../ep19/">19</a><a href="../ep21/">21</a><a href="../ep51/">51</a><a href="../season7/">特辑7</a><a href="../#videos">视频</a></nav>
+<header><div class="eyebrow">从零造物 · 实拍阶段 · 发布素材</div><h1>发布素材</h1><p class="thesis">每集一张卡：视频标题、封面文字、简介和 60 秒竖屏切片脚本，都从拍摄本里的问题、钩子、动画旁白和结论自动整理，可直接复制再微调。</p>
+<div class="facts"><div><span>卡片</span>77 张</div><div><span>切片</span>每集 1 条 · 约 60 秒</div><div><span>顺序</span>按各季播出计划</div><div><span>试播</span>04 → B1 → 01</div></div></header>
+<section><h2>发布规则</h2><ul class="verify"><li><b>先发 3 集试播</b>（04、B1、01），一周后把完播率和评论截图发给 Claude 复盘，再定后面的顺序。</li><li>标题用「问题」而不是「答案」：观众点进来是想知道为什么。</li><li>封面只放两行字：上行是题目，下行是问题的前半句；画面用实验里最有冲击力的一帧。</li><li>简介里的安全提示不能删；健康类（第四季、51 青霉素）保留「遵医嘱」字样。</li><li>旁白里括号中的内容要按实测改写后再发；没实测的数字不发。</li><li>标「拍摄前核对」的说法，没核对完之前用「据记载」「一般认为」这类措辞。</li></ul></section><section><h2>第一季</h2><div class="grid2">
+<div class="card"><div class="k">A 线 · 穿越造物 · 04</div><h3><a href="../ep04/">磁生电</a></h3><div class="k">视频标题</div><pre id="t-e04">【从零造物 04】磁铁就在线圈里，为什么不发电？</pre><button class="copy" data-t="t-e04">复制</button><div class="k">封面文字（两行）</div><pre id="c-e04">磁生电
+磁铁就在线圈里，为什么不发电？</pre><div class="k">简介</div><pre id="b-e04">磁铁就在线圈里，为什么不发电？
+
+
+
+安全提示：实验只用电池或磁铁，安全。
+
+#从零造物 #穿越造物 #科普 #磁生电</pre><button class="copy" data-t="b-e04">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：磁铁就在线圈里，为什么不发电？
+5–10 秒 · 抛问题：磁铁就在线圈里，为什么不发电？
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">B 线 · 古法解密 · B1</div><h3><a href="../b1/">指南鱼</a></h3><div class="k">视频标题</div><pre id="t-b1">【从零造物 B1】这条铁鱼没碰过磁石，为什么会指南？</pre><button class="copy" data-t="t-b1">复制</button><div class="k">封面文字（两行）</div><pre id="c-b1">指南鱼
+这条铁鱼没碰过磁石，为什么会指南</pre><div class="k">简介</div><pre id="b-b1">这条铁鱼没碰过磁石，为什么会指南？
+
+
+
+安全提示：明火和磁铁由成年人操作。
+
+#从零造物 #古法解密 #科普 #指南鱼</pre><button class="copy" data-t="b-b1">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：这条铁鱼没碰过磁石，为什么会指南？
+5–10 秒 · 抛问题：这条铁鱼没碰过磁石，为什么会指南？
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 01</div><h3><a href="../ep01/">摩擦起电</a></h3><div class="k">视频标题</div><pre id="t-e01">【从零造物 01】没有电池，电是从哪来的？</pre><button class="copy" data-t="t-e01">复制</button><div class="k">封面文字（两行）</div><pre id="c-e01">摩擦起电
+没有电池，电是从哪来的？</pre><div class="k">简介</div><pre id="b-e01">没有电池，电是从哪来的？
+
+擦几下就能隔空吸起纸屑：电是被「抢」出来的。再做一个莱顿瓶，把电存起来。
+
+安全提示：莱顿瓶只做小号的单个瓶子，不要把几个串联。
+
+#从零造物 #穿越造物 #科普 #摩擦起电</pre><button class="copy" data-t="b-e01">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：擦几下，这根棒子就能隔空把纸屑吸起来。
+5–10 秒 · 抛问题：没有电池，电是从哪来的？
+10–45 秒 · 原理动画：为什么会这样？所有东西里都有带负电的电子。两种材料一接触，抓电子本领强的一方会抢走一些电子。分开以后，一个带负电，一个带正电。至于绝缘体之间电子具体是怎么转移的，物理学家到今天还在研究。
+45–55 秒 · 结论：电可以抢出来，也能存起来。可是存不久，一次就用完了。要让灯一直亮，我们需要一种不会断的电。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 02</div><h3><a href="../ep02/">伏打电堆</a></h3><div class="k">视频标题</div><pre id="t-e02">【从零造物 02】两块金属加盐水，为什么能持续出电？</pre><button class="copy" data-t="t-e02">复制</button><div class="k">封面文字（两行）</div><pre id="c-e02">伏打电堆
+两块金属加盐水，为什么能持续出电</pre><div class="k">简介</div><pre id="b-e02">两块金属加盐水，为什么能持续出电？
+
+几片铜、几片铁、一点盐水，就能持续出电。北宋没有锌，我们用铁，电压只能实测。
+
+安全提示：电压很低，接触安全；注意金属片边缘锋利。
+
+#从零造物 #穿越造物 #科普 #伏打电堆</pre><button class="copy" data-t="b-e02">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：几片铜、几片铁、一点盐水，万用表上就出现了读数。（按实测读数改写）
+5–10 秒 · 抛问题：两块金属加盐水，为什么能持续出电？
+10–45 秒 · 原理动画：电是从哪来的？铁比铜更容易失去电子。铁原子丢下电子，变成铁离子溶进盐水；电子穿不过盐水，只能绕道导线，从铁流到铜，这就是电流。在铜片上，电子被盐水里的氢离子接走，冒出了气泡。
+45–55 秒 · 结论：两种金属，一点盐水，就有了第一个能持续供电的东西。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">B 线 · 古法解密 · B14</div><h3><a href="../b14/">豆腐点卤</a></h3><div class="k">视频标题</div><pre id="t-b14">【从零造物 B14】一勺卤水，为什么能让豆浆凝固？</pre><button class="copy" data-t="t-b14">复制</button><div class="k">封面文字（两行）</div><pre id="c-b14">豆腐点卤
+一勺卤水，为什么能让豆浆凝固？</pre><div class="k">简介</div><pre id="b-b14">一勺卤水，为什么能让豆浆凝固？
+
+一勺卤水就能让一锅豆浆凝固：带两份正电的离子把蛋白质连成网，把水锁在里面。
+
+安全提示：卤水（盐卤）浓液不能直接喝，误饮有危险；放在孩子拿不到的地方，用完洗手。
+
+#从零造物 #古法解密 #科普 #豆腐点卤</pre><button class="copy" data-t="b-b14">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：一锅豆浆，倒进一勺卤水，几秒钟就凝固了。
+5–10 秒 · 抛问题：一勺卤水，为什么能让豆浆凝固？
+10–45 秒 · 原理动画：豆浆里的大豆蛋白，表面带着负电，互相排斥，所以能均匀地散在水里。煮开以后，蛋白质受热展开，露出更多能粘在一起的部位。卤水里的镁离子带两份正电，抓住蛋白质上的负电：蛋白质不再互相排斥，还能借着离子连在一起，结成一张网，把水锁在网眼里。
+45–55 秒 · 结论：一勺卤水，让蛋白质连成一张网，把水锁在里面。古人不知道什么是离子，却靠一代代试，找到了最合适的「桥」。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 03</div><h3><a href="../ep03/">电生磁</a></h3><div class="k">视频标题</div><pre id="t-e03">【从零造物 03】通电导线为什么能拨动指南针？</pre><button class="copy" data-t="t-e03">复制</button><div class="k">封面文字（两行）</div><pre id="c-e03">电生磁
+通电导线为什么能拨动指南针？</pre><div class="k">简介</div><pre id="b-e03">通电导线为什么能拨动指南针？
+
+一接通电流，指南针就转了。电流周围有绕着它的环形磁场，绕成线圈再加铁芯，就是电磁铁。
+
+安全提示：电池直接接导线接近短路，每次只接通几秒，导线会发热。
+
+#从零造物 #穿越造物 #科普 #电生磁</pre><button class="copy" data-t="b-e03">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：电线一接通，旁边的指南针就转了。
+5–10 秒 · 抛问题：通电导线为什么能拨动指南针？
+10–45 秒 · 原理动画：如果在导线周围摆一圈指南针，就能看出来：磁针围着导线排成一个圈。电流周围的磁场，是绕着导线的一个个圆圈。
+45–55 秒 · 结论：电能生磁。那反过来，磁能不能生电？
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 05</div><h3><a href="../ep05/">手摇发电机</a></h3><div class="k">视频标题</div><pre id="t-e05">【从零造物 05】灯泡一接上，手柄为什么变沉了？</pre><button class="copy" data-t="t-e05">复制</button><div class="k">封面文字（两行）</div><pre id="c-e05">手摇发电机
+灯泡一接上，手柄为什么变沉了？</pre><div class="k">简介</div><pre id="b-e05">灯泡一接上，手柄为什么变沉了？
+
+摇起来灯就亮，可是接上灯，手柄就变沉了。这正是能量守恒：灯里的每一点电，都来自你使的劲。
+
+安全提示：短路只持续几秒，线圈会发热。
+
+#从零造物 #穿越造物 #科普 #手摇发电机</pre><button class="copy" data-t="b-e05">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：摇起来，灯就亮了。
+5–10 秒 · 抛问题：灯泡一接上，手柄为什么变沉了？
+10–45 秒 · 原理动画：原因在线圈里：电流一流动，线圈自己也变成了磁铁，而且总是反推转过来的磁铁。电流越大，推得越狠，手柄越沉。
+45–55 秒 · 结论：从琥珀吸纸屑，到摇动手柄点亮一盏灯，我们从零造出了电。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">B 线 · 古法解密 · B13</div><h3><a href="../b13/">漏刻</a></h3><div class="k">视频标题</div><pre id="t-b13">【从零造物 B13】没有钟表，古人怎么把一天分得很准？</pre><button class="copy" data-t="t-b13">复制</button><div class="k">封面文字（两行）</div><pre id="c-b13">漏刻
+没有钟表，古人怎么把一天分得很准</pre><div class="k">简介</div><pre id="b-b13">没有钟表，古人怎么把一天分得很准？
+
+一个壶的水越流越慢；加一个带溢流口的平水壶，水位不变，流速就不变，时间就能均匀地刻出来。
+
+安全提示：扎孔用的针加热时用钳子夹住，小心烫手。
+
+#从零造物 #古法解密 #科普 #漏刻</pre><button class="copy" data-t="b-b13">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：一个扎了孔的瓶子，能当钟用吗？
+5–10 秒 · 抛问题：没有钟表，古人怎么把一天分得很准？
+10–45 秒 · 原理动画：原因是水压：水越深，压得越重，从小孔里冲得越快。水位一降，流速就跟着变慢。所以单个壶计时，刻度只能画得不均匀，而且越到后面越不准。
+45–55 秒 · 结论：水位不变，流速就不变，时间就能被均匀地刻出来。这个道理，古人用了上千年。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 06</div><h3><a href="../ep06/">水车发电</a></h3><div class="k">视频标题</div><pre id="t-e06">【从零造物 06】水多一点，还是落得高一点？</pre><button class="copy" data-t="t-e06">复制</button><div class="k">封面文字（两行）</div><pre id="c-e06">水车发电
+水多一点，还是落得高一点？</pre><div class="k">简介</div><pre id="b-e06">水多一点，还是落得高一点？
+
+把上一卷的发电机接到水车上：能拿到多少电，看流量乘落差；电压够不够，看齿轮把转速提了多少。
+
+安全提示：水和电在一起：只用电池级的低电压设备，万用表放在干燥处。
+
+#从零造物 #穿越造物 #科普 #水车发电</pre><button class="copy" data-t="b-e06">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：让水替我们摇发电机。
+5–10 秒 · 抛问题：水多一点，还是落得高一点？
+10–45 秒 · 原理动画：水的能量，取决于两件事：有多少水，落下多高。流量翻一倍，功率翻一倍；落差翻一倍，功率也翻一倍，两个一样重要。所以古人修水车，既要引足水，也要筑坝、抬高水位。
+45–55 秒 · 结论：有多少水、落多高，决定了能拿到多少电；齿轮决定了电压够不够。第一座水电站，就这样在北宋的河边转了起来。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">B 线 · 古法解密 · B2</div><h3><a href="../b2/">卓筒井</a></h3><div class="k">视频标题</div><pre id="t-b2">【从零造物 B2】没有钢铁钻机，怎么打出很深的盐井？</pre><button class="copy" data-t="t-b2">复制</button><div class="k">封面文字（两行）</div><pre id="c-b2">卓筒井
+没有钢铁钻机，怎么打出很深的盐井</pre><div class="k">简介</div><pre id="b-b2">没有钢铁钻机，怎么打出很深的盐井？
+
+没有钢铁钻机，北宋盐工靠冲击凿井、竹筒护壁、皮阀汲卤，把井打到几十丈深。
+
+安全提示：冲击实验戴护目镜，石膏碎屑会飞溅；手不要放在落点附近。
+
+#从零造物 #古法解密 #科普 #卓筒井</pre><button class="copy" data-t="b-b2">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：一根管子，底下贴一小片皮，就能把水提上来。
+5–10 秒 · 抛问题：没有钢铁钻机，怎么打出很深的盐井？
+10–45 秒 · 原理动画：古人用的是冲击：人踩碓板，把沉重的铁钻头提起来，再让它砸下去，一下一下冲碎岩石。打穿含水的砂层，淡水会渗进来把卤水冲淡；于是把打通竹节的大竹子一节节接起来插下去，既挡住淡水，又撑住井壁。打到卤水层，卤水就自己往上冒。
+45–55 秒 · 结论：冲击凿井，竹筒护壁，皮阀汲卤。没有钢铁机器，北宋的盐工也打出了深井。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 11</div><h3><a href="../ep11/">果蔬电池</a></h3><div class="k">视频标题</div><pre id="t-e11">【从零造物 11】一个萝卜，能当电池吗？</pre><button class="copy" data-t="t-e11">复制</button><div class="k">封面文字（两行）</div><pre id="c-e11">果蔬电池
+一个萝卜，能当电池吗？</pre><div class="k">简介</div><pre id="b-e11">一个萝卜，能当电池吗？
+
+北宋没有土豆，就用萝卜和橘子。电压由两种金属决定，果蔬只是「盐水」；电流看内阻，串起来才能点亮 LED。
+
+安全提示：做过电池的果蔬不要再吃，金属离子会溶进去。
+
+#从零造物 #穿越造物 #科普 #果蔬电池</pre><button class="copy" data-t="b-e11">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：几个萝卜，能不能点亮一盏灯？
+5–10 秒 · 抛问题：一个萝卜，能当电池吗？
+10–45 秒 · 原理动画：换了果蔬，电压却差不多：电压是由两种金属决定的，果蔬只相当于盐水。它们影响的是电流：汁水多不多、离子多不多，决定电子走得顺不顺。
+45–55 秒 · 结论：电压看金属，电流看「盐水」。串起来，几个萝卜也能点亮一盏灯。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">特辑 · 特辑</div><h3><a href="../season1/">第一季特辑</a></h3><div class="k">视频标题</div><pre id="t-s1">【从零造物 特辑】这些东西，哪些真能在北宋做出来？</pre><button class="copy" data-t="t-s1">复制</button><div class="k">封面文字（两行）</div><pre id="c-s1">第一季特辑
+这些东西，哪些真能在北宋做出来？</pre><div class="k">简介</div><pre id="b-s1">这些东西，哪些真能在北宋做出来？
+
+回顾第一季 11 集，按实测结果给每集打「古代可行度」分。这一集的内容由作者按真实经历归纳，下面是可以直接套用的结构。
+
+安全提示：特辑不新做实验；回顾画面里的明火、短路镜头保留原有的安全提示字幕。
+
+#从零造物 #特辑 #科普 #第一季特辑</pre><button class="copy" data-t="b-s1">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>特辑不做竖屏切片；从本季各集切片里选播放最好的 3 条做合集。</pre></details></div>
+</div></section>
+<section><h2>第二季</h2><div class="grid2">
+<div class="card"><div class="k">A 线 · 穿越造物 · 20</div><h3><a href="../ep20/">制盐</a></h3><div class="k">视频标题</div><pre id="t-e20">【从零造物 20】盐水一冷，为什么不析出盐？</pre><button class="copy" data-t="t-e20">复制</button><div class="k">封面文字（两行）</div><pre id="c-e20">制盐
+盐水一冷，为什么不析出盐？</pre><div class="k">简介</div><pre id="b-e20">盐水一冷，为什么不析出盐？
+
+盐的溶解度几乎不随温度变，所以不能靠降温析出，只能把水赶走。古人先晒卤省柴，再用莲子试卤，本质上是一支密度计。
+
+安全提示：熬盐水和熬糖水都很烫，糖浆尤其容易烫伤；小火、有人看着。
+
+#从零造物 #穿越造物 #科普 #制盐</pre><button class="copy" data-t="b-e20">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：一碗卤水熬干，锅边结出一层白盐。
+5–10 秒 · 抛问题：盐水一冷，为什么不析出盐？
+10–45 秒 · 原理动画：糖的溶解度随温度变化很大，开水能溶的糖，是冰水的两倍多；盐几乎不变，从零度到一百度，一百克水只多溶三克半。所以盐不能像糖那样靠降温析出，只能把水赶走。
+45–55 秒 · 结论：盐不怕冷，只怕水走。先晒卤省柴，再用莲子试卤：古人没有溶解度曲线，却把每一步都做对了。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 15</div><h3><a href="../ep15/">生火</a></h3><div class="k">视频标题</div><pre id="t-e15">【从零造物 15】没有火柴和打火机，古人怎么生火？</pre><button class="copy" data-t="t-e15">复制</button><div class="k">封面文字（两行）</div><pre id="c-e15">生火
+没有火柴和打火机，古人怎么生火？</pre><div class="k">简介</div><pre id="b-e15">没有火柴和打火机，古人怎么生火？
+
+火要可燃物、氧气和足够的温度。阳燧、火镰、钻木三种取火法，做的是同一件事：把一小撮火绒加热到燃点。
+
+安全提示：所有明火实验在户外空地进行，由成年人操作，备好一桶水或灭火器。
+
+#从零造物 #穿越造物 #科普 #生火</pre><button class="copy" data-t="b-e15">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：一擦，一吹，火就着了。
+5–10 秒 · 抛问题：没有火柴和打火机，古人怎么生火？
+10–45 秒 · 原理动画：火要三样东西：可燃物、氧气、足够的温度。拿走任何一样，火就灭。反过来，取火就是把这三样凑齐，而最难凑的，是温度。
+45–55 秒 · 结论：取火，就是把一小撮火绒加热到燃点，再给它氧气和柴。有了火，下一步，就是要更高的温度。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 16</div><h3><a href="../ep16/">木炭与制陶</a></h3><div class="k">视频标题</div><pre id="t-e16">【从零造物 16】木炭为什么比木头烧得更旺？</pre><button class="copy" data-t="t-e16">复制</button><div class="k">封面文字（两行）</div><pre id="c-e16">木炭与制陶
+木炭为什么比木头烧得更旺？</pre><div class="k">简介</div><pre id="b-e16">木炭为什么比木头烧得更旺？
+
+隔绝空气烤木头，水分和木煤气跑掉，剩下的碳就是木炭；黏土烧到高温，颗粒边缘熔化粘连，就成了不怕水的陶。
+
+安全提示：干馏必须户外、成年人操作；罐子要留小孔，否则会爆开。
+
+#从零造物 #穿越造物 #科普 #木炭与制陶</pre><button class="copy" data-t="b-e16">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：把木头关进铁罐里烤，小孔里喷出了火。打开一看……
+5–10 秒 · 抛问题：木炭为什么比木头烧得更旺？
+10–45 秒 · 原理动画：在没有空气的罐子里，木头烧不起来，只能被烤。先是水分跑出来；到两三百度，木头分解，放出可燃的木煤气，从小孔喷出去自己烧；碳没有氧气烧不掉，留下来，就是木炭。
+45–55 秒 · 结论：隔绝空气烤木头，得到木炭；高温把泥巴烧结成陶。有了更高的温度，才有了后来的铜和铁。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">B 线 · 古法解密 · B16</div><h3><a href="../b16/">瓷器</a></h3><div class="k">视频标题</div><pre id="t-b16">【从零造物 B16】同样是泥，瓷为什么不吸水？</pre><button class="copy" data-t="t-b16">复制</button><div class="k">封面文字（两行）</div><pre id="c-b16">瓷器
+同样是泥，瓷为什么不吸水？</pre><div class="k">简介</div><pre id="b-b16">同样是泥，瓷为什么不吸水？
+
+瓷土耐得住高温，一部分原料在一千二三百度熔成玻璃、填满孔隙：这就是瓷不吸水、声音清脆、还能透光的原因。
+
+安全提示：碎瓷片边缘锋利，戴手套处理，边缘可以先用砂纸磨一下。
+
+#从零造物 #古法解密 #科普 #瓷器</pre><button class="copy" data-t="b-b16">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：同样一滴水，一个喝了进去，一个原样不动。
+5–10 秒 · 抛问题：同样是泥，瓷为什么不吸水？
+10–45 秒 · 原理动画：放大看：陶片里的黏土颗粒烧结在一起，但中间留着许多小孔，水顺着孔钻进去。瓷烧到一千二三百度，一部分原料熔成玻璃，流进孔里把孔填满，这叫玻化。水进不去，敲起来清脆，薄的地方还能透光。
+45–55 秒 · 结论：选对的泥，烧到够高的温度，让孔被玻璃填满：瓷就不吸水了。古人没有显微镜，却靠一窑一窑地试，找到了这个配方。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 23</div><h3><a href="../ep23/">纸</a></h3><div class="k">视频标题</div><pre id="t-e23">【从零造物 23】树皮和破布，怎么变成一张纸？</pre><button class="copy" data-t="t-e23">复制</button><div class="k">封面文字（两行）</div><pre id="c-e23">纸
+树皮和破布，怎么变成一张纸？</pre><div class="k">简介</div><pre id="b-e23">树皮和破布，怎么变成一张纸？
+
+把植物纤维在水里打散，用帘子抄起，晾干时纤维之间形成大量氢键，连成一张网。所以纸怕水：水会抢走这些氢键。
+
+安全提示：料理机打浆时盖好盖子，不要用手伸进去。
+
+#从零造物 #穿越造物 #科普 #纸</pre><button class="copy" data-t="b-e23">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：从一盆浑水里，抄起一张纸。
+5–10 秒 · 抛问题：树皮和破布，怎么变成一张纸？
+10–45 秒 · 原理动画：纤维散在水里，像一盆细线。竹帘从下面一抄，水漏下去，纤维在帘上交错铺成一层。晾干的时候，纤维之间的水退出去，相交处的分子直接「手拉手」，这叫氢键。成千上万个氢键，把纤维连成了一张网。
+45–55 秒 · 结论：纤维在水里散开，在帘上交织，晾干时被氢键连成一张网。下一步，在这张纸上印书。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">B 线 · 古法解密 · B3</div><h3><a href="../b3/">活字印刷</a></h3><div class="k">视频标题</div><pre id="t-b3">【从零造物 B3】一千年前，没有电脑，怎么排一本书？</pre><button class="copy" data-t="t-b3">复制</button><div class="k">封面文字（两行）</div><pre id="c-b3">活字印刷
+一千年前，没有电脑，怎么排一本书</pre><div class="k">简介</div><pre id="b-b3">一千年前，没有电脑，怎么排一本书？
+
+毕昇把一整块版拆成一个个可反复使用的字，用低熔点的松脂、蜡把字固定在铁板上，加热就能拆下：这是一千年前的「模块化」。
+
+安全提示：刻字用牙签或钝刻刀，小心划手。
+
+#从零造物 #古法解密 #科普 #活字印刷</pre><button class="copy" data-t="b-b3">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：一盘泥做的字，一按，一页书就印出来了。
+5–10 秒 · 抛问题：一千年前，没有电脑，怎么排一本书？
+10–45 秒 · 原理动画：排版时，先在铁板上铺一层松脂、蜡和纸灰，放上铁框，把字排满。加热，药稍稍熔化，用平板一压，字面就「平如砥」。冷了，字就粘牢了，可以上墨印刷。印完再加热，药一熔，字模自己就掉下来，下一页接着用。
+45–55 秒 · 结论：把一整块版拆成一个个字，就能反复使用。一千年前的这个想法，今天叫「模块化」。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 22</div><h3><a href="../ep22/">肥皂</a></h3><div class="k">视频标题</div><pre id="t-e22">【从零造物 22】油加草木灰，为什么能去污？</pre><button class="copy" data-t="t-e22">复制</button><div class="k">封面文字（两行）</div><pre id="c-e22">肥皂
+油加草木灰，为什么能去污？</pre><div class="k">简介</div><pre id="b-e22">油加草木灰，为什么能去污？
+
+肥皂分子一头爱水、一头爱油，能把油滴包起来带走。古人用草木灰水的碱性，也用皂荚里天然的皂苷。
+
+安全提示：草木灰水是碱性的，戴手套，溅到眼睛立刻用大量清水冲洗。
+
+#从零造物 #穿越造物 #科普 #肥皂</pre><button class="copy" data-t="b-e22">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：一块油渍，在一盆褐色的水里搓几下，就没了。
+5–10 秒 · 抛问题：油加草木灰，为什么能去污？
+10–45 秒 · 原理动画：肥皂分子有两头：一头爱水，一头爱油。爱油的尾巴钻进油里，爱水的头朝外，把油滴团团围住。油滴被「包」起来，就能脱离布面，随水漂走。
+45–55 秒 · 结论：一头爱水，一头爱油，把油包起来带走。古人不知道分子，却找到了现成的「两头分子」：皂荚。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">B 线 · 古法解密 · B15</div><h3><a href="../b15/">酿酒与酿醋</a></h3><div class="k">视频标题</div><pre id="t-b15">【从零造物 B15】同一缸粮食，怎么先变酒、再变醋？</pre><button class="copy" data-t="t-b15">复制</button><div class="k">封面文字（两行）</div><pre id="c-b15">酿酒与酿醋
+同一缸粮食，怎么先变酒、再变醋？</pre><div class="k">简介</div><pre id="b-b15">同一缸粮食，怎么先变酒、再变醋？
+
+曲把淀粉剪成糖，酵母在无氧时把糖变成酒；敞开口，醋酸菌用氧把酒变成醋。一个要密封，一个要通风。
+
+安全提示：发酵产物只给成年人尝，敞口罐的样品不要食用。
+
+#从零造物 #古法解密 #科普 #酿酒与酿醋</pre><button class="copy" data-t="b-b15">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：一瓶糖水，一小勺酵母，气球自己鼓起来了。
+5–10 秒 · 抛问题：同一缸粮食，怎么先变酒、再变醋？
+10–45 秒 · 原理动画：米饭里没有糖，只有淀粉：一长串连在一起的葡萄糖。酒曲里的霉菌放出酶，把长链剪开；酵母在没有空气的缸里吃糖，放出酒精和二氧化碳。剪糖和吃糖同时进行，叫「边糖化边发酵」。
+45–55 秒 · 结论：先是酵母把糖变成酒，再是醋酸菌把酒变成醋。古人看不见它们，却学会了什么时候盖紧、什么时候敞开。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 24</div><h3><a href="../ep24/">石灰与灰浆</a></h3><div class="k">视频标题</div><pre id="t-e24">【从零造物 24】烧过的石头，为什么还能变回石头？</pre><button class="copy" data-t="t-e24">复制</button><div class="k">封面文字（两行）</div><pre id="c-e24">石灰与灰浆
+烧过的石头，为什么还能变回石头？</pre><div class="k">简介</div><pre id="b-e24">烧过的石头，为什么还能变回石头？
+
+石灰石烧掉二氧化碳成为生石灰，加水成熟石灰，再从空气里吸回二氧化碳变回碳酸钙。糯米汤让晶体长得小而密，灰浆更结实。
+
+安全提示：熟石灰是强碱，戴手套和护目镜；溅到眼睛立刻用大量清水冲洗并就医。
+
+#从零造物 #穿越造物 #科普 #石灰与灰浆</pre><button class="copy" data-t="b-e24">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：往一杯清水里吹气，它变白了。
+5–10 秒 · 抛问题：烧过的石头，为什么还能变回石头？
+10–45 秒 · 原理动画：石灰石烧到约九百度，二氧化碳跑掉，剩下生石灰，这是「烈火焚烧若等闲」。生石灰遇水剧烈放热，碎成熟石灰粉，「粉骨碎身浑不怕」。抹上墙，它慢慢吸收空气里的二氧化碳，又变回白色的碳酸钙，「要留清白在人间」。
+45–55 秒 · 结论：烧掉二氧化碳，再从空气里把它吸回来：石灰走了一圈，又变回石头。加上一碗糯米汤，它就能撑上几百年。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 17</div><h3><a href="../ep17/">炼铜</a></h3><div class="k">视频标题</div><pre id="t-e17">【从零造物 17】一根铁钉，为什么会长出铜？</pre><button class="copy" data-t="t-e17">复制</button><div class="k">封面文字（两行）</div><pre id="c-e17">炼铜
+一根铁钉，为什么会长出铜？</pre><div class="k">简介</div><pre id="b-e17">一根铁钉，为什么会长出铜？
+
+火法炼铜靠木炭把氧从矿石里抢走；北宋的「胆水浸铜」靠铁把铜从溶液里换出来，不用高温，在家就能安全复现。
+
+安全提示：硫酸铜有毒，不能入口；戴手套，用完洗手，放在孩子拿不到的地方。
+
+#从零造物 #穿越造物 #科普 #炼铜</pre><button class="copy" data-t="b-e17">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：一根铁钉放进蓝色的水里，几分钟后，它穿上了一层铜衣。
+5–10 秒 · 抛问题：一根铁钉，为什么会长出铜？
+10–45 秒 · 原理动画：铁比铜更容易失去电子，这和第二集的电堆是同一个道理。铁把电子交给水里的铜离子：铜变回金属，贴在铁上；铁变成离子溶进水里。蓝色慢慢褪去，铁钉裹上了一层红铜。
+45–55 秒 · 结论：火法炼铜，用碳把氧抢走；湿法炼铜，用铁把铜换出来。北宋人两条路都走通了。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">B 线 · 古法解密 · B4</div><h3><a href="../b4/">水排</a></h3><div class="k">视频标题</div><pre id="t-b4">【从零造物 B4】一条河，怎么替人拉风箱？</pre><button class="copy" data-t="t-b4">复制</button><div class="k">封面文字（两行）</div><pre id="c-b4">水排
+一条河，怎么替人拉风箱？</pre><div class="k">简介</div><pre id="b-b4">一条河，怎么替人拉风箱？
+
+东汉杜诗用水轮带动偏心销和连杆，把转动变成推拉，让河水日夜鼓风。鼓风越强，炉温越高，炼铁才有可能。
+
+安全提示：木炭炉在户外使用，远离易燃物，旁边备水；不要在室内烧木炭（一氧化碳中毒）。
+
+#从零造物 #古法解密 #科普 #水排</pre><button class="copy" data-t="b-b4">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：轮子在转，风箱在推拉。
+5–10 秒 · 抛问题：一条河，怎么替人拉风箱？
+10–45 秒 · 原理动画：水轮只会朝一个方向转。在轴上装一个偏心的销子，再接一根连杆：销子转一圈，连杆就把风箱推一次、拉一次。转动，变成了推拉。这就是曲柄连杆。
+45–55 秒 · 结论：一个偏心的销子，一根连杆，就让河水替人鼓风。上千年后，蒸汽机用的还是这一套。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 18</div><h3><a href="../ep18/">炼铁</a></h3><div class="k">视频标题</div><pre id="t-e18">【从零造物 18】铁矿石其实就是铁锈？</pre><button class="copy" data-t="t-e18">复制</button><div class="k">封面文字（两行）</div><pre id="c-e18">炼铁
+铁矿石其实就是铁锈？</pre><div class="k">简介</div><pre id="b-e18">铁矿石其实就是铁锈？
+
+铁矿石就是铁和氧的结合。高炉里一氧化碳把氧抢走，铁吸碳后熔点降到约 1150 ℃，熔成铁水；碳的多少决定了铁是软、是韧还是脆。
+
+安全提示：钢丝球燃烧会飞溅火星，只在户外、远离易燃物，由成年人操作；9 伏电池碰过后立刻拿开，不要放进口袋。
+
+#从零造物 #穿越造物 #科普 #炼铁</pre><button class="copy" data-t="b-e18">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：铁，竟然能烧。
+5–10 秒 · 抛问题：铁矿石其实就是铁锈？
+10–45 秒 · 原理动画：铁锈就是铁和氧的结合，铁矿石也是。炼铁，就是把氧拿走。矿石、木炭、石灰石从炉顶加进去，鼓风从下面吹进来，木炭烧成一氧化碳，一路往上，把氧从氧化铁身上抢走。铁一边往下走，一边吸进碳，熔点降到约一千一百五十度，熔成铁水。
+45–55 秒 · 结论：碳把铁从矿石里请出来，碳的多少又决定了铁的性格。第二季，从一碗卤水走到了一炉铁水。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">特辑 · 特辑2</div><h3><a href="../season2/">第二季特辑</a></h3><div class="k">视频标题</div><pre id="t-s2">【从零造物 特辑2】这些技艺，哪一样最难在家复现？</pre><button class="copy" data-t="t-s2">复制</button><div class="k">封面文字（两行）</div><pre id="c-s2">第二季特辑
+这些技艺，哪一样最难在家复现？</pre><div class="k">简介</div><pre id="b-s2">这些技艺，哪一样最难在家复现？
+
+回顾第二季 12 集：从一碗卤水到一炉铁水，按需要的温度排成一架「温度阶梯」，再按实测结果给每集打「古代可行度」分。
+
+安全提示：特辑不新做实验；回顾画面里的明火、化学品镜头保留原有的安全提示字幕。
+
+#从零造物 #特辑 #科普 #第二季特辑</pre><button class="copy" data-t="b-s2">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>特辑不做竖屏切片；从本季各集切片里选播放最好的 3 条做合集。</pre></details></div>
+</div></section>
+<section><h2>第三季</h2><div class="grid2">
+<div class="card"><div class="k">A 线 · 穿越造物 · 28</div><h3><a href="../ep28/">水车提水</a></h3><div class="k">视频标题</div><pre id="t-e28">【从零造物 28】水只会往低处流，怎么把它送上田埂？</pre><button class="copy" data-t="t-e28">复制</button><div class="k">封面文字（两行）</div><pre id="c-e28">水车提水
+水只会往低处流，怎么把它送上田埂</pre><div class="k">简介</div><pre id="b-e28">水只会往低处流，怎么把它送上田埂？
+
+翻车用一串刮板把水一节节推上斜槽，靠人踩；筒车立在河里，靠河水推动，让竹筒在下面灌满、在顶上倒出。
+
+安全提示：在水池或浴缸边操作，注意地面防滑。
+
+#从零造物 #穿越造物 #科普 #水车提水</pre><button class="copy" data-t="b-e28">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：水往低处流，可这个轮子，偏偏把水送上了高处。
+5–10 秒 · 抛问题：水只会往低处流，怎么把它送上田埂？
+10–45 秒 · 原理动画：翻车是一条斜放的木槽，一串用链子连起来的木板。人踩动上面的轮子，木板在槽里往上走，每块板推着前面一小段水，一节一节送上去，倒进田埂上的水渠。
+45–55 秒 · 结论：翻车靠人力，筒车靠河水，做的是同一件事：把水一节一节送上去。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 25</div><h3><a href="../ep25/">螺旋提水</a></h3><div class="k">视频标题</div><pre id="t-e25">【从零造物 25】一根螺旋，怎么把水送上高处？</pre><button class="copy" data-t="t-e25">复制</button><div class="k">封面文字（两行）</div><pre id="c-e25">螺旋提水
+一根螺旋，怎么把水送上高处？</pre><div class="k">简介</div><pre id="b-e25">一根螺旋，怎么把水送上高处？
+
+螺旋每一圈的底部都是一个小水洼，水始终在往下流；螺旋一转，所有水洼整体上移。太陡了水洼会消失，所以只能斜着放。
+
+安全提示：在水盆或浴缸边做，地面防滑。
+
+#从零造物 #穿越造物 #科普 #螺旋提水</pre><button class="copy" data-t="b-e25">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：一根绕成螺旋的软管，转一转，水就自己爬上来了。
+5–10 秒 · 抛问题：一根螺旋，怎么把水送上高处？
+10–45 秒 · 原理动画：秘密在每一圈螺旋的底部：那是一个局部的最低点，一个小水洼。水始终待在水洼里，一直在往下流。可螺旋一转，所有的水洼都往上挪了一格。水没有往上走，是「低处」被抬高了。
+45–55 秒 · 结论：水一直在往下流，是螺旋把「低处」整体抬高了。如果北宋有了它，会用在哪里？
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 26</div><h3><a href="../ep26/">虹吸</a></h3><div class="k">视频标题</div><pre id="t-e26">【从零造物 26】水为什么能先往上爬，再翻过去？</pre><button class="copy" data-t="t-e26">复制</button><div class="k">封面文字（两行）</div><pre id="c-e26">虹吸
+水为什么能先往上爬，再翻过去？</pre><div class="k">简介</div><pre id="b-e26">水为什么能先往上爬，再翻过去？
+
+灌满水的管子只要出口低于水面，水就会先上后下翻过堤坝；高差决定流速，大气压决定它最多只能翻过约 10 米。
+
+安全提示：不要用嘴吸软管引水，尤其不要用来吸任何非清水的液体（如汽油、清洁剂）。
+
+#从零造物 #穿越造物 #科普 #虹吸</pre><button class="copy" data-t="b-e26">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：一根管子搭过去，水自己先往上爬，再翻过去。
+5–10 秒 · 抛问题：水为什么能先往上爬，再翻过去？
+10–45 秒 · 原理动画：关键是高差：出口比水面低，出口那一侧的水更重，把水往下拉；大气压压着水面，把水推进管里。只要出口比水面低，水就一直流；出口一抬到水面以上，立刻断流。
+45–55 秒 · 结论：出口比水面低，水就会翻过去；可再高也翻不过十米。古人用它引水灌田，也用它做了一只劝人别贪杯的杯子。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">B 线 · 古法解密 · B5</div><h3><a href="../b5/">都江堰</a></h3><div class="k">视频标题</div><pre id="t-b5">【从零造物 B5】两千多年前修的水利工程，为什么至今还在用？</pre><button class="copy" data-t="t-b5">复制</button><div class="k">封面文字（两行）</div><pre id="c-b5">都江堰
+两千多年前修的水利工程，为什么至</pre><div class="k">简介</div><pre id="b-b5">两千多年前修的水利工程，为什么至今还在用？
+
+都江堰不拦河，靠河床的深浅自动「四六分水」，靠弯道环流「二八排沙」，用最小的工程顺着水的性子用了两千多年。
+
+安全提示：沙盘实验在阳台或浴室做，注意排水和地面防滑。
+
+#从零造物 #古法解密 #科普 #都江堰</pre><button class="copy" data-t="b-b5">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：一个小小的三角形，把一条江分成了两条。
+5–10 秒 · 抛问题：两千多年前修的水利工程，为什么至今还在用？
+10–45 秒 · 原理动画：秘密在河床的深浅。枯水期水位低，深而窄的内江分到约六成，保证灌溉；丰水期水位高，宽而浅的外江分走约六成，替成都平原泄洪。不用闸门，水自己就分好了。
+45–55 秒 · 结论：不拦水，顺着水，让河床的深浅和弯道替人分水排沙。古人留下一句话：「深淘滩，低作堰。」
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 27</div><h3><a href="../ep27/">陶罐滴灌</a></h3><div class="k">视频标题</div><pre id="t-e27">【从零造物 27】埋一个罐子，为什么能省很多水？</pre><button class="copy" data-t="t-e27">复制</button><div class="k">封面文字（两行）</div><pre id="c-e27">陶罐滴灌
+埋一个罐子，为什么能省很多水？</pre><div class="k">简介</div><pre id="b-e27">埋一个罐子，为什么能省很多水？
+
+素烧陶罐埋在根旁，水从陶壁的微孔里慢慢渗出，只湿润根附近；土越干渗得越快，自动按植物的需要供水。
+
+安全提示：陶罐边缘可能锋利，处理时戴手套。
+
+#从零造物 #穿越造物 #科普 #陶罐滴灌</pre><button class="copy" data-t="b-e27">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：埋一个罐子，灌满水，什么都不用管。
+5–10 秒 · 抛问题：埋一个罐子，为什么能省很多水？
+10–45 秒 · 原理动画：表面浇水，大半被晒干，或者渗到根够不着的深处。陶罐不一样：水从陶壁的小孔里一点点渗出来，只湿润罐子周围，根也就朝罐子长过去。每一滴水都用在了根上。
+45–55 秒 · 结论：水从陶壁里慢慢渗出，土越干，渗得越快。两千年前的瓦瓮，就是一套自动滴灌。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 29</div><h3><a href="../ep29/">轮作固氮</a></h3><div class="k">视频标题</div><pre id="t-e29">【从零造物 29】种过豆子的地，为什么更肥？</pre><button class="copy" data-t="t-e29">复制</button><div class="k">封面文字（两行）</div><pre id="c-e29">轮作固氮
+种过豆子的地，为什么更肥？</pre><div class="k">简介</div><pre id="b-e29">种过豆子的地，为什么更肥？
+
+豆科植物根瘤里的根瘤菌能把空气中的氮气变成氨，豆子长完翻进土里，就给下一季庄稼留下了氮肥。
+
+安全提示：切根瘤用刀片小心手。
+
+#从零造物 #穿越造物 #科普 #轮作固氮</pre><button class="copy" data-t="b-e29">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：豆苗的根上，长着一颗颗小疙瘩。切开，是粉红色的。
+5–10 秒 · 抛问题：种过豆子的地，为什么更肥？
+10–45 秒 · 原理动画：那些小疙瘩叫根瘤，里面住着根瘤菌。它们能把空气里的氮气拆开，变成植物能吸收的氨。豆子给细菌糖，细菌给豆子氮。根瘤里的粉红色，来自一种帮细菌挡住氧气的蛋白质。
+45–55 秒 · 结论：根瘤菌把空气里的氮，变成了庄稼的肥料。古人不知道细菌，却知道该在什么时候种豆子。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 34</div><h3><a href="../ep34/">净水</a></h3><div class="k">视频标题</div><pre id="t-e34">【从零造物 34】看起来清澈的水，就一定干净吗？</pre><button class="copy" data-t="t-e34">复制</button><div class="k">封面文字（两行）</div><pre id="c-e34">净水
+看起来清澈的水，就一定干净吗？</pre><div class="k">简介</div><pre id="b-e34">看起来清澈的水，就一定干净吗？
+
+过滤能去掉看得见的颗粒，却挡不住细菌；阳光里的紫外线和高温能破坏微生物。清澈不等于干净，最可靠的仍是把水烧开。
+
+安全提示：所有水样都不饮用，实验后倒掉。
+
+#从零造物 #穿越造物 #科普 #净水</pre><button class="copy" data-t="b-e34">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：一瓶泥水，穿过几层沙石，变清了。
+5–10 秒 · 抛问题：看起来清澈的水，就一定干净吗？
+10–45 秒 · 原理动画：浑水从上往下，石子和粗沙挡住大颗粒，细沙挡住细泥，木炭吸走一些异味和颜色。可细菌比沙缝小得多，大多直接漏了下去。变清了，不等于能喝了。
+45–55 秒 · 结论：过滤去掉看得见的，阳光和高温对付看不见的。生活中最可靠的，还是把水烧开。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">B 线 · 古法解密 · B12</div><h3><a href="../b12/">冰鉴与藏冰</a></h3><div class="k">视频标题</div><pre id="t-b12">【从零造物 B12】没有冰箱，古人夏天怎么吃上冰？</pre><button class="copy" data-t="t-b12">复制</button><div class="k">封面文字（两行）</div><pre id="c-b12">冰鉴与藏冰
+没有冰箱，古人夏天怎么吃上冰？</pre><div class="k">简介</div><pre id="b-b12">没有冰箱，古人夏天怎么吃上冰？
+
+冰窖靠深埋、厚土和稻草挡住热量，冰本身熔化要吸收大量热；曾侯乙铜鉴缶夹层放冰，用来冰镇酒。
+
+安全提示：冰块边缘锋利，徒手长时间拿冰会冻伤，戴手套。
+
+#从零造物 #古法解密 #科普 #冰鉴与藏冰</pre><button class="copy" data-t="b-b12">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：两块一样的冰，一块光着，一块裹着干草。
+5–10 秒 · 抛问题：没有冰箱，古人夏天怎么吃上冰？
+10–45 秒 · 原理动画：冰窖修在地下，上面盖厚土，冰的四周塞满稻草。稻草里全是不流动的空气，热传得很慢。冰本身也很「耐化」：化掉一千克冰要的热量，足够把一千克水从零度烧到八十度。
+45–55 秒 · 结论：冰不会自己变冷，能做的只有一件事：挡住热量。古人的冰窖，靠的就是泥土和稻草。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 38</div><h3><a href="../ep38/">蒸发冷却罐</a></h3><div class="k">视频标题</div><pre id="t-e38">【从零造物 38】没有冰，能不能降温？</pre><button class="copy" data-t="t-e38">复制</button><div class="k">封面文字（两行）</div><pre id="c-e38">蒸发冷却罐
+没有冰，能不能降温？</pre><div class="k">简介</div><pre id="b-e38">没有冰，能不能降温？
+
+罐中罐靠湿沙里的水从外罐表面蒸发，带走热量；空气越干燥，蒸发越快、降温越多，潮湿天几乎不起作用。
+
+安全提示：花盆和沙子较重，放稳，搬动时小心砸脚。
+
+#从零造物 #穿越造物 #科普 #蒸发冷却罐</pre><button class="copy" data-t="b-e38">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：一个不插电的罐子，里面比外面凉。
+5–10 秒 · 抛问题：没有冰，能不能降温？
+10–45 秒 · 原理动画：水里的分子跑得有快有慢，只有最快的那些能挣脱水面飞走。快的走了，剩下的平均更慢，温度就降了。蒸发一克水带走的热量，是融化一克冰的七倍多。出汗觉得凉快，也是这个道理。
+45–55 秒 · 结论：水蒸发带走热量，越干燥，降得越多。一只花盆、一捧沙，就是一台不用电的冰箱。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 30</div><h3><a href="../ep30/">选种与嫁接</a></h3><div class="k">视频标题</div><pre id="t-e30">【从零造物 30】不懂基因，怎么改良品种？</pre><button class="copy" data-t="t-e30">复制</button><div class="k">封面文字（两行）</div><pre id="c-e30">选种与嫁接
+不懂基因，怎么改良品种？</pre><div class="k">简介</div><pre id="b-e30">不懂基因，怎么改良品种？
+
+每年挑最好的种子留种，好性状一代代积累；嫁接让两棵植物的形成层长在一起，把好品种原样「搬」到别的根上。
+
+安全提示：切仙人掌戴厚手套，小心刺。
+
+#从零造物 #穿越造物 #科普 #选种与嫁接</pre><button class="copy" data-t="b-e30">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：一碗豆子，挑出最好的那几颗。
+5–10 秒 · 抛问题：不懂基因，怎么改良品种？
+10–45 秒 · 原理动画：同一块地里的穗，有大有小。每年只挑最好的几株留种，第二年的平均水平就往上挪一点。年复一年，好性状一点点攒起来。几千年来，所有的庄稼都是这样被人「挑」出来的。
+45–55 秒 · 结论：选种，是一代代把好性状攒起来；嫁接，是把好品种原样搬到别的根上。古人不懂基因，却用了几千年。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">B 线 · 古法解密 · B6</div><h3><a href="../b6/">赵州桥</a></h3><div class="k">视频标题</div><pre id="t-b6">【从零造物 B6】一千四百年的石拱桥，为什么还没塌？</pre><button class="copy" data-t="t-b6">复制</button><div class="k">封面文字（两行）</div><pre id="c-b6">赵州桥
+一千四百年的石拱桥，为什么还没塌</pre><div class="k">简介</div><pre id="b-b6">一千四百年的石拱桥，为什么还没塌？
+
+拱把重量变成沿弧线的压力，让石头只受压；扁拱让桥面平缓，敞肩的四个小拱减轻自重、让洪水穿过。
+
+安全提示：剪硬纸板注意刀具安全。
+
+#从零造物 #古法解密 #科普 #赵州桥</pre><button class="copy" data-t="b-b6">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：一张纸，弯成拱，就能撑起一堆硬币。
+5–10 秒 · 抛问题：一千四百年的石拱桥，为什么还没塌？
+10–45 秒 · 原理动画：石头不怕压，最怕拉。拱把上面的重量沿着弧线一路传下去，每块石头都被挤着，只受压。赵州桥的拱很扁：跨度三十七米，拱高只有七米多，桥面平缓，车马好走。代价是拱脚向外推得更狠，两头的桥台必须结实。
+45–55 秒 · 结论：拱让石头只受压，敞肩让桥更轻、更不怕洪水。一千四百年后，它还站在那里。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">特辑 · 特辑3</div><h3><a href="../season3/">第三季特辑</a></h3><div class="k">视频标题</div><pre id="t-s3">【从零造物 特辑3】这些办法，哪一个最值得带回北宋？</pre><button class="copy" data-t="t-s3">复制</button><div class="k">封面文字（两行）</div><pre id="c-s3">第三季特辑
+这些办法，哪一个最值得带回北宋？</pre><div class="k">简介</div><pre id="b-s3">这些办法，哪一个最值得带回北宋？
+
+回顾第三季 11 集：一滴水的旅程 —— 提、引、分、省、养、净、冷、过。再按实测结果给每集打「古代可行度」分。
+
+安全提示：特辑不新做实验；回顾画面里的安全提示字幕保留。
+
+#从零造物 #特辑 #科普 #第三季特辑</pre><button class="copy" data-t="b-s3">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>特辑不做竖屏切片；从本季各集切片里选播放最好的 3 条做合集。</pre></details></div>
+</div></section>
+<section><h2>第四季</h2><div class="grid2">
+<div class="card"><div class="k">A 线 · 穿越造物 · 32</div><h3><a href="../ep32/">洗手</a></h3><div class="k">视频标题</div><pre id="t-e32">【从零造物 32】看起来干净的手，为什么能害死人？</pre><button class="copy" data-t="t-e32">复制</button><div class="k">封面文字（两行）</div><pre id="c-e32">洗手
+看起来干净的手，为什么能害死人？</pre><div class="k">简介</div><pre id="b-e32">看起来干净的手，为什么能害死人？
+
+病菌常裹在手上的油里，光冲水带不走；肥皂分子一头亲水、一头亲油，把油滴连同病菌一起从皮肤上拽下来。1847 年，一次洗手让产妇死亡率骤降。
+
+安全提示：紫外手电不要直视、不要照眼睛。
+
+#从零造物 #穿越造物 #科普 #洗手</pre><button class="copy" data-t="b-e32">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：这双手，看起来很干净。
+5–10 秒 · 抛问题：看起来干净的手，为什么能害死人？
+10–45 秒 · 原理动画：第一产科每年大约有十分之一的产妇死于产褥热。一八四七年五月中旬开始洗手，六月的死亡率从四月的百分之十八点三降到二点二。
+45–55 秒 · 结论：病菌看不见，却会搭手的便车。肥皂搓够二十秒，再用流水冲掉。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 33</div><h3><a href="../ep33/">防坏血病</a></h3><div class="k">视频标题</div><pre id="t-e33">【从零造物 33】史上最早的对照实验之一</pre><button class="copy" data-t="t-e33">复制</button><div class="k">封面文字（两行）</div><pre id="c-e33">防坏血病
+史上最早的对照实验之一</pre><div class="k">简介</div><pre id="b-e33">史上最早的对照实验之一
+
+1747 年林德的对照实验发现柑橘能治坏血病；病因是缺维生素 C，没有它，身体做不出结实的胶原蛋白。
+
+安全提示：碘酒不可入口，用完洗手。
+
+#从零造物 #穿越造物 #科普 #防坏血病</pre><button class="copy" data-t="b-e33">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：几个月的远航，船上能吃的只有这些。
+5–10 秒 · 抛问题：史上最早的对照实验之一
+10–45 秒 · 原理动画：十二个病情相近、吃同样伙食的水手，每两人一组，只加一种不同的东西。只有吃橙子和柠檬的那一组，很快好了起来。
+45–55 秒 · 结论：坏血病缺的是维生素 C。只改一个条件、其他都一样的对照实验，让答案无可抵赖。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">B 线 · 古法解密 · B19</div><h3><a href="../b19/">银钗验毒</a></h3><div class="k">视频标题</div><pre id="t-b19">【从零造物 B19】银针变黑，就一定有毒吗？</pre><button class="copy" data-t="t-b19">复制</button><div class="k">封面文字（两行）</div><pre id="c-b19">银钗验毒
+银针变黑，就一定有毒吗？</pre><div class="k">简介</div><pre id="b-b19">银针变黑，就一定有毒吗？
+
+银遇到硫生成黑色的硫化银；纯砒霜不含硫，古代砒霜常混有含硫杂质。银钗测到的是硫，不是毒。
+
+安全提示：绝不使用、购买或模拟任何真实毒物。
+
+#从零造物 #古法解密 #科普 #银钗验毒</pre><button class="copy" data-t="b-b19">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：银针变黑了。可这个鸡蛋，没有毒。
+5–10 秒 · 抛问题：银针变黑，就一定有毒吗？
+10–45 秒 · 原理动画：银碰到硫，会生成黑色的硫化银。纯砒霜里没有硫，并不会让银变黑；古代砒霜提纯不好，常混着含硫的杂质。而鸡蛋黄没毒，却同样含硫。
+45–55 秒 · 结论：银钗测到的是硫，不是毒。变黑不一定有毒，不变黑也不一定没毒。宋慈的办法在当时有用，但它测的东西和古人以为的不一样。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 37</div><h3><a href="../ep37/">罐藏</a></h3><div class="k">视频标题</div><pre id="t-e37">【从零造物 37】比细菌学早半个世纪的保鲜法</pre><button class="copy" data-t="t-e37">复制</button><div class="k">封面文字（两行）</div><pre id="c-e37">罐藏
+比细菌学早半个世纪的保鲜法</pre><div class="k">简介</div><pre id="b-e37">比细菌学早半个世纪的保鲜法
+
+加热杀死食物里的微生物，密封挡住新来的；巴斯德的鹅颈瓶证明，让食物变坏的是外面来的微生物，而不是食物自己。
+
+安全提示：自制罐藏的食物可能滋生肉毒杆菌，实验品一律不食用。
+
+#从零造物 #穿越造物 #科普 #罐藏</pre><button class="copy" data-t="b-e37">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：一碗汤放两天就坏了，这罐汤却能放好几年。
+5–10 秒 · 抛问题：比细菌学早半个世纪的保鲜法
+10–45 秒 · 原理动画：煮开，热量杀死了大多数微生物。敞口的，空气里的微生物又落进去；没煮的，里面的微生物一直在。只有先加热、再密封的那一罐，能放很久。
+45–55 秒 · 结论：先加热杀菌，再密封隔绝。让食物变坏的，是外面来的微生物。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 31</div><h3><a href="../ep31/">口服补液</a></h3><div class="k">视频标题</div><pre id="t-e31">【从零造物 31】光喝白水补不回来，为什么加点盐和糖就行？</pre><button class="copy" data-t="t-e31">复制</button><div class="k">封面文字（两行）</div><pre id="c-e31">口服补液
+光喝白水补不回来，为什么加点盐和</pre><div class="k">简介</div><pre id="b-e31">光喝白水补不回来，为什么加点盐和糖就行？
+
+肠道里有一种「门」，钠和葡萄糖必须一起进，水靠渗透跟着进去；霍乱时它照样工作。这一集只讲原理，配方请用药店的口服补液盐。
+
+安全提示：不提供、不演示任何自制补液配方或用量；需要时请用药店的口服补液盐并照说明书。
+
+#从零造物 #穿越造物 #科普 #口服补液</pre><button class="copy" data-t="b-e31">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：一杯白开水，和一包盐加糖的粉末。
+5–10 秒 · 抛问题：光喝白水补不回来，为什么加点盐和糖就行？
+10–45 秒 · 原理动画：水分子会往溶解的东西更多的一边跑，这叫渗透。身体吸水也离不开它：盐先进去，水才会跟着进去。
+45–55 秒 · 结论：要让水进身体，得先让盐进去；盐和糖一起，走的是同一扇门。配方请用药店的口服补液盐、照说明书；腹泻严重，一定要就医。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 35</div><h3><a href="../ep35/">种痘</a></h3><div class="k">视频标题</div><pre id="t-e35">【从零造物 35】用一场小病，换来对大病的免疫</pre><button class="copy" data-t="t-e35">复制</button><div class="k">封面文字（两行）</div><pre id="c-e35">种痘
+用一场小病，换来对大病的免疫</pre><div class="k">简介</div><pre id="b-e35">用一场小病，换来对大病的免疫
+
+免疫系统会记住见过的病原，第二次反应又快又猛；牛痘和天花表面相似，记住一个就认得另一个。接种的人够多，病就传不开。
+
+安全提示：不做任何人体操作，不展示真实的痘痂、痘浆。
+
+#从零造物 #穿越造物 #科普 #种痘</pre><button class="copy" data-t="b-e35">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：很多老人的手臂上，都有一个小小的圆疤。
+5–10 秒 · 抛问题：用一场小病，换来对大病的免疫
+10–45 秒 · 原理动画：第一次碰到某种病原，免疫系统要花一两周才学会对付它。它会留下记忆细胞；第二次再来，反应又快又猛，往往还没发病就被清掉了。
+45–55 秒 · 结论：先用一次轻的，换来身体的记忆；接种的人够多，病就传不开。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 36</div><h3><a href="../ep36/">煤气中毒与通风</a></h3><div class="k">视频标题</div><pre id="t-e36">【从零造物 36】关紧门窗烧炭，为什么危险？</pre><button class="copy" data-t="t-e36">复制</button><div class="k">封面文字（两行）</div><pre id="c-e36">煤气中毒与通风
+关紧门窗烧炭，为什么危险？</pre><div class="k">简介</div><pre id="b-e36">关紧门窗烧炭，为什么危险？
+
+氧气不足时，炭和煤燃烧不完全，生成无色无味的一氧化碳；它抢占血红蛋白上运氧的位置，让血液运不了氧。通风和报警器是最便宜的保护。
+
+安全提示：绝不在室内或密闭空间点炭、烧煤，不制造、不测量一氧化碳。
+
+#从零造物 #穿越造物 #科普 #煤气中毒与通风</pre><button class="copy" data-t="b-e36">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：冬天，门窗关紧，屋里摆一盆炭火。看起来又暖和又安全。
+5–10 秒 · 抛问题：关紧门窗烧炭，为什么危险？
+10–45 秒 · 原理动画：每个碳原子要抢两个氧原子，变成二氧化碳。氧气不够，它只抢到一个，变成一氧化碳：没有颜色，没有气味。
+45–55 秒 · 结论：炭火没烟，也会产生一氧化碳。开窗通风，装一个报警器；有人头晕犯困，先开窗、离开、求救。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">特辑 · 特辑4</div><h3><a href="../season4/">第四季特辑</a></h3><div class="k">视频标题</div><pre id="t-s4">【从零造物 特辑4】这些知识，哪一条最值得带回北宋？</pre><button class="copy" data-t="t-s4">复制</button><div class="k">封面文字（两行）</div><pre id="c-s4">第四季特辑
+这些知识，哪一条最值得带回北宋？</pre><div class="k">简介</div><pre id="b-s4">这些知识，哪一条最值得带回北宋？
+
+回顾第四季 7 集：看不见的敌人 —— 病菌、身体缺的东西、毒物、气体。再按实测结果给每集打「古代可行度」分。
+
+安全提示：特辑不新做实验；回顾画面里的安全提示字幕全部保留。
+
+#从零造物 #特辑 #科普 #第四季特辑</pre><button class="copy" data-t="b-s4">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>特辑不做竖屏切片；从本季各集切片里选播放最好的 3 条做合集。</pre></details></div>
+</div></section>
+<section><h2>第五季</h2><div class="grid2">
+<div class="card"><div class="k">A 线 · 穿越造物 · 39</div><h3><a href="../ep39/">杠杆与滑轮组</a></h3><div class="k">视频标题</div><pre id="t-e39">【从零造物 39】一个人，怎么吊起一头牛？</pre><button class="copy" data-t="t-e39">复制</button><div class="k">封面文字（两行）</div><pre id="c-e39">杠杆与滑轮组
+一个人，怎么吊起一头牛？</pre><div class="k">简介</div><pre id="b-e39">一个人，怎么吊起一头牛？
+
+重物 × 短臂 = 用力 × 长臂；滑轮组每多一股绳分担重量，拉力就少一份。省力就要费距离，做的功不变。
+
+安全提示：重物挂高处时下面不站人；挂钩要牢固。
+
+#从零造物 #穿越造物 #科普 #杠杆与滑轮组</pre><button class="copy" data-t="b-e39">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：同一桶水，直接拎和用滑轮拉，感觉完全不一样。
+5–10 秒 · 抛问题：一个人，怎么吊起一头牛？
+10–45 秒 · 原理动画：重物乘短臂，等于用力乘长臂。支点往重物那边挪，另一头需要的力就越小。可这头压下去一大段，那头才抬起一点点。
+45–55 秒 · 结论：省力，就要费距离；做的功一点没少。这就是所有机械的规矩。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">B 线 · 古法解密 · B8</div><h3><a href="../b8/">被中香炉</a></h3><div class="k">视频标题</div><pre id="t-b8">【从零造物 B8】在被窝里滚来滚去，香炉为什么洒不出来？</pre><button class="copy" data-t="t-b8">复制</button><div class="k">封面文字（两行）</div><pre id="c-b8">被中香炉
+在被窝里滚来滚去，香炉为什么洒不</pre><div class="k">简介</div><pre id="b-b8">在被窝里滚来滚去，香炉为什么洒不出来？
+
+两层环各绕一根轴转动，两根轴互相垂直，再把炉碗的重心放在最下面：不管外球怎么滚，炉口始终朝上。这就是今天的常平架。
+
+安全提示：绝不在被子里或模型里点香、放炭，防火。
+
+#从零造物 #古法解密 #科普 #被中香炉</pre><button class="copy" data-t="b-b8">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：这个球怎么滚，中间那杯水都不洒。
+5–10 秒 · 抛问题：在被窝里滚来滚去，香炉为什么洒不出来？
+10–45 秒 · 原理动画：把东西挂在支点下面，一歪，重力就把它拉回来；顶在上面，一歪，就翻过去。
+45–55 秒 · 结论：两根互相垂直的轴，加上重心在下：不管怎么滚，炉口始终朝上。今天的船用罗盘、相机稳定器，用的还是它。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 40</div><h3><a href="../ep40/">曲柄连杆</a></h3><div class="k">视频标题</div><pre id="t-e40">【从零造物 40】来回运动，怎么变成转动？</pre><button class="copy" data-t="t-e40">复制</button><div class="k">封面文字（两行）</div><pre id="c-e40">曲柄连杆
+来回运动，怎么变成转动？</pre><div class="k">简介</div><pre id="b-e40">来回运动，怎么变成转动？
+
+曲柄转一圈，连杆把滑块推出去、拉回来一次；反过来，推拉也能变成转动。曲柄和连杆成一直线时是「死点」，靠飞轮的惯性冲过去。
+
+安全提示：图钉朝向泡沫板，别扎手。
+
+#从零造物 #穿越造物 #科普 #曲柄连杆</pre><button class="copy" data-t="b-e40">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：脚只是上下踩，轮子却一直在转。
+5–10 秒 · 抛问题：来回运动，怎么变成转动？
+10–45 秒 · 原理动画：轮子上偏离中心的销子叫曲柄，它和滑块之间用连杆连着。曲柄转一整圈，滑块就被推出去、拉回来一次。
+45–55 秒 · 结论：曲柄连杆让转动和来回互相转换；飞轮带它冲过死点。缝纫机、自行车、蒸汽机，都离不开它。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 41</div><h3><a href="../ep41/">齿轮与轴承</a></h3><div class="k">视频标题</div><pre id="t-e41">【从零造物 41】怎么让转速变快或变慢？</pre><button class="copy" data-t="t-e41">复制</button><div class="k">封面文字（两行）</div><pre id="c-e41">齿轮与轴承
+怎么让转速变快或变慢？</pre><div class="k">简介</div><pre id="b-e41">怎么让转速变快或变慢？
+
+两个齿轮咬合，转速比等于齿数的反比：转得快就力气小，转得慢就有劲。轴承把「滑」变成「滚」，大大减少摩擦。
+
+安全提示：倒置自行车要放稳，手指远离链条和辐条。
+
+#从零造物 #穿越造物 #科普 #齿轮与轴承</pre><button class="copy" data-t="b-e41">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：踩一圈脚蹬，后轮转了……圈。
+5–10 秒 · 抛问题：怎么让转速变快或变慢？
+10–45 秒 · 原理动画：两个齿轮咬在一起，每转过一个齿，对方也转过一个齿。三十六齿的转一圈，十二齿的要转三圈。转得快，力气就小；反过来，慢而有劲。
+45–55 秒 · 结论：齿数比决定转速和力气；把「滑」变成「滚」，省力得多。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">B 线 · 古法解密 · B17</div><h3><a href="../b17/">指南车</a></h3><div class="k">视频标题</div><pre id="t-b17">【从零造物 B17】车怎么转弯，木人的手都一直指南？</pre><button class="copy" data-t="t-b17">复制</button><div class="k">封面文字（两行）</div><pre id="c-b17">指南车
+车怎么转弯，木人的手都一直指南？</pre><div class="k">简介</div><pre id="b-b17">车怎么转弯，木人的手都一直指南？
+
+车转弯时，外侧轮比内侧轮多走「轮距 × 转角」；用齿轮把这段差变成木人反方向的转动，木人就始终指着原来的方向。它不靠磁石。
+
+安全提示：竹签尖端剪平或包胶带。
+
+#从零造物 #古法解密 #科普 #指南车</pre><button class="copy" data-t="b-b17">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：普通的车一转弯，车上的手臂就跟着转了。
+5–10 秒 · 抛问题：车怎么转弯，木人的手都一直指南？
+10–45 秒 · 原理动画：车往右转，外侧轮绕大圈，内侧轮绕小圈。多走的那一段，正好等于轮距乘以转过的角度。
+45–55 秒 · 结论：两轮走的路程差，记下了车转了多少；指南车靠齿轮，不靠磁石。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">B 线 · 古法解密 · B7</div><h3><a href="../b7/">榫卯</a></h3><div class="k">视频标题</div><pre id="t-b7">【从零造物 B7】不用一根钉子，木头为什么能咬得这么紧？</pre><button class="copy" data-t="t-b7">复制</button><div class="k">封面文字（两行）</div><pre id="c-b7">榫卯
+不用一根钉子，木头为什么能咬得这</pre><div class="k">简介</div><pre id="b-b7">不用一根钉子，木头为什么能咬得这么紧？
+
+榫插进卯，靠形状互锁和木材之间的挤压摩擦连接，不用钉子；接头能微微滑动，晃动时把能量消耗掉，所以更耐震。
+
+安全提示：热熔胶枪很烫，小心烫伤。
+
+#从零造物 #古法解密 #科普 #榫卯</pre><button class="copy" data-t="b-b7">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：六根木条，不用胶、不用钉，拼起来就散不开。
+5–10 秒 · 抛问题：不用一根钉子，木头为什么能咬得这么紧？
+10–45 秒 · 原理动画：一根木头削出凸头叫榫，另一根凿出孔叫卯。上面的重量把它们压紧，木头之间又挤又摩擦，不用钉子也拔不出来。
+45–55 秒 · 结论：形状互锁加上摩擦：不用钉子也咬得紧；会微微滑动，反而更耐晃。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 42</div><h3><a href="../ep42/">马轭</a></h3><div class="k">视频标题</div><pre id="t-e42">【从零造物 42】换一副套具，马能多拉几倍？</pre><button class="copy" data-t="t-e42">复制</button><div class="k">封面文字（两行）</div><pre id="c-e42">马轭
+换一副套具，马能多拉几倍？</pre><div class="k">简介</div><pre id="b-e42">换一副套具，马能多拉几倍？
+
+同样的拉力，压在细带上和宽垫上，压强差很多；马轭卡在肩上，把力分散到大块骨头上，拉点也更低，马才使得上全力。
+
+安全提示：手提重物只提几秒，手掌不舒服就放下。
+
+#从零造物 #穿越造物 #科普 #马轭</pre><button class="copy" data-t="b-e42">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：同样的重量，勒在细绳上和垫着毛巾，感觉完全不一样。
+5–10 秒 · 抛问题：换一副套具，马能多拉几倍？
+10–45 秒 · 原理动画：同样的力，压在细绳上，海绵陷得很深；分散到宽垫上，几乎压不出印子。压强等于力除以面积。
+45–55 秒 · 结论：力压在哪里，决定马能不能使全力。马轭把力分散到肩膀的大骨头上。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 43</div><h3><a href="../ep43/">逆风航行</a></h3><div class="k">视频标题</div><pre id="t-e43">【从零造物 43】帆船为什么能逆风前进？</pre><button class="copy" data-t="t-e43">复制</button><div class="k">封面文字（两行）</div><pre id="c-e43">逆风航行
+帆船为什么能逆风前进？</pre><div class="k">简介</div><pre id="b-e43">帆船为什么能逆风前进？
+
+帆像竖起来的机翼，风吹过时产生斜向的力；龙骨挡住侧推，剩下往前的部分推船走。正顶风走不了，就和风成 45° 左右走之字形。
+
+安全提示：电器远离水：风扇放在浴缸外台面，插头远离水，或用电池风扇。
+
+#从零造物 #穿越造物 #科普 #逆风航行</pre><button class="copy" data-t="b-e43">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：风从侧面吹来，船却往前走了。
+5–10 秒 · 抛问题：帆船为什么能逆风前进？
+10–45 秒 · 原理动画：帆把风拐了个弯，得到一个斜向的力：一部分往前推船，一部分往侧面推。船底的龙骨插在水里，侧面推不动它，剩下的就只有往前了。
+45–55 秒 · 结论：帆是竖起来的机翼，龙骨挡住侧推；正顶风走不了，就走之字形。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 44</div><h3><a href="../ep44/">热气球</a></h3><div class="k">视频标题</div><pre id="t-e44">【从零造物 44】一团热空气，怎么把人带上天？</pre><button class="copy" data-t="t-e44">复制</button><div class="k">封面文字（两行）</div><pre id="c-e44">热气球
+一团热空气，怎么把人带上天？</pre><div class="k">简介</div><pre id="b-e44">一团热空气，怎么把人带上天？
+
+空气受热膨胀，同样体积里的空气变少、变轻，被周围的冷空气托起。100 ℃ 的热空气每立方米只比 20 ℃ 空气轻约 0.26 千克，带一个人要七八百立方米。
+
+安全提示：不放孔明灯、不用任何明火。
+
+#从零造物 #穿越造物 #科普 #热气球</pre><button class="copy" data-t="b-e44">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：吹满热风的袋子，自己飘上去了。
+5–10 秒 · 抛问题：一团热空气，怎么把人带上天？
+10–45 秒 · 原理动画：加热以后，分子跑得更快，把彼此推得更远，同样体积里装的分子少了。热空气比周围的冷空气轻，就会被托起来。
+45–55 秒 · 结论：热空气更轻，被周围的冷空气托起。要带一个人上天，就得装下七八百立方米。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">特辑 · 特辑5</div><h3><a href="../season5/">第五季特辑</a></h3><div class="k">视频标题</div><pre id="t-s5">【从零造物 特辑5】这些机械，哪一样最值得带回北宋？</pre><button class="copy" data-t="t-s5">复制</button><div class="k">封面文字（两行）</div><pre id="c-s5">第五季特辑
+这些机械，哪一样最值得带回北宋？</pre><div class="k">简介</div><pre id="b-s5">这些机械，哪一样最值得带回北宋？
+
+回顾第五季 9 集：力的变形记 —— 放大、稳住、转换、变速、记方向、咬合、拉车、借风、借热。再按实测结果给每集打「古代可行度」分。
+
+安全提示：特辑不新做实验；回顾画面里的安全提示字幕保留。
+
+#从零造物 #特辑 #科普 #第五季特辑</pre><button class="copy" data-t="b-s5">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>特辑不做竖屏切片；从本季各集切片里选播放最好的 3 条做合集。</pre></details></div>
+</div></section>
+<section><h2>第六季</h2><div class="grid2">
+<div class="card"><div class="k">A 线 · 穿越造物 · 45</div><h3><a href="../ep45/">摆钟</a></h3><div class="k">视频标题</div><pre id="t-e45">【从零造物 45】摆一次的时间，为什么只看摆长？</pre><button class="copy" data-t="t-e45">复制</button><div class="k">封面文字（两行）</div><pre id="c-e45">摆钟
+摆一次的时间，为什么只看摆长？</pre><div class="k">简介</div><pre id="b-e45">摆一次的时间，为什么只看摆长？
+
+小角度下，摆来回一次的时间只取决于摆长：T = 2π√(L/g)，摆长 4 倍、周期 2 倍；擒纵让摆每摆一下放过一个齿，把稳定的周期变成钟上的时间。
+
+安全提示：挂点要牢固，摆的范围内不要站人。
+
+#从零造物 #穿越造物 #科普 #摆钟</pre><button class="copy" data-t="b-e45">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：一根绳、一串钥匙：十个来回，二十秒。
+5–10 秒 · 抛问题：摆一次的时间，为什么只看摆长？
+10–45 秒 · 原理动画：摆幅大一点，只慢一点点；摆长变成四倍，周期变成两倍。来回一次的时间，主要只看摆长。
+45–55 秒 · 结论：摆的周期主要只看摆长；擒纵让摆一格一格地放行齿轮，钟就这样走起来。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">B 线 · 古法解密 · B11</div><h3><a href="../b11/">一钟双音</a></h3><div class="k">视频标题</div><pre id="t-b11">【从零造物 B11】同一口编钟，敲两个位置为什么音不同？</pre><button class="copy" data-t="t-b11">复制</button><div class="k">封面文字（两行）</div><pre id="c-b11">一钟双音
+同一口编钟，敲两个位置为什么音不</pre><div class="k">简介</div><pre id="b-b11">同一口编钟，敲两个位置为什么音不同？
+
+编钟的截面是扁扁的合瓦形，两种振动方式的频率被分开：敲正鼓和侧鼓各激发一种，一口钟就有两个音；扁形还让余音很快衰减，适合演奏旋律。
+
+安全提示：敲击力度适中，别敲破玻璃杯。
+
+#从零造物 #古法解密 #科普 #一钟双音</pre><button class="copy" data-t="b-b11">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：扁盒子敲两个地方，是两个音；圆罐子敲哪里都一样。
+5–10 秒 · 抛问题：同一口编钟，敲两个位置为什么音不同？
+10–45 秒 · 原理动画：扁扁的合瓦形截面，有两种振动方式：敲正面中间，激发一种；敲侧面，激发另一种。一种振动的节点，正好是另一种最强的地方。
+45–55 秒 · 结论：合瓦形让两种振动分开，一口钟就有两个音；余音短，旋律才清楚。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">B 线 · 古法解密 · B9</div><h3><a href="../b9/">鱼洗</a></h3><div class="k">视频标题</div><pre id="t-b9">【从零造物 B9】搓一搓盆耳，水为什么会喷起来？</pre><button class="copy" data-t="t-b9">复制</button><div class="k">封面文字（两行）</div><pre id="c-b9">鱼洗
+搓一搓盆耳，水为什么会喷起来？</pre><div class="k">简介</div><pre id="b-b9">搓一搓盆耳，水为什么会喷起来？
+
+湿手摩擦盆耳，像拉琴一样让盆壁振动；盆壁上形成驻波，四个腹点振动最强，把水拍成水花，鱼嘴正对着这几个位置。
+
+安全提示：薄壁玻璃杯容易碎，摩擦时别用力按压。
+
+#从零造物 #古法解密 #科普 #鱼洗</pre><button class="copy" data-t="b-b9">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：搓着搓着，水就从四个地方跳起来了。
+5–10 秒 · 抛问题：搓一搓盆耳，水为什么会喷起来？
+10–45 秒 · 原理动画：一列波往右，一列波往左，叠在一起，波形不再前进，只在原地上下抖：有的地方一直不动，有的地方晃得最厉害。
+45–55 秒 · 结论：摩擦让盆壁振动，形成驻波；腹点把水拍起来，鱼嘴正对着它。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 46</div><h3><a href="../ep46/">温度计</a></h3><div class="k">视频标题</div><pre id="t-e46">【从零造物 46】怎样从零定义「一度」？</pre><button class="copy" data-t="t-e46">复制</button><div class="k">封面文字（两行）</div><pre id="c-e46">温度计
+怎样从零定义「一度」？</pre><div class="k">简介</div><pre id="b-e46">怎样从零定义「一度」？
+
+液体受热膨胀，细管把微小的体积变化放大成一段液柱；再用冰水和沸水两个定点、平均分格，就得到了可以比较的「度」。
+
+安全提示：热水约 60 ℃ 即可，小心烫伤；不要使用水银温度计做实验。
+
+#从零造物 #穿越造物 #科普 #温度计</pre><button class="copy" data-t="b-e46">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：同一盆水，一只手说凉，一只手说热。
+5–10 秒 · 抛问题：怎样从零定义「一度」？
+10–45 秒 · 原理动画：液体受热，分子晃得更厉害，彼此挤开一点点，体积就变大；这一点点挤进很细的管子，就变成很长一段。
+45–55 秒 · 结论：液体热胀冷缩，细管把变化放大；两个定点加平均分格，就成了刻度。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 47</div><h3><a href="../ep47/">用影子测地球</a></h3><div class="k">视频标题</div><pre id="t-e47">【从零造物 47】一根杆子，怎么量出地球多大？</pre><button class="copy" data-t="t-e47">复制</button><div class="k">封面文字（两行）</div><pre id="c-e47">用影子测地球
+一根杆子，怎么量出地球多大？</pre><div class="k">简介</div><pre id="b-e47">一根杆子，怎么量出地球多大？
+
+阳光近似平行；大地是弯的，所以同一时刻两地的影子角度不同。角度差就是两地在地球上相隔的角度，再知道两地距离，就能算出地球周长。
+
+安全提示：不要直视太阳，只看影子。
+
+#从零造物 #穿越造物 #科普 #用影子测地球</pre><button class="copy" data-t="b-e47">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：同一天的正午，两座城市的影子，一长一短。
+5–10 秒 · 抛问题：一根杆子，怎么量出地球多大？
+10–45 秒 · 原理动画：如果大地是平的，阳光平行照下来，两根杆子的影子一样长；可大地是弯的，两根杆子指向不同的方向，影子就不一样。
+45–55 秒 · 结论：影子的角度差，就是两地在地球上相隔的角度；有角度、有距离，就算得出地球。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">B 线 · 古法解密 · B10</div><h3><a href="../b10/">透光镜</a></h3><div class="k">视频标题</div><pre id="t-b10">【从零造物 B10】实心铜镜，怎么把背面花纹「照」到墙上？</pre><button class="copy" data-t="t-b10">复制</button><div class="k">封面文字（两行）</div><pre id="c-b10">透光镜
+实心铜镜，怎么把背面花纹「照」到</pre><div class="k">简介</div><pre id="b-b10">实心铜镜，怎么把背面花纹「照」到墙上？
+
+透光镜并不透光：镜面有肉眼看不出、与背面花纹对应的微小起伏，反射到远处的墙上被放大成明暗图案。起伏可能来自研磨时薄处与厚处受力不同。
+
+安全提示：强光手电不要照眼睛。
+
+#从零造物 #古法解密 #科普 #透光镜</pre><button class="copy" data-t="b-b10">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：这是一面实心的铜镜，可墙上照出了它背面的花纹。
+5–10 秒 · 抛问题：实心铜镜，怎么把背面花纹「照」到墙上？
+10–45 秒 · 原理动画：一处极小的凸起，把那里的光往两边推开，墙上那块就暗一些。墙越远，偏差越大，看不见的起伏就被放大成明暗图案。
+45–55 秒 · 结论：镜子并不透光：镜面有看不见的起伏，远处的墙把它放大成了图案。沈括猜对了一半：起伏确实在镜面上。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 48</div><h3><a href="../ep48/">数字与 0</a></h3><div class="k">视频标题</div><pre id="t-e48">【从零造物 48】为什么换了写法，算账就变快了？</pre><button class="copy" data-t="t-e48">复制</button><div class="k">封面文字（两行）</div><pre id="c-e48">数字与 0
+为什么换了写法，算账就变快了？</pre><div class="k">简介</div><pre id="b-e48">为什么换了写法，算账就变快了？
+
+位值制让同一个符号在不同位置代表不同大小，0 占住空位；有了它，十个符号就能写出任何数，竖式让乘除可以一位一位地算。
+
+安全提示：牙签尖端注意。
+
+#从零造物 #穿越造物 #科普 #数字与0</pre><button class="copy" data-t="b-e48">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：同一道题，一个用罗马数字，一个用阿拉伯数字。
+5–10 秒 · 抛问题：为什么换了写法，算账就变快了？
+10–45 秒 · 原理动画：同一个三，放在个位是三，十位是三十，百位是三百：位置本身就是数。三百零五和三十五只差一个零。
+45–55 秒 · 结论：位置本身就是数，零占住空位。十个符号就能写出任何数，竖式让算账变快。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 49</div><h3><a href="../ep49/">复式记账</a></h3><div class="k">视频标题</div><pre id="t-e49">【从零造物 49】怎样让账永远算不错？</pre><button class="copy" data-t="t-e49">复制</button><div class="k">封面文字（两行）</div><pre id="c-e49">复式记账
+怎样让账永远算不错？</pre><div class="k">简介</div><pre id="b-e49">怎样让账永远算不错？
+
+每一笔交易同时记在「去向」和「来源」两边，金额相等，所以两边总数永远相等；对不上，就说明有一笔记错了。这是用守恒来查错。
+
+安全提示：无特殊风险。
+
+#从零造物 #穿越造物 #科普 #复式记账</pre><button class="copy" data-t="b-e49">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：晚上一数钱，少了三十块。可错在哪一笔？
+5–10 秒 · 抛问题：怎样让账永远算不错？
+10–45 秒 · 原理动画：买米，米多了，钱就少了；卖米，钱多了，米少了，还多出赚的那部分；借钱，钱多了，欠别人的也多了。钱从哪来、到哪去，两边总是一样多。
+45–55 秒 · 结论：每笔记两边，两边总数永远相等；对不上，就说明有错。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 50</div><h3><a href="../ep50/">光学电报</a></h3><div class="k">视频标题</div><pre id="t-e50">【从零造物 50】不用电，怎么把消息传到百里之外？</pre><button class="copy" data-t="t-e50">复制</button><div class="k">封面文字（两行）</div><pre id="c-e50">光学电报
+不用电，怎么把消息传到百里之外？</pre><div class="k">简介</div><pre id="b-e50">不用电，怎么把消息传到百里之外？
+
+编码让一次信号表达更多意思：烽火只有 2 种状态，沙普信号臂有 98 种，再配密码本能拼出整句话；中继让消息一站接一站走得更远。
+
+安全提示：手电不要直射眼睛。
+
+#从零造物 #穿越造物 #科普 #光学电报</pre><button class="copy" data-t="b-e50">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：不能说话，不能写字，只有一只手电。
+5–10 秒 · 抛问题：不用电，怎么把消息传到百里之外？
+10–45 秒 · 原理动画：烽火台只有两种状态。沙普的信号臂一次能摆出九十八种样子，再配上编号的密码本，就能一个词一个词地拼出整句话。
+45–55 秒 · 结论：编码让一个信号表达更多，中继让消息走得更远。不用电，消息也能比马快几十倍。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">B 线 · 古法解密 · B18</div><h3><a href="../b18/">张衡地动仪</a></h3><div class="k">视频标题</div><pre id="t-b18">【从零造物 B18】它真的能测出远方的地震吗？</pre><button class="copy" data-t="t-b18">复制</button><div class="k">封面文字（两行）</div><pre id="c-b18">张衡地动仪
+它真的能测出远方的地震吗？</pre><div class="k">简介</div><pre id="b-b18">它真的能测出远方的地震吗？
+
+地震仪的原理是惯性：外壳随地面动，重物几乎不动，二者的相对移动就能触发机关或画出记录。张衡地动仪原物失传，内部结构只有简短记载，现有复原方案都有争议。
+
+安全提示：拍桌子力度适中，桌上的玻璃杯先拿开。
+
+#从零造物 #古法解密 #科普 #张衡地动仪</pre><button class="copy" data-t="b-b18">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：一拍桌子，水就晃了。可远在几百里外的地震，怎么察觉？
+5–10 秒 · 抛问题：它真的能测出远方的地震吗？
+10–45 秒 · 原理动画：地面一晃，框子跟着地面动，重锤因为惯性几乎留在原地。重锤和框子之间的相对移动，就是所有地震仪的起点。
+45–55 秒 · 结论：惯性让重锤留在原地，这是地震仪的原理。可张衡的地动仪原物没有留下，记载只有一两百字：能不能测出方向，今天仍有争议。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">特辑 · 特辑6</div><h3><a href="../season6/">第六季特辑</a></h3><div class="k">视频标题</div><pre id="t-s6">【从零造物 特辑6】这些办法，哪一个最值得带回北宋？</pre><button class="copy" data-t="t-s6">复制</button><div class="k">封面文字（两行）</div><pre id="c-s6">第六季特辑
+这些办法，哪一个最值得带回北宋？</pre><div class="k">简介</div><pre id="b-s6">这些办法，哪一个最值得带回北宋？
+
+回顾第六季 10 集：量和记 —— 时间、声音、振动、温度、距离、光、数、账、消息、地动。再按实测结果给每集打「古代可行度」分。
+
+安全提示：特辑不新做实验；回顾画面里的安全提示字幕保留。
+
+#从零造物 #特辑 #科普 #第六季特辑</pre><button class="copy" data-t="b-s6">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>特辑不做竖屏切片；从本季各集切片里选播放最好的 3 条做合集。</pre></details></div>
+</div></section>
+<section><h2>第七季</h2><div class="grid2">
+<div class="card"><div class="k">A 线 · 穿越造物 · 07</div><h3><a href="../ep07/">风车发电</a></h3><div class="k">视频标题</div><pre id="t-e07">【从零造物 07】风大一点，电会多多少？</pre><button class="copy" data-t="t-e07">复制</button><div class="k">封面文字（两行）</div><pre id="c-e07">风车发电
+风大一点，电会多多少？</pre><div class="k">简介</div><pre id="b-e07">风大一点，电会多多少？
+
+风的功率与风速的三次方成正比：风速翻倍，每秒来的空气多一倍、每千克的动能变四倍，合起来约八倍。风车拿走能量必须让风变慢，不能把风拦停，所以理论上最多拿走约 59%（贝茨极限）。
+
+安全提示：电风扇必须带防护罩，手指不要伸进去。
+
+#从零造物 #穿越造物 #科普 #风车发电</pre><button class="copy" data-t="b-e07">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：同一个风车，风扇一档，灯不亮；三档，亮了。
+5–10 秒 · 抛问题：风大一点，电会多多少？
+10–45 秒 · 原理动画：风带来的能量取决于两件事：每秒来多少空气，每千克空气跑多快。风速翻倍，这两样分别是两倍和四倍，乘起来就是八倍。
+45–55 秒 · 结论：风能和风速的三次方成正比：风速翻倍，能量约八倍。风车永远只能拿走一部分，理论上限约百分之五十九。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 08</div><h3><a href="../ep08/">畜力与人力</a></h3><div class="k">视频标题</div><pre id="t-e08">【从零造物 08】点亮一盏灯，人要蹬多累？</pre><button class="copy" data-t="t-e08">复制</button><div class="k">封面文字（两行）</div><pre id="c-e08">畜力与人力
+点亮一盏灯，人要蹬多累？</pre><div class="k">简介</div><pre id="b-e08">点亮一盏灯，人要蹬多累？
+
+功率是每秒做的功。普通人能持续输出约 100 瓦，一匹马约是人的数倍（「马力」定义约 746 瓦）。发电机接上负载后会产生反向阻力（楞次定律），所以每一瓦电都要用一瓦力气去换。
+
+安全提示：骑行台要放稳，骑车人戴好鞋、不穿宽松裤脚。
+
+#从零造物 #穿越造物 #科普 #畜力与人力</pre><button class="copy" data-t="b-e08">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：一停手，灯就灭。电从哪来？从我的胳膊。
+5–10 秒 · 抛问题：点亮一盏灯，人要蹬多累？
+10–45 秒 · 原理动画：一盏 LED 只要几瓦。一个普通人能持续输出的，大约一百瓦上下；一匹马，是人的好几倍。
+45–55 秒 · 结论：一个人持续能输出一百瓦上下，每一瓦电，都是腿上的一瓦力气。所以古人要借牛马、借水、借风。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 09</div><h3><a href="../ep09/">重力发电</a></h3><div class="k">视频标题</div><pre id="t-e09">【从零造物 09】一袋石头落下，灯能亮多久？</pre><button class="copy" data-t="t-e09">复制</button><div class="k">封面文字（两行）</div><pre id="c-e09">重力发电
+一袋石头落下，灯能亮多久？</pre><div class="k">简介</div><pre id="b-e09">一袋石头落下，灯能亮多久？
+
+把重物举高，存下的势能 = 质量 × g × 高度。10 千克举高 2 米只有约 200 焦耳，能量密度很低；让它通过齿轮慢慢落下，功率变小、时间变长，就能稳定地点亮一盏小灯。
+
+安全提示：滑轮必须挂在承重可靠的地方，先用 2 倍重量试挂。
+
+#从零造物 #穿越造物 #科普 #重力发电</pre><button class="copy" data-t="b-e09">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：一桶水慢慢落下，灯亮了。
+5–10 秒 · 抛问题：一袋石头落下，灯能亮多久？
+10–45 秒 · 原理动画：把十千克举高两米，存下大约二百焦耳，够一盏一瓦的灯亮三分钟。要充满一部手机，得把它举到五百多米高。
+45–55 秒 · 结论：势能等于重量乘高度，能量密度很低；让它慢慢落，功率小，但亮得久。摆钟的重锤就是这样慢慢花掉重力势能的。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 12</div><h3><a href="../ep12/">热电</a></h3><div class="k">视频标题</div><pre id="t-e12">【从零造物 12】金属一头烧热，为什么就有电压？</pre><button class="copy" data-t="t-e12">复制</button><div class="k">封面文字（两行）</div><pre id="c-e12">热电
+金属一头烧热，为什么就有电压？</pre><div class="k">简介</div><pre id="b-e12">金属一头烧热，为什么就有电压？
+
+两种金属接成一对，一个接点热、一个接点冷，就会产生电压（塞贝克效应）。热端电子扩散得更多，而不同金属扩散的程度不同，差值就是电压。电压大致与温差成正比，但非常小，要很多对串成热电堆才有用。
+
+安全提示：开水装在厚杯里放稳，远离孩子。
+
+#从零造物 #穿越造物 #科普 #热电</pre><button class="copy" data-t="b-e12">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：铜和铁拧在一起，泡进热水：表上有了电压。没有电池，也没有转动。
+5–10 秒 · 抛问题：金属一头烧热，为什么就有电压？
+10–45 秒 · 原理动画：热端的电子跑得更欢，往冷端扩散得更多。不同金属搬家的程度不同，两种金属接成一对，差值就是能测到的电压。
+45–55 秒 · 结论：两种金属接在一起，一冷一热就有电压。电压很小，要很多对串起来；今天它用来测温度，也在太空里发电。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 13</div><h3><a href="../ep13/">压电</a></h3><div class="k">视频标题</div><pre id="t-e13">【从零造物 13】按一下打火机，为什么冒火花？</pre><button class="copy" data-t="t-e13">复制</button><div class="k">封面文字（两行）</div><pre id="c-e13">压电
+按一下打火机，为什么冒火花？</pre><div class="k">简介</div><pre id="b-e13">按一下打火机，为什么冒火花？
+
+某些晶体（石英、压电陶瓷）被挤压时，内部正负电荷的中心错开，两个表面出现电荷，产生电压（压电效应）。打火机的点火器用弹簧小锤猛敲压电陶瓷，瞬间产生几千伏；但电荷极少，所以只能点火、做传感器。反过来加电压，晶体会变形振动。
+
+安全提示：只用单独的点火器配件，不拆打火机、不接触燃气。
+
+#从零造物 #穿越造物 #科普 #压电</pre><button class="copy" data-t="b-e13">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：没有电池。按一下，就有火花。
+5–10 秒 · 抛问题：按一下打火机，为什么冒火花？
+10–45 秒 · 原理动画：晶体里正负离子排得整整齐齐。一挤，正电和负电的中心被挤得错开，一面带正电、一面带负电，就有了电压。
+45–55 秒 · 结论：挤压晶体，正负电荷中心错开，就有电压。电压高、电量少，适合点火、做传感器；反过来加电压，它会振动。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 14</div><h3><a href="../ep14/">静电机</a></h3><div class="k">视频标题</div><pre id="t-e14">【从零造物 14】怎样让静电源源不断？</pre><button class="copy" data-t="t-e14">复制</button><div class="k">封面文字（两行）</div><pre id="c-e14">静电机
+怎样让静电源源不断？</pre><div class="k">简介</div><pre id="b-e14">怎样让静电源源不断？
+
+带电体可以靠感应让附近的导体两端分别带上正负电；把一端接地放走、再把导体拉开，就得到电荷，带电体本身的电并没有用掉。起电盘把这件事一次一次手动做，感应起电机用转盘自动重复，再存进莱顿瓶，静电就源源不断。电的能量来自把正负电荷拉开时用的力气。
+
+安全提示：感应起电机接上莱顿瓶后电击很痛，只由老师操作，其他人不碰电极。
+
+#从零造物 #穿越造物 #科普 #静电机</pre><button class="copy" data-t="b-e14">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：摩擦一次，只有一下火花。想再要，就得再摩擦。
+5–10 秒 · 抛问题：怎样让静电源源不断？
+10–45 秒 · 原理动画：塑料板的负电把盘里的负电推到上面、正电吸到下面。手指一碰，负电流走。提起盘子，正电没处去，盘子就带了电。
+45–55 秒 · 结论：感应把电荷分开，我们的力气把它们拉远，这份力气就变成了电。转盘一圈圈重复，静电就源源不断。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 10</div><h3><a href="../ep10/">蒸汽发电</a></h3><div class="k">视频标题</div><pre id="t-e10">【从零造物 10】烧开一壶水，怎么变成电？</pre><button class="copy" data-t="t-e10">复制</button><div class="k">封面文字（两行）</div><pre id="c-e10">蒸汽发电
+烧开一壶水，怎么变成电？</pre><div class="k">简介</div><pre id="b-e10">烧开一壶水，怎么变成电？
+
+水变成蒸汽，体积约变成 1700 倍（100 ℃、一个大气压）。让蒸汽推动叶轮，叶轮带动发电机，就把热变成了电；用过的蒸汽在冷凝器里变回水循环使用。火电和核电都是这样「烧开水」。高压蒸汽危险，本集凡涉及压力的部分只用动画。
+
+安全提示：绝不自制任何密封加热的容器，不堵壶嘴。
+
+#从零造物 #穿越造物 #科普 #蒸汽发电</pre><button class="copy" data-t="b-e10">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：一壶开水，能吹动一只风车。能不能吹动一台发电机？
+5–10 秒 · 抛问题：烧开一壶水，怎么变成电？
+10–45 秒 · 原理动画：一毫升水烧成蒸汽，变成一千七百毫升左右。蒸汽想变大，就会推开挡在前面的东西；把它关住，压力就会危险地升高。
+45–55 秒 · 结论：水变成蒸汽，体积约变一千七百倍，这股劲推着叶轮转，叶轮带着发电机转。火电、核电，都是在「烧开水」。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 19</div><h3><a href="../ep19/">煤与焦炭</a></h3><div class="k">视频标题</div><pre id="t-e19">【从零造物 19】有煤，为什么还要先炼成焦炭？</pre><button class="copy" data-t="t-e19">复制</button><div class="k">封面文字（两行）</div><pre id="c-e19">煤与焦炭
+有煤，为什么还要先炼成焦炭？</pre><div class="k">简介</div><pre id="b-e19">有煤，为什么还要先炼成焦炭？
+
+把煤隔绝空气加热（炼焦），煤气、煤焦油和一部分硫被赶走，剩下几乎是纯碳、多孔而坚硬的焦炭。焦炭火旺少烟，又能在高炉里承受上面料柱的重压，让风穿过；煤里的硫会让铁「热脆」，所以炼铁要先炼焦。
+
+安全提示：煤烟含一氧化碳和二氧化硫：绝不在室内烧煤（回扣第 36 集）。
+
+#从零造物 #穿越造物 #科普 #煤与焦炭</pre><button class="copy" data-t="b-e19">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：这两块，原来都是同一种东西。
+5–10 秒 · 抛问题：有煤，为什么还要先炼成焦炭？
+10–45 秒 · 原理动画：把煤关在炉子里隔绝空气加热，它烧不起来，只能被「烤」。煤气、煤焦油和一部分硫变成烟跑掉，剩下的就是焦炭。
+45–55 秒 · 结论：把煤隔绝空气加热，赶走煤气、焦油和一部分硫，就是焦炭：火旺、少烟、压不碎，高炉才能越造越高。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 21</div><h3><a href="../ep21/">玻璃</a></h3><div class="k">视频标题</div><pre id="t-e21">【从零造物 21】沙子怎么变透明？</pre><button class="copy" data-t="t-e21">复制</button><div class="k">封面文字（两行）</div><pre id="c-e21">玻璃
+沙子怎么变透明？</pre><div class="k">简介</div><pre id="b-e21">沙子怎么变透明？
+
+玻璃的主要原料是石英砂，纯石英约 1700 ℃ 才熔化，古代炉子够不着；加入草木灰或纯碱作助熔剂，约 1000 ℃ 就能熔化。熔体冷得快，原子来不及排成晶体就被冻住，成为非晶态的玻璃；一整块没有颗粒边界，光就能穿过。
+
+安全提示：150 ℃ 的糖浆粘在皮肤上烫伤严重：成年人操作，孩子远离，旁边备一盆冷水。
+
+#从零造物 #穿越造物 #科普 #玻璃</pre><button class="copy" data-t="b-e21">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：这两样，成分几乎一样。一个发白，一个透明。
+5–10 秒 · 抛问题：沙子怎么变透明？
+10–45 秒 · 原理动画：纯石英要一千七百度左右才熔化，古代的炉子够不着。掺进草木灰或纯碱，一千度上下就能熔成玻璃液。
+45–55 秒 · 结论：加助熔剂，把熔点拉低到炉子够得着；冷得快、来不及结晶，就成了透明的玻璃。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">A 线 · 穿越造物 · 51</div><h3><a href="../ep51/">青霉素</a></h3><div class="k">视频标题</div><pre id="t-e51">【从零造物 51】霉菌到处都有，为什么十几年后才用上？</pre><button class="copy" data-t="t-e51">复制</button><div class="k">封面文字（两行）</div><pre id="c-e51">青霉素
+霉菌到处都有，为什么十几年后才用</pre><div class="k">简介</div><pre id="b-e51">霉菌到处都有，为什么十几年后才用上？
+
+青霉分泌的青霉素会阻止细菌修补细胞壁，细菌被自己的内压撑破；人的细胞和病毒都没有细胞壁，所以它只对细菌有效。1928 年弗莱明看到了抑菌圈，但青霉素在培养液里浓度极低，直到 1940 年代提纯和深罐发酵量产，它才成为药。发现容易，提纯和量产……
+
+安全提示：密封袋全程不开封，拍完连袋丢掉；霉变食物不吃；过敏、哮喘的人不要靠近。
+
+#从零造物 #穿越造物 #科普 #青霉素</pre><button class="copy" data-t="b-e51">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>0–5 秒 · 钩子：面包和橘子，放了两个星期。上面这层青绿色的东西，后来救了几千万人的命。
+5–10 秒 · 抛问题：霉菌到处都有，为什么十几年后才用上？
+10–45 秒 · 原理动画：培养皿里铺满了细菌。角落里长出一团青霉，它周围一圈，细菌越来越少，最后一片干净：霉菌往外放出了一种能挡住细菌的东西。
+45–55 秒 · 结论：青霉素拆掉细菌的「墙」，对病毒无效，必须遵医嘱使用。发现它只要一只脏培养皿，用上它却要化学、工程和几千人的努力。
+55–60 秒 · 结尾：完整实验和实测数据，看横屏长视频。</pre></details></div>
+<div class="card"><div class="k">特辑 · 特辑7</div><h3><a href="../season7/">第七季特辑 · 全系列回顾</a></h3><div class="k">视频标题</div><pre id="t-s7">【从零造物 特辑7】七十个选题，哪一个最值得带回北宋？</pre><button class="copy" data-t="t-s7">复制</button><div class="k">封面文字（两行）</div><pre id="c-s7">第七季特辑 · 全系列回顾
+七十个选题，哪一个最值得带回北宋</pre><div class="k">简介</div><pre id="b-s7">七十个选题，哪一个最值得带回北宋？
+
+回顾第七季 10 集「补全科技树」，再把七季、八卷、七十个选题放进一棵完整的科技树。先给第七季每集打「古代可行度」分，再把前六季特辑的第一名和第七季第一名放在一起，选出全系列最值得带回北宋的一项。
+
+安全提示：特辑不新做实验；回顾画面里的安全提示字幕全部保留（尤其蒸汽、焦炭、玻璃、青霉素）。
+
+#从零造物 #特辑 #科普 #第七季特辑·全系列回顾</pre><button class="copy" data-t="b-s7">复制</button><details><summary>竖屏切片脚本（约 60 秒）</summary><pre>特辑不做竖屏切片；从本季各集切片里选播放最好的 3 条做合集。</pre></details></div>
+</div></section>
+</div>
+<script>
+(function(){
+  var KEY=location.pathname+'#chk';var st={};
+  try{st=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){st={}}
+  document.querySelectorAll('input[data-k]').forEach(function(b){
+    b.checked=!!st[b.dataset.k];
+    b.addEventListener('change',function(){st[b.dataset.k]=b.checked;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}});
+  });
+  document.querySelectorAll('button.copy').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var t=document.getElementById(btn.dataset.t).innerText;
+      var done=function(){btn.textContent='已复制';setTimeout(function(){btn.textContent='复制'},1500)};
+      if(navigator.clipboard){navigator.clipboard.writeText(t).then(done,function(){})}
+    });
+  });
+})();
+</script>
+</html>

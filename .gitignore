@@ -1,0 +1,11 @@
+# 实拍原片和成片不进仓库（见 docs/decisions.md 第 47 条）
+raw/
+footage/
+*.mov
+*.MOV
+*.mts
+*.MTS
+*.mkv
+*.wav
+*.aiff
+.DS_Store
