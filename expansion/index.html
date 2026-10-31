@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>第二阶段内容架构</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+
+.chk{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line)}
+.chk input{margin-top:6px;width:18px;height:18px;flex:none;accent-color:var(--copper)}
+.chk .t{min-width:0}.chk .t b{font-weight:500}.chk .t small{display:block;color:var(--muted);font-size:13px}
+.pill{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.06em;border:1px solid var(--line);border-radius:999px;padding:1px 8px;margin:2px 4px 2px 0;color:var(--muted);white-space:nowrap}
+.pill.hot{border-color:var(--warn);color:var(--warn)}.pill.ok{border-color:var(--good);color:var(--good)}
+.card{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:14px 16px;display:grid;gap:8px;min-width:0}
+.card h3{font-size:19px;font-weight:900}
+.card .k{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+.card pre{white-space:pre-wrap;font-family:var(--body);font-size:14px;margin:0;background:var(--paper);border-radius:6px;padding:10px 12px;line-height:1.7}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:12px}
+.copy{justify-self:start;font-size:13px;padding:4px 10px}
+details{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px}
+details summary{cursor:pointer;font-weight:500}
+details[open] summary{margin-bottom:8px}
+.big{font-family:var(--display);font-size:clamp(22px,4vw,30px);font-weight:900}
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../shooting/">拍摄排期</a><a href="../publish/">发布素材</a><a href="../checklist/">待核清单</a><a href="../expansion/">内容架构</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../ep30/">30</a><a href="../b6/">B6</a><a href="../season3/">特辑3</a><a href="../ep32/">32</a><a href="../ep33/">33</a><a href="../b19/">B19</a><a href="../ep37/">37</a><a href="../ep31/">31</a><a href="../ep35/">35</a><a href="../ep36/">36</a><a href="../season4/">特辑4</a><a href="../ep39/">39</a><a href="../b8/">B8</a><a href="../ep40/">40</a><a href="../ep41/">41</a><a href="../b17/">B17</a><a href="../b7/">B7</a><a href="../ep42/">42</a><a href="../ep43/">43</a><a href="../ep44/">44</a><a href="../season5/">特辑5</a><a href="../ep45/">45</a><a href="../b11/">B11</a><a href="../b9/">B9</a><a href="../ep46/">46</a><a href="../ep47/">47</a><a href="../b10/">B10</a><a href="../ep48/">48</a><a href="../ep49/">49</a><a href="../ep50/">50</a><a href="../b18/">B18</a><a href="../season6/">特辑6</a><a href="../ep07/">07</a><a href="../ep08/">08</a><a href="../ep09/">09</a><a href="../ep12/">12</a><a href="../ep13/">13</a><a href="../ep14/">14</a><a href="../ep10/">10</a><a href="../ep19/">19</a><a href="../ep21/">21</a><a href="../ep51/">51</a><a href="../season7/">特辑7</a><a href="../#videos">视频</a></nav>
+<header><div class="eyebrow">从零造物 · 七季之后 · 内容架构</div><h1>第二阶段内容架构</h1><p class="thesis">七季之后，科技树往上长（第二层）、往旁边长（B 线 2.0）、换个时代再长一次（特别篇）。这里是三个方向的候选选题库和排期规则，等试播数据出来再定先做哪一条。</p>
+<div class="facts"><div><span>主线候选</span>18 个 · 5 条链</div><div><span>B 线候选</span>16 + 世界篇 6</div><div><span>特别篇</span>3 个时代 × 约 6 集</div><div><span>决策时点</span>试播 3 集后一周</div></div></header>
+<section><h2>一页看懂</h2>
+<p class="lead">七季点亮了科技树的 70 个节点。往后不是再从头列一张清单，而是让这棵树<b>往上长、往旁边长、换个地方再长一次</b>：</p>
+<div class="grid2">
+<div class="card"><div class="k">主线 · 往上长</div><h3>科技树第二层</h3><p>每集组合两三个已点亮的节点，回答「然后呢」。共 5 条链、18 个候选。</p></div>
+<div class="card"><div class="k">副线 · 往旁边长</div><h3>B 线 2.0：古法解密</h3><p>桌面模型为主，成本最低、最适合短视频。国内 16 个 + 世界篇 6 个候选。</p></div>
+<div class="card"><div class="k">特别篇 · 换地方再长</div><h3>换时代起点</h3><p>汉代、1800 年、石器时代三个版本，每版约 6 集，一年做一季当活动。</p></div>
+<div class="card"><div class="k">什么时候开拍</div><h3>等试播数据</h3><p>04、B1、01 试播一周后：A 线反响好先长第二层，B 线反响好先做 B 线 2.0。</p></div>
+</div></section>
+<section><h2>主线：科技树第二层（18 个候选）</h2><p class="lead">规则只有一条：<b>每集至少用到两个已点亮的节点</b>。这样每一集都在给老视频「导流」，观众也能感到知识在累积。按链排季，同一条链的集连着播。</p><h3>光学链：玻璃 → 透镜 → 显微镜 / 望远镜 → 照相</h3><p class="lead">把「看得更清楚」一路做到「看见细菌」，回扣洗手和青霉素。</p><div class="tw"><table><thead><tr><th>选题</th><th>依赖已点亮的节点</th><th>钩子</th><th>核心原理</th><th>在家可拍</th><th>安全</th><th>道具 / 拍法</th></tr></thead><tbody><tr><td><b>透镜</b></td><td>E21 玻璃 · B10 透光镜</td><td>一滴水为什么能当放大镜？</td><td>光在曲面上折射、汇聚到焦点</td><td><span class="pill ok">高</span></td><td><span class="pill ok">安全</span></td><td>水滴、玻璃珠、放大镜</td></tr><tr><td><b>显微镜</b></td><td>透镜 · E32 洗手 · E51 青霉素</td><td>一颗玻璃珠怎么看见细菌？</td><td>短焦距单透镜放大；列文虎克 17 世纪 70 年代</td><td><span class="pill ok">高</span></td><td><span class="pill ok">安全</span></td><td>现成玻璃珠、纸板、手机微距</td></tr><tr><td><b>望远镜</b></td><td>透镜</td><td>1609 年伽利略看见了什么？</td><td>物镜成像、目镜放大；倍数 = 两个焦距之比</td><td><span class="pill ok">高</span></td><td><span class="pill ok">安全</span></td><td>两片放大镜、纸筒（绝不对着太阳）</td></tr><tr><td><b>照相</b></td><td>透镜 · E47 影子 · 小孔成像</td><td>光怎么把一幅画「留」在纸上？</td><td>暗箱成像 + 感光化学（蓝晒法，1842 年）</td><td><span class="pill ">中</span></td><td><span class="pill ">需注意</span></td><td>纸盒暗箱、蓝晒纸（戴手套）</td></tr></tbody></table></div><h3>电的第二层：电磁铁 → 电报 / 电动机 → 电灯 · 电镀 · 蓄电池</h3><p class="lead">第一卷造出了电，这一层回答「电能用来干什么」。</p><div class="tw"><table><thead><tr><th>选题</th><th>依赖已点亮的节点</th><th>钩子</th><th>核心原理</th><th>在家可拍</th><th>安全</th><th>道具 / 拍法</th></tr></thead><tbody><tr><td><b>电磁铁</b></td><td>E03 电生磁</td><td>通电的铁钉能吸起多少回形针？</td><td>磁力随匝数和电流增大；断电就放下</td><td><span class="pill ok">高</span></td><td><span class="pill ok">安全</span></td><td>铁钉、漆包线、电池</td></tr><tr><td><b>电报</b></td><td>电磁铁 · E50 光学电报</td><td>一根导线怎么把一句话传过山？</td><td>开关 + 电磁铁 + 编码；1844 年摩尔斯的线路</td><td><span class="pill ok">高</span></td><td><span class="pill ok">安全</span></td><td>电磁铁、开关、长导线</td></tr><tr><td><b>电动机</b></td><td>E05 手摇发电机 · 电磁铁</td><td>发电机倒过来用会怎样？</td><td>通电导线在磁场中受力；1821 年法拉第</td><td><span class="pill ok">高</span></td><td><span class="pill ">需注意</span></td><td>电池、强磁铁、铜线（短路会发烫）</td></tr><tr><td><b>电灯</b></td><td>E05 · E06 水车发电</td><td>灯丝为什么要关在真空里？</td><td>电流发热发光；空气里的氧会把灯丝烧断</td><td><span class="pill ">中</span></td><td><span class="pill ">需注意</span></td><td>动画为主；实拍只用成品灯泡拆解图</td></tr><tr><td><b>电镀</b></td><td>E02 伏打电堆 · E17 炼铜</td><td>一把铁钥匙怎么镀上一层铜？</td><td>电解：铜离子在负极得到电子变回铜</td><td><span class="pill ok">高</span></td><td><span class="pill ">需注意</span></td><td>硫酸铜溶液、电池、手套护目镜</td></tr><tr><td><b>蓄电池</b></td><td>E02 · E09 重力发电</td><td>电能不能存起来，晚上再用？</td><td>可逆的化学反应；1859 年普兰特的铅酸电池</td><td><span class="pill hot">低</span></td><td><span class="pill ">需注意</span></td><td>铅有毒：只用动画和成品电池讲解</td></tr></tbody></table></div><h3>材料第二层：炼铁 + 焦炭 → 钢；石灰 + 窑温 → 水泥</h3><p class="lead">把「造出材料」推进到「控制材料的性能」。</p><div class="tw"><table><thead><tr><th>选题</th><th>依赖已点亮的节点</th><th>钩子</th><th>核心原理</th><th>在家可拍</th><th>安全</th><th>道具 / 拍法</th></tr></thead><tbody><tr><td><b>钢</b></td><td>E18 炼铁 · E19 煤与焦炭</td><td>铁为什么要「炒」、要「淬火」？</td><td>含碳量决定软硬；淬火让晶体来不及转变</td><td><span class="pill ">中</span></td><td><span class="pill hot">工坊或动画</span></td><td>铁匠铺拍；家里只用缝衣针淬火</td></tr><tr><td><b>水泥与混凝土</b></td><td>E24 石灰与灰浆 · E21 窑温</td><td>罗马混凝土为什么两千年不坏？</td><td>水化反应生成结晶；骨料撑骨架，钢筋扛拉力</td><td><span class="pill ok">高</span></td><td><span class="pill ">需注意</span></td><td>水泥、沙、石子（碱性，戴手套）</td></tr></tbody></table></div><h3>机械第二层：杠杆 + 齿轮 + 轴承 → 螺丝 · 自行车 · 印刷机</h3><p class="lead">把单个机构组合成完整机器。</p><div class="tw"><table><thead><tr><th>选题</th><th>依赖已点亮的节点</th><th>钩子</th><th>核心原理</th><th>在家可拍</th><th>安全</th><th>道具 / 拍法</th></tr></thead><tbody><tr><td><b>螺丝与标准件</b></td><td>E39 杠杆 · E41 齿轮与轴承</td><td>为什么任何一颗螺丝都能拧进同号螺母？</td><td>螺纹是绕在圆柱上的斜面；1841 年惠特沃斯统一标准</td><td><span class="pill ok">高</span></td><td><span class="pill ok">安全</span></td><td>螺丝、纸三角形、各种螺母</td></tr><tr><td><b>自行车</b></td><td>E40 曲柄 · E41 齿轮与轴承</td><td>两个轮子为什么骑起来不倒？</td><td>链传动 + 转向把重心拉回车轮下方</td><td><span class="pill ok">高</span></td><td><span class="pill ok">安全</span></td><td>自行车、粉笔画轨迹</td></tr><tr><td><b>印刷机</b></td><td>B3 活字印刷 · E39 · 螺旋</td><td>古腾堡改了什么，让书变便宜？</td><td>螺旋压力机 + 金属活字 + 油性墨</td><td><span class="pill ok">高</span></td><td><span class="pill ok">安全</span></td><td>橡皮章、夹子当压力机</td></tr></tbody></table></div><h3>生活与信息第二层：轮作 + 草木灰 → 化肥；蒸发冷却 → 制冷；数字 → 对数</h3><p class="lead">回到吃、住、算这些日常问题。</p><div class="tw"><table><thead><tr><th>选题</th><th>依赖已点亮的节点</th><th>钩子</th><th>核心原理</th><th>在家可拍</th><th>安全</th><th>道具 / 拍法</th></tr></thead><tbody><tr><td><b>化肥</b></td><td>E29 轮作固氮 · E22 肥皂（草木灰）</td><td>一把草木灰为什么能让庄稼长得好？</td><td>氮磷钾；最缺的那一样决定产量（李比希）</td><td><span class="pill ok">高</span></td><td><span class="pill ok">安全</span></td><td>盆栽对照，约 4 周（长周期）</td></tr><tr><td><b>制冷</b></td><td>E38 蒸发冷却罐 · E46 温度计 · B12 冰鉴</td><td>夏天怎么凭空造出冰？</td><td>冰盐混合降温；压缩—蒸发循环把热「搬」出去</td><td><span class="pill ">中</span></td><td><span class="pill ok">安全</span></td><td>冰、盐、温度计；冰箱原理用动画</td></tr><tr><td><b>对数与计算尺</b></td><td>E48 数字与 0</td><td>怎样把乘法变成加法？</td><td>对数把乘除变成加减；1614 年纳皮尔</td><td><span class="pill ok">高</span></td><td><span class="pill ok">安全</span></td><td>两把尺子、纸条刻度</td></tr></tbody></table></div></section>
+<section><h2>副线：B 线 2.0 · 古法解密（16 + 6 个候选）</h2><p class="lead">沿用 B 线的结构：先看古人做到了什么，再用现代原理拆开，最后动手复现。<b>每集都标出它接的是哪个已有节点</b>，方便和主线互相引流。标「待核」的说法拍前要查证。</p><div class="tw"><table><thead><tr><th>选题</th><th>钩子</th><th>原理</th><th>接哪个节点</th><th>在家可拍</th><th>安全</th><th>史实与出处</th></tr></thead><tbody><tr><td><b>公道杯</b></td><td>倒满了反而一滴不剩？</td><td>杯中藏着虹吸管</td><td>E26 虹吸</td><td><span class="pill ok">高</span></td><td><span class="pill ok">安全</span></td><td>可买现成公道杯，再用吸管做剖面模型</td></tr><tr><td><b>欹器</b></td><td>空着歪、半满正、装满翻</td><td>重心随水位移动</td><td>E39 杠杆</td><td><span class="pill ok">高</span></td><td><span class="pill ok">安全</span></td><td>《荀子·宥坐》记孔子观欹器</td></tr><tr><td><b>长信宫灯</b></td><td>两千年前的灯为什么不熏屋子？</td><td>烟顺着宫女右臂的袖管进入中空的灯身</td><td>E36 煤气中毒与通风</td><td><span class="pill ok">高</span></td><td><span class="pill ok">安全</span></td><td>1968 年河北满城汉墓（窦绾墓）出土，西汉<br><small>来源：中新网</small></td></tr><tr><td><b>走马灯</b></td><td>灯一点亮，纸马就跑起来？</td><td>热气上升推动叶轮：最早的「燃气涡轮」</td><td>E44 热气球</td><td><span class="pill ok">高</span></td><td><span class="pill ">需注意</span></td><td>宋代已有记载（具体出处待核）</td></tr><tr><td><b>灵渠陡门</b></td><td>船怎么翻过一道坡？</td><td>分段蓄水抬高水位：船闸的雏形</td><td>B5 都江堰</td><td><span class="pill ">中</span></td><td><span class="pill ok">安全</span></td><td>灵渠秦代开凿（前 219–前 214 年）；唐宝历元年（825 年）李渤修陡门<br><small>来源：中国社会科学网</small></td></tr><tr><td><b>坎儿井</b></td><td>沙漠里的水为什么要走地下？</td><td>暗渠减少蒸发，靠坡度自流</td><td>E38 蒸发冷却罐</td><td><span class="pill ">中</span></td><td><span class="pill ok">安全</span></td><td>起源说法不一（本地创造或由西亚传入），待核</td></tr><tr><td><b>记里鼓车</b></td><td>车子自己怎么知道走了几里？</td><td>齿轮减速计数，每满一里击鼓</td><td>E41 齿轮与轴承 · B17 指南车</td><td><span class="pill ok">高</span></td><td><span class="pill ok">安全</span></td><td>史书多次记载，具体年代待核</td></tr><tr><td><b>水密隔舱</b></td><td>船破了一格为什么不沉？</td><td>隔板把船身分成互不相通的舱</td><td>E43 逆风航行</td><td><span class="pill ok">高</span></td><td><span class="pill ok">安全</span></td><td>1974 年发掘的泉州湾宋代海船有 12 道隔板、13 个舱<br><small>来源：维基百科「Quanzhou ship」</small></td></tr><tr><td><b>失蜡法</b></td><td>那么细的镂空铜器怎么铸出来？</td><td>先做蜡模、包泥、熔掉蜡再浇铜</td><td>E17 炼铜</td><td><span class="pill ">中</span></td><td><span class="pill hot">工坊或动画</span></td><td>曾侯乙尊盘是否用失蜡法，学界有争议（待核）</td></tr><tr><td><b>交子防伪</b></td><td>世界最早的纸币怎么防假？</td><td>专用纸、套色印刷、暗记与密押</td><td>B3 活字印刷 · E49 复式记账</td><td><span class="pill ok">高</span></td><td><span class="pill ok">安全</span></td><td>1023 年设益州交子务，次年发行官交子；防伪细节待核<br><small>来源：澎湃新闻</small></td></tr><tr><td><b>唧筒</b></td><td>宋代的消防队用什么喷水？</td><td>活塞抽水再压出：最简单的活塞泵</td><td>E26 虹吸 · E25 螺旋提水</td><td><span class="pill ok">高</span></td><td><span class="pill ok">安全</span></td><td>宋代兵书与城市消防记载（出处待核）</td></tr><tr><td><b>双动活塞风箱</b></td><td>为什么推和拉都在吹风？</td><td>两个单向阀让活塞来回都送风</td><td>B4 水排 · E18 炼铁</td><td><span class="pill ok">高</span></td><td><span class="pill ok">安全</span></td><td>《天工开物》有图；更早的年代待核</td></tr><tr><td><b>冰裂纹</b></td><td>瓷器表面的裂纹为什么是故意的？</td><td>釉和胎热胀冷缩不同，冷却时釉被拉裂</td><td>B16 瓷器 · E46 温度计</td><td><span class="pill ">中</span></td><td><span class="pill ok">安全</span></td><td>宋代哥窑等以开片著称</td></tr><tr><td><b>松烟墨</b></td><td>一块墨为什么千年不褪色？</td><td>碳黑化学性质稳定；胶把它粘住</td><td>E15 生火 · E16 木炭</td><td><span class="pill ok">高</span></td><td><span class="pill ">需注意</span></td><td>收集蜡烛烟灰（成年人操作）</td></tr><tr><td><b>素纱襌衣</b></td><td>一件衣服怎么只有 49 克？</td><td>极细的蚕丝、稀疏的纱织结构</td><td>E23 纸（纤维）</td><td><span class="pill ">中</span></td><td><span class="pill ok">安全</span></td><td>长沙马王堆汉墓出土，49 克<br><small>来源：光明网</small></td></tr><tr><td><b>水运仪象台的擒纵</b></td><td>一千年前的钟怎么「一格一格」走？</td><td>水斗满了才翻，带动齿轮跳一格</td><td>E45 摆钟 · E41</td><td><span class="pill ">中</span></td><td><span class="pill ok">安全</span></td><td>北宋苏颂、韩公廉，1088–1092 年<br><small>来源：已在 E41 查证</small></td></tr></tbody></table></div><h3>世界篇（可选）</h3><p class="lead">同样的拆解方法用到其他文明，适合做一季短特辑，或者穿插在 B 线中间。</p><div class="tw"><table><thead><tr><th>选题</th><th>钩子</th><th>接哪个节点</th></tr></thead><tbody><tr><td><b>罗马混凝土</b></td><td>海水泡了两千年反而更结实？</td><td>E24 石灰 · 主线「水泥」</td></tr><tr><td><b>阿拉伯星盘</b></td><td>一块铜盘怎么算出时间和方位？</td><td>E47 影子测地球</td></tr><tr><td><b>安提基特拉机械</b></td><td>两千年前的「齿轮计算机」</td><td>E41 齿轮与轴承</td></tr><tr><td><b>大马士革钢</b></td><td>刀身上的水波纹是怎么来的？</td><td>主线「钢」</td></tr><tr><td><b>古埃及搬巨石</b></td><td>湿沙为什么能让石头更好拖？</td><td>E39 杠杆 · 摩擦</td></tr><tr><td><b>维京太阳石</b></td><td>阴天怎么找太阳？（是否真用过仍有争议）</td><td>B10 透光镜 · 偏振</td></tr></tbody></table></div></section>
+<section><h2>特别篇：换时代起点</h2><p class="lead">穿越者还是同一个人，只是落在了不同的年代。<b>重用已有节点、换掉约束</b>：同一个实验在不同时代「能不能做」本身就是看点。为了不冲淡北宋的人设，一年只做一季，当作活动来推。</p><div class="grid2"><div class="card"><div class="k">约公元 100 年 · 东汉</div><h3>汉代版</h3><p>纸刚由蔡伦改进，铁器普及，水排已经出现。</p><p class="lead">更容易：铁、水力；更难：煤用得还少，瓷器还没成熟。</p><ol class="steps"><li>摩擦起电（换成汉代材料重做）</li><li>指南：从司南到指南鱼</li><li>纸：蔡伦之前和之后</li><li>水排与鼓风</li><li>玻璃：铅钡琉璃</li><li>特辑：同一棵树，在汉代长成什么样</li></ol></div><div class="card"><div class="k">约公元 1800 年 · 清嘉庆</div><h3>1800 年版</h3><p>伏打电堆刚刚发明，世界即将进入电的时代。</p><p class="lead">更容易：铜锌、玻璃、精密机械；看点是「抢在历史前面」：电报、电动机、电镀比真实历史早几十年。</p><ol class="steps"><li>伏打电堆：这次真的有锌</li><li>电磁铁与电报（抢先 40 年）</li><li>电动机</li><li>电镀</li><li>照相：抢先 40 年</li><li>特辑：哪些发明其实只差一步</li></ol></div><div class="card"><div class="k">约一万年前</div><h3>石器时代版</h3><p>真正的「从零」：没有金属，没有文字。</p><p class="lead">最难也最有看点：每一步都要从石头、木头、绳子、火开始。</p><ol class="steps"><li>生火：钻木与燧石</li><li>绳子与绳结</li><li>石器：敲出一把刀</li><li>陶器：第一次「改变物质」</li><li>杠杆与滚木</li><li>保存食物：晒、烟熏、盐（不食用实验品）</li></ol></div></div></section>
+<section><h2>怎么排、什么时候定</h2>
+<div class="tw"><table><thead><tr><th>阶段</th><th>做什么</th><th>决定依据</th></tr></thead><tbody>
+<tr><td>现在</td><td>只做规划，不做拍摄包；先拍第一季试播 3 集</td><td>—</td></tr>
+<tr><td>试播后一周</td><td>比较 04（A 线）和 B1（B 线）的完播率、点赞率、评论里的问题</td><td>哪条线留人，就先扩哪条</td></tr>
+<tr><td>第一到七季拍摄期间</td><td>主线第二层和 B 线 2.0 各挑 3–5 个，做成拍摄包「预备役」</td><td>评论里问得最多的方向优先</td></tr>
+<tr><td>七季播完</td><td>主线一季、B 线一季交替播；每年一季「换时代」特别篇</td><td>每季特辑的打分与观众投票</td></tr>
+</tbody></table></div>
+<h3>选题的五个筛子</h3>
+<ul class="verify"><li><b>组合</b>：至少接上一个已点亮的节点（主线要两个）。</li><li><b>能拍</b>：核心实验在家能做；做不了的只用动画或去工坊，并在拍摄本里写明。</li><li><b>安全</b>：火药、武器、毒物只讲原理不讲做法，或者不选；健康题不给剂量和配方。</li><li><b>有反直觉</b>：能写出至少两级「误解台阶」。</li><li><b>可查证</b>：关键年代和数字能找到公开来源；找不到就标「待核」，不进成片。</li></ul>
+</section>
+</div>
+<script>
+(function(){
+  var KEY=location.pathname+'#chk';var st={};
+  try{st=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){st={}}
+  document.querySelectorAll('input[data-k]').forEach(function(b){
+    b.checked=!!st[b.dataset.k];
+    b.addEventListener('change',function(){st[b.dataset.k]=b.checked;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}});
+  });
+  document.querySelectorAll('button.copy').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var t=document.getElementById(btn.dataset.t).innerText;
+      var done=function(){btn.textContent='已复制';setTimeout(function(){btn.textContent='复制'},1500)};
+      if(navigator.clipboard){navigator.clipboard.writeText(t).then(done,function(){})}
+    });
+  });
+})();
+</script>
+</html>
