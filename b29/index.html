@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>交子防伪拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../shooting/">拍摄排期</a><a href="../publish/">发布素材</a><a href="../checklist/">待核清单</a><a href="../expansion/">内容架构</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../ep30/">30</a><a href="../b6/">B6</a><a href="../season3/">特辑3</a><a href="../ep32/">32</a><a href="../ep33/">33</a><a href="../b19/">B19</a><a href="../ep37/">37</a><a href="../ep31/">31</a><a href="../ep35/">35</a><a href="../ep36/">36</a><a href="../season4/">特辑4</a><a href="../ep39/">39</a><a href="../b8/">B8</a><a href="../ep40/">40</a><a href="../ep41/">41</a><a href="../b17/">B17</a><a href="../b7/">B7</a><a href="../ep42/">42</a><a href="../ep43/">43</a><a href="../ep44/">44</a><a href="../season5/">特辑5</a><a href="../ep45/">45</a><a href="../b11/">B11</a><a href="../b9/">B9</a><a href="../ep46/">46</a><a href="../ep47/">47</a><a href="../b10/">B10</a><a href="../ep48/">48</a><a href="../ep49/">49</a><a href="../ep50/">50</a><a href="../b18/">B18</a><a href="../season6/">特辑6</a><a href="../ep07/">07</a><a href="../ep08/">08</a><a href="../ep09/">09</a><a href="../ep12/">12</a><a href="../ep13/">13</a><a href="../ep14/">14</a><a href="../ep10/">10</a><a href="../ep19/">19</a><a href="../ep21/">21</a><a href="../ep51/">51</a><a href="../season7/">特辑7</a><a href="../ep52/">52</a><a href="../ep53/">53</a><a href="../ep54/">54</a><a href="../ep55/">55</a><a href="../ep56/">56</a><a href="../ep57/">57</a><a href="../ep58/">58</a><a href="../ep59/">59</a><a href="../ep60/">60</a><a href="../ep61/">61</a><a href="../season8/">特辑8</a><a href="../b20/">B20</a><a href="../b21/">B21</a><a href="../b22/">B22</a><a href="../b23/">B23</a><a href="../b24/">B24</a><a href="../b25/">B25</a><a href="../b26/">B26</a><a href="../b27/">B27</a><a href="../b28/">B28</a><a href="../b29/">B29</a><a href="../season9/">特辑9</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 古法解密 2.0 · B29</div>
+<h1>交子防伪</h1>
+<p class="thesis">交子是世界上最早的纸币之一。一张纸要当钱用，难点是防伪：用两块版黑红套印（朱墨间错），仿造者要同时仿准两块版；加上只有发行者知道的暗记（隐密题号），每多一种暗记，猜中的机会就再乘一个小数；发行时留存根、按号登记，重号或对不上的就是假券。本集只用自己设计的示意券，不仿制任何真实货币。</p>
+<div class="facts">
+<div><span>暂定标题</span>世界上最早的纸币怎么防假？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>北宋 · 1023 年设益州交子务</div>
+<div><span>衔接</span>← B28 双动活塞风箱；接 B2 活字印刷；→ 第九季特辑</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">私交子</p><p class="p">北宋初年，成都商户联合发行交子，记载为「表里印记，隐密题号，朱墨间错，私自参验」（原文与出处拍摄前核对）。</p></div>
+<div class="ol"><p class="o">官交子</p><p class="p">天圣元年（1023 年）设益州交子务，次年开始发行官交子（公历换算拍摄前核对）。</p></div>
+<div class="ol"><p class="o">今天</p><p class="p">现代纸币用多色套印、凹版细线、水印、安全线和冠字号码，思路一脉相承。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>纸币就是印了字的纸</s> → 要靠难仿的印刷和暗记</span></li>
+<li><span class="k">2</span><span><s>防伪是现代才有的</s> → 北宋交子就用了套色和暗记</span></li>
+<li><span class="k">3</span><span><s>图案越复杂越安全</s> → 还要有看不见的暗记和存根</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>仿券放大能看出破绽</p></div>
+<div class="layer"><span>规律层</span><p>套色对位；独立暗记的概率相乘</p></div>
+<div class="layer"><span>本质层</span><p>信用货币：发行、存根、兑换</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>要让纸当钱 → 印版难仿 → 两色套印 → 加只有发行者知道的暗记 → 留存根按号核对。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">只用自己设计的示意券，券面写明「示意券 · 非真实票据」；不复印、不扫描、不仿制任何真实纸币或票据。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>橡皮章黑红两版套印</td><td>套色</td></tr>
+<tr><td>B</td><td>朋友 5 分钟仿印</td><td>放大镜认假</td></tr>
+<tr><td>C</td><td>加一个暗记再仿</td><td>暗记</td></tr>
+<tr><td>D</td><td>编号 + 存根查重号</td><td>存根</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>A：两块橡皮章，一块刻细线边框和房屋花纹（黑版），一块刻印记和三道红条（红版），四角各刻对位十字；先盖黑再盖红。</li>
+<li>B：请 3 位朋友各看 1 分钟原版，再用 5 分钟仿印一张；用放大镜检查对位十字和细线，记录认出几张。</li>
+<li>C：在原版上加一个暗记（某根细线断开一小段），不告诉朋友，再让他们仿；记录多少张漏掉暗记。</li>
+<li>D：给原版券编号，在本子上登记；混进一张重号券，翻存根查出来。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>结果</th><th>备注</th><th>备注</th></tr></thead><tbody>
+<tr><td>B 仿券被认出（张 / 3）</td><td><input type="text" inputmode="decimal" data-k="b29-0-0" aria-label="B 仿券被认出（张 / 3） 结果"></td><td><input type="text" inputmode="decimal" data-k="b29-0-1" aria-label="B 仿券被认出（张 / 3） 备注"></td><td><input type="text" data-k="b29-0-n" aria-label="B 仿券被认出（张 / 3） 备注"></td></tr>
+<tr><td>C 漏掉暗记（张 / 3）</td><td><input type="text" inputmode="decimal" data-k="b29-1-0" aria-label="C 漏掉暗记（张 / 3） 结果"></td><td><input type="text" inputmode="decimal" data-k="b29-1-1" aria-label="C 漏掉暗记（张 / 3） 备注"></td><td><input type="text" data-k="b29-1-n" aria-label="C 漏掉暗记（张 / 3） 备注"></td></tr>
+<tr><td>D 是否查出重号</td><td><input type="text" inputmode="decimal" data-k="b29-2-0" aria-label="D 是否查出重号 结果"></td><td><input type="text" inputmode="decimal" data-k="b29-2-1" aria-label="D 是否查出重号 备注"></td><td><input type="text" data-k="b29-2-n" aria-label="D 是否查出重号 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>「表里印记，隐密题号，朱墨间错」的出处拍摄前核对</li>
+<li>交子务设立的年月与公历换算拍摄前核对</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>只做自己设计的示意券，券面写明「非真实票据」；不复印、扫描或仿制任何真实货币、票据。</li>
+<li>刻橡皮章用刻刀，由成年人操作或使用安全刻刀。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>橡皮章两块、刻刀</td><td>黑版与红版</td></tr>
+<tr><td>黑、红印台、白纸</td><td>套印</td></tr>
+<tr><td>放大镜</td><td>认假</td></tr>
+<tr><td>本子</td><td>存根</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://en.wikipedia.org/wiki/Jiaozi_(currency)">Wikipedia：Jiaozi (currency)</a> <span>交子与益州交子务</span></li>
+<li><a href="https://www.chinanews.com.cn/gn/2024/12-13/10336021.shtml">中国新闻网：交子发行 1000 年</a> <span>「表里印记，隐密题号，朱墨间错」与 1024 年发行</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Banknote">Wikipedia：Banknote（Security features）</a> <span>现代纸币防伪</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "两张自己设计的「示意券」（明显标注非真实票据）并排：一张原版，一张朋友 5 分钟内仿的；放大镜慢慢移过去", "一张是原版，一张是仿的。放大镜下，差别在哪里？"], [2, "0:08", "done", "问题卡：世界上最早的纸币怎么防假？", ""], [3, "0:14", "done", "片头：古法解密 2.0 科技树，B29 闪烁", "古法解密。北宋，益州交子务。"], [4, "0:21", "done", "资料卡：商户交子、益州交子务、今天的纸币", "北宋初年，成都的商户联合发行交子：表里印记，隐密题号，朱墨间错。天圣元年设益州交子务，次年发行官交子。今天的纸币，仍然用套印、编号和隐藏的记号。"], [5, "0:45", "real", "实验 1：两块橡皮章分别刻黑版（细线花纹）和红版（印记），在纸上先后套印，四角各刻一个对位十字", "黑版一块，红版一块，四个角上有对位十字。"], [6, "1:10", "done", "动画：两块版套印，仿券放大错开", "交子用两块版套印：先印黑，再印红。仿的人要同时刻准两块版，还要印得严丝合缝；差一毫米，放大就看出来。"], [7, "1:32", "res", "实验 2：请 3 位朋友各用 5 分钟仿印一张，放大镜检查对位十字和细线，记录多少张被认出", "三张仿券，被认出了……张。"], [8, "1:57", "done", "问题卡：看不见的暗记有多难猜？", ""], [9, "2:03", "res", "实验 3：在券上加一个暗记（某根细线断开一小段，或在固定位置留一个小点），不告诉朋友，再让他们仿", "加了暗记以后，仿券里有……张漏掉了它。"], [10, "2:33", "done", "动画：三种暗记 = 1/1000，存根查重号", "每多一种暗记，猜对的机会就再乘一个小数；发行时留存根、按号登记，同一个号来两次就是假的。"], [11, "2:55", "real", "实验 4：给原版券编号并记在本子上（存根）；混进一张重号券，翻存根查出来", "翻开存根，第……号已经兑过了。"], [12, "3:22", "done", "结论卡：难仿的印、猜不中的暗记、对得上的存根", "难仿的印、猜不中的暗记、对得上的存根。纸币靠的是信用，防伪守住的就是信用。"], [13, "3:29", "done", "片尾：点亮 B29，预告第九季特辑", "下集：第九季特辑，古法解密 2.0。"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>
