@@ -168,7 +168,8 @@ def build_shooting():
                 + str(len(common)) + ' 项）。勾选表示已备好。</p>'
                 + ''.join(f'<label class="chk"><input type="checkbox" data-k="buy-{e(k)}"><span class="t"><b>{e(k)}</b> <span class="pill">{len(v)} 集</span><small>{" ".join(label(c) for c in v)}</small></span></label>' for k, v in common) + '</section>')
     special = [('骑行台 + 自行车发电套件 + USB 功率计', 'E08'), ('压电点火器配件（五金店）、压电蜂鸣片', 'E13'), ('带 K 型热电偶的万用表', 'E12'), ('毫伏表或 200 mV 档万用表', 'E12'), ('台式三档电风扇（带防护罩）、小直流电机', 'E07'),
-               ('减速齿轮箱、滑轮、厚泡沫垫', 'E09'), ('煤、焦炭、木炭各一小袋', 'E19'), ('硅胶垫、厨房温度计（测到 200 ℃）', 'E21'), ('纯银勺或银饰', 'B19'), ('第 01 集自制莱顿瓶（塑料杯 + 铝箔）', 'E14')]
+               ('减速齿轮箱、滑轮、厚泡沫垫', 'E09'), ('煤、焦炭、木炭各一小袋', 'E19'), ('硅胶垫、厨房温度计（测到 200 ℃）', 'E21'), ('纯银勺或银饰', 'B19'), ('第 01 集自制莱顿瓶（塑料杯 + 铝箔）', 'E14'),
+               ('1 毫米显微镜玻璃珠', 'E53'), ('老花镜片（+2 度，单片）', 'E54'), ('蓝晒纸（太阳晒图纸）', 'E55'), ('圆形钕磁铁', 'E58'), ('硫酸铜、护目镜、0.01 克精度的秤', 'E59'), ('插座功率计、红外测温枪', 'E60')]
     secs.append('<section><h2>采购清单 · 单集专用</h2><p class="lead">只有一两集用到、或者较贵的东西，到那一季再买。</p>'
                 + ''.join(f'<label class="chk"><input type="checkbox" data-k="sp-{e(k)}"><span class="t"><b>{e(k)}</b><small>{eplink(c)}</small></span></label>' for k, c in special) + '</section>')
     det = ''.join(f'<details><summary>{e(label(c))} {e(title(c))}</summary><div>{"；".join(e(x) for x in per[c])}</div><p><a href="../{folder(c)}/">打开拍摄本 →</a></p></details>'

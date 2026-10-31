@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>电动机拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../shooting/">拍摄排期</a><a href="../publish/">发布素材</a><a href="../checklist/">待核清单</a><a href="../expansion/">内容架构</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../ep30/">30</a><a href="../b6/">B6</a><a href="../season3/">特辑3</a><a href="../ep32/">32</a><a href="../ep33/">33</a><a href="../b19/">B19</a><a href="../ep37/">37</a><a href="../ep31/">31</a><a href="../ep35/">35</a><a href="../ep36/">36</a><a href="../season4/">特辑4</a><a href="../ep39/">39</a><a href="../b8/">B8</a><a href="../ep40/">40</a><a href="../ep41/">41</a><a href="../b17/">B17</a><a href="../b7/">B7</a><a href="../ep42/">42</a><a href="../ep43/">43</a><a href="../ep44/">44</a><a href="../season5/">特辑5</a><a href="../ep45/">45</a><a href="../b11/">B11</a><a href="../b9/">B9</a><a href="../ep46/">46</a><a href="../ep47/">47</a><a href="../b10/">B10</a><a href="../ep48/">48</a><a href="../ep49/">49</a><a href="../ep50/">50</a><a href="../b18/">B18</a><a href="../season6/">特辑6</a><a href="../ep07/">07</a><a href="../ep08/">08</a><a href="../ep09/">09</a><a href="../ep12/">12</a><a href="../ep13/">13</a><a href="../ep14/">14</a><a href="../ep10/">10</a><a href="../ep19/">19</a><a href="../ep21/">21</a><a href="../ep51/">51</a><a href="../season7/">特辑7</a><a href="../ep52/">52</a><a href="../ep53/">53</a><a href="../ep54/">54</a><a href="../ep55/">55</a><a href="../ep56/">56</a><a href="../ep57/">57</a><a href="../ep58/">58</a><a href="../ep59/">59</a><a href="../ep60/">60</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第八季 · 第 58 集</div>
+<h1>电动机</h1>
+<p class="thesis">磁场中的通电导线会受到与磁场和电流都垂直的力；把导线弯成线圈，两边受力方向相反，线圈就转起来，再用换向器让它一直朝同一方向转。同一台机器，给它通电就是电动机，用外力转它就是发电机；转起来的电动机同时在「发电」，顶着电源，这就是反电动势。</p>
+<div class="facts">
+<div><span>暂定标题</span>发电机倒过来用会怎样？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>1821 年法拉第 · 1834 年雅可比 · 1873 年维也纳</div>
+<div><span>衔接</span>← 05 手摇发电机、56 电磁铁；→ 59 电镀</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">法拉第</p><p class="p">1821 年法拉第做出「电磁旋转」：通电导线绕着磁铁连续转动，是最早的电动机雏形。</p></div>
+<div class="ol"><p class="o">实用电动机</p><p class="p">1834 年雅可比在圣彼得堡做出实用的旋转电动机，1838 年还用它驱动过一条小船。</p></div>
+<div class="ol"><p class="o">可逆</p><p class="p">1873 年维也纳世界博览会上，人们发现格拉姆发电机接上另一台发电机的电，自己就会转起来，由此明白电动机和发电机是同一种机器（细节拍摄前核对）。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>电动机和发电机是两种机器</s> → 同一台机器，两个方向</span></li>
+<li><span class="k">2</span><span><s>电流越大转得越快</s> → 转得越快，反电动势越大，电流反而越小</span></li>
+<li><span class="k">3</span><span><s>磁铁推着线圈转</s> → 是磁场对电流的作用力</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>电池 + 磁铁 + 铜线就能转</p></div>
+<div class="layer"><span>规律层</span><p>磁场中的电流受力；换向器保持转向</p></div>
+<div class="layer"><span>本质层</span><p>洛伦兹力；反电动势与能量守恒</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>要让电变成转动 → 让电流处在磁场里受力 → 弯成线圈得到力矩 → 用换向器每半圈换一次电流方向 → 加铁芯和多匝增强。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">强磁铁用钕磁铁（圆片），电池用 5 号；单极电动机会短路电池，每次通电不超过 10 秒。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>单极电动机，翻转磁铁</td><td>受力方向</td></tr>
+<tr><td>B</td><td>刮半边漆的线圈电动机</td><td>换向器</td></tr>
+<tr><td>C</td><td>玩具电机正反两用</td><td>可逆</td></tr>
+<tr><td>D</td><td>空转 vs 捏住的电流</td><td>反电动势</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>A：电池负极吸一块圆形钕磁铁，剥去绝缘的铜线弯成心形或方框，顶端搭在正极、下端轻触磁铁侧面；再把磁铁翻面重复。</li>
+<li>B：漆包线在 5 号电池上绕 10 圈脱下，两端留直线作轴；一端刮掉全部漆，另一端只刮上半边；两个回形针弯成支架接电池两极，线圈架上去，下方放磁铁，轻拨一下。</li>
+<li>C：小玩具直流电机接电池看它转；拆下电池，两线接一只 LED，用手指快速搓转轴。</li>
+<li>D：万用表串在电机电路里，读空转电流；再用手指轻轻捏住转轴 2–3 秒读电流，立即松开。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>结果</th><th>备注</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 翻转磁铁后的转向</td><td><input type="text" inputmode="decimal" data-k="e58-0-0" aria-label="A 翻转磁铁后的转向 结果"></td><td><input type="text" inputmode="decimal" data-k="e58-0-1" aria-label="A 翻转磁铁后的转向 备注"></td><td><input type="text" data-k="e58-0-n" aria-label="A 翻转磁铁后的转向 备注"></td></tr>
+<tr><td>B 能否连续转动</td><td><input type="text" inputmode="decimal" data-k="e58-1-0" aria-label="B 能否连续转动 结果"></td><td><input type="text" inputmode="decimal" data-k="e58-1-1" aria-label="B 能否连续转动 备注"></td><td><input type="text" data-k="e58-1-n" aria-label="B 能否连续转动 备注"></td></tr>
+<tr><td>C LED 是否亮</td><td><input type="text" inputmode="decimal" data-k="e58-2-0" aria-label="C LED 是否亮 结果"></td><td><input type="text" inputmode="decimal" data-k="e58-2-1" aria-label="C LED 是否亮 备注"></td><td><input type="text" data-k="e58-2-n" aria-label="C LED 是否亮 备注"></td></tr>
+<tr><td>D 空转电流（毫安）</td><td><input type="text" inputmode="decimal" data-k="e58-3-0" aria-label="D 空转电流（毫安） 结果"></td><td><input type="text" inputmode="decimal" data-k="e58-3-1" aria-label="D 空转电流（毫安） 备注"></td><td><input type="text" data-k="e58-3-n" aria-label="D 空转电流（毫安） 备注"></td></tr>
+<tr><td>D 捏住时电流（毫安）</td><td><input type="text" inputmode="decimal" data-k="e58-4-0" aria-label="D 捏住时电流（毫安） 结果"></td><td><input type="text" inputmode="decimal" data-k="e58-4-1" aria-label="D 捏住时电流（毫安） 备注"></td><td><input type="text" data-k="e58-4-n" aria-label="D 捏住时电流（毫安） 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>1873 年维也纳世博会「发电机反转」的故事细节拍摄前核对</li>
+<li>实验 D 捏住时间要短，电机会发热</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>单极电动机实际上短路了电池，几秒就发烫：每次通电不超过 10 秒，铜线不要用手攥着。</li>
+<li>钕磁铁吸力很强，会夹伤手指；远离手机、银行卡和心脏起搏器。</li>
+<li>不拆家用电器的电机，不接家用电源。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>5 号电池、圆形钕磁铁</td><td>单极电动机</td></tr>
+<tr><td>裸铜线、漆包线、砂纸、回形针</td><td>线圈电动机</td></tr>
+<tr><td>小玩具直流电机、LED</td><td>正反两用</td></tr>
+<tr><td>万用表</td><td>测电流</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://en.wikipedia.org/wiki/Electric_motor">Wikipedia：Electric motor（History）</a> <span>1821 法拉第、1834 雅可比、1873</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Homopolar_motor">Wikipedia：Homopolar motor</a> <span>单极电动机</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Counter-electromotive_force">Wikipedia：Counter-electromotive force</a> <span>反电动势</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "一节电池负极吸着一块圆形强磁铁，一根弯成心形的铜线搭在电池正极上，下端碰着磁铁：铜线转了起来", "一节电池、一块磁铁、一根铜线。它自己转起来了。"], [2, "0:08", "done", "问题卡：发电机倒过来用会怎样？", ""], [3, "0:14", "done", "片头：第八季科技树，第 58 集闪烁", "北宋的水车，是水推着轮子转。第 05 集，我们让转动变成了电。这一集，反过来。"], [4, "0:21", "done", "资料卡：法拉第、雅可比、维也纳世博会", "一八二一年，法拉第让通电导线绕着磁铁转了起来。一八三四年，雅可比做出实用的电动机。一八七三年的维也纳世博会上，人们发现发电机接上电，自己就能转。"], [5, "0:45", "real", "实验 1：单极电动机：调整铜线形状让它转稳；把磁铁翻个面，看转向是否反过来（每次通电不超过 10 秒）", "磁铁一翻面，铜线就倒着转。"], [6, "1:10", "done", "动画：磁场里的通电导线受力；弯成线圈一边上推一边下推", "两块磁铁之间是磁场。导线一通电就被推了出去，方向和磁场、电流都垂直。弯成线圈，一边往上推、一边往下推，线圈就转起来。"], [7, "1:32", "res", "实验 2：漆包线绕 10 圈做转子，两端各刮掉半边漆当换向器，架在两个回形针上，下面放磁铁，轻拨一下", "轻轻一拨，线圈就自己转个不停……（按实测描述）"], [8, "1:57", "done", "问题卡：电动机和发电机，是不是同一台机器？", ""], [9, "2:03", "real", "实验 3：小玩具电机接电池，转；拔掉电池，用手快速拧轴，接上的 LED 一闪一闪", "接电池，它转；用手拧它，灯亮。同一台机器。"], [10, "2:33", "done", "动画：通电转起来 / 用手转出电；反电动势", "给它通电，电变成转动；用手拧它，转动又变回电。电动机和发电机，是同一台机器的两个方向。"], [11, "2:55", "res", "实验 4：万用表测电机空转和用手指轻轻捏住转轴（几秒）时的电流", "空转时……毫安，捏住时……毫安：不转的时候，电流反而大了。"], [12, "3:22", "done", "结论卡：磁场里的电流会受力；同一台机器正反两用", "磁场里的电流会受力，电就变成了转动。同一台机器，正着用是发电机，反着用是电动机。"], [13, "3:29", "done", "片尾：点亮第 58 集，预告第 59 集", "下集：一把铁钥匙，怎么镀上一层铜？"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>

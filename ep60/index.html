@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>电灯拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../shooting/">拍摄排期</a><a href="../publish/">发布素材</a><a href="../checklist/">待核清单</a><a href="../expansion/">内容架构</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../ep30/">30</a><a href="../b6/">B6</a><a href="../season3/">特辑3</a><a href="../ep32/">32</a><a href="../ep33/">33</a><a href="../b19/">B19</a><a href="../ep37/">37</a><a href="../ep31/">31</a><a href="../ep35/">35</a><a href="../ep36/">36</a><a href="../season4/">特辑4</a><a href="../ep39/">39</a><a href="../b8/">B8</a><a href="../ep40/">40</a><a href="../ep41/">41</a><a href="../b17/">B17</a><a href="../b7/">B7</a><a href="../ep42/">42</a><a href="../ep43/">43</a><a href="../ep44/">44</a><a href="../season5/">特辑5</a><a href="../ep45/">45</a><a href="../b11/">B11</a><a href="../b9/">B9</a><a href="../ep46/">46</a><a href="../ep47/">47</a><a href="../b10/">B10</a><a href="../ep48/">48</a><a href="../ep49/">49</a><a href="../ep50/">50</a><a href="../b18/">B18</a><a href="../season6/">特辑6</a><a href="../ep07/">07</a><a href="../ep08/">08</a><a href="../ep09/">09</a><a href="../ep12/">12</a><a href="../ep13/">13</a><a href="../ep14/">14</a><a href="../ep10/">10</a><a href="../ep19/">19</a><a href="../ep21/">21</a><a href="../ep51/">51</a><a href="../season7/">特辑7</a><a href="../ep52/">52</a><a href="../ep53/">53</a><a href="../ep54/">54</a><a href="../ep55/">55</a><a href="../ep56/">56</a><a href="../ep57/">57</a><a href="../ep58/">58</a><a href="../ep59/">59</a><a href="../ep60/">60</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第八季 · 第 60 集</div>
+<h1>电灯</h1>
+<p class="thesis">白炽灯先发热、再发光：电流通过很细的灯丝，电阻使它升温到两千多摄氏度，发出黄白色的光，但只有百分之几的电能变成可见光。炽热的灯丝在空气里会和氧反应、几秒就断，所以要封进真空（或惰性气体）玻璃泡；后来碳丝换成更耐热的钨丝，今天又被更省电的 LED 取代。本集涉及高温的部分只用动画。</p>
+<div class="facts">
+<div><span>暂定标题</span>灯丝为什么要关在真空里？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>19 世纪初戴维 · 1879 年爱迪生与斯旺</div>
+<div><span>衔接</span>← 05 手摇发电机、06 水车发电、21 玻璃；→ 61 蓄电池</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">电弧灯</p><p class="p">19 世纪初英国的戴维用大型电池组产生电弧，发出强光，但太亮、太费电，不适合家用。</p></div>
+<div class="ol"><p class="o">白炽灯</p><p class="p">1879 年前后，美国的爱迪生和英国的斯旺各自做出实用的碳丝真空灯泡；20 世纪初改用熔点更高的钨丝，并在灯泡里充入惰性气体。</p></div>
+<div class="ol"><p class="o">效率</p><p class="p">白炽灯只有约百分之几的电能变成可见光，其余变成热；同样亮度的 LED 灯功率通常只有白炽灯的几分之一到十分之一左右。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>电灯是电直接变成光</s> → 先变成热，热到发白才发光</span></li>
+<li><span class="k">2</span><span><s>灯丝越亮越好</s> → 越热越亮，也越容易烧断</span></li>
+<li><span class="k">3</span><span><s>真空是为了不漏电</s> → 是为了隔绝氧气</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>白炽灯烫手，LED 不烫</p></div>
+<div class="layer"><span>规律层</span><p>电流发热，温度高到发光；真空隔绝氧气</p></div>
+<div class="layer"><span>本质层</span><p>热辐射（黑体辐射）；钨的高熔点</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>要用电照明 → 让细丝通电烧到白热 → 不让它被氧烧掉 → 封进真空玻璃泡 → 换更耐热的灯丝；更进一步，绕开发热（LED）。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">只用成品台灯和灯泡，不拆灯泡，不自己给铅笔芯或铁丝通电烧（这部分只用动画）。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>放大镜看冷灯泡的灯丝</td><td>螺旋灯丝</td></tr>
+<tr><td>B</td><td>调光看灯丝变色</td><td>温度与颜色</td></tr>
+<tr><td>C</td><td>插座功率计比功率</td><td>效率</td></tr>
+<tr><td>D</td><td>红外测温比表面温度</td><td>热损失</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>A：取一只冷的、没点过的旧白炽灯泡，用第 52 集的放大镜看灯丝，手机微距拍。</li>
+<li>B：用可调光的白炽台灯，从最暗慢慢调到最亮，拍灯丝颜色变化（不直视太久）。</li>
+<li>C：插座功率计插在插座上，先后接同样亮度的白炽台灯和 LED 台灯，读功率。</li>
+<li>D：两盏灯各点亮 10 分钟后，用红外测温枪在 20 厘米外测灯泡表面温度，不触碰。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>白炽灯</th><th>LED 灯</th><th>备注</th></tr></thead><tbody>
+<tr><td>C 功率（瓦）</td><td><input type="text" inputmode="decimal" data-k="e60-0-0" aria-label="C 功率（瓦） 白炽灯"></td><td><input type="text" inputmode="decimal" data-k="e60-0-1" aria-label="C 功率（瓦） LED 灯"></td><td><input type="text" data-k="e60-0-n" aria-label="C 功率（瓦） 备注"></td></tr>
+<tr><td>D 表面温度（℃）</td><td><input type="text" inputmode="decimal" data-k="e60-1-0" aria-label="D 表面温度（℃） 白炽灯"></td><td><input type="text" inputmode="decimal" data-k="e60-1-1" aria-label="D 表面温度（℃） LED 灯"></td><td><input type="text" data-k="e60-1-n" aria-label="D 表面温度（℃） 备注"></td></tr>
+<tr><td>B 最暗时灯丝颜色</td><td><input type="text" inputmode="decimal" data-k="e60-2-0" aria-label="B 最暗时灯丝颜色 白炽灯"></td><td><input type="text" inputmode="decimal" data-k="e60-2-1" aria-label="B 最暗时灯丝颜色 LED 灯"></td><td><input type="text" data-k="e60-2-n" aria-label="B 最暗时灯丝颜色 备注"></td></tr>
+<tr><td>B 最亮时灯丝颜色</td><td><input type="text" inputmode="decimal" data-k="e60-3-0" aria-label="B 最亮时灯丝颜色 白炽灯"></td><td><input type="text" inputmode="decimal" data-k="e60-3-1" aria-label="B 最亮时灯丝颜色 LED 灯"></td><td><input type="text" data-k="e60-3-n" aria-label="B 最亮时灯丝颜色 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>白炽灯泡已不常见，可用旧库存或卤素灯代替，注明</li>
+<li>不同灯具功率差别大，以功率计读数为准</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>点亮的白炽灯泡表面温度很高，不要触碰，熄灭后也要等冷却。</li>
+<li>不拆灯泡、不给铅笔芯或细铁丝通电燃烧（高温、火灾风险），这部分只用动画。</li>
+<li>只用成品台灯和插座功率计，不改动家用电线路。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>旧白炽灯泡（冷的）、放大镜</td><td>看灯丝</td></tr>
+<tr><td>可调光白炽台灯、LED 台灯</td><td>对比</td></tr>
+<tr><td>插座功率计</td><td>测功率</td></tr>
+<tr><td>红外测温枪</td><td>测温度</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://en.wikipedia.org/wiki/Incandescent_light_bulb">Wikipedia：Incandescent light bulb</a> <span>1879、钨丝、效率</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Arc_lamp">Wikipedia：Arc lamp</a> <span>戴维</span></li>
+<li><a href="https://en.wikipedia.org/wiki/LED_lamp">Wikipedia：LED lamp</a> <span>效率对比</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "同样亮的一盏白炽台灯和一盏 LED 台灯并排；手掌在灯泡 10 厘米外停一下（不触碰），表情对比", "一样亮。可这一盏，烫得手不敢靠近。"], [2, "0:08", "done", "问题卡：灯丝为什么会发光？", ""], [3, "0:14", "done", "片头：第八季科技树，第 60 集闪烁（只用动画）", "北宋人点油灯、点蜡烛。电，能不能直接变成光？这一集，危险的部分只用动画。"], [4, "0:21", "done", "资料卡：戴维、爱迪生和斯旺、钨丝与 LED", "十九世纪初，戴维用电弧发出了刺眼的强光。一八七九年前后，爱迪生和斯旺把碳丝封进真空玻璃泡。二十世纪初换成钨丝，今天又被更省电的 LED 取代。"], [5, "0:45", "real", "实验 1：用第 52 集的放大镜看一只冷的旧灯泡：灯丝是一圈圈细小的螺旋", "这么细的一根丝，绕成了弹簧。"], [6, "1:10", "done", "动画：灯丝温度从暗红到白；只有百分之几变成光", "电流通过很细的灯丝，电阻让它发热。越来越热，从暗红到橙黄，两千多度时白得刺眼。大部分电都变成了热。"], [7, "1:32", "res", "实验 2：用可调光的白炽台灯，从最暗调到最亮，拍灯丝颜色从红到白的变化", "最暗时灯丝暗红，调亮以后……"], [8, "1:57", "done", "问题卡：同样的灯丝，为什么要关在真空里？", ""], [9, "2:03", "real", "实验 3：插座功率计：同样亮的白炽灯和 LED 灯各接一次，读功率", "白炽灯……瓦，LED……瓦：差了好几倍。"], [10, "2:33", "done", "动画：空气里的灯丝几秒烧断；真空里亮上千小时", "在空气里，氧气扑上来，灯丝几秒就断了。关进真空玻璃泡，没有氧气，它能亮上千个小时。"], [11, "2:55", "res", "实验 4：用红外测温枪测两盏灯点亮 10 分钟后的灯泡表面温度（不触碰）", "白炽灯……度，LED……度。"], [12, "3:22", "done", "结论卡：电流把灯丝烧到发白才发光；关进真空才不会烧断", "电流把灯丝烧到发白才发光，大部分电变成了热；关进真空玻璃泡，灯丝才不会被氧烧断。"], [13, "3:29", "done", "片尾：点亮第 60 集，预告第 61 集", "下集：电能不能存起来，晚上再用？"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>
