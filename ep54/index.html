@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>望远镜拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../shooting/">拍摄排期</a><a href="../publish/">发布素材</a><a href="../checklist/">待核清单</a><a href="../expansion/">内容架构</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../ep30/">30</a><a href="../b6/">B6</a><a href="../season3/">特辑3</a><a href="../ep32/">32</a><a href="../ep33/">33</a><a href="../b19/">B19</a><a href="../ep37/">37</a><a href="../ep31/">31</a><a href="../ep35/">35</a><a href="../ep36/">36</a><a href="../season4/">特辑4</a><a href="../ep39/">39</a><a href="../b8/">B8</a><a href="../ep40/">40</a><a href="../ep41/">41</a><a href="../b17/">B17</a><a href="../b7/">B7</a><a href="../ep42/">42</a><a href="../ep43/">43</a><a href="../ep44/">44</a><a href="../season5/">特辑5</a><a href="../ep45/">45</a><a href="../b11/">B11</a><a href="../b9/">B9</a><a href="../ep46/">46</a><a href="../ep47/">47</a><a href="../b10/">B10</a><a href="../ep48/">48</a><a href="../ep49/">49</a><a href="../ep50/">50</a><a href="../b18/">B18</a><a href="../season6/">特辑6</a><a href="../ep07/">07</a><a href="../ep08/">08</a><a href="../ep09/">09</a><a href="../ep12/">12</a><a href="../ep13/">13</a><a href="../ep14/">14</a><a href="../ep10/">10</a><a href="../ep19/">19</a><a href="../ep21/">21</a><a href="../ep51/">51</a><a href="../season7/">特辑7</a><a href="../ep52/">52</a><a href="../ep53/">53</a><a href="../ep54/">54</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第八季 · 第 54 集</div>
+<h1>望远镜</h1>
+<p class="thesis">望远镜用两片透镜：长焦距的物镜把远处的平行光汇成一个小小的倒像，短焦距的目镜再把它放大。放大倍数等于物镜焦距 ÷ 目镜焦距。1609 年伽利略做到约 20 倍，第二年就看见了木星的四颗卫星。</p>
+<div class="facts">
+<div><span>暂定标题</span>两片透镜，怎么把月亮拉近？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>1608 年利伯希 · 1610 年伽利略</div>
+<div><span>衔接</span>← 53 显微镜；→ 55 照相；回扣 45 摆钟、47 影子测地球</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">发明</p><p class="p">1608 年荷兰眼镜匠利伯希申请望远镜专利。</p></div>
+<div class="ol"><p class="o">伽利略</p><p class="p">1609 年伽利略自己磨镜片，把望远镜从约 3 倍做到约 20 倍；1610 年 1 月起连续观察到木星旁的四颗卫星，并记录了月面的环形山。</p></div>
+<div class="ol"><p class="o">两种结构</p><p class="p">伽利略式用凹透镜作目镜，像是正的；开普勒式用凸透镜作目镜，像是倒的，但视野更大。本集自制的是开普勒式。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>望远镜把东西放大了</s> → 它放大的是角度：东西看起来更近</span></li>
+<li><span class="k">2</span><span><s>物镜越大倍数越高</s> → 倍数由两个焦距之比决定；口径决定亮度</span></li>
+<li><span class="k">3</span><span><s>看到倒像是做错了</s> → 开普勒式本来就是倒像</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>两片放大镜一前一后就能看远</p></div>
+<div class="layer"><span>规律层</span><p>物镜成像 + 目镜放大；倍数 = f物 ÷ f目</p></div>
+<div class="layer"><span>本质层</span><p>角放大率；口径与分辨率、集光力</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>要看清远处 → 先把远处的光汇成像（长焦物镜）→ 再用放大镜看这个像（短焦目镜）→ 两者共用一个焦平面。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">老花镜片可在眼镜店买单片，+2 度即焦距约 50 厘米；纸筒用两截粗细刚好能套的硬纸筒。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>老花镜片 + 放大镜 + 纸筒</td><td>开普勒式望远镜</td></tr>
+<tr><td>B</td><td>换目镜数砖块</td><td>倍数 = 焦距之比</td></tr>
+<tr><td>C</td><td>晚上拍月亮</td><td>环形山</td></tr>
+<tr><td>D</td><td>连续几晚拍木星</td><td>卫星在动</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>A：用第 52 集的方法量出两片镜片的焦距；物镜贴在粗纸筒口，目镜贴在细纸筒口，两筒套起来，总长约等于两焦距之和，前后滑动对焦。</li>
+<li>B：对准远处一面砖墙，分别用 5 厘米和 10 厘米焦距的目镜，数视野里横着能装下几块砖。</li>
+<li>C：晚上把望远镜靠在窗台或三脚架上对准月亮，手机摄像头贴着目镜拍。</li>
+<li>D：用手机天文 App 查木星的位置，如在夜空中，连续 3–5 晚在同一时间拍木星旁的小亮点。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>结果</th><th>备注</th><th>备注</th></tr></thead><tbody>
+<tr><td>物镜焦距（厘米）</td><td><input type="text" inputmode="decimal" data-k="e54-0-0" aria-label="物镜焦距（厘米） 结果"></td><td><input type="text" inputmode="decimal" data-k="e54-0-1" aria-label="物镜焦距（厘米） 备注"></td><td><input type="text" data-k="e54-0-n" aria-label="物镜焦距（厘米） 备注"></td></tr>
+<tr><td>目镜焦距（厘米）</td><td><input type="text" inputmode="decimal" data-k="e54-1-0" aria-label="目镜焦距（厘米） 结果"></td><td><input type="text" inputmode="decimal" data-k="e54-1-1" aria-label="目镜焦距（厘米） 备注"></td><td><input type="text" data-k="e54-1-n" aria-label="目镜焦距（厘米） 备注"></td></tr>
+<tr><td>计算倍数</td><td><input type="text" inputmode="decimal" data-k="e54-2-0" aria-label="计算倍数 结果"></td><td><input type="text" inputmode="decimal" data-k="e54-2-1" aria-label="计算倍数 备注"></td><td><input type="text" data-k="e54-2-n" aria-label="计算倍数 备注"></td></tr>
+<tr><td>B 视野里的砖块数</td><td><input type="text" inputmode="decimal" data-k="e54-3-0" aria-label="B 视野里的砖块数 结果"></td><td><input type="text" inputmode="decimal" data-k="e54-3-1" aria-label="B 视野里的砖块数 备注"></td><td><input type="text" data-k="e54-3-n" aria-label="B 视野里的砖块数 备注"></td></tr>
+<tr><td>C 月面能否看见环形山</td><td><input type="text" inputmode="decimal" data-k="e54-4-0" aria-label="C 月面能否看见环形山 结果"></td><td><input type="text" inputmode="decimal" data-k="e54-4-1" aria-label="C 月面能否看见环形山 备注"></td><td><input type="text" data-k="e54-4-n" aria-label="C 月面能否看见环形山 备注"></td></tr>
+<tr><td>D 每晚卫星的位置</td><td><input type="text" inputmode="decimal" data-k="e54-5-0" aria-label="D 每晚卫星的位置 结果"></td><td><input type="text" inputmode="decimal" data-k="e54-5-1" aria-label="D 每晚卫星的位置 备注"></td><td><input type="text" data-k="e54-5-n" aria-label="D 每晚卫星的位置 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>10 倍左右的自制望远镜能否看清木星卫星，视当季条件而定；看不到就用动画</li>
+<li>动画里卫星位置按真实轨道周期示意，并非 1610 年的真实位置</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>绝对不要用望远镜或任何透镜看太阳，会瞬间伤眼；白天对焦时也背对太阳方向。</li>
+<li>晚上在阳台或户外注意脚下和栏杆。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>老花镜片（+2 度，单片）</td><td>物镜</td></tr>
+<tr><td>焦距 5 厘米、10 厘米的放大镜</td><td>目镜</td></tr>
+<tr><td>两截能套在一起的硬纸筒、胶带</td><td>镜筒</td></tr>
+<tr><td>三脚架或靠垫、手机天文 App</td><td>观测</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://en.wikipedia.org/wiki/Telescope">Wikipedia：Telescope（History）</a> <span>1608 年利伯希</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Galilean_moons">Wikipedia：Galilean moons</a> <span>1610 年 1 月</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Refracting_telescope">Wikipedia：Keplerian telescope</a> <span>两种结构</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "窗边：一手拿老花镜片、一手拿放大镜，一前一后对准远处楼顶的字，手机贴着拍：字变大了，而且倒了过来", "两片普通的镜片，一前一后：远处的字一下子跳到眼前。只是，倒了。"], [2, "0:08", "done", "问题卡：两片放大镜，为什么能把远处拉近？", ""], [3, "0:14", "done", "片头：第八季科技树，第 54 集闪烁", "北宋的天文学家用浑仪看天。要是给他们两片透镜呢？"], [4, "0:21", "done", "资料卡：利伯希、伽利略", "一六〇八年，荷兰的利伯希申请了望远镜专利。第二年，伽利略自己磨镜片，做到了二十倍。一六一〇年一月，他看见了木星的四颗卫星。"], [5, "0:45", "real", "实验 1：老花镜片（+2 度，焦距约 50 厘米）当物镜，5 厘米焦距的放大镜当目镜，用两截纸筒套起来，前后滑动对焦", "纸筒一拉一推，远处的字清清楚楚。"], [6, "1:10", "done", "动画：物镜把远处的光汇到焦平面，目镜再放大；倍数 = 物镜焦距 ÷ 目镜焦距", "物镜把远处的光汇成一个小小的倒像，目镜像放大镜一样把它放大。进来时只斜一点的光，出去时斜得多，东西就变近了。"], [7, "1:32", "res", "实验 2：换一个 10 厘米焦距的目镜，看同一面砖墙，数视野里的砖块，比较两种倍数", "五厘米的目镜，视野里……块砖；十厘米的，……块：倍数正好差一半。"], [8, "1:57", "done", "问题卡：看到的东西，为什么是倒的？", ""], [9, "2:03", "real", "实验 3（晚上）：望远镜靠在窗台或三脚架上对准月亮，手机贴着目镜拍环形山", "月亮边缘那一圈圈坑，就是伽利略画下的环形山。"], [10, "2:33", "done", "动画：连续五晚，木星旁边的四颗小星忽左忽右", "伽利略一晚一晚地画：木星旁边的小星星忽左忽右，却始终跟着它。它们是绕着木星转的月亮。"], [11, "2:55", "res", "实验 4（如当季可见）：用手机天文 App 找到木星，连续几晚拍木星旁的小亮点，排成一张对比图", "第一晚……颗，第三晚……（按实拍描述；木星不在夜空时用动画代替）"], [12, "3:22", "done", "结论卡：物镜成像，目镜放大；倍数 = 物镜焦距 ÷ 目镜焦距", "物镜成像，目镜放大，倍数等于两个焦距之比。两片透镜，把天空拉近了。"], [13, "3:29", "done", "片尾：点亮第 54 集，预告第 55 集", "下集：光怎么把一幅画留在纸上？"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>

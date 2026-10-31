@@ -14,7 +14,7 @@ for f in sorted(glob.glob(os.path.join(os.path.dirname(os.path.abspath(__file__)
         D[ep] = dict(sp=sp, sh=m.SH.get(ep))
 epsrc = open(f'{REPO}/episodes/index.html', encoding='utf-8').read()
 SEASONS = []
-for name, label in [('SEASON', '第一季'), ('SEASON2', '第二季'), ('SEASON3', '第三季'), ('SEASON4', '第四季'), ('SEASON5', '第五季'), ('SEASON6', '第六季'), ('SEASON7', '第七季')]:
+for name, label in [('SEASON', '第一季'), ('SEASON2', '第二季'), ('SEASON3', '第三季'), ('SEASON4', '第四季'), ('SEASON5', '第五季'), ('SEASON6', '第六季'), ('SEASON7', '第七季'), ('SEASON8', '第八季')]:
     body = re.search(r'const %s=\[(.*?)\n\];' % name, epsrc, re.S).group(1)
     SEASONS.append((label, re.findall(r"\['([^']+)',", body)))
 ROWS = {}
@@ -154,7 +154,7 @@ def build_shooting():
         cs = [code(x) for x in ids]
         out = sorted({vn for vn, lst, _ in VENUES for cc, _ in lst if cc in cs})
         lg = [c for c, _, _ in LONG if c in cs]
-        rows.append([lab, ' '.join(f'<a href="../{folder(c)}/">{e(label(c))}</a>' for c in cs), str(len([c for c in cs if c[0] != 'S'])),
+        rows.append([lab, ' '.join((f'<a href="../{folder(c)}/">{e(label(c))}</a>' if os.path.exists(f'{REPO}/{folder(c)}/index.html') else f'<span class="pill">{e(label(c))} 待做</span>') for c in cs), str(len([c for c in cs if c[0] != 'S'])),
                      '、'.join(out) or '—', '、'.join(label(c) for c in lg) or '—'])
     secs.append('<section><h2>第 2 步：按季拍，外景合并预约</h2><p class="lead">每集在家的实拍约 6 段，熟练后<b>半天一集</b>；有外景的再加一天。下表按播出顺序列出每季的外景和长周期实验，外景按地点合并到下一节。</p>'
                 + table(['季', '播出顺序', '集数', '要外拍的地点', '长周期实验'], rows) + '</section>')
