@@ -14,7 +14,7 @@ for f in sorted(glob.glob(os.path.join(os.path.dirname(os.path.abspath(__file__)
         D[ep] = dict(sp=sp, sh=m.SH.get(ep))
 epsrc = open(f'{REPO}/episodes/index.html', encoding='utf-8').read()
 SEASONS = []
-for name, label in [('SEASON', '第一季'), ('SEASON2', '第二季'), ('SEASON3', '第三季'), ('SEASON4', '第四季'), ('SEASON5', '第五季'), ('SEASON6', '第六季'), ('SEASON7', '第七季'), ('SEASON8', '第八季')]:
+for name, label in [('SEASON', '第一季'), ('SEASON2', '第二季'), ('SEASON3', '第三季'), ('SEASON4', '第四季'), ('SEASON5', '第五季'), ('SEASON6', '第六季'), ('SEASON7', '第七季'), ('SEASON8', '第八季'), ('SEASON9', '第九季')]:
     body = re.search(r'const %s=\[(.*?)\n\];' % name, epsrc, re.S).group(1)
     SEASONS.append((label, re.findall(r"\['([^']+)',", body)))
 ROWS = {}
