@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>第八季特辑 · 第二层拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../shooting/">拍摄排期</a><a href="../publish/">发布素材</a><a href="../checklist/">待核清单</a><a href="../expansion/">内容架构</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../ep30/">30</a><a href="../b6/">B6</a><a href="../season3/">特辑3</a><a href="../ep32/">32</a><a href="../ep33/">33</a><a href="../b19/">B19</a><a href="../ep37/">37</a><a href="../ep31/">31</a><a href="../ep35/">35</a><a href="../ep36/">36</a><a href="../season4/">特辑4</a><a href="../ep39/">39</a><a href="../b8/">B8</a><a href="../ep40/">40</a><a href="../ep41/">41</a><a href="../b17/">B17</a><a href="../b7/">B7</a><a href="../ep42/">42</a><a href="../ep43/">43</a><a href="../ep44/">44</a><a href="../season5/">特辑5</a><a href="../ep45/">45</a><a href="../b11/">B11</a><a href="../b9/">B9</a><a href="../ep46/">46</a><a href="../ep47/">47</a><a href="../b10/">B10</a><a href="../ep48/">48</a><a href="../ep49/">49</a><a href="../ep50/">50</a><a href="../b18/">B18</a><a href="../season6/">特辑6</a><a href="../ep07/">07</a><a href="../ep08/">08</a><a href="../ep09/">09</a><a href="../ep12/">12</a><a href="../ep13/">13</a><a href="../ep14/">14</a><a href="../ep10/">10</a><a href="../ep19/">19</a><a href="../ep21/">21</a><a href="../ep51/">51</a><a href="../season7/">特辑7</a><a href="../ep52/">52</a><a href="../ep53/">53</a><a href="../ep54/">54</a><a href="../ep55/">55</a><a href="../ep56/">56</a><a href="../ep57/">57</a><a href="../ep58/">58</a><a href="../ep59/">59</a><a href="../ep60/">60</a><a href="../ep61/">61</a><a href="../season8/">特辑8</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第八季特辑 · 第二层</div>
+<h1>第八季特辑 · 第二层</h1>
+<p class="thesis">回顾第八季 10 集「第二层：光与电」：每一集都组合了前七季已点亮的节点。玻璃长出透镜，透镜长出显微镜、望远镜和照相；电生磁长出电磁铁，再长出电报和电动机；伏打电堆长出电镀和蓄电池。再按实测结果给每集打「古代可行度」分。</p>
+<div class="facts">
+<div><span>暂定标题</span>第二层的组合，哪一个最值得带回北宋？</div>
+<div><span>时长</span>约 3 分 47 秒 · 9 个镜头</div>
+<div><span>前提</span>第八季 10 集拍完、记录表填好</div>
+<div><span>衔接</span>→ 第九季 古法解密 2.0</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">光学链</p><p class="p">52 透镜 ← 玻璃、透光镜；53 显微镜 ← 透镜、洗手、青霉素；54 望远镜 ← 透镜；55 照相 ← 透镜、影子。</p></div>
+<div class="ol"><p class="o">电的第二层</p><p class="p">56 电磁铁 ← 电生磁；57 电报 ← 电磁铁、光学电报；58 电动机 ← 手摇发电机、电磁铁；59 电镀 ← 伏打电堆、炼铜；60 电灯 ← 发电机、玻璃；61 蓄电池 ← 伏打电堆、重力发电。</p></div>
+<div class="ol"><p class="o">打分依据</p><p class="p">与前几季相同；第二层另看一项：它依赖的旧节点，北宋是否都已具备。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>新技术都是凭空发明的</s> → 几乎都是旧节点的组合</span></li>
+<li><span class="k">2</span><span><s>第二层更难，北宋做不到</s> → 光学链大多只要玻璃和耐心</span></li>
+<li><span class="k">3</span><span><s>知识越多越难学</s> → 点亮的节点越多，下一个越容易</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>哪些组合在家一做就成</p></div>
+<div class="layer"><span>规律层</span><p>每个新节点依赖哪些旧节点</p></div>
+<div class="layer"><span>本质层</span><p>技术进步的复利：组合数随节点数增长</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>排名不预设结论：先填完打分表，再按分数写旁白。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">每项 1–5 分，三项相加，满分 15 分。</p>
+<div class="tw"><table><thead><tr>
+<th>项目</th>
+<th>怎么打分</th>
+<th>依据</th>
+</tr></thead><tbody>
+<tr><td>材料</td><td>北宋能不能找到</td><td>各集「背景」与「道具」</td></tr>
+<tr><td>难度</td><td>普通工匠能不能做出来</td><td>实拍时的制作难度</td></tr>
+<tr><td>效果</td><td>我们实测的效果</td><td>各集「实验记录」</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>把 10 集拍摄本里的实验记录表截图汇总。</li>
+<li>按下面的表格打分，填完截图发给 Claude，排名和旁白会按分数生成。</li>
+<li>从各集实拍里挑 8–10 个瞬间做高光剪辑。</li>
+<li>录一段 30 秒口播：这一季最意外的发现。</li>
+<li>从评论区挑 3 个问题，在特辑里回答。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>材料</th><th>难度</th><th>效果</th><th>总分</th><th>备注</th></tr></thead><tbody>
+<tr><td>52 透镜</td><td><input type="text" inputmode="decimal" data-k="s8-0-0" aria-label="52 透镜 材料"></td><td><input type="text" inputmode="decimal" data-k="s8-0-1" aria-label="52 透镜 难度"></td><td><input type="text" inputmode="decimal" data-k="s8-0-2" aria-label="52 透镜 效果"></td><td><input type="text" inputmode="decimal" data-k="s8-0-3" aria-label="52 透镜 总分"></td><td><input type="text" data-k="s8-0-n" aria-label="52 透镜 备注"></td></tr>
+<tr><td>53 显微镜</td><td><input type="text" inputmode="decimal" data-k="s8-1-0" aria-label="53 显微镜 材料"></td><td><input type="text" inputmode="decimal" data-k="s8-1-1" aria-label="53 显微镜 难度"></td><td><input type="text" inputmode="decimal" data-k="s8-1-2" aria-label="53 显微镜 效果"></td><td><input type="text" inputmode="decimal" data-k="s8-1-3" aria-label="53 显微镜 总分"></td><td><input type="text" data-k="s8-1-n" aria-label="53 显微镜 备注"></td></tr>
+<tr><td>54 望远镜</td><td><input type="text" inputmode="decimal" data-k="s8-2-0" aria-label="54 望远镜 材料"></td><td><input type="text" inputmode="decimal" data-k="s8-2-1" aria-label="54 望远镜 难度"></td><td><input type="text" inputmode="decimal" data-k="s8-2-2" aria-label="54 望远镜 效果"></td><td><input type="text" inputmode="decimal" data-k="s8-2-3" aria-label="54 望远镜 总分"></td><td><input type="text" data-k="s8-2-n" aria-label="54 望远镜 备注"></td></tr>
+<tr><td>55 照相</td><td><input type="text" inputmode="decimal" data-k="s8-3-0" aria-label="55 照相 材料"></td><td><input type="text" inputmode="decimal" data-k="s8-3-1" aria-label="55 照相 难度"></td><td><input type="text" inputmode="decimal" data-k="s8-3-2" aria-label="55 照相 效果"></td><td><input type="text" inputmode="decimal" data-k="s8-3-3" aria-label="55 照相 总分"></td><td><input type="text" data-k="s8-3-n" aria-label="55 照相 备注"></td></tr>
+<tr><td>56 电磁铁</td><td><input type="text" inputmode="decimal" data-k="s8-4-0" aria-label="56 电磁铁 材料"></td><td><input type="text" inputmode="decimal" data-k="s8-4-1" aria-label="56 电磁铁 难度"></td><td><input type="text" inputmode="decimal" data-k="s8-4-2" aria-label="56 电磁铁 效果"></td><td><input type="text" inputmode="decimal" data-k="s8-4-3" aria-label="56 电磁铁 总分"></td><td><input type="text" data-k="s8-4-n" aria-label="56 电磁铁 备注"></td></tr>
+<tr><td>57 电报</td><td><input type="text" inputmode="decimal" data-k="s8-5-0" aria-label="57 电报 材料"></td><td><input type="text" inputmode="decimal" data-k="s8-5-1" aria-label="57 电报 难度"></td><td><input type="text" inputmode="decimal" data-k="s8-5-2" aria-label="57 电报 效果"></td><td><input type="text" inputmode="decimal" data-k="s8-5-3" aria-label="57 电报 总分"></td><td><input type="text" data-k="s8-5-n" aria-label="57 电报 备注"></td></tr>
+<tr><td>58 电动机</td><td><input type="text" inputmode="decimal" data-k="s8-6-0" aria-label="58 电动机 材料"></td><td><input type="text" inputmode="decimal" data-k="s8-6-1" aria-label="58 电动机 难度"></td><td><input type="text" inputmode="decimal" data-k="s8-6-2" aria-label="58 电动机 效果"></td><td><input type="text" inputmode="decimal" data-k="s8-6-3" aria-label="58 电动机 总分"></td><td><input type="text" data-k="s8-6-n" aria-label="58 电动机 备注"></td></tr>
+<tr><td>59 电镀</td><td><input type="text" inputmode="decimal" data-k="s8-7-0" aria-label="59 电镀 材料"></td><td><input type="text" inputmode="decimal" data-k="s8-7-1" aria-label="59 电镀 难度"></td><td><input type="text" inputmode="decimal" data-k="s8-7-2" aria-label="59 电镀 效果"></td><td><input type="text" inputmode="decimal" data-k="s8-7-3" aria-label="59 电镀 总分"></td><td><input type="text" data-k="s8-7-n" aria-label="59 电镀 备注"></td></tr>
+<tr><td>60 电灯</td><td><input type="text" inputmode="decimal" data-k="s8-8-0" aria-label="60 电灯 材料"></td><td><input type="text" inputmode="decimal" data-k="s8-8-1" aria-label="60 电灯 难度"></td><td><input type="text" inputmode="decimal" data-k="s8-8-2" aria-label="60 电灯 效果"></td><td><input type="text" inputmode="decimal" data-k="s8-8-3" aria-label="60 电灯 总分"></td><td><input type="text" data-k="s8-8-n" aria-label="60 电灯 备注"></td></tr>
+<tr><td>61 蓄电池</td><td><input type="text" inputmode="decimal" data-k="s8-9-0" aria-label="61 蓄电池 材料"></td><td><input type="text" inputmode="decimal" data-k="s8-9-1" aria-label="61 蓄电池 难度"></td><td><input type="text" inputmode="decimal" data-k="s8-9-2" aria-label="61 蓄电池 效果"></td><td><input type="text" inputmode="decimal" data-k="s8-9-3" aria-label="61 蓄电池 总分"></td><td><input type="text" data-k="s8-9-n" aria-label="61 蓄电池 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>每集「效果」分是否都有记录表数据支撑</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>特辑不新做实验；回顾画面里的安全提示字幕全部保留（尤其电镀、电灯、蓄电池）。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>第八季全部道具</td><td>开场全景</td></tr>
+<tr><td>各集实拍素材</td><td>高光剪辑</td></tr>
+<tr><td>填好的打分表</td><td>排名揭晓</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:47。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://bluesky-rgb.github.io/cong-ling-zao-wu/episodes/">选题详案 · 第八季播出计划</a> <span>10 集的顺序与依赖</span></li>
+<li><a href="https://bluesky-rgb.github.io/cong-ling-zao-wu/expansion/">第二阶段内容架构</a> <span>一主一副一特别</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "工作台全景：第八季的道具：放大镜、玻璃珠显微镜、纸筒望远镜、蓝晒纸、电磁铁、电键、单极电动机、镀了铜的钥匙、灯泡、充电电池", "第八季，十集。没有一集是从零开始的。"], [2, "0:08", "done", "动画：第二层：每个新节点连到它依赖的旧节点", "透镜长在玻璃上，显微镜又长在透镜上，最后看见了第 32 集洗掉的那些细菌。电磁铁、电报、电动机、电镀、电灯、蓄电池，都从第一卷的那一点电长出来。"], [3, "0:38", "done", "问题卡：第二层的这些组合，哪一个最值得带回北宋？", ""], [4, "0:44", "res", "高光剪辑：从各集实拍里挑 8–10 个瞬间，每个 3–4 秒", "（按实拍素材写：每个瞬间一句话）"], [5, "1:26", "done", "资料卡：「古代可行度」三项打分", "和前几季一样，每集打三项分：材料、难度、实测效果。第二层要多问一句：它依赖的旧节点，北宋都有了吗？"], [6, "1:46", "res", "排名揭晓：录屏拍摄本里的打分表，从第 10 名倒数到第 1 名", "（按实际打分写：倒数揭晓，每集一句理由）"], [7, "2:42", "res", "作者出镜：这一季最意外的发现", "（作者按亲身经历讲）"], [8, "3:12", "res", "观众问答：从评论里挑 3 个问题", "（从评论区挑选问题后补写）"], [9, "3:40", "done", "结论卡：第二层 · 光与电完结；下一季：古法解密 2.0", "第八季完结。下一季，回到古人身边：公道杯、长信宫灯、水密隔舱……古法解密 2.0。"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>
