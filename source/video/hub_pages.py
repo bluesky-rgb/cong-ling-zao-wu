@@ -14,7 +14,7 @@ for f in sorted(glob.glob(os.path.join(os.path.dirname(os.path.abspath(__file__)
         D[ep] = dict(sp=sp, sh=m.SH.get(ep))
 epsrc = open(f'{REPO}/episodes/index.html', encoding='utf-8').read()
 SEASONS = []
-for name, label in [('SEASON', '第一季'), ('SEASON2', '第二季'), ('SEASON3', '第三季'), ('SEASON4', '第四季'), ('SEASON5', '第五季'), ('SEASON6', '第六季'), ('SEASON7', '第七季'), ('SEASON8', '第八季'), ('SEASON9', '第九季')]:
+for name, label in [('SEASON', '第一季'), ('SEASON2', '第二季'), ('SEASON3', '第三季'), ('SEASON4', '第四季'), ('SEASON5', '第五季'), ('SEASON6', '第六季'), ('SEASON7', '第七季'), ('SEASON8', '第八季'), ('SEASON9', '第九季'), ('SEASON10', '第十季')]:
     body = re.search(r'const %s=\[(.*?)\n\];' % name, epsrc, re.S).group(1)
     SEASONS.append((label, re.findall(r"\['([^']+)',", body)))
 ROWS = {}
@@ -96,12 +96,15 @@ def table(head, rows):
             + ''.join('<tr>' + ''.join(f'<td>{c}</td>' for c in r) + '</tr>' for r in rows) + '</tbody></table></div>')
 
 def eplink(c, rel='..'):
+    if not os.path.isdir(f'{REPO}/{folder(c)}'):
+        return f'{e(label(c))} {e(title(c))} <span class="pill">待做</span>'
     return f'<a href="{rel}/{folder(c)}/">{e(label(c))} {e(title(c))}</a>'
 
 # ================================================================ 拍摄总排期
 LONG = [  # (code, 提前多久, 做什么)
  ('E24', '约 1 个月', '糯米灰浆试块要养护 7 / 14 / 28 天再测强度'),
  ('E29', '3–4 周', '豆科与非豆科盆栽，挖根看根瘤、再翻土'),
+ ('E67', '约 4 周', '豆苗盆栽四组对照，每周量一次株高'),
  ('E27', '约 2 周', '陶罐滴灌与浇水对照，连续两周记录'),
  ('E30', '约 2 周', '发芽、选种与嫁接成活观察'),
  ('B15', '约 2 周', '米酒敞口放置，测酸度变化（不饮用）'),
@@ -113,10 +116,11 @@ LONG = [  # (code, 提前多久, 做什么)
  ('E34', '2 天', '净水对照盖保鲜膜放两天'),
  ('E31', '1–2 天', '生鸡蛋泡白醋去壳（不食用）'),
  ('B2', '1 天', '石膏或水泥模型凝固一天后脱模'),
+ ('E63', '2 天–1 周', '石膏小梁干两天（水泥砂浆养护一周）再加载'),
  ('E20', '1 天', '盐水静置，第二天拍杯底结晶'),
 ]
 VENUES = [  # (地点, [(code, 拍什么)], 提示)
- ('铁匠铺 / 金工工坊', [('E18', '炉火、锻打与淬火'), ('E19', '煤与焦炭的烟色、白瓷片熏'), ('E17', '熔铜或铸造（如工坊能做）')], '一次预约拍完三集的外景；燃烧只由师傅操作。'),
+ ('铁匠铺 / 金工工坊', [('E18', '炉火、锻打与淬火'), ('E19', '煤与焦炭的烟色、白瓷片熏'), ('E17', '熔铜或铸造（如工坊能做）'), ('E62', '钢的淬火与回火（如工坊能做）')], '一次预约拍完三集的外景；燃烧只由师傅操作。'),
  ('陶艺工作室 / 窑口', [('E16', '烧陶对照'), ('B16', '瓷与陶的烧成、吸水对比')], '问清窑温与烧成曲线，正好给 E21 的窑温数字做旁证。'),
  ('玻璃工坊（吹制或灯工）', [('E21', '挑料、吹制、退火')], '预约时说明只拍、不参与操作。'),
  ('学校实验室', [('E51', '老师用教学菌株和药敏纸片做抑菌圈，只拍结果')], '提前一周联系，培养需一两天。'),
@@ -169,7 +173,7 @@ def build_shooting():
                 + ''.join(f'<label class="chk"><input type="checkbox" data-k="buy-{e(k)}"><span class="t"><b>{e(k)}</b> <span class="pill">{len(v)} 集</span><small>{" ".join(label(c) for c in v)}</small></span></label>' for k, v in common) + '</section>')
     special = [('骑行台 + 自行车发电套件 + USB 功率计', 'E08'), ('压电点火器配件（五金店）、压电蜂鸣片', 'E13'), ('带 K 型热电偶的万用表', 'E12'), ('毫伏表或 200 mV 档万用表', 'E12'), ('台式三档电风扇（带防护罩）、小直流电机', 'E07'),
                ('减速齿轮箱、滑轮、厚泡沫垫', 'E09'), ('煤、焦炭、木炭各一小袋', 'E19'), ('硅胶垫、厨房温度计（测到 200 ℃）', 'E21'), ('纯银勺或银饰', 'B19'), ('第 01 集自制莱顿瓶（塑料杯 + 铝箔）', 'E14'),
-               ('1 毫米显微镜玻璃珠', 'E53'), ('老花镜片（+2 度，单片）', 'E54'), ('蓝晒纸（太阳晒图纸）', 'E55'), ('圆形钕磁铁', 'E58'), ('硫酸铜、护目镜、0.01 克精度的秤', 'E59'), ('插座功率计、红外测温枪', 'E60')]
+               ('1 毫米显微镜玻璃珠', 'E53'), ('老花镜片（+2 度，单片）', 'E54'), ('蓝晒纸（太阳晒图纸）', 'E55'), ('圆形钕磁铁', 'E58'), ('硫酸铜、护目镜、0.01 克精度的秤', 'E59'), ('插座功率计、红外测温枪', 'E60'), ('钢发卡、尖嘴钳、护目镜', 'E62'), ('石膏粉、粗铁丝', 'E63'), ('3 个牌子的 M5 螺丝螺母、游标卡尺', 'E64')]
     secs.append('<section><h2>采购清单 · 单集专用</h2><p class="lead">只有一两集用到、或者较贵的东西，到那一季再买。</p>'
                 + ''.join(f'<label class="chk"><input type="checkbox" data-k="sp-{e(k)}"><span class="t"><b>{e(k)}</b><small>{eplink(c)}</small></span></label>' for k, c in special) + '</section>')
     det = ''.join(f'<details><summary>{e(label(c))} {e(title(c))}</summary><div>{"；".join(e(x) for x in per[c])}</div><p><a href="../{folder(c)}/">打开拍摄本 →</a></p></details>'
