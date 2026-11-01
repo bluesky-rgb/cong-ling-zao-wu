@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>内燃机拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../shooting/">拍摄排期</a><a href="../publish/">发布素材</a><a href="../checklist/">待核清单</a><a href="../expansion/">内容架构</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../ep30/">30</a><a href="../b6/">B6</a><a href="../season3/">特辑3</a><a href="../ep32/">32</a><a href="../ep33/">33</a><a href="../b19/">B19</a><a href="../ep37/">37</a><a href="../ep31/">31</a><a href="../ep35/">35</a><a href="../ep36/">36</a><a href="../season4/">特辑4</a><a href="../ep39/">39</a><a href="../b8/">B8</a><a href="../ep40/">40</a><a href="../ep41/">41</a><a href="../b17/">B17</a><a href="../b7/">B7</a><a href="../ep42/">42</a><a href="../ep43/">43</a><a href="../ep44/">44</a><a href="../season5/">特辑5</a><a href="../ep45/">45</a><a href="../b11/">B11</a><a href="../b9/">B9</a><a href="../ep46/">46</a><a href="../ep47/">47</a><a href="../b10/">B10</a><a href="../ep48/">48</a><a href="../ep49/">49</a><a href="../ep50/">50</a><a href="../b18/">B18</a><a href="../season6/">特辑6</a><a href="../ep07/">07</a><a href="../ep08/">08</a><a href="../ep09/">09</a><a href="../ep12/">12</a><a href="../ep13/">13</a><a href="../ep14/">14</a><a href="../ep10/">10</a><a href="../ep19/">19</a><a href="../ep21/">21</a><a href="../ep51/">51</a><a href="../season7/">特辑7</a><a href="../ep52/">52</a><a href="../ep53/">53</a><a href="../ep54/">54</a><a href="../ep55/">55</a><a href="../ep56/">56</a><a href="../ep57/">57</a><a href="../ep58/">58</a><a href="../ep59/">59</a><a href="../ep60/">60</a><a href="../ep61/">61</a><a href="../season8/">特辑8</a><a href="../b20/">B20</a><a href="../b21/">B21</a><a href="../b22/">B22</a><a href="../b23/">B23</a><a href="../b24/">B24</a><a href="../b25/">B25</a><a href="../b26/">B26</a><a href="../b27/">B27</a><a href="../b28/">B28</a><a href="../b29/">B29</a><a href="../season9/">特辑9</a><a href="../ep62/">62</a><a href="../ep63/">63</a><a href="../ep64/">64</a><a href="../ep65/">65</a><a href="../ep66/">66</a><a href="../ep67/">67</a><a href="../ep68/">68</a><a href="../ep69/">69</a><a href="../ep70/">70</a><a href="../ep71/">71</a><a href="../season10/">特辑10</a><a href="../b30/">B30</a><a href="../b31/">B31</a><a href="../b32/">B32</a><a href="../b33/">B33</a><a href="../b34/">B34</a><a href="../b35/">B35</a><a href="../b36/">B36</a><a href="../b37/">B37</a><a href="../b38/">B38</a><a href="../b39/">B39</a><a href="../season11/">特辑11</a><a href="../ep72/">72</a><a href="../ep73/">73</a><a href="../ep74/">74</a><a href="../ep75/">75</a><a href="../ep76/">76</a><a href="../ep77/">77</a><a href="../ep78/">78</a><a href="../ep79/">79</a><a href="../ep80/">80</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第十二季 · 第 78 集</div>
+<h1>内燃机</h1>
+<p class="thesis">内燃机把燃料直接关在气缸里烧：进气（活塞下行吸入油气）、压缩（活塞上行压紧）、做功（火花点燃，燃气膨胀推活塞）、排气（推出废气），曲轴每转两圈完成一个循环。压缩让气体升温升压，点燃后燃烧更猛、热效率更高；柴油机压得更紧，空气热到足以自己点燃燃油。本集燃烧只用动画，实拍只用打气筒和针筒感受压缩。</p>
+<div class="facts">
+<div><span>暂定标题</span>汽车的发动机里，为什么要「点火」？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>1876 年 · 奥托</div>
+<div><span>衔接</span>← 10 蒸汽发电、40 曲柄连杆；→ 79 悬索桥</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">早期</p><p class="p">1860 年勒努瓦的煤气发动机不压缩混合气，热效率只有几个百分点。</p></div>
+<div class="ol"><p class="o">四冲程</p><p class="p">1876 年德国的奥托造出实用的四冲程发动机（德罗夏更早提出原理，拍摄前核对）。</p></div>
+<div class="ol"><p class="o">柴油机</p><p class="p">1893–1897 年狄塞尔发展压燃式发动机；理想绝热压缩时 T₂ = T₁·r^(γ−1)，压缩比 10 时约从 300 K 升到 750 K。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>发动机靠烧油推轮子</s> → 燃气在气缸里膨胀推活塞</span></li>
+<li><span class="k">2</span><span><s>压缩没用</s> → 先压缩再点火，力量和效率都高得多</span></li>
+<li><span class="k">3</span><span><s>每一圈都在用力</s> → 四冲程每两圈只做功一次</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>打气筒越打越热</p></div>
+<div class="layer"><span>规律层</span><p>四冲程；压缩升温</p></div>
+<div class="layer"><span>本质层</span><p>压缩比与热效率</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>要把燃料的热变成转动 → 在气缸里燃烧 → 先压缩 → 推活塞 → 曲柄变成转动。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">燃烧只用动画，不自制任何燃烧装置。实拍只用打气筒、大针筒（无针头）和测温枪。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>针筒堵口压缩</td><td>空气的弹力</td></tr>
+<tr><td>B</td><td>打气筒 10/20/40 下测温</td><td>压缩发热</td></tr>
+<tr><td>C</td><td>压缩后等一分钟再松手</td><td>热量散失</td></tr>
+<tr><td>D</td><td>看汽车火花塞位置</td><td>实物</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>A：100 毫升针筒吸满空气，手指堵住口子用力推到 20 毫升，松手看活塞弹回。</li>
+<li>B：自行车打气筒接一个球或轮胎，连续快速打 10、20、40 下，每次停下立刻用测温枪测筒底。</li>
+<li>C：针筒压到 20 毫升后堵住，分别立刻松手和等一分钟再松手，比较弹回的位置。</li>
+<li>D：在大人陪同下打开汽车引擎盖（熄火、冷车），只看不碰，拍火花塞的位置。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>结果</th><th>备注</th><th>备注</th></tr></thead><tbody>
+<tr><td>B 10 下（°C）</td><td><input type="text" inputmode="decimal" data-k="e78-0-0" aria-label="B 10 下（°C） 结果"></td><td><input type="text" inputmode="decimal" data-k="e78-0-1" aria-label="B 10 下（°C） 备注"></td><td><input type="text" data-k="e78-0-n" aria-label="B 10 下（°C） 备注"></td></tr>
+<tr><td>B 20 下（°C）</td><td><input type="text" inputmode="decimal" data-k="e78-1-0" aria-label="B 20 下（°C） 结果"></td><td><input type="text" inputmode="decimal" data-k="e78-1-1" aria-label="B 20 下（°C） 备注"></td><td><input type="text" data-k="e78-1-n" aria-label="B 20 下（°C） 备注"></td></tr>
+<tr><td>B 40 下（°C）</td><td><input type="text" inputmode="decimal" data-k="e78-2-0" aria-label="B 40 下（°C） 结果"></td><td><input type="text" inputmode="decimal" data-k="e78-2-1" aria-label="B 40 下（°C） 备注"></td><td><input type="text" data-k="e78-2-n" aria-label="B 40 下（°C） 备注"></td></tr>
+<tr><td>C 立刻 / 等一分钟松手的位置（毫升）</td><td><input type="text" inputmode="decimal" data-k="e78-3-0" aria-label="C 立刻 / 等一分钟松手的位置（毫升） 结果"></td><td><input type="text" inputmode="decimal" data-k="e78-3-1" aria-label="C 立刻 / 等一分钟松手的位置（毫升） 备注"></td><td><input type="text" data-k="e78-3-n" aria-label="C 立刻 / 等一分钟松手的位置（毫升） 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>德罗夏与奥托四冲程优先权、狄塞尔年份拍摄前核对</li>
+<li>打气筒升温受接头摩擦影响，如实记录</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>燃烧只用动画，不自制任何燃烧装置或「火活塞」。</li>
+<li>汽车只在熄火、冷却后由大人打开引擎盖，只看不碰。</li>
+<li>针筒不带针头。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>打气筒、球或轮胎</td><td>压缩发热</td></tr>
+<tr><td>100 毫升针筒（无针头）</td><td>压缩弹力</td></tr>
+<tr><td>红外测温枪</td><td>测温</td></tr>
+<tr><td>汽车（熄火冷车）</td><td>火花塞</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://en.wikipedia.org/wiki/Four-stroke_engine">Wikipedia：Four-stroke engine</a> <span>四冲程与奥托</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Diesel_engine">Wikipedia：Diesel engine</a> <span>压燃</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Adiabatic_process">Wikipedia：Adiabatic process</a> <span>绝热压缩升温</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "手握打气筒快速打气 30 下，摸筒底：热了；红外测温枪读数", "打了三十下，筒子底下热了。"], [2, "0:08", "done", "问题卡：汽车的发动机里，为什么要「点火」？", ""], [3, "0:14", "done", "片头：第十二季科技树，第 78 集闪烁（燃烧只用动画）", "第 10 集我们用蒸汽推活塞，第 40 集曲柄把直线变成转动。这一集，把火直接关进气缸里。"], [4, "0:21", "done", "资料卡：勒努瓦、奥托、狄塞尔", "一八六〇年，勒努瓦造出不压缩的煤气内燃机，效率很低。一八七六年，奥托的四冲程发动机先压缩再点火。十几年后，狄塞尔又造出了压燃式的柴油机。"], [5, "0:45", "real", "实验 1：大针筒（无针头）吸满空气，堵住口子往里推，松手看活塞弹回", "空气被压紧，像弹簧一样往回推。"], [6, "1:10", "done", "动画：四冲程循环", "活塞下行吸气、上行压缩；火花一点燃气推活塞，再上行排气。曲轴转两圈，一个循环。"], [7, "1:32", "res", "实验 2：用测温枪量打气筒底部：打 10、20、40 下后的温度", "十下……度，二十下……，四十下……"], [8, "1:57", "done", "问题卡：为什么要先压缩，再点火？", ""], [9, "2:03", "res", "实验 3：针筒里压缩空气后，堵住口子等一分钟再松手，看活塞弹回的距离（热量散掉了）", "刚压完松手……，等一分钟松手……"], [10, "2:33", "done", "动画：压缩比与温度；柴油机压燃", "把空气压到十分之一，理想情况下能热到四五百度；柴油机压得更紧，不用火花就能点燃燃油。"], [11, "2:55", "real", "实验 4：拍一辆打开引擎盖的汽车，找出火花塞的位置（不启动、不拆）", "这四个就是火花塞：四个气缸，轮流点火。"], [12, "3:22", "done", "结论卡：进气、压缩、做功、排气", "进气、压缩、做功、排气：压得越紧，燃烧越猛、效率越高。"], [13, "3:29", "done", "片尾：点亮第 78 集，预告第 79 集", "下集：一根根钢缆，怎么吊起整座桥？"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>
