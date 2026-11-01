@@ -14,11 +14,11 @@ for f in sorted(glob.glob(os.path.join(os.path.dirname(os.path.abspath(__file__)
         D[ep] = dict(sp=sp, sh=m.SH.get(ep))
 epsrc = open(f'{REPO}/episodes/index.html', encoding='utf-8').read()
 SEASONS = []
-for name, label in [('SEASON', '第一季'), ('SEASON2', '第二季'), ('SEASON3', '第三季'), ('SEASON4', '第四季'), ('SEASON5', '第五季'), ('SEASON6', '第六季'), ('SEASON7', '第七季'), ('SEASON8', '第八季'), ('SEASON9', '第九季'), ('SEASON10', '第十季'), ('SEASON11', '第十一季'), ('SEASON12', '第十二季')]:
+for name, label in [('SEASON', '第一季'), ('SEASON2', '第二季'), ('SEASON3', '第三季'), ('SEASON4', '第四季'), ('SEASON5', '第五季'), ('SEASON6', '第六季'), ('SEASON7', '第七季'), ('SEASON8', '第八季'), ('SEASON9', '第九季'), ('SEASON10', '第十季'), ('SEASON11', '第十一季'), ('SEASON12', '第十二季'), ('SEASON13', '第十三季')]:
     body = re.search(r'const %s=\[(.*?)\n\];' % name, epsrc, re.S).group(1)
     SEASONS.append((label, re.findall(r"\['([^']+)',", body)))
 ROWS = {}
-for m in re.finditer(r"^\['([EB]\d+)',(\d),'([^']*)','([^']*)','([^']*)'", epsrc, re.M):
+for m in re.finditer(r"^\['([EBH]\d+)',(\d),'([^']*)','([^']*)','([^']*)'", epsrc, re.M):
     ROWS[m.group(1)] = dict(title=m.group(3), era=m.group(4), hook=m.group(5))
 
 def code(x):
@@ -26,7 +26,7 @@ def code(x):
     return x
 def folder(c):
     if c[0] == 'E': return 'ep' + c[1:]
-    if c[0] == 'B': return c.lower()
+    if c[0] in 'BH': return c.lower()
     return 'season' + c[1:]
 def label(c):
     if c[0] == 'E': return c[1:]
@@ -175,7 +175,7 @@ def build_shooting():
                 + ''.join(f'<label class="chk"><input type="checkbox" data-k="buy-{e(k)}"><span class="t"><b>{e(k)}</b> <span class="pill">{len(v)} 集</span><small>{" ".join(label(c) for c in v)}</small></span></label>' for k, v in common) + '</section>')
     special = [('骑行台 + 自行车发电套件 + USB 功率计', 'E08'), ('压电点火器配件（五金店）、压电蜂鸣片', 'E13'), ('带 K 型热电偶的万用表', 'E12'), ('毫伏表或 200 mV 档万用表', 'E12'), ('台式三档电风扇（带防护罩）、小直流电机', 'E07'),
                ('减速齿轮箱、滑轮、厚泡沫垫', 'E09'), ('煤、焦炭、木炭各一小袋', 'E19'), ('硅胶垫、厨房温度计（测到 200 ℃）', 'E21'), ('纯银勺或银饰', 'B19'), ('第 01 集自制莱顿瓶（塑料杯 + 铝箔）', 'E14'),
-               ('1 毫米显微镜玻璃珠', 'E53'), ('老花镜片（+2 度，单片）', 'E54'), ('蓝晒纸（太阳晒图纸）', 'E55'), ('圆形钕磁铁', 'E58'), ('硫酸铜、护目镜、0.01 克精度的秤', 'E59'), ('插座功率计、红外测温枪', 'E60'), ('钢发卡、尖嘴钳、护目镜', 'E62'), ('石膏粉、粗铁丝', 'E63'), ('3 个牌子的 M5 螺丝螺母、游标卡尺', 'E64'), ('C 形夹、两块平整木板', 'E65'), ('花盆四个、沙土、pH 试纸', 'E67'), ('能测到零下 20 度的温度计两支', 'E68'), ('透明软管、线香', 'E69'), ('玻璃瓶验电器材料、铝箔', 'E70'), ('硬纸条、细笔（纸条计算尺）', 'E71'), ('精确到 1 克的厨房秤', 'B30'), ('成品开片杯、玉米淀粉', 'B31'), ('明胶、毛笔、金属勺', 'B32'), ('真丝纱巾、0.1 克精度的秤', 'B33'), ('熟石灰、砖粉或浮石粉', 'B35'), ('细沙一袋、弹簧秤', 'B36'), ('量角器、吸管（象限仪）', 'B37'), ('打印纸齿轮、图钉', 'B38'), ('大马士革纹钢片（不开刃）', 'B39'), ('8 欧小喇叭两个、20 米导线', 'E72'), ('旧黑胶唱片', 'E73'), ('漆包线、大铁钉', 'E75'), ('调幅收音机、9 伏电池、锉刀', 'E76'), ('小太阳能板', 'E77'), ('打气筒、红外测温枪', 'E78'), ('弹簧秤、细绳', 'E79'), ('打印纸齿轮、图钉', 'E80'), ('面包板、按钮、双刀双掷开关、LED', 'E81')]
+               ('1 毫米显微镜玻璃珠', 'E53'), ('老花镜片（+2 度，单片）', 'E54'), ('蓝晒纸（太阳晒图纸）', 'E55'), ('圆形钕磁铁', 'E58'), ('硫酸铜、护目镜、0.01 克精度的秤', 'E59'), ('插座功率计、红外测温枪', 'E60'), ('钢发卡、尖嘴钳、护目镜', 'E62'), ('石膏粉、粗铁丝', 'E63'), ('3 个牌子的 M5 螺丝螺母、游标卡尺', 'E64'), ('C 形夹、两块平整木板', 'E65'), ('花盆四个、沙土、pH 试纸', 'E67'), ('能测到零下 20 度的温度计两支', 'E68'), ('透明软管、线香', 'E69'), ('玻璃瓶验电器材料、铝箔', 'E70'), ('硬纸条、细笔（纸条计算尺）', 'E71'), ('精确到 1 克的厨房秤', 'B30'), ('成品开片杯、玉米淀粉', 'B31'), ('明胶、毛笔、金属勺', 'B32'), ('真丝纱巾、0.1 克精度的秤', 'B33'), ('熟石灰、砖粉或浮石粉', 'B35'), ('细沙一袋、弹簧秤', 'B36'), ('量角器、吸管（象限仪）', 'B37'), ('打印纸齿轮、图钉', 'B38'), ('大马士革纹钢片（不开刃）', 'B39'), ('8 欧小喇叭两个、20 米导线', 'E72'), ('旧黑胶唱片', 'E73'), ('漆包线、大铁钉', 'E75'), ('调幅收音机、9 伏电池、锉刀', 'E76'), ('小太阳能板', 'E77'), ('打气筒、红外测温枪', 'E78'), ('弹簧秤、细绳', 'E79'), ('打印纸齿轮、图钉', 'E80'), ('面包板、按钮、双刀双掷开关、LED', 'E81'), ('琥珀或松香块、芥菜籽、漆杯', 'H1'), ('铁勺、天然磁石（可选）', 'H2'), ('木槌、纱网框', 'H3')]
     secs.append('<section><h2>采购清单 · 单集专用</h2><p class="lead">只有一两集用到、或者较贵的东西，到那一季再买。</p>'
                 + ''.join(f'<label class="chk"><input type="checkbox" data-k="sp-{e(k)}"><span class="t"><b>{e(k)}</b><small>{eplink(c)}</small></span></label>' for k, c in special) + '</section>')
     det = ''.join(f'<details><summary>{e(label(c))} {e(title(c))}</summary><div>{"；".join(e(x) for x in per[c])}</div><p><a href="../{folder(c)}/">打开拍摄本 →</a></p></details>'
@@ -215,7 +215,7 @@ def build_publish():
                 thesis = sp.get('thesis', '')
                 safety = (sp.get('safety') or [''])[0]
             n += 1
-            lineword = 'B 线 · 古法解密' if c[0] == 'B' else ('特辑' if c[0] == 'S' else 'A 线 · 穿越造物')
+            lineword = 'B 线 · 古法解密' if c[0] == 'B' else ('特辑' if c[0] == 'S' else ('特别篇 · 汉代版' if c[0] == 'H' else 'A 线 · 穿越造物'))
             num = label(c)
             vt = f'【从零造物 {num}】{q or ttl}'
             cover = f'{ttl}\n{(q or "")[:16]}'
