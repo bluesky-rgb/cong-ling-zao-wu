@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>水运仪象台的擒纵拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../shooting/">拍摄排期</a><a href="../publish/">发布素材</a><a href="../checklist/">待核清单</a><a href="../expansion/">内容架构</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../ep30/">30</a><a href="../b6/">B6</a><a href="../season3/">特辑3</a><a href="../ep32/">32</a><a href="../ep33/">33</a><a href="../b19/">B19</a><a href="../ep37/">37</a><a href="../ep31/">31</a><a href="../ep35/">35</a><a href="../ep36/">36</a><a href="../season4/">特辑4</a><a href="../ep39/">39</a><a href="../b8/">B8</a><a href="../ep40/">40</a><a href="../ep41/">41</a><a href="../b17/">B17</a><a href="../b7/">B7</a><a href="../ep42/">42</a><a href="../ep43/">43</a><a href="../ep44/">44</a><a href="../season5/">特辑5</a><a href="../ep45/">45</a><a href="../b11/">B11</a><a href="../b9/">B9</a><a href="../ep46/">46</a><a href="../ep47/">47</a><a href="../b10/">B10</a><a href="../ep48/">48</a><a href="../ep49/">49</a><a href="../ep50/">50</a><a href="../b18/">B18</a><a href="../season6/">特辑6</a><a href="../ep07/">07</a><a href="../ep08/">08</a><a href="../ep09/">09</a><a href="../ep12/">12</a><a href="../ep13/">13</a><a href="../ep14/">14</a><a href="../ep10/">10</a><a href="../ep19/">19</a><a href="../ep21/">21</a><a href="../ep51/">51</a><a href="../season7/">特辑7</a><a href="../ep52/">52</a><a href="../ep53/">53</a><a href="../ep54/">54</a><a href="../ep55/">55</a><a href="../ep56/">56</a><a href="../ep57/">57</a><a href="../ep58/">58</a><a href="../ep59/">59</a><a href="../ep60/">60</a><a href="../ep61/">61</a><a href="../season8/">特辑8</a><a href="../b20/">B20</a><a href="../b21/">B21</a><a href="../b22/">B22</a><a href="../b23/">B23</a><a href="../b24/">B24</a><a href="../b25/">B25</a><a href="../b26/">B26</a><a href="../b27/">B27</a><a href="../b28/">B28</a><a href="../b29/">B29</a><a href="../season9/">特辑9</a><a href="../ep62/">62</a><a href="../ep63/">63</a><a href="../ep64/">64</a><a href="../ep65/">65</a><a href="../ep66/">66</a><a href="../ep67/">67</a><a href="../ep68/">68</a><a href="../ep69/">69</a><a href="../ep70/">70</a><a href="../ep71/">71</a><a href="../season10/">特辑10</a><a href="../b30/">B30</a><a href="../b31/">B31</a><a href="../b32/">B32</a><a href="../b33/">B33</a><a href="../b34/">B34</a><a href="../b35/">B35</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 古法解密 3.0 · B34</div>
+<h1>水运仪象台的擒纵</h1>
+<p class="thesis">水运仪象台的水轮上挂着一圈水斗。水流进水斗时，轮子被「天衡」（杠杆加秤锤的卡子）卡住不动；水斗装满，重量压过秤锤，卡子一抬，轮子转过一格，下一只水斗又被卡住。这样连续的水流被切成一格一格等长的时间段，和摆钟的擒纵思路相同；再配上保持水位稳定的水箱，走时更均匀。</p>
+<div class="facts">
+<div><span>暂定标题</span>一千年前的钟，怎么一格一格地走？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>北宋 · 1088–1092 年 · 苏颂、韩公廉</div>
+<div><span>衔接</span>← 45 摆钟、41 齿轮与轴承、B13 漏刻；→ B35</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">建造</p><p class="p">北宋元祐年间（1088–1092 年）苏颂、韩公廉在开封建成水运仪象台，苏颂著《新仪象法要》留下图纸。</p></div>
+<div class="ol"><p class="o">擒纵</p><p class="p">水轮上的水斗、天衡（杠杆秤锤）与卡子构成擒纵机构；李约瑟认为这是机械钟擒纵的先驱（拍摄前核对）。</p></div>
+<div class="ol"><p class="o">原理</p><p class="p">每格时间 ≈ 水斗容积 ÷ 流量；流量稳定靠恒定水位的水箱（与 B13 漏刻的平水壶相同）。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>水一直流，轮子就一直转</s> → 水斗满了才翻，轮子跳一格</span></li>
+<li><span class="k">2</span><span><s>擒纵是欧洲先有的</s> → 北宋已有水力擒纵</span></li>
+<li><span class="k">3</span><span><s>只要卡住就准</s> → 还要水流稳定</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>水斗装满才翻</p></div>
+<div class="layer"><span>规律层</span><p>擒纵：连续变离散；杠杆平衡</p></div>
+<div class="layer"><span>本质层</span><p>每格时间 = 容积 ÷ 流量；恒定水位</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>要计时准 → 不让轮子随水乱转 → 每格水斗满了才放行一格 → 水位保持恒定。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">纸杯、吸管、竹签、橡皮泥、两个塑料瓶；在水槽或托盘上做。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>纸杯水斗 + 吸管天衡</td><td>模型</td></tr>
+<tr><td>B</td><td>记录 10 次间隔</td><td>均匀</td></tr>
+<tr><td>C</td><td>换成恒定水位的平水壶</td><td>流量稳定</td></tr>
+<tr><td>D</td><td>秤锤加重一倍</td><td>容量与间隔</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>A：竹签横穿两个支架当轴，吸管当杠杆套在竹签上；一头挂纸杯（杯口偏一侧，满了会倾倒），另一头放橡皮泥，调到空杯时刚好平衡。</li>
+<li>B：上方塑料瓶瓶盖扎小孔滴水，记录连续 10 次「嗒」的时间间隔。</li>
+<li>C：供水瓶侧面开一个溢流口，另一只瓶持续往里加水保持水位（B13 平水壶），再记 10 次间隔。</li>
+<li>D：橡皮泥加重一倍，再记间隔。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>平均间隔（秒）</th><th>最长 − 最短</th><th>备注</th></tr></thead><tbody>
+<tr><td>B 普通滴水</td><td><input type="text" inputmode="decimal" data-k="b34-0-0" aria-label="B 普通滴水 平均间隔（秒）"></td><td><input type="text" inputmode="decimal" data-k="b34-0-1" aria-label="B 普通滴水 最长 − 最短"></td><td><input type="text" data-k="b34-0-n" aria-label="B 普通滴水 备注"></td></tr>
+<tr><td>C 平水壶</td><td><input type="text" inputmode="decimal" data-k="b34-1-0" aria-label="C 平水壶 平均间隔（秒）"></td><td><input type="text" inputmode="decimal" data-k="b34-1-1" aria-label="C 平水壶 最长 − 最短"></td><td><input type="text" data-k="b34-1-n" aria-label="C 平水壶 备注"></td></tr>
+<tr><td>D 秤锤加倍</td><td><input type="text" inputmode="decimal" data-k="b34-2-0" aria-label="D 秤锤加倍 平均间隔（秒）"></td><td><input type="text" inputmode="decimal" data-k="b34-2-1" aria-label="D 秤锤加倍 最长 − 最短"></td><td><input type="text" data-k="b34-2-n" aria-label="D 秤锤加倍 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>水运仪象台天衡结构的细节以《新仪象法要》与研究为准</li>
+<li>「比欧洲早」的说法拍摄前核对</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>剪纸杯和扎孔注意手；在托盘上做，防止水洒。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>纸杯、吸管、竹签、橡皮泥</td><td>天衡</td></tr>
+<tr><td>塑料瓶两个</td><td>供水与平水壶</td></tr>
+<tr><td>秒表</td><td>计时</td></tr>
+<tr><td>托盘</td><td>接水</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://en.wikipedia.org/wiki/Su_Song">Wikipedia：Su Song</a> <span>水运仪象台</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Escapement">Wikipedia：Escapement（History）</a> <span>擒纵的历史</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Water_clock">Wikipedia：Water clock</a> <span>水钟与恒定水位</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "纸杯水斗挂在吸管杠杆一头，另一头压一小块橡皮泥；上方塑料瓶滴水，杯子满了「嗒」地一翻倒空，又弹回来", "水一直在滴，杯子满了才「嗒」一下。"], [2, "0:08", "done", "问题卡：一千年前的钟，怎么一格一格地走？", ""], [3, "0:14", "done", "片头：古法解密 3.0 科技树，B34 闪烁", "古法解密。北宋，一〇八八年，苏颂和韩公廉。"], [4, "0:21", "done", "资料卡：水运仪象台、结构、《新仪象法要》", "一〇八八到一〇九二年，苏颂和韩公廉在开封建成水运仪象台：水轮、天衡、浑仪、浑象、报时木人。苏颂写下《新仪象法要》，留下了图纸。"], [5, "0:45", "real", "实验 1：竹签当轴、吸管当杠杆，一头挂纸杯水斗，一头放橡皮泥当秤锤，调到空杯时杠杆刚好平衡", "空杯的时候，杠杆刚好平。"], [6, "1:10", "done", "动画：水斗满了才翻，轮子一格一格走", "水一直流进水斗，可轮子被卡住；水斗装满，重量压过秤锤，卡子一抬，轮子转过一格又被卡住。"], [7, "1:32", "res", "实验 2：用秒表记录连续 10 次「嗒」的时间间隔", "十次间隔：……秒，……秒，……"], [8, "1:57", "done", "问题卡：为什么要故意把轮子卡住？", ""], [9, "2:03", "res", "实验 3：滴水的瓶子换成 B13 的「平水壶」（侧面开溢流口保持水位），再记 10 次间隔，比较是否更均匀", "加了平水壶，间隔变成……"], [10, "2:33", "done", "动画：没有擒纵与有擒纵的转动曲线", "不卡住，水大轮子就快，水小就慢；加上擒纵，每格都要等水斗装满，时间被切成一样长的小段。"], [11, "2:55", "real", "实验 4：把橡皮泥秤锤加重一倍，看「嗒」一下需要的水更多、间隔更长", "秤锤一重，每一格就长了。"], [12, "3:22", "done", "结论卡：水斗满了才放行一格", "水斗满了才放行一格：连续的水流，变成了均匀的滴答。"], [13, "3:29", "done", "片尾：点亮 B34，预告 B35", "下集，世界篇：海水泡了两千年，为什么反而更结实？"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>
