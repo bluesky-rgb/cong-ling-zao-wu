@@ -59,7 +59,7 @@ def wrap_text(c, x, y, s, kind, px, col, width, lh, max_lines=3):
     for k, ln in enumerate(lines):
         c.text(x, y + k * lh, ln, kind, px, col)
 
-ENC = ['-c:v', 'libx264', '-preset', 'medium', '-crf', '20', '-pix_fmt', 'yuv420p', '-r', '30']
+ENC = ['-c:v', 'libx264', '-preset', 'medium', '-crf', '28', '-tune', 'animation', '-pix_fmt', 'yuv420p', '-r', '30']
 
 def roughcut(slug, tag, shots, end, outname):
     """shots: (no, start, kind, picture, voiceover, clip_name or None)"""
