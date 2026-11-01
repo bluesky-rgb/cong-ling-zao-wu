@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>避雷针拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../shooting/">拍摄排期</a><a href="../publish/">发布素材</a><a href="../checklist/">待核清单</a><a href="../expansion/">内容架构</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../ep30/">30</a><a href="../b6/">B6</a><a href="../season3/">特辑3</a><a href="../ep32/">32</a><a href="../ep33/">33</a><a href="../b19/">B19</a><a href="../ep37/">37</a><a href="../ep31/">31</a><a href="../ep35/">35</a><a href="../ep36/">36</a><a href="../season4/">特辑4</a><a href="../ep39/">39</a><a href="../b8/">B8</a><a href="../ep40/">40</a><a href="../ep41/">41</a><a href="../b17/">B17</a><a href="../b7/">B7</a><a href="../ep42/">42</a><a href="../ep43/">43</a><a href="../ep44/">44</a><a href="../season5/">特辑5</a><a href="../ep45/">45</a><a href="../b11/">B11</a><a href="../b9/">B9</a><a href="../ep46/">46</a><a href="../ep47/">47</a><a href="../b10/">B10</a><a href="../ep48/">48</a><a href="../ep49/">49</a><a href="../ep50/">50</a><a href="../b18/">B18</a><a href="../season6/">特辑6</a><a href="../ep07/">07</a><a href="../ep08/">08</a><a href="../ep09/">09</a><a href="../ep12/">12</a><a href="../ep13/">13</a><a href="../ep14/">14</a><a href="../ep10/">10</a><a href="../ep19/">19</a><a href="../ep21/">21</a><a href="../ep51/">51</a><a href="../season7/">特辑7</a><a href="../ep52/">52</a><a href="../ep53/">53</a><a href="../ep54/">54</a><a href="../ep55/">55</a><a href="../ep56/">56</a><a href="../ep57/">57</a><a href="../ep58/">58</a><a href="../ep59/">59</a><a href="../ep60/">60</a><a href="../ep61/">61</a><a href="../season8/">特辑8</a><a href="../b20/">B20</a><a href="../b21/">B21</a><a href="../b22/">B22</a><a href="../b23/">B23</a><a href="../b24/">B24</a><a href="../b25/">B25</a><a href="../b26/">B26</a><a href="../b27/">B27</a><a href="../b28/">B28</a><a href="../b29/">B29</a><a href="../season9/">特辑9</a><a href="../ep62/">62</a><a href="../ep63/">63</a><a href="../ep64/">64</a><a href="../ep65/">65</a><a href="../ep66/">66</a><a href="../ep67/">67</a><a href="../ep68/">68</a><a href="../ep69/">69</a><a href="../ep70/">70</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第十季 · 第 70 集</div>
+<h1>避雷针</h1>
+<p class="thesis">导体带电时电荷会聚集在尖端，尖端附近电场最强，能把空气电离，让电荷慢慢漏走（尖端放电）。避雷针顶端是尖的，下面用粗导线一直接到地下：雷电沿电阻最小的路径走，顺着导线入地，而不是穿过屋顶、墙壁和电线。它不是把雷「吸走」，而是给电流一条安全的路。雷击部分只用动画。</p>
+<div class="facts">
+<div><span>暂定标题</span>一根铁杆，怎么保护整栋楼？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>1752 年 · 富兰克林</div>
+<div><span>衔接</span>← 01 摩擦起电与莱顿瓶、14 静电机；→ 71 对数与计算尺</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">提出</p><p class="p">1750 年富兰克林提出用尖铁杆把雷电引入地下；1752 年法国的达利巴尔按他的方案从铁杆引下电火花（拍摄前核对）。</p></div>
+<div class="ol"><p class="o">风筝</p><p class="p">富兰克林的风筝实验非常危险，后来有人做类似实验时触电身亡；片中只讲，不模仿。</p></div>
+<div class="ol"><p class="o">原理</p><p class="p">尖端曲率大，电荷面密度和表面电场大，易发生电晕放电；接地导线提供低电阻通路。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>避雷针把雷吸走了</s> → 给电流一条安全的路</span></li>
+<li><span class="k">2</span><span><s>越尖越容易被劈</s> → 尖端平时就在慢慢泄电</span></li>
+<li><span class="k">3</span><span><s>有避雷针就能在雷雨天户外玩</s> → 人站在空旷处仍然危险</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>尖针比圆球漏电快</p></div>
+<div class="layer"><span>规律层</span><p>尖端电场强；电流走电阻最小的路</p></div>
+<div class="layer"><span>本质层</span><p>电晕放电与接地电阻</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>雷电要找路入地 → 给它一条粗导线 → 顶端做成尖的，先放电。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">在干燥的天气做效果最好；所有实验都是静电，安全；雷击只用动画，雷雨天不做任何户外实验。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>自制验电器</td><td>带电</td></tr>
+<tr><td>B</td><td>接地缝衣针 vs 金属球靠近</td><td>尖端放电</td></tr>
+<tr><td>C</td><td>暗处看针尖</td><td>电晕或火花</td></tr>
+<tr><td>D</td><td>干燥 vs 潮湿</td><td>湿度</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>A：玻璃瓶口塞软木塞，插一根铁丝，下端挂两片窄铝箔；塑料尺摩擦毛衣后碰铁丝上端，看铝箔张开。</li>
+<li>B：验电器充电后，把一根缝衣针（针眼用导线接到水龙头或暖气片接地）针尖对着铁丝上端、隔 1 厘米不接触，计时铝箔合拢；换成一颗接地的金属球再测。</li>
+<li>C：关灯，在暗处把带电塑料尺慢慢靠近接地的针尖，用手机长曝光拍。</li>
+<li>D：在干燥和潮湿的日子各做一次 A，比较张角和保持时间。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>结果</th><th>备注</th><th>备注</th></tr></thead><tbody>
+<tr><td>B 缝衣针：合拢用时（秒）</td><td><input type="text" inputmode="decimal" data-k="e70-0-0" aria-label="B 缝衣针：合拢用时（秒） 结果"></td><td><input type="text" inputmode="decimal" data-k="e70-0-1" aria-label="B 缝衣针：合拢用时（秒） 备注"></td><td><input type="text" data-k="e70-0-n" aria-label="B 缝衣针：合拢用时（秒） 备注"></td></tr>
+<tr><td>B 金属球：合拢用时（秒）</td><td><input type="text" inputmode="decimal" data-k="e70-1-0" aria-label="B 金属球：合拢用时（秒） 结果"></td><td><input type="text" inputmode="decimal" data-k="e70-1-1" aria-label="B 金属球：合拢用时（秒） 备注"></td><td><input type="text" data-k="e70-1-n" aria-label="B 金属球：合拢用时（秒） 备注"></td></tr>
+<tr><td>C 是否看到火花</td><td><input type="text" inputmode="decimal" data-k="e70-2-0" aria-label="C 是否看到火花 结果"></td><td><input type="text" inputmode="decimal" data-k="e70-2-1" aria-label="C 是否看到火花 备注"></td><td><input type="text" data-k="e70-2-n" aria-label="C 是否看到火花 备注"></td></tr>
+<tr><td>D 干燥 / 潮湿保持时间</td><td><input type="text" inputmode="decimal" data-k="e70-3-0" aria-label="D 干燥 / 潮湿保持时间 结果"></td><td><input type="text" inputmode="decimal" data-k="e70-3-1" aria-label="D 干燥 / 潮湿保持时间 备注"></td><td><input type="text" data-k="e70-3-n" aria-label="D 干燥 / 潮湿保持时间 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>1752 年达利巴尔实验的细节拍摄前核对</li>
+<li>针尖和球的差别可能不大，如实记录</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>雷雨天不做任何户外实验，不放风筝，不在树下避雨。</li>
+<li>富兰克林的风筝实验极其危险，切勿模仿。</li>
+<li>不碰任何电源插座；接地只用水龙头或暖气片的金属部分。</li>
+<li>缝衣针注意扎手。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>玻璃瓶、软木塞、铁丝、铝箔</td><td>验电器</td></tr>
+<tr><td>塑料尺、毛衣</td><td>起电</td></tr>
+<tr><td>缝衣针、金属球、导线</td><td>尖端与圆头</td></tr>
+<tr><td>手机（长曝光）</td><td>暗处拍摄</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://en.wikipedia.org/wiki/Lightning_rod">Wikipedia：Lightning rod</a> <span>富兰克林与避雷针</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Corona_discharge">Wikipedia：Corona discharge</a> <span>尖端放电</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Electroscope">Wikipedia：Electroscope</a> <span>验电器</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "城市楼顶或古塔顶上的避雷针特写，顺着一根粗导线一路拍到地面", "楼顶上这根不起眼的铁杆，一直连到地下。"], [2, "0:08", "done", "问题卡：一根铁杆，怎么保护整栋楼？", ""], [3, "0:14", "done", "片头：第十季科技树，第 70 集闪烁（雷击只用动画）", "第 01 集我们摩擦起电、做了莱顿瓶，第 14 集造了静电机。这一集，回到天上那道最大的电火花。"], [4, "0:21", "done", "资料卡：富兰克林、达利巴尔、今天", "一七五〇年，富兰克林提出用尖铁杆引雷。一七五二年，法国人按他的方案从铁杆上引下了电火花。今天的高楼、铁塔和古建筑，都装有防雷装置。"], [5, "0:45", "real", "实验 1：玻璃瓶 + 铝箔片做验电器；塑料尺摩擦毛衣后靠近，铝箔片张开", "带电了，两片铝箔互相推开。"], [6, "1:10", "done", "动画：圆球与尖针的电场；尖端放电", "同样带电，尖针上电荷挤到尖端，那里的电场最强，强到把空气电离，电荷就从尖端悄悄漏走。"], [7, "1:32", "res", "实验 2：验电器充电后，把一根接地的缝衣针（尖端朝验电器，离 1 厘米、不接触）和一颗接地的金属球分别放过去，计时铝箔片合拢", "缝衣针……秒，金属球……秒。"], [8, "1:57", "done", "问题卡：避雷针为什么要做成尖的？", ""], [9, "2:03", "res", "实验 3：关灯，在暗处把带电的塑料尺慢慢靠近接地的缝衣针尖，看能不能拍到细小的火花或听到噼啪声", "暗处里，针尖……"], [10, "2:33", "done", "动画：有无避雷针的房子遭雷击（只用动画）", "雷电要找一条路进地里。避雷针顶上是尖的，下面接粗导线一直埋到地里，雷电顺着导线进了地，房子安然无恙。"], [11, "2:55", "real", "实验 4：在天气干燥和潮湿的日子各做一次实验 1，比较铝箔片张开的程度", "潮湿的天，电漏得……"], [12, "3:22", "done", "结论卡：尖端放电，导线入地", "尖端放电，导线入地：避雷针不是把雷吸走，是给电流一条安全的路。"], [13, "3:29", "done", "片尾：点亮第 70 集，预告第 71 集", "下集：怎样把乘法变成加法？"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>
