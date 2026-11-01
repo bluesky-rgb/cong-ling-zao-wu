@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>坎儿井拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../shooting/">拍摄排期</a><a href="../publish/">发布素材</a><a href="../checklist/">待核清单</a><a href="../expansion/">内容架构</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../ep30/">30</a><a href="../b6/">B6</a><a href="../season3/">特辑3</a><a href="../ep32/">32</a><a href="../ep33/">33</a><a href="../b19/">B19</a><a href="../ep37/">37</a><a href="../ep31/">31</a><a href="../ep35/">35</a><a href="../ep36/">36</a><a href="../season4/">特辑4</a><a href="../ep39/">39</a><a href="../b8/">B8</a><a href="../ep40/">40</a><a href="../ep41/">41</a><a href="../b17/">B17</a><a href="../b7/">B7</a><a href="../ep42/">42</a><a href="../ep43/">43</a><a href="../ep44/">44</a><a href="../season5/">特辑5</a><a href="../ep45/">45</a><a href="../b11/">B11</a><a href="../b9/">B9</a><a href="../ep46/">46</a><a href="../ep47/">47</a><a href="../b10/">B10</a><a href="../ep48/">48</a><a href="../ep49/">49</a><a href="../ep50/">50</a><a href="../b18/">B18</a><a href="../season6/">特辑6</a><a href="../ep07/">07</a><a href="../ep08/">08</a><a href="../ep09/">09</a><a href="../ep12/">12</a><a href="../ep13/">13</a><a href="../ep14/">14</a><a href="../ep10/">10</a><a href="../ep19/">19</a><a href="../ep21/">21</a><a href="../ep51/">51</a><a href="../season7/">特辑7</a><a href="../ep52/">52</a><a href="../ep53/">53</a><a href="../ep54/">54</a><a href="../ep55/">55</a><a href="../ep56/">56</a><a href="../ep57/">57</a><a href="../ep58/">58</a><a href="../ep59/">59</a><a href="../ep60/">60</a><a href="../ep61/">61</a><a href="../season8/">特辑8</a><a href="../b20/">B20</a><a href="../b21/">B21</a><a href="../b22/">B22</a><a href="../b23/">B23</a><a href="../b24/">B24</a><a href="../b25/">B25</a><a href="../b26/">B26</a><a href="../b27/">B27</a><a href="../b28/">B28</a><a href="../b29/">B29</a><a href="../season9/">特辑9</a><a href="../ep62/">62</a><a href="../ep63/">63</a><a href="../ep64/">64</a><a href="../ep65/">65</a><a href="../ep66/">66</a><a href="../ep67/">67</a><a href="../ep68/">68</a><a href="../ep69/">69</a><a href="../ep70/">70</a><a href="../ep71/">71</a><a href="../season10/">特辑10</a><a href="../b30/">B30</a><a href="../b31/">B31</a><a href="../b32/">B32</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 古法解密 3.0 · B30</div>
+<h1>坎儿井</h1>
+<p class="thesis">坎儿井在山前找到地下水，打母井，再从绿洲方向挖一条比地面坡度更缓（千分之几）的暗渠，让水靠重力自流到绿洲。暗渠在地下，挡住了沙漠的烈日和大风，蒸发远少于露天水渠；沿线每隔一段的竖井用于挖掘时出土、通风和定向。吐鲁番现有约 997 条坎儿井，总长近 3500 公里。</p>
+<div class="facts">
+<div><span>暂定标题</span>沙漠里的水，为什么要走地下？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>吐鲁番 · 起源说法不一</div>
+<div><span>衔接</span>← 38 蒸发冷却罐、B5 都江堰；→ B31</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">起源</p><p class="p">坎儿井是本地创造还是由西亚的坎儿井（qanat）传入，学界说法不一（待核）。</p></div>
+<div class="ol"><p class="o">规模</p><p class="p">吐鲁番市现有坎儿井 997 条，其中有水的 214 条，总长近 3500 公里（中国日报 2023 年报道）。</p></div>
+<div class="ol"><p class="o">原理</p><p class="p">蒸发量随日照和风速增大；暗渠坡度小于地面坡度，出口在下游绿洲处露出地面。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>水渠露天就行</s> → 沙漠里露天蒸发太快</span></li>
+<li><span class="k">2</span><span><s>挖地道是为了藏水</s> → 是为了少蒸发、靠坡度自流</span></li>
+<li><span class="k">3</span><span><s>坡越陡越好</s> → 太陡会冲坏渠底，千分之几就够</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>盖住的水比露天的少蒸发</p></div>
+<div class="layer"><span>规律层</span><p>日照、风与蒸发；重力自流</p></div>
+<div class="layer"><span>本质层</span><p>坡度设计与竖井施工</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>沙漠缺水、蒸发大 → 把渠挖进地下 → 留千分之几的缓坡自流 → 每隔一段打竖井。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">厨房秤要能精确到 1 克；风扇和阳光对两盘水一样。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>露天 vs 盖住，称重</td><td>蒸发</td></tr>
+<tr><td>B</td><td>6 / 24 小时再称</td><td>蒸发量</td></tr>
+<tr><td>C</td><td>2 米软管垫高 1 厘米</td><td>缓坡自流</td></tr>
+<tr><td>D</td><td>沙盘暗渠 + 竖井</td><td>模型</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>A：两个一样的托盘各倒 500 克水称重；一个盖锡箔、扎几个小孔；并排放在阳光下，风扇对着吹。</li>
+<li>B：6 小时、24 小时后各称一次，算蒸发掉的克数和百分比。</li>
+<li>C：一根 2 米长的软管（剖开成槽或用透明管）放在木板上，一端垫 1 厘米，从高端倒一杯水，计时到低端出水。</li>
+<li>D：大托盘装湿沙，埋一根吸管当暗渠，上面每 10 厘米插短吸管当竖井，从高端倒水看低端出水。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>结果</th><th>备注</th><th>备注</th></tr></thead><tbody>
+<tr><td>B 露天：6 / 24 小时少了（克）</td><td><input type="text" inputmode="decimal" data-k="b30-0-0" aria-label="B 露天：6 / 24 小时少了（克） 结果"></td><td><input type="text" inputmode="decimal" data-k="b30-0-1" aria-label="B 露天：6 / 24 小时少了（克） 备注"></td><td><input type="text" data-k="b30-0-n" aria-label="B 露天：6 / 24 小时少了（克） 备注"></td></tr>
+<tr><td>B 盖住：6 / 24 小时少了（克）</td><td><input type="text" inputmode="decimal" data-k="b30-1-0" aria-label="B 盖住：6 / 24 小时少了（克） 结果"></td><td><input type="text" inputmode="decimal" data-k="b30-1-1" aria-label="B 盖住：6 / 24 小时少了（克） 备注"></td><td><input type="text" data-k="b30-1-n" aria-label="B 盖住：6 / 24 小时少了（克） 备注"></td></tr>
+<tr><td>C 流到另一头用时（秒）</td><td><input type="text" inputmode="decimal" data-k="b30-2-0" aria-label="C 流到另一头用时（秒） 结果"></td><td><input type="text" inputmode="decimal" data-k="b30-2-1" aria-label="C 流到另一头用时（秒） 备注"></td><td><input type="text" data-k="b30-2-n" aria-label="C 流到另一头用时（秒） 备注"></td></tr>
+<tr><td>D 是否出水</td><td><input type="text" inputmode="decimal" data-k="b30-3-0" aria-label="D 是否出水 结果"></td><td><input type="text" inputmode="decimal" data-k="b30-3-1" aria-label="D 是否出水 备注"></td><td><input type="text" data-k="b30-3-n" aria-label="D 是否出水 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>坎儿井起源的说法拍摄前核对，片中只讲「说法不一」</li>
+<li>吐鲁番坎儿井是否已列入世界灌溉工程遗产，拍摄前核对</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>风扇插电，托盘的水不要洒到插座上。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>两个托盘、锡箔、厨房秤</td><td>蒸发</td></tr>
+<tr><td>风扇</td><td>风</td></tr>
+<tr><td>2 米软管、木板</td><td>缓坡</td></tr>
+<tr><td>大托盘、沙、吸管</td><td>沙盘模型</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://cn.chinadaily.com.cn/a/202309/05/WS64f6bf57a310936092f20568.html">中国日报：吐鲁番坎儿井申报世界灌溉工程遗产</a> <span>997 条、214 条有水、近 3500 公里</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Qanat">Wikipedia：Qanat</a> <span>坎儿井的原理与分布</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Turpan_water_system">Wikipedia：Turpan water system</a> <span>吐鲁番坎儿井</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "两个一样的托盘装同样多的水，一个盖上锡箔（只留小孔），放在太阳下、风扇前；第二天一盘几乎见底，一盘还满着", "同样的水，晒了一天。一盘快没了，一盘几乎没少。"], [2, "0:08", "done", "问题卡：沙漠里的水，为什么要走地下？", ""], [3, "0:14", "done", "片头：古法解密 3.0 科技树，B30 闪烁", "古法解密。吐鲁番，沙漠里的地下河。"], [4, "0:21", "done", "资料卡：起源、吐鲁番、今天", "坎儿井是本地创造还是从西亚传来，学界说法不一。吐鲁番现有坎儿井约九百九十七条，总长近三千五百公里，今天仍有两百多条在出水。"], [5, "0:45", "real", "实验 1：两个托盘各倒 500 克水，用厨房秤称重；一个盖锡箔（扎几个小孔），放在阳光下，风扇对着吹", "两盘水，一盘露天，一盘盖住。"], [6, "1:10", "done", "动画：露天水渠与暗渠的蒸发对比", "露天的水渠，太阳晒、风吹，水还没流到绿洲就少了一大半；坎儿井把渠挖在地下，蒸发少得多。"], [7, "1:32", "res", "实验 2：6 小时、24 小时后各称一次重量，算蒸发掉多少克", "露天的少了……克，盖住的少了……克。"], [8, "1:57", "done", "问题卡：不用水泵，水怎么自己流几十里？", ""], [9, "2:03", "res", "实验 3：一根 2 米长的软管放在木板上，一端垫高 1 厘米（千分之五），从高端倒水，看能不能流到低端、计时", "只垫高一厘米，水……秒流到了另一头。"], [10, "2:33", "done", "动画：母井、缓坡暗渠、竖井、绿洲", "先在山前找到地下水，打一口母井，再挖一条微微倾斜的暗渠；竖井是挖渠时出土、通风用的。"], [11, "2:55", "real", "实验 4：沙盘里用吸管埋一条「暗渠」，上面每隔 10 厘米插一根短吸管当竖井，从一头倒水看另一头出水", "沙子下面，水自己走到了「绿洲」。"], [12, "3:22", "done", "结论卡：暗渠少蒸发，缓坡自流", "暗渠挡住太阳和风，少蒸发；千分之几的缓坡，让水自己流到绿洲。"], [13, "3:29", "done", "片尾：点亮 B30，预告 B31", "下集：瓷器上的裂纹，为什么是故意的？"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>
