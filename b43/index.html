@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>杆秤拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../shooting/">拍摄排期</a><a href="../publish/">发布素材</a><a href="../checklist/">待核清单</a><a href="../expansion/">内容架构</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../ep30/">30</a><a href="../b6/">B6</a><a href="../season3/">特辑3</a><a href="../ep32/">32</a><a href="../ep33/">33</a><a href="../b19/">B19</a><a href="../ep37/">37</a><a href="../ep31/">31</a><a href="../ep35/">35</a><a href="../ep36/">36</a><a href="../season4/">特辑4</a><a href="../ep39/">39</a><a href="../b8/">B8</a><a href="../ep40/">40</a><a href="../ep41/">41</a><a href="../b17/">B17</a><a href="../b7/">B7</a><a href="../ep42/">42</a><a href="../ep43/">43</a><a href="../ep44/">44</a><a href="../season5/">特辑5</a><a href="../ep45/">45</a><a href="../b11/">B11</a><a href="../b9/">B9</a><a href="../ep46/">46</a><a href="../ep47/">47</a><a href="../b10/">B10</a><a href="../ep48/">48</a><a href="../ep49/">49</a><a href="../ep50/">50</a><a href="../b18/">B18</a><a href="../season6/">特辑6</a><a href="../ep07/">07</a><a href="../ep08/">08</a><a href="../ep09/">09</a><a href="../ep12/">12</a><a href="../ep13/">13</a><a href="../ep14/">14</a><a href="../ep10/">10</a><a href="../ep19/">19</a><a href="../ep21/">21</a><a href="../ep51/">51</a><a href="../season7/">特辑7</a><a href="../ep52/">52</a><a href="../ep53/">53</a><a href="../ep54/">54</a><a href="../ep55/">55</a><a href="../ep56/">56</a><a href="../ep57/">57</a><a href="../ep58/">58</a><a href="../ep59/">59</a><a href="../ep60/">60</a><a href="../ep61/">61</a><a href="../season8/">特辑8</a><a href="../b20/">B20</a><a href="../b21/">B21</a><a href="../b22/">B22</a><a href="../b23/">B23</a><a href="../b24/">B24</a><a href="../b25/">B25</a><a href="../b26/">B26</a><a href="../b27/">B27</a><a href="../b28/">B28</a><a href="../b29/">B29</a><a href="../season9/">特辑9</a><a href="../ep62/">62</a><a href="../ep63/">63</a><a href="../ep64/">64</a><a href="../ep65/">65</a><a href="../ep66/">66</a><a href="../ep67/">67</a><a href="../ep68/">68</a><a href="../ep69/">69</a><a href="../ep70/">70</a><a href="../ep71/">71</a><a href="../season10/">特辑10</a><a href="../b30/">B30</a><a href="../b31/">B31</a><a href="../b32/">B32</a><a href="../b33/">B33</a><a href="../b34/">B34</a><a href="../b35/">B35</a><a href="../b36/">B36</a><a href="../b37/">B37</a><a href="../b38/">B38</a><a href="../b39/">B39</a><a href="../season11/">特辑11</a><a href="../ep72/">72</a><a href="../ep73/">73</a><a href="../ep74/">74</a><a href="../ep75/">75</a><a href="../ep76/">76</a><a href="../ep77/">77</a><a href="../ep78/">78</a><a href="../ep79/">79</a><a href="../ep80/">80</a><a href="../ep81/">81</a><a href="../season12/">特辑12</a><a href="../h1/">H1</a><a href="../h2/">H2</a><a href="../h3/">H3</a><a href="../h4/">H4</a><a href="../h5/">H5</a><a href="../season13/">特辑13</a><a href="../b40/">B40</a><a href="../b41/">B41</a><a href="../b42/">B42</a><a href="../b43/">B43</a><a href="../b44/">B44</a><a href="../b45/">B45</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 古法解密 4.0 · B43</div>
+<h1>杆秤</h1>
+<p class="thesis">杆秤是一根不等臂杠杆：提纽是支点，重物挂在短臂，秤砣挂在长臂上移动。平衡时重物 × 短臂 = 秤砣 × 长臂（再加上秤杆自重的力矩）。空秤时秤砣挂在某一点刚好平衡，这一点叫定盘星，是零点；从零点往外，重物每多一份，秤砣就要多挪同样一段距离，所以刻度是等距的。一个秤砣通过改变力臂，就能称出不同的重量。</p>
+<div class="facts">
+<div><span>暂定标题</span>一根木杆一个秤砣，怎么称出不同的重量？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>战国已有衡器 · 杆秤与定盘星</div>
+<div><span>衔接</span>← 39 杠杆与滑轮组、B21 欹器；→ B44 船尾舵</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">衡器</p><p class="p">战国已有天平、权（砝码）等衡器；秦统一度量衡（具体器物拍摄前核对）。</p></div>
+<div class="ol"><p class="o">杆秤</p><p class="p">杆秤普及的年代说法不一；老秤一斤十六两，中国 1959 年后改为十两一斤（拍摄前核对）。</p></div>
+<div class="ol"><p class="o">原理</p><p class="p">力矩平衡：m·a + 杆自重力矩 = M·x，x 与 m 成线性关系，刻度等距。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>秤砣越重称得越多</s> → 挪远就能平衡更重的东西</span></li>
+<li><span class="k">2</span><span><s>刻度越往外越密</s> → 刻度是等距的</span></li>
+<li><span class="k">3</span><span><s>零点在提纽上</s> → 零点是定盘星，要单独找</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>秤砣挪一挪，杆就平了</p></div>
+<div class="layer"><span>规律层</span><p>力矩：力 × 力臂</p></div>
+<div class="layer"><span>本质层</span><p>定盘星与线性刻度</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>要用一个秤砣称很多种重量 → 改变力臂 → 找零点 → 刻度等距。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">30 厘米木尺，在离一端 5 厘米处钻孔穿绳做提纽，短臂端挂一个小纸杯；螺母（约 20–30 克）用细绳挂在长臂上能滑动。硬币先用厨房秤称出质量。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>空杯找定盘星</td><td>零点</td></tr>
+<tr><td>B</td><td>1–5 枚硬币标刻度</td><td>力矩平衡</td></tr>
+<tr><td>C</td><td>画距离表</td><td>等距</td></tr>
+<tr><td>D</td><td>称苹果对比</td><td>精度</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>A：杯里不放东西，挪秤砣到杆水平（可贴一个手机水平仪 App），标 0。</li>
+<li>B：依次放 1、2、3、4、5 枚硬币，每次挪到杆平，标记位置，量离 0 点的距离。</li>
+<li>C：把距离写进表里，看每多一枚硬币增加的距离是否相同。</li>
+<li>D：用刻度称一个苹果（换算成克），再上厨房秤对比。苹果实验后不食用。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>离零点（厘米）</th><th>每格增加</th><th>备注</th></tr></thead><tbody>
+<tr><td>B 1 枚</td><td><input type="text" inputmode="decimal" data-k="b43-0-0" aria-label="B 1 枚 离零点（厘米）"></td><td><input type="text" inputmode="decimal" data-k="b43-0-1" aria-label="B 1 枚 每格增加"></td><td><input type="text" data-k="b43-0-n" aria-label="B 1 枚 备注"></td></tr>
+<tr><td>B 2 枚</td><td><input type="text" inputmode="decimal" data-k="b43-1-0" aria-label="B 2 枚 离零点（厘米）"></td><td><input type="text" inputmode="decimal" data-k="b43-1-1" aria-label="B 2 枚 每格增加"></td><td><input type="text" data-k="b43-1-n" aria-label="B 2 枚 备注"></td></tr>
+<tr><td>B 3 枚</td><td><input type="text" inputmode="decimal" data-k="b43-2-0" aria-label="B 3 枚 离零点（厘米）"></td><td><input type="text" inputmode="decimal" data-k="b43-2-1" aria-label="B 3 枚 每格增加"></td><td><input type="text" data-k="b43-2-n" aria-label="B 3 枚 备注"></td></tr>
+<tr><td>B 4 枚</td><td><input type="text" inputmode="decimal" data-k="b43-3-0" aria-label="B 4 枚 离零点（厘米）"></td><td><input type="text" inputmode="decimal" data-k="b43-3-1" aria-label="B 4 枚 每格增加"></td><td><input type="text" data-k="b43-3-n" aria-label="B 4 枚 备注"></td></tr>
+<tr><td>B 5 枚</td><td><input type="text" inputmode="decimal" data-k="b43-4-0" aria-label="B 5 枚 离零点（厘米）"></td><td><input type="text" inputmode="decimal" data-k="b43-4-1" aria-label="B 5 枚 每格增加"></td><td><input type="text" data-k="b43-4-n" aria-label="B 5 枚 备注"></td></tr>
+<tr><td>D 苹果：杆秤 / 厨房秤</td><td><input type="text" inputmode="decimal" data-k="b43-5-0" aria-label="D 苹果：杆秤 / 厨房秤 离零点（厘米）"></td><td><input type="text" inputmode="decimal" data-k="b43-5-1" aria-label="D 苹果：杆秤 / 厨房秤 每格增加"></td><td><input type="text" data-k="b43-5-n" aria-label="D 苹果：杆秤 / 厨房秤 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>战国衡器、秦统一度量衡的具体器物拍摄前核对</li>
+<li>十六两制改为十两一斤的年份拍摄前核对</li>
+<li>「十六两对应北斗南斗加福禄寿」只是民间说法，不当史实</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>钻孔由成年人操作。</li>
+<li>称过的水果不在实验后食用。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>木尺、细绳、螺母</td><td>秤杆与秤砣</td></tr>
+<tr><td>小纸杯、硬币</td><td>重物</td></tr>
+<tr><td>厨房秤、手机水平仪 App</td><td>对照</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://en.wikipedia.org/wiki/Steelyard_balance">Wikipedia：Steelyard balance</a> <span>杆秤</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Torque">Wikipedia：Torque</a> <span>力矩</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Chinese_units_of_measurement">Wikipedia：Chinese units of measurement</a> <span>斤两制</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "菜市场式的杆秤（或自制木尺杆秤）：挂上一袋苹果，秤砣往外挪，杆慢慢抬平", "一根木杆，一个秤砣。挂上东西，挪一挪，杆就平了。"], [2, "0:08", "done", "问题卡：一根木杆一个秤砣，怎么称出不同的重量？", ""], [3, "0:14", "done", "片头：古法解密 4.0 科技树，B43 闪烁", "飞过了、听过了，这一集量一量。中国人用了两千多年的秤。"], [4, "0:21", "done", "资料卡：战国衡器、秦统一度量衡、十六两制", "战国已经有了各种衡器，秦统一了度量衡。一斤十六两的老秤，一直用到二十世纪五十年代。"], [5, "0:45", "real", "实验 1：木尺中点钻孔穿绳作提纽，一端挂空小杯，另一端挂螺母当秤砣，挪到杆平：这一点就是定盘星，用记号笔标 0", "空杯子挂上，秤砣挪到杆平：这里就是零。"], [6, "1:10", "done", "动画：力 × 力臂；秤砣越挪越远，平衡越重的东西", "杆秤是一根杠杆：东西越重，秤砣挪得越远，力乘力臂两边相等，杆就平了。"], [7, "1:32", "res", "实验 2：杯里依次放 1、2、3、4、5 枚硬币（先用厨房秤称出总质量），每次挪秤砣到杆平，标刻度、量离零点的距离", "一枚……厘米，两枚……厘米，三枚……"], [8, "1:57", "done", "问题卡：秤杆上的刻度，为什么是等距的？", ""], [9, "2:03", "res", "实验 3：把实验 2 的距离画成表：看每加一枚硬币，距离是不是增加同样一段", "每多一枚，就多……厘米：几乎一样。"], [10, "2:33", "done", "动画：定盘星与等距刻度", "先找到空秤平衡的定盘星；从零往外，重物每多一份，秤砣就多挪同样一段：刻度是等距的。"], [11, "2:55", "res", "实验 4：用做好的杆秤称一个苹果，再放到厨房秤上对比", "杆秤……克，厨房秤……克，差了……"], [12, "3:22", "done", "结论卡：力矩平衡与等距刻度", "重物乘短臂等于秤砣乘长臂；定盘星是零点，刻度一格一格等距。"], [13, "3:29", "done", "片尾：点亮 B43，预告 B44", "下集：船尾一块板，怎么让大船拐弯？"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>
