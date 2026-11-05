@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>3D 打印拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../shooting/">拍摄排期</a><a href="../publish/">发布素材</a><a href="../checklist/">待核清单</a><a href="../expansion/">内容架构</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../ep30/">30</a><a href="../b6/">B6</a><a href="../season3/">特辑3</a><a href="../ep32/">32</a><a href="../ep33/">33</a><a href="../b19/">B19</a><a href="../ep37/">37</a><a href="../ep31/">31</a><a href="../ep35/">35</a><a href="../ep36/">36</a><a href="../season4/">特辑4</a><a href="../ep39/">39</a><a href="../b8/">B8</a><a href="../ep40/">40</a><a href="../ep41/">41</a><a href="../b17/">B17</a><a href="../b7/">B7</a><a href="../ep42/">42</a><a href="../ep43/">43</a><a href="../ep44/">44</a><a href="../season5/">特辑5</a><a href="../ep45/">45</a><a href="../b11/">B11</a><a href="../b9/">B9</a><a href="../ep46/">46</a><a href="../ep47/">47</a><a href="../b10/">B10</a><a href="../ep48/">48</a><a href="../ep49/">49</a><a href="../ep50/">50</a><a href="../b18/">B18</a><a href="../season6/">特辑6</a><a href="../ep07/">07</a><a href="../ep08/">08</a><a href="../ep09/">09</a><a href="../ep12/">12</a><a href="../ep13/">13</a><a href="../ep14/">14</a><a href="../ep10/">10</a><a href="../ep19/">19</a><a href="../ep21/">21</a><a href="../ep51/">51</a><a href="../season7/">特辑7</a><a href="../ep52/">52</a><a href="../ep53/">53</a><a href="../ep54/">54</a><a href="../ep55/">55</a><a href="../ep56/">56</a><a href="../ep57/">57</a><a href="../ep58/">58</a><a href="../ep59/">59</a><a href="../ep60/">60</a><a href="../ep61/">61</a><a href="../season8/">特辑8</a><a href="../b20/">B20</a><a href="../b21/">B21</a><a href="../b22/">B22</a><a href="../b23/">B23</a><a href="../b24/">B24</a><a href="../b25/">B25</a><a href="../b26/">B26</a><a href="../b27/">B27</a><a href="../b28/">B28</a><a href="../b29/">B29</a><a href="../season9/">特辑9</a><a href="../ep62/">62</a><a href="../ep63/">63</a><a href="../ep64/">64</a><a href="../ep65/">65</a><a href="../ep66/">66</a><a href="../ep67/">67</a><a href="../ep68/">68</a><a href="../ep69/">69</a><a href="../ep70/">70</a><a href="../ep71/">71</a><a href="../season10/">特辑10</a><a href="../b30/">B30</a><a href="../b31/">B31</a><a href="../b32/">B32</a><a href="../b33/">B33</a><a href="../b34/">B34</a><a href="../b35/">B35</a><a href="../b36/">B36</a><a href="../b37/">B37</a><a href="../b38/">B38</a><a href="../b39/">B39</a><a href="../season11/">特辑11</a><a href="../ep72/">72</a><a href="../ep73/">73</a><a href="../ep74/">74</a><a href="../ep75/">75</a><a href="../ep76/">76</a><a href="../ep77/">77</a><a href="../ep78/">78</a><a href="../ep79/">79</a><a href="../ep80/">80</a><a href="../ep81/">81</a><a href="../season12/">特辑12</a><a href="../h1/">H1</a><a href="../h2/">H2</a><a href="../h3/">H3</a><a href="../h4/">H4</a><a href="../h5/">H5</a><a href="../season13/">特辑13</a><a href="../b40/">B40</a><a href="../b41/">B41</a><a href="../b42/">B42</a><a href="../b43/">B43</a><a href="../b44/">B44</a><a href="../b45/">B45</a><a href="../b46/">B46</a><a href="../b47/">B47</a><a href="../b48/">B48</a><a href="../b49/">B49</a><a href="../season14/">特辑14</a><a href="../ep82/">82</a><a href="../ep83/">83</a><a href="../ep84/">84</a><a href="../ep85/">85</a><a href="../ep86/">86</a><a href="../ep87/">87</a><a href="../ep88/">88</a><a href="../ep89/">89</a><a href="../ep90/">90</a><a href="../ep91/">91</a><a href="../season15/">特辑15</a><a href="../b50/">B50</a><a href="../b51/">B51</a><a href="../b52/">B52</a><a href="../b53/">B53</a><a href="../b54/">B54</a><a href="../b55/">B55</a><a href="../b56/">B56</a><a href="../b57/">B57</a><a href="../b58/">B58</a><a href="../b59/">B59</a><a href="../season16/">特辑16</a><a href="../ep92/">92</a><a href="../ep93/">93</a><a href="../ep94/">94</a><a href="../ep95/">95</a><a href="../ep96/">96</a><a href="../ep97/">97</a><a href="../ep98/">98</a><a href="../ep99/">99</a><a href="../ep100/">100</a><a href="../ep101/">101</a><a href="../season17/">特辑17</a><a href="../b60/">B60</a><a href="../b61/">B61</a><a href="../b62/">B62</a><a href="../b63/">B63</a><a href="../b64/">B64</a><a href="../b65/">B65</a><a href="../b66/">B66</a><a href="../b67/">B67</a><a href="../b68/">B68</a><a href="../b69/">B69</a><a href="../season18/">特辑18</a><a href="../ep102/">102</a><a href="../ep103/">103</a><a href="../ep104/">104</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第十九季 · 第 104 集</div>
+<h1>3D 打印</h1>
+<p class="thesis">3D 打印（增材制造）先由软件把三维模型沿高度「切片」成许多薄层，每层是一张平面路径图；打印机按路径逐层沉积材料并叠加成形。最常见的熔融沉积成型（FDM）把塑料丝加热挤出，像用针筒挤牙膏画图；立体光刻（SLA）则用光逐层固化液态树脂。层厚越小，侧面「台阶」越细、精度越高，但层数和时间成倍增加；悬空的部分底下没有材料承托，需要先打印可拆除的支撑。1984 年赫尔申请立体光刻专利，1988 年前后克伦普发明熔融沉积成型。</p>
+<div class="facts">
+<div><span>暂定标题</span>一台打印机，怎么「打」出一个杯子？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>1984 年立体光刻 · 1988 年熔融沉积</div>
+<div><span>衔接</span>← 65 印刷机、91 程序与计算机；→ 105 语音识别</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">立体光刻</p><p class="p">1984 年查尔斯 · 赫尔申请专利（拍摄前核对）。</p></div>
+<div class="ol"><p class="o">熔融沉积</p><p class="p">1988 年前后斯科特 · 克伦普发明 FDM（拍摄前核对）。</p></div>
+<div class="ol"><p class="o">开源</p><p class="p">2005 年起 RepRap 等开源打印机让 3D 打印走进家庭（拍摄前核对）。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>3D 打印是一下子印出来的</s> → 一层一层往上堆，每层都是一张平面图</span></li>
+<li><span class="k">2</span><span><s>什么形状都能直接打</s> → 悬空的部分要加支撑</span></li>
+<li><span class="k">3</span><span><s>层越薄越好</s> → 越薄越精细，可越慢</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>用针筒挤牙膏，照着分层卡片一层层堆出小塔</p></div>
+<div class="layer"><span>规律层</span><p>切片：立体拆成许多层平面</p></div>
+<div class="layer"><span>本质层</span><p>分层厚度、精度与支撑</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>要把电脑里的立体变成实物 → 把它切成一层层薄片 → 每层像印刷一样挤出来、叠上去。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">去掉针头的 10–20 毫升针筒装牙膏（或加水调软的超轻黏土），挤在垫了保鲜膜的方格纸上。先在纸上画好 5 张分层卡：金字塔每层是比上一层每边缩 1 格的正方形。牙膏和黏土都不入口。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>照 5 张分层卡堆金字塔</td><td>切片</td></tr>
+<tr><td>B</td><td>2 毫米 vs 4 毫米层厚</td><td>精度</td></tr>
+<tr><td>C</td><td>有无支撑的拱门</td><td>悬空</td></tr>
+<tr><td>D</td><td>拍真打印机</td><td>应用</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>A：照分层卡一层层挤出金字塔，计时、量高度。</li>
+<li>B：同样的半球按两种层厚各堆一次，拍侧面。</li>
+<li>C：直接挤拱门，再用纸卷做支撑挤一次。</li>
+<li>D：有条件时拍 3D 打印机的延时。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>结果</th><th>备注</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 用时（分钟）</td><td><input type="text" inputmode="decimal" data-k="e104-0-0" aria-label="A 用时（分钟） 结果"></td><td><input type="text" inputmode="decimal" data-k="e104-0-1" aria-label="A 用时（分钟） 备注"></td><td><input type="text" data-k="e104-0-n" aria-label="A 用时（分钟） 备注"></td></tr>
+<tr><td>A 高度（毫米）</td><td><input type="text" inputmode="decimal" data-k="e104-1-0" aria-label="A 高度（毫米） 结果"></td><td><input type="text" inputmode="decimal" data-k="e104-1-1" aria-label="A 高度（毫米） 备注"></td><td><input type="text" data-k="e104-1-n" aria-label="A 高度（毫米） 备注"></td></tr>
+<tr><td>B 4 毫米层数</td><td><input type="text" inputmode="decimal" data-k="e104-2-0" aria-label="B 4 毫米层数 结果"></td><td><input type="text" inputmode="decimal" data-k="e104-2-1" aria-label="B 4 毫米层数 备注"></td><td><input type="text" data-k="e104-2-n" aria-label="B 4 毫米层数 备注"></td></tr>
+<tr><td>B 2 毫米层数</td><td><input type="text" inputmode="decimal" data-k="e104-3-0" aria-label="B 2 毫米层数 结果"></td><td><input type="text" inputmode="decimal" data-k="e104-3-1" aria-label="B 2 毫米层数 备注"></td><td><input type="text" data-k="e104-3-n" aria-label="B 2 毫米层数 备注"></td></tr>
+<tr><td>C 无支撑</td><td><input type="text" inputmode="decimal" data-k="e104-4-0" aria-label="C 无支撑 结果"></td><td><input type="text" inputmode="decimal" data-k="e104-4-1" aria-label="C 无支撑 备注"></td><td><input type="text" data-k="e104-4-n" aria-label="C 无支撑 备注"></td></tr>
+<tr><td>C 有支撑</td><td><input type="text" inputmode="decimal" data-k="e104-5-0" aria-label="C 有支撑 结果"></td><td><input type="text" inputmode="decimal" data-k="e104-5-1" aria-label="C 有支撑 备注"></td><td><input type="text" data-k="e104-5-n" aria-label="C 有支撑 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>赫尔专利与克伦普发明的年份拍摄前核对</li>
+<li>RepRap 年份拍摄前核对</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>牙膏、黏土不入口，用完洗手。</li>
+<li>真 3D 打印机喷头很烫，只看不摸。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>去针头的针筒</td><td>「喷头」</td></tr>
+<tr><td>牙膏或超轻黏土</td><td>材料</td></tr>
+<tr><td>方格纸、保鲜膜、尺子</td><td>分层卡</td></tr>
+<tr><td>纸卷</td><td>支撑</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://en.wikipedia.org/wiki/3D_printing">Wikipedia：3D printing</a> <span>3D 打印</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Fused_filament_fabrication">Wikipedia：Fused filament fabrication</a> <span>熔融沉积</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Stereolithography">Wikipedia：Stereolithography</a> <span>立体光刻</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "桌上一张方格纸，手握去了针头的针筒，照着卡片一层层挤牙膏，一座小金字塔慢慢长高；最后切到一台真 3D 打印机工作的画面（如有）", "没有模具，没有刀。一层一层，挤出一座小塔。"], [2, "0:08", "done", "问题卡：一台打印机，怎么「打」出一个杯子？", ""], [3, "0:14", "done", "片头：第十九季科技树，第 104 集闪烁", "第 65 集印刷机一张张印平面，第 91 集计算机照着程序走：合起来，往上印。"], [4, "0:21", "done", "资料卡：立体光刻、熔融沉积、印刷机", "一九八四年，赫尔想到用光一层层固化液体树脂；几年后，克伦普发明了挤热塑料丝的方法，也就是今天最常见的 3D 打印机。"], [5, "0:45", "res", "实验 1：把一个 5 层金字塔画成 5 张分层卡（每层一个比上一层小一圈的正方形），针筒挤牙膏，照卡片一层层堆出来，计时", "用了……分钟，塔高……毫米。"], [6, "1:10", "done", "动画：切成一层层薄片", "电脑把立体横着切成许多薄片；喷头照每一层的平面图来回走，挤满这一层，再升高一层。"], [7, "1:32", "res", "实验 2：同样一个半球，按 2 毫米层厚（多层）和 4 毫米层厚（少层）各堆一次，拍侧面比台阶", "4 毫米：……层，台阶……；2 毫米：……层，……"], [8, "1:57", "done", "问题卡：为什么有的地方要先打一层「支撑」？", ""], [9, "2:03", "res", "实验 3：直接挤一个悬空的拱门，看会不会塌；再先用纸卷做一个支撑，挤完拱门、等牙膏变干（或用超轻黏土）后抽掉支撑", "没支撑：……；有支撑：……"], [10, "2:33", "done", "动画：层越薄，越像", "层越薄台阶越细，越像原来的形状，可要打的层数也多了好几倍；悬空的地方要先打支撑。"], [11, "2:55", "real", "实验 4：（有条件时）去创客空间或学校，拍 3D 打印机打一个小零件的延时", "一层，一层，又一层。"], [12, "3:22", "done", "结论卡：分层制造", "把立体切成一层层平面，一层层挤出来叠上去；层越薄越精细，悬空的地方要支撑。"], [13, "3:29", "done", "片尾：点亮第 104 集，预告第 105 集", "下集：手机怎么听懂你说的话？"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>
