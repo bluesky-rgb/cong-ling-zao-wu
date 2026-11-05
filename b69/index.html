@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>冰糖拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../shooting/">拍摄排期</a><a href="../publish/">发布素材</a><a href="../checklist/">待核清单</a><a href="../expansion/">内容架构</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../ep30/">30</a><a href="../b6/">B6</a><a href="../season3/">特辑3</a><a href="../ep32/">32</a><a href="../ep33/">33</a><a href="../b19/">B19</a><a href="../ep37/">37</a><a href="../ep31/">31</a><a href="../ep35/">35</a><a href="../ep36/">36</a><a href="../season4/">特辑4</a><a href="../ep39/">39</a><a href="../b8/">B8</a><a href="../ep40/">40</a><a href="../ep41/">41</a><a href="../b17/">B17</a><a href="../b7/">B7</a><a href="../ep42/">42</a><a href="../ep43/">43</a><a href="../ep44/">44</a><a href="../season5/">特辑5</a><a href="../ep45/">45</a><a href="../b11/">B11</a><a href="../b9/">B9</a><a href="../ep46/">46</a><a href="../ep47/">47</a><a href="../b10/">B10</a><a href="../ep48/">48</a><a href="../ep49/">49</a><a href="../ep50/">50</a><a href="../b18/">B18</a><a href="../season6/">特辑6</a><a href="../ep07/">07</a><a href="../ep08/">08</a><a href="../ep09/">09</a><a href="../ep12/">12</a><a href="../ep13/">13</a><a href="../ep14/">14</a><a href="../ep10/">10</a><a href="../ep19/">19</a><a href="../ep21/">21</a><a href="../ep51/">51</a><a href="../season7/">特辑7</a><a href="../ep52/">52</a><a href="../ep53/">53</a><a href="../ep54/">54</a><a href="../ep55/">55</a><a href="../ep56/">56</a><a href="../ep57/">57</a><a href="../ep58/">58</a><a href="../ep59/">59</a><a href="../ep60/">60</a><a href="../ep61/">61</a><a href="../season8/">特辑8</a><a href="../b20/">B20</a><a href="../b21/">B21</a><a href="../b22/">B22</a><a href="../b23/">B23</a><a href="../b24/">B24</a><a href="../b25/">B25</a><a href="../b26/">B26</a><a href="../b27/">B27</a><a href="../b28/">B28</a><a href="../b29/">B29</a><a href="../season9/">特辑9</a><a href="../ep62/">62</a><a href="../ep63/">63</a><a href="../ep64/">64</a><a href="../ep65/">65</a><a href="../ep66/">66</a><a href="../ep67/">67</a><a href="../ep68/">68</a><a href="../ep69/">69</a><a href="../ep70/">70</a><a href="../ep71/">71</a><a href="../season10/">特辑10</a><a href="../b30/">B30</a><a href="../b31/">B31</a><a href="../b32/">B32</a><a href="../b33/">B33</a><a href="../b34/">B34</a><a href="../b35/">B35</a><a href="../b36/">B36</a><a href="../b37/">B37</a><a href="../b38/">B38</a><a href="../b39/">B39</a><a href="../season11/">特辑11</a><a href="../ep72/">72</a><a href="../ep73/">73</a><a href="../ep74/">74</a><a href="../ep75/">75</a><a href="../ep76/">76</a><a href="../ep77/">77</a><a href="../ep78/">78</a><a href="../ep79/">79</a><a href="../ep80/">80</a><a href="../ep81/">81</a><a href="../season12/">特辑12</a><a href="../h1/">H1</a><a href="../h2/">H2</a><a href="../h3/">H3</a><a href="../h4/">H4</a><a href="../h5/">H5</a><a href="../season13/">特辑13</a><a href="../b40/">B40</a><a href="../b41/">B41</a><a href="../b42/">B42</a><a href="../b43/">B43</a><a href="../b44/">B44</a><a href="../b45/">B45</a><a href="../b46/">B46</a><a href="../b47/">B47</a><a href="../b48/">B48</a><a href="../b49/">B49</a><a href="../season14/">特辑14</a><a href="../ep82/">82</a><a href="../ep83/">83</a><a href="../ep84/">84</a><a href="../ep85/">85</a><a href="../ep86/">86</a><a href="../ep87/">87</a><a href="../ep88/">88</a><a href="../ep89/">89</a><a href="../ep90/">90</a><a href="../ep91/">91</a><a href="../season15/">特辑15</a><a href="../b50/">B50</a><a href="../b51/">B51</a><a href="../b52/">B52</a><a href="../b53/">B53</a><a href="../b54/">B54</a><a href="../b55/">B55</a><a href="../b56/">B56</a><a href="../b57/">B57</a><a href="../b58/">B58</a><a href="../b59/">B59</a><a href="../season16/">特辑16</a><a href="../ep92/">92</a><a href="../ep93/">93</a><a href="../ep94/">94</a><a href="../ep95/">95</a><a href="../ep96/">96</a><a href="../ep97/">97</a><a href="../ep98/">98</a><a href="../ep99/">99</a><a href="../ep100/">100</a><a href="../ep101/">101</a><a href="../season17/">特辑17</a><a href="../b60/">B60</a><a href="../b61/">B61</a><a href="../b62/">B62</a><a href="../b63/">B63</a><a href="../b64/">B64</a><a href="../b65/">B65</a><a href="../b66/">B66</a><a href="../b67/">B67</a><a href="../b68/">B68</a><a href="../b69/">B69</a><a href="../season18/">特辑18</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 古法解密 6.0 · B69</div>
+<h1>冰糖</h1>
+<p class="thesis">蔗糖在水里的溶解度随温度升高而迅速增大（资料值约为 20 度时每 100 克水溶约 200 克，接近 100 度时近 490 克）。在高温下溶入大量糖，再让溶液冷却，溶液中的糖超过该温度下能溶解的量，成为过饱和溶液；多余的糖分子在晶核（棉线上的糖粒、杯壁的微小凸起等）上一层层排列析出，形成晶体。冷却越快，同时生成的晶核越多，糖被分散到许多小晶体上；冷却越慢、越安静，晶核越少，每颗晶体越大、越透明，这就是冰糖。宋代王灼《糖霜谱》记载了四川遂宁的糖霜（早期冰糖）制法。</p>
+<div class="facts">
+<div><span>暂定标题</span>一锅糖水，怎么长出透明的大冰糖？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>宋《糖霜谱》 · 元代冰糖</div>
+<div><span>衔接</span>← 20 制盐、B68 饴糖；→ 第十八季特辑</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">熬糖</p><p class="p">唐太宗时遣使学印度熬糖法（拍摄前核对）。</p></div>
+<div class="ol"><p class="o">糖霜谱</p><p class="p">宋代王灼《糖霜谱》记遂宁糖霜（拍摄前核对）。</p></div>
+<div class="ol"><p class="o">原理</p><p class="p">溶解度随温度变化；过饱和；成核与晶体生长。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>冰糖是糖块压出来的</s> → 是糖水里慢慢长出来的晶体</span></li>
+<li><span class="k">2</span><span><s>冷得越快晶体越大</s> → 冷得越慢，晶体越大越整齐</span></li>
+<li><span class="k">3</span><span><s>糖溶不溶跟温度没关系</s> → 热水比冷水能多溶一倍多</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>线上慢慢长出糖晶体</p></div>
+<div class="layer"><span>规律层</span><p>过饱和：热水能溶更多糖，凉了就析出</p></div>
+<div class="layer"><span>本质层</span><p>晶核与生长速度</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>要得到大块透明的糖 → 先用热水溶尽量多的糖 → 挂一根线慢慢凉、静置几天。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">成年人烧水，在耐热玻璃杯或量杯里把白糖分次加入约 90 度的热水，搅到不再溶为止。棉线先在浓糖水里蘸一下、晾干，表面粘几粒糖当「种子」，用筷子横担在杯口吊进糖水，线不要碰杯底和杯壁。杯口盖纸防灰。慢凉组放进泡沫箱，快凉组晾到不烫手后放冰箱冷藏。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>热水 vs 室温水溶糖</td><td>溶解度</td></tr>
+<tr><td>B</td><td>泡沫箱 vs 冰箱</td><td>冷却快慢</td></tr>
+<tr><td>C</td><td>一周后量晶体</td><td>个数与大小</td></tr>
+<tr><td>D</td><td>放大镜比形状</td><td>晶体</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>A：100 毫升 90 度热水和 100 毫升室温水，分别一勺勺加糖，记最多溶了多少克。</li>
+<li>B：热糖水分两杯，吊好棉线，一杯泡沫箱、一杯冰箱。</li>
+<li>C：每天拍一张，一周后取出，数晶体个数、量最大边长。</li>
+<li>D：放大镜看形状，和超市冰糖、白砂糖对比。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>读数</th><th>备注</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 热水溶糖（克）</td><td><input type="text" inputmode="decimal" data-k="b69-0-0" aria-label="A 热水溶糖（克） 读数"></td><td><input type="text" inputmode="decimal" data-k="b69-0-1" aria-label="A 热水溶糖（克） 备注"></td><td><input type="text" data-k="b69-0-n" aria-label="A 热水溶糖（克） 备注"></td></tr>
+<tr><td>A 室温水溶糖（克）</td><td><input type="text" inputmode="decimal" data-k="b69-1-0" aria-label="A 室温水溶糖（克） 读数"></td><td><input type="text" inputmode="decimal" data-k="b69-1-1" aria-label="A 室温水溶糖（克） 备注"></td><td><input type="text" data-k="b69-1-n" aria-label="A 室温水溶糖（克） 备注"></td></tr>
+<tr><td>C 泡沫箱晶体个数</td><td><input type="text" inputmode="decimal" data-k="b69-2-0" aria-label="C 泡沫箱晶体个数 读数"></td><td><input type="text" inputmode="decimal" data-k="b69-2-1" aria-label="C 泡沫箱晶体个数 备注"></td><td><input type="text" data-k="b69-2-n" aria-label="C 泡沫箱晶体个数 备注"></td></tr>
+<tr><td>C 泡沫箱最大边长（毫米）</td><td><input type="text" inputmode="decimal" data-k="b69-3-0" aria-label="C 泡沫箱最大边长（毫米） 读数"></td><td><input type="text" inputmode="decimal" data-k="b69-3-1" aria-label="C 泡沫箱最大边长（毫米） 备注"></td><td><input type="text" data-k="b69-3-n" aria-label="C 泡沫箱最大边长（毫米） 备注"></td></tr>
+<tr><td>C 冰箱晶体个数</td><td><input type="text" inputmode="decimal" data-k="b69-4-0" aria-label="C 冰箱晶体个数 读数"></td><td><input type="text" inputmode="decimal" data-k="b69-4-1" aria-label="C 冰箱晶体个数 备注"></td><td><input type="text" data-k="b69-4-n" aria-label="C 冰箱晶体个数 备注"></td></tr>
+<tr><td>C 冰箱最大边长（毫米）</td><td><input type="text" inputmode="decimal" data-k="b69-5-0" aria-label="C 冰箱最大边长（毫米） 读数"></td><td><input type="text" inputmode="decimal" data-k="b69-5-1" aria-label="C 冰箱最大边长（毫米） 备注"></td><td><input type="text" data-k="b69-5-n" aria-label="C 冰箱最大边长（毫米） 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>蔗糖溶解度数值拍摄前核对</li>
+<li>《糖霜谱》作者、年代与遂宁糖霜拍摄前核对</li>
+<li>唐代学印度熬糖法的记载拍摄前核对</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>烧水和热糖水由成年人操作，糖水比开水更烫、更粘，溅到皮肤要立刻用冷水冲。</li>
+<li>用耐热玻璃杯，别把热糖水倒进普通薄玻璃杯。</li>
+<li>实验里的晶体和糖水都不食用。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>白糖、热水（成年人用）</td><td>糖水</td></tr>
+<tr><td>耐热玻璃杯 ×2、筷子、棉线</td><td>吊线</td></tr>
+<tr><td>泡沫箱、冰箱</td><td>冷却</td></tr>
+<tr><td>厨房秤、尺子、放大镜</td><td>测量</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://en.wikipedia.org/wiki/Rock_candy">Wikipedia：Rock candy</a> <span>冰糖</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Supersaturation">Wikipedia：Supersaturation</a> <span>过饱和</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Nucleation">Wikipedia：Nucleation</a> <span>成核</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Sucrose">Wikipedia：Sucrose</a> <span>蔗糖</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "一周后，从泡沫箱里取出玻璃杯，提起棉线：上面挂着几块透明的大糖晶；旁边冰箱那杯的线上是一层细碎的白糖粒", "同样一杯糖水，同样一根线。一杯长出了冰糖，一杯只结了一层白霜。"], [2, "0:08", "done", "问题卡：一锅糖水，怎么长出透明的大冰糖？", ""], [3, "0:14", "done", "片头：古法解密 6.0 科技树，B69 闪烁", "第 20 集晒出了盐，上一集熬出了饴糖；这一季最后一集，让糖自己长出来。"], [4, "0:21", "done", "资料卡：熬糖法、糖霜谱、制盐", "唐代从印度学来熬糖的方法；宋代王灼写了一本《糖霜谱》，专门讲四川遂宁的糖霜，也就是早期的冰糖。"], [5, "0:45", "res", "实验 1：成年人把 200 克白糖倒进 100 毫升热水（约 90 度）搅到全溶，称出最多能溶多少；再取 100 毫升室温水，看能溶多少", "热水溶了……克，室温水只溶了……克。"], [6, "1:10", "done", "动画：过饱和", "水越热，能溶的糖越多；热糖水慢慢凉下来，多出来的糖还在水里，这叫过饱和。"], [7, "1:32", "res", "实验 2：热糖水分到两只玻璃杯，各吊一根事先蘸过糖粒的棉线；一杯放进泡沫箱慢慢凉，一杯放进冰箱冷藏", "第一天……，第三天……。"], [8, "1:57", "done", "问题卡：为什么凉得越慢，晶体越大？", ""], [9, "2:03", "res", "实验 3：一周后取出两根线，数晶体个数，用尺子量最大一块的边长，拍特写", "泡沫箱：……块，最大……毫米；冰箱：……块，最大……毫米。"], [10, "2:33", "done", "动画：慢慢凉，长大块", "凉得快，一下冒出很多晶核，糖被分成许多小块；凉得慢，晶核只有几个，长成透明的大块。"], [11, "2:55", "real", "实验 4：用放大镜看两种晶体的形状，和超市买的冰糖、白砂糖放在一起比", "超市的冰糖，也是这样慢慢长出来的。"], [12, "3:22", "done", "结论卡：过饱和与结晶", "热水溶得多，凉下来过饱和，多出来的糖就结晶；凉得越慢，晶核越少，晶体越大。"], [13, "3:29", "done", "片尾：点亮 B69，预告第十八季特辑", "下集：第十八季特辑，古法解密 6.0 回顾。"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>
