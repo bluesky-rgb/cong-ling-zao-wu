@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>矿石收音机拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../shooting/">拍摄排期</a><a href="../publish/">发布素材</a><a href="../checklist/">待核清单</a><a href="../expansion/">内容架构</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../ep30/">30</a><a href="../b6/">B6</a><a href="../season3/">特辑3</a><a href="../ep32/">32</a><a href="../ep33/">33</a><a href="../b19/">B19</a><a href="../ep37/">37</a><a href="../ep31/">31</a><a href="../ep35/">35</a><a href="../ep36/">36</a><a href="../season4/">特辑4</a><a href="../ep39/">39</a><a href="../b8/">B8</a><a href="../ep40/">40</a><a href="../ep41/">41</a><a href="../b17/">B17</a><a href="../b7/">B7</a><a href="../ep42/">42</a><a href="../ep43/">43</a><a href="../ep44/">44</a><a href="../season5/">特辑5</a><a href="../ep45/">45</a><a href="../b11/">B11</a><a href="../b9/">B9</a><a href="../ep46/">46</a><a href="../ep47/">47</a><a href="../b10/">B10</a><a href="../ep48/">48</a><a href="../ep49/">49</a><a href="../ep50/">50</a><a href="../b18/">B18</a><a href="../season6/">特辑6</a><a href="../ep07/">07</a><a href="../ep08/">08</a><a href="../ep09/">09</a><a href="../ep12/">12</a><a href="../ep13/">13</a><a href="../ep14/">14</a><a href="../ep10/">10</a><a href="../ep19/">19</a><a href="../ep21/">21</a><a href="../ep51/">51</a><a href="../season7/">特辑7</a><a href="../ep52/">52</a><a href="../ep53/">53</a><a href="../ep54/">54</a><a href="../ep55/">55</a><a href="../ep56/">56</a><a href="../ep57/">57</a><a href="../ep58/">58</a><a href="../ep59/">59</a><a href="../ep60/">60</a><a href="../ep61/">61</a><a href="../season8/">特辑8</a><a href="../b20/">B20</a><a href="../b21/">B21</a><a href="../b22/">B22</a><a href="../b23/">B23</a><a href="../b24/">B24</a><a href="../b25/">B25</a><a href="../b26/">B26</a><a href="../b27/">B27</a><a href="../b28/">B28</a><a href="../b29/">B29</a><a href="../season9/">特辑9</a><a href="../ep62/">62</a><a href="../ep63/">63</a><a href="../ep64/">64</a><a href="../ep65/">65</a><a href="../ep66/">66</a><a href="../ep67/">67</a><a href="../ep68/">68</a><a href="../ep69/">69</a><a href="../ep70/">70</a><a href="../ep71/">71</a><a href="../season10/">特辑10</a><a href="../b30/">B30</a><a href="../b31/">B31</a><a href="../b32/">B32</a><a href="../b33/">B33</a><a href="../b34/">B34</a><a href="../b35/">B35</a><a href="../b36/">B36</a><a href="../b37/">B37</a><a href="../b38/">B38</a><a href="../b39/">B39</a><a href="../season11/">特辑11</a><a href="../ep72/">72</a><a href="../ep73/">73</a><a href="../ep74/">74</a><a href="../ep75/">75</a><a href="../ep76/">76</a><a href="../ep77/">77</a><a href="../ep78/">78</a><a href="../ep79/">79</a><a href="../ep80/">80</a><a href="../ep81/">81</a><a href="../season12/">特辑12</a><a href="../h1/">H1</a><a href="../h2/">H2</a><a href="../h3/">H3</a><a href="../h4/">H4</a><a href="../h5/">H5</a><a href="../season13/">特辑13</a><a href="../b40/">B40</a><a href="../b41/">B41</a><a href="../b42/">B42</a><a href="../b43/">B43</a><a href="../b44/">B44</a><a href="../b45/">B45</a><a href="../b46/">B46</a><a href="../b47/">B47</a><a href="../b48/">B48</a><a href="../b49/">B49</a><a href="../season14/">特辑14</a><a href="../ep82/">82</a><a href="../ep83/">83</a><a href="../ep84/">84</a><a href="../ep85/">85</a><a href="../ep86/">86</a><a href="../ep87/">87</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第十五季 · 第 85 集</div>
+<h1>矿石收音机</h1>
+<p class="thesis">天线同时收到许多电台的电磁波。线圈和电容组成谐振电路，只有频率与它的固有频率相同的那一路信号会因共振被放大，这就是选台；转动可变电容或换线圈抽头就能换台。中波广播是调幅的：声音改变高频载波的幅度。载波一秒正负来回几十万次，耳机跟不上，正负抵消就没声；二极管（最早是矿石晶体）只让电流单向通过，砍掉一半后剩下部分的平均值正好随声音变化，推动耳机发声。整台收音机不用电池，耳机里微弱的声音全靠电台发来的电磁波能量。</p>
+<div class="facts">
+<div><span>暂定标题</span>一台不用电池的收音机，声音从哪来？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>1906 年 · 皮卡德晶体检波器</div>
+<div><span>衔接</span>← 76 无线电、72 电话；→ 86 机翼</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">检波器</p><p class="p">1906 年前后皮卡德等人发现硅、方铅矿等晶体的单向导电，用于检波（拍摄前核对）。</p></div>
+<div class="ol"><p class="o">普及</p><p class="p">1920 年代广播兴起，矿石收音机便宜、不用电，广为流行（拍摄前核对）。</p></div>
+<div class="ol"><p class="o">原理</p><p class="p">LC 谐振 f = 1 / (2π√(LC))；调幅（AM）与包络检波；锗二极管压降小，适合弱信号。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>收音机必须插电</s> → 声音的能量来自电台</span></li>
+<li><span class="k">2</span><span><s>零件越多越好</s> → 线圈、二极管、耳机就够</span></li>
+<li><span class="k">3</span><span><s>所有台混在一起</s> → 共振只放一个台进来</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>不用电池，耳机里有微弱的广播声</p></div>
+<div class="layer"><span>规律层</span><p>调谐：线圈和电容选台；检波：二极管让电流单向</p></div>
+<div class="layer"><span>本质层</span><p>共振频率与整流</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>要把空中的电波变成声音 → 用线圈选台 → 用二极管把来回的电流变成单向 → 推动耳机。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">必须用高阻耳机（老式 2000 欧以上）或压电耳机，普通手机耳机几乎听不见；二极管用锗二极管（如 1N34A 类）。天线越长越高越好。先查当地有没有较强的中波电台；城市里信号弱或干扰大时可能收不到，那就把听的部分改用动画说明。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>绕线圈、接电路</td><td>能否收到</td></tr>
+<tr><td>B</td><td>换抽头或电容</td><td>调谐</td></tr>
+<tr><td>C</td><td>拆掉二极管</td><td>检波</td></tr>
+<tr><td>D</td><td>缩短天线</td><td>能量来源</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>A：卫生纸筒上绕 60–80 圈漆包线，每 10 圈刮开一处漆作抽头；天线 → 线圈一端，线圈另一端 → 地线；二极管从天线端接到耳机，耳机另一端接地线。</li>
+<li>B：天线依次接不同抽头（或在线圈两端并一个可变电容慢慢转），记录听到的台。</li>
+<li>C：去掉二极管直接接耳机，再接回，比较。</li>
+<li>D：天线从 10 米缩到 2 米，比较音量。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>结果</th><th>备注</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 能否听到</td><td><input type="text" inputmode="decimal" data-k="e85-0-0" aria-label="A 能否听到 结果"></td><td><input type="text" inputmode="decimal" data-k="e85-0-1" aria-label="A 能否听到 备注"></td><td><input type="text" data-k="e85-0-n" aria-label="A 能否听到 备注"></td></tr>
+<tr><td>B 听到几个台</td><td><input type="text" inputmode="decimal" data-k="e85-1-0" aria-label="B 听到几个台 结果"></td><td><input type="text" inputmode="decimal" data-k="e85-1-1" aria-label="B 听到几个台 备注"></td><td><input type="text" data-k="e85-1-n" aria-label="B 听到几个台 备注"></td></tr>
+<tr><td>C 无二极管</td><td><input type="text" inputmode="decimal" data-k="e85-2-0" aria-label="C 无二极管 结果"></td><td><input type="text" inputmode="decimal" data-k="e85-2-1" aria-label="C 无二极管 备注"></td><td><input type="text" data-k="e85-2-n" aria-label="C 无二极管 备注"></td></tr>
+<tr><td>D 2 米天线</td><td><input type="text" inputmode="decimal" data-k="e85-3-0" aria-label="D 2 米天线 结果"></td><td><input type="text" inputmode="decimal" data-k="e85-3-1" aria-label="D 2 米天线 备注"></td><td><input type="text" data-k="e85-3-n" aria-label="D 2 米天线 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>晶体检波器的发明人与年份拍摄前核对</li>
+<li>当地中波电台频率与信号强度先实测</li>
+<li>矿石收音机普及年代拍摄前核对</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>天线远离一切电力线、变压器；雷雨天不架天线，用完收起。</li>
+<li>地线接暖气管或专用接地桩，绝不接燃气管、绝不接插座。</li>
+<li>漆包线刮漆用砂纸，小心手。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>卫生纸筒、漆包线（约 0.3 毫米，30 米）</td><td>线圈</td></tr>
+<tr><td>锗二极管、可变电容（可选）</td><td>检波与调谐</td></tr>
+<tr><td>高阻耳机或压电耳机</td><td>发声</td></tr>
+<tr><td>10 米导线、鳄鱼夹</td><td>天线与地线</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://en.wikipedia.org/wiki/Crystal_radio">Wikipedia：Crystal radio</a> <span>矿石收音机</span></li>
+<li><a href="https://en.wikipedia.org/wiki/LC_circuit">Wikipedia：LC circuit</a> <span>谐振</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Envelope_detector">Wikipedia：Envelope detector</a> <span>包络检波</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "桌上一个绕满漆包线的卫生纸筒、一个小二极管、一副耳机，没有电池；戴上耳机，听见微弱的广播声", "没有电池，没有插头。耳机里有人在说话。"], [2, "0:08", "done", "问题卡：一台不用电池的收音机，声音从哪来？", ""], [3, "0:14", "done", "片头：第十五季科技树，第 85 集闪烁", "第 76 集我们用电池擦锉刀发出了电波。这一集反过来：只靠收到的电波，让耳机响。"], [4, "0:21", "done", "资料卡：晶体检波器、矿石收音机普及、无线电", "一九零六年前后，人们发现某些矿石晶体能让电流只朝一个方向走；二十年代，家家户户用矿石收音机听广播。"], [5, "0:45", "real", "实验 1：卫生纸筒绕 60–80 圈漆包线，每隔 10 圈刮开漆引出一个抽头；接锗二极管和高阻耳机，天线拉到窗外 10 米以上，地线接暖气管（不是燃气管）", "一个纸筒，一个二极管，一根长天线。"], [6, "1:10", "done", "动画：线圈和电容共振，只放一个台进来", "空中飘着很多台；线圈和电容像一架秋千，只有频率对上的那个台被越推越大。"], [7, "1:32", "res", "实验 2：换不同的抽头（或转可变电容），记能听到几个台、哪个最响", "抽头 1……，抽头 3……，一共听到……个台。"], [8, "1:57", "done", "问题卡：那么多电台，怎么只听见一个？", ""], [9, "2:03", "res", "实验 3：把二极管拆掉直接接耳机，再接回来：对比有没有声音", "没有二极管：……；接上：……"], [10, "2:33", "done", "动画：调幅电波 → 二极管砍掉一半 → 耳机跟着平均走", "高频电波来回太快，耳机跟不上；二极管砍掉一半，剩下的平均值就是声音的形状。"], [11, "2:55", "res", "实验 4：天线缩短到 2 米再听：声音变小多少（收不到电台时，这一段改用动画说明）", "天线短了，声音……"], [12, "3:22", "done", "结论卡：共振选台，二极管检波", "线圈和电容共振选台，二极管把电波变成声音；推动耳机的能量，全来自电台。"], [13, "3:29", "done", "片尾：点亮第 85 集，预告第 86 集", "下集：几十吨重的飞机，凭什么飘在空中？"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>

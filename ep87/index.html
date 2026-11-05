@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>电梯与安全钳拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../shooting/">拍摄排期</a><a href="../publish/">发布素材</a><a href="../checklist/">待核清单</a><a href="../expansion/">内容架构</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../ep30/">30</a><a href="../b6/">B6</a><a href="../season3/">特辑3</a><a href="../ep32/">32</a><a href="../ep33/">33</a><a href="../b19/">B19</a><a href="../ep37/">37</a><a href="../ep31/">31</a><a href="../ep35/">35</a><a href="../ep36/">36</a><a href="../season4/">特辑4</a><a href="../ep39/">39</a><a href="../b8/">B8</a><a href="../ep40/">40</a><a href="../ep41/">41</a><a href="../b17/">B17</a><a href="../b7/">B7</a><a href="../ep42/">42</a><a href="../ep43/">43</a><a href="../ep44/">44</a><a href="../season5/">特辑5</a><a href="../ep45/">45</a><a href="../b11/">B11</a><a href="../b9/">B9</a><a href="../ep46/">46</a><a href="../ep47/">47</a><a href="../b10/">B10</a><a href="../ep48/">48</a><a href="../ep49/">49</a><a href="../ep50/">50</a><a href="../b18/">B18</a><a href="../season6/">特辑6</a><a href="../ep07/">07</a><a href="../ep08/">08</a><a href="../ep09/">09</a><a href="../ep12/">12</a><a href="../ep13/">13</a><a href="../ep14/">14</a><a href="../ep10/">10</a><a href="../ep19/">19</a><a href="../ep21/">21</a><a href="../ep51/">51</a><a href="../season7/">特辑7</a><a href="../ep52/">52</a><a href="../ep53/">53</a><a href="../ep54/">54</a><a href="../ep55/">55</a><a href="../ep56/">56</a><a href="../ep57/">57</a><a href="../ep58/">58</a><a href="../ep59/">59</a><a href="../ep60/">60</a><a href="../ep61/">61</a><a href="../season8/">特辑8</a><a href="../b20/">B20</a><a href="../b21/">B21</a><a href="../b22/">B22</a><a href="../b23/">B23</a><a href="../b24/">B24</a><a href="../b25/">B25</a><a href="../b26/">B26</a><a href="../b27/">B27</a><a href="../b28/">B28</a><a href="../b29/">B29</a><a href="../season9/">特辑9</a><a href="../ep62/">62</a><a href="../ep63/">63</a><a href="../ep64/">64</a><a href="../ep65/">65</a><a href="../ep66/">66</a><a href="../ep67/">67</a><a href="../ep68/">68</a><a href="../ep69/">69</a><a href="../ep70/">70</a><a href="../ep71/">71</a><a href="../season10/">特辑10</a><a href="../b30/">B30</a><a href="../b31/">B31</a><a href="../b32/">B32</a><a href="../b33/">B33</a><a href="../b34/">B34</a><a href="../b35/">B35</a><a href="../b36/">B36</a><a href="../b37/">B37</a><a href="../b38/">B38</a><a href="../b39/">B39</a><a href="../season11/">特辑11</a><a href="../ep72/">72</a><a href="../ep73/">73</a><a href="../ep74/">74</a><a href="../ep75/">75</a><a href="../ep76/">76</a><a href="../ep77/">77</a><a href="../ep78/">78</a><a href="../ep79/">79</a><a href="../ep80/">80</a><a href="../ep81/">81</a><a href="../season12/">特辑12</a><a href="../h1/">H1</a><a href="../h2/">H2</a><a href="../h3/">H3</a><a href="../h4/">H4</a><a href="../h5/">H5</a><a href="../season13/">特辑13</a><a href="../b40/">B40</a><a href="../b41/">B41</a><a href="../b42/">B42</a><a href="../b43/">B43</a><a href="../b44/">B44</a><a href="../b45/">B45</a><a href="../b46/">B46</a><a href="../b47/">B47</a><a href="../b48/">B48</a><a href="../b49/">B49</a><a href="../season14/">特辑14</a><a href="../ep82/">82</a><a href="../ep83/">83</a><a href="../ep84/">84</a><a href="../ep85/">85</a><a href="../ep86/">86</a><a href="../ep87/">87</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 第十五季 · 第 87 集</div>
+<h1>电梯与安全钳</h1>
+<p class="thesis">早期升降机用绳索吊着平台，绳一断就会坠落，所以人们不敢坐。1854 年奥的斯展示了安全装置：吊绳的拉力通过机构把弹簧压住、让卡爪收回；一旦绳断、拉力消失，弹簧立即把卡爪推出，卡进导轨两侧的齿中，平台只下落一点就停住。这种设计叫「失效安全」：让正常工作依赖持续的力或信号，一旦失去，系统自动进入安全状态，而不需要任何人或电源去触发。火车的空气制动、电动工具的握把开关都是同样的思路。</p>
+<div class="facts">
+<div><span>暂定标题</span>电梯的绳子断了，为什么不会掉下去？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>1854 年 · 奥的斯</div>
+<div><span>衔接</span>← 39 杠杆与滑轮组、58 电动机；→ 88 火箭</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">演示</p><p class="p">1854 年奥的斯在纽约水晶宫博览会上当众砍断吊绳演示安全升降机（年份与地点拍摄前核对）。</p></div>
+<div class="ol"><p class="o">客梯</p><p class="p">1857 年纽约一家商店安装了第一部商用客梯（拍摄前核对）；后来电动机取代蒸汽机驱动。</p></div>
+<div class="ol"><p class="o">原理</p><p class="p">弹簧储能 + 拉力约束；失效安全（fail-safe）；今天的电梯还有限速器触发的渐进式安全钳。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>绳子断了就会掉</s> → 拉力一松，安全钳自动卡住</span></li>
+<li><span class="k">2</span><span><s>安全装置要人去按</s> → 是自动的</span></li>
+<li><span class="k">3</span><span><s>越复杂越安全</s> → 最可靠的往往最简单</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>剪断绳子，纸盒电梯卡在半空</p></div>
+<div class="layer"><span>规律层</span><p>弹簧在绳子拉紧时被压住，一松就弹开卡住齿条</p></div>
+<div class="layer"><span>本质层</span><p>失效安全设计</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>要让人敢坐高楼电梯 → 绳子断了也不能掉 → 拉力一消失就自动刹车。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">导轨：两根约 60 厘米的木条，一侧用美工刀刻出锯齿（成年人操作），或贴上剪成锯齿的硬纸条；电梯：小纸盒，两侧各用图钉装一根能转动的冰棍棒当卡爪，橡皮筋把卡爪往外拉，两根细线从卡爪连到吊绳。下面垫软垫。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>搭好安全钳</td><td>机构</td></tr>
+<tr><td>B</td><td>50 / 100 / 200 克各剪 3 次</td><td>可靠性</td></tr>
+<tr><td>C</td><td>拆掉橡皮筋再剪</td><td>对照</td></tr>
+<tr><td>D</td><td>找家里的失效安全</td><td>生活应用</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>A：吊起电梯，确认卡爪被细线拉回、贴住盒子，不碰导轨。</li>
+<li>B：盒里放重物，剪断吊绳，量下落距离；每种重量 3 次。</li>
+<li>C：拆掉橡皮筋，同样剪绳，观察。</li>
+<li>D：在家找一个松手即停或过热断电的电器，只观察、不拆。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>下落（厘米）</th><th>是否卡住</th><th>备注</th></tr></thead><tbody>
+<tr><td>B 50 克</td><td><input type="text" inputmode="decimal" data-k="e87-0-0" aria-label="B 50 克 下落（厘米）"></td><td><input type="text" inputmode="decimal" data-k="e87-0-1" aria-label="B 50 克 是否卡住"></td><td><input type="text" data-k="e87-0-n" aria-label="B 50 克 备注"></td></tr>
+<tr><td>B 100 克</td><td><input type="text" inputmode="decimal" data-k="e87-1-0" aria-label="B 100 克 下落（厘米）"></td><td><input type="text" inputmode="decimal" data-k="e87-1-1" aria-label="B 100 克 是否卡住"></td><td><input type="text" data-k="e87-1-n" aria-label="B 100 克 备注"></td></tr>
+<tr><td>B 200 克</td><td><input type="text" inputmode="decimal" data-k="e87-2-0" aria-label="B 200 克 下落（厘米）"></td><td><input type="text" inputmode="decimal" data-k="e87-2-1" aria-label="B 200 克 是否卡住"></td><td><input type="text" data-k="e87-2-n" aria-label="B 200 克 备注"></td></tr>
+<tr><td>C 无橡皮筋</td><td><input type="text" inputmode="decimal" data-k="e87-3-0" aria-label="C 无橡皮筋 下落（厘米）"></td><td><input type="text" inputmode="decimal" data-k="e87-3-1" aria-label="C 无橡皮筋 是否卡住"></td><td><input type="text" data-k="e87-3-n" aria-label="C 无橡皮筋 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>奥的斯演示的年份、地点拍摄前核对</li>
+<li>第一部商用客梯的年份与地点拍摄前核对</li>
+<li>火车空气制动的失效安全原理拍摄前核对</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>刻锯齿由成年人操作。</li>
+<li>剪绳时手不在电梯下方，下面垫软垫。</li>
+<li>不拆家里的电器。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>木条 ×2、硬纸条</td><td>导轨</td></tr>
+<tr><td>小纸盒、冰棍棒、图钉、橡皮筋、细线</td><td>电梯与安全钳</td></tr>
+<tr><td>剪刀、重物（硬币袋）</td><td>剪绳与负重</td></tr>
+<tr><td>软垫、卷尺</td><td>安全与测量</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://en.wikipedia.org/wiki/Elisha_Otis">Wikipedia：Elisha Otis</a> <span>奥的斯</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Elevator#Safety">Wikipedia：Elevator · Safety</a> <span>电梯安全钳</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Fail-safe">Wikipedia：Fail-safe</a> <span>失效安全</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "两根带锯齿的木条立着当导轨，纸盒电梯用细绳吊在中间；剪刀剪断细绳：电梯只往下掉了一点，就卡在半空", "剪断绳子：电梯没掉下去，卡住了。"], [2, "0:08", "done", "问题卡：电梯的绳子断了，为什么不会掉下去？", ""], [3, "0:14", "done", "片头：第十五季科技树，第 87 集闪烁", "第 39 集滑轮组，第 58 集电动机：合在一起就能把人送上高楼。可谁敢坐？"], [4, "0:21", "done", "资料卡：奥的斯演示、第一部客梯、滑轮与电动机", "一八五四年，奥的斯站在升降台上，让人当众砍断吊绳：平台只落下一点就停住了。三年后，第一部商用客梯装进了纽约的商店。"], [5, "0:45", "real", "实验 1：纸盒两侧各装一根冰棍棒「钳子」，用橡皮筋拉向外侧；吊绳通过两根细线把钳子拉回来贴住盒子", "吊着的时候，绳子把两边的钳子拉了回来。"], [6, "1:10", "done", "动画：绳子的拉力收住钳子，绳一断弹簧把钳子推进齿缝", "平时绳子的拉力把钳子收住；绳一断，拉力没了，弹簧立刻把钳子推进导轨的齿缝。"], [7, "1:32", "res", "实验 2：盒里放 50 克、100 克、200 克重物，各剪 3 次绳，量下落多少厘米被卡住", "50 克落了……厘米，100 克……，200 克……"], [8, "1:57", "done", "问题卡：刹车为什么不用人去按？", ""], [9, "2:03", "res", "实验 3：拆掉橡皮筋再剪绳：电梯直接掉到底（下面垫软垫）", "没有弹簧：一掉到底。"], [10, "2:33", "done", "动画：失效安全：电梯、火车刹车、电锯开关", "让正常工作需要一直出力，出力一消失，系统自动落到安全的那一边：这叫失效安全。"], [11, "2:55", "real", "实验 4：家里找一个失效安全的例子：比如电吹风过热自动断电、手持搅拌机松手即停（只观察，不拆）", "松手就停：身边也有失效安全。"], [12, "3:22", "done", "结论卡：拉力没了就卡住", "拉力把安全钳收住，拉力一没就自动卡住；出事时什么都不用做，这叫失效安全。"], [13, "3:29", "done", "片尾：点亮第 87 集，预告第 88 集", "下集：太空里没有空气可以推，火箭怎么往前飞？"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>
