@@ -81,7 +81,11 @@ def roughcut(slug, tag, shots, end, outname):
     with open(f'{tmp}/list.txt', 'w') as f:
         for p in parts: f.write(f"file '{p}'\n")
     subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-f', 'concat', '-safe', '0', '-i', f'{tmp}/list.txt',
-                    '-c', 'copy', '-movflags', '+faststart', f'{OUT}/{outname}.mp4'], check=True)
+                    '-c', 'copy', f'{tmp}/full.mp4'], check=True)
+    # 粗剪样片只是占位预览：缩到 720p，省一半体积（原理动画仍是 1080p）
+    subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', f'{tmp}/full.mp4', '-vf', 'scale=1280:720',
+                    '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '30', '-tune', 'animation', '-pix_fmt', 'yuv420p',
+                    '-an', '-movflags', '+faststart', f'{OUT}/{outname}.mp4'], check=True)
 
 def render_all(clips):
     for name, (f, dur) in clips.items():
