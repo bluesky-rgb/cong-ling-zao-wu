@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>虹桥拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../shooting/">拍摄排期</a><a href="../publish/">发布素材</a><a href="../checklist/">待核清单</a><a href="../expansion/">内容架构</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../ep30/">30</a><a href="../b6/">B6</a><a href="../season3/">特辑3</a><a href="../ep32/">32</a><a href="../ep33/">33</a><a href="../b19/">B19</a><a href="../ep37/">37</a><a href="../ep31/">31</a><a href="../ep35/">35</a><a href="../ep36/">36</a><a href="../season4/">特辑4</a><a href="../ep39/">39</a><a href="../b8/">B8</a><a href="../ep40/">40</a><a href="../ep41/">41</a><a href="../b17/">B17</a><a href="../b7/">B7</a><a href="../ep42/">42</a><a href="../ep43/">43</a><a href="../ep44/">44</a><a href="../season5/">特辑5</a><a href="../ep45/">45</a><a href="../b11/">B11</a><a href="../b9/">B9</a><a href="../ep46/">46</a><a href="../ep47/">47</a><a href="../b10/">B10</a><a href="../ep48/">48</a><a href="../ep49/">49</a><a href="../ep50/">50</a><a href="../b18/">B18</a><a href="../season6/">特辑6</a><a href="../ep07/">07</a><a href="../ep08/">08</a><a href="../ep09/">09</a><a href="../ep12/">12</a><a href="../ep13/">13</a><a href="../ep14/">14</a><a href="../ep10/">10</a><a href="../ep19/">19</a><a href="../ep21/">21</a><a href="../ep51/">51</a><a href="../season7/">特辑7</a><a href="../ep52/">52</a><a href="../ep53/">53</a><a href="../ep54/">54</a><a href="../ep55/">55</a><a href="../ep56/">56</a><a href="../ep57/">57</a><a href="../ep58/">58</a><a href="../ep59/">59</a><a href="../ep60/">60</a><a href="../ep61/">61</a><a href="../season8/">特辑8</a><a href="../b20/">B20</a><a href="../b21/">B21</a><a href="../b22/">B22</a><a href="../b23/">B23</a><a href="../b24/">B24</a><a href="../b25/">B25</a><a href="../b26/">B26</a><a href="../b27/">B27</a><a href="../b28/">B28</a><a href="../b29/">B29</a><a href="../season9/">特辑9</a><a href="../ep62/">62</a><a href="../ep63/">63</a><a href="../ep64/">64</a><a href="../ep65/">65</a><a href="../ep66/">66</a><a href="../ep67/">67</a><a href="../ep68/">68</a><a href="../ep69/">69</a><a href="../ep70/">70</a><a href="../ep71/">71</a><a href="../season10/">特辑10</a><a href="../b30/">B30</a><a href="../b31/">B31</a><a href="../b32/">B32</a><a href="../b33/">B33</a><a href="../b34/">B34</a><a href="../b35/">B35</a><a href="../b36/">B36</a><a href="../b37/">B37</a><a href="../b38/">B38</a><a href="../b39/">B39</a><a href="../season11/">特辑11</a><a href="../ep72/">72</a><a href="../ep73/">73</a><a href="../ep74/">74</a><a href="../ep75/">75</a><a href="../ep76/">76</a><a href="../ep77/">77</a><a href="../ep78/">78</a><a href="../ep79/">79</a><a href="../ep80/">80</a><a href="../ep81/">81</a><a href="../season12/">特辑12</a><a href="../h1/">H1</a><a href="../h2/">H2</a><a href="../h3/">H3</a><a href="../h4/">H4</a><a href="../h5/">H5</a><a href="../season13/">特辑13</a><a href="../b40/">B40</a><a href="../b41/">B41</a><a href="../b42/">B42</a><a href="../b43/">B43</a><a href="../b44/">B44</a><a href="../b45/">B45</a><a href="../b46/">B46</a><a href="../b47/">B47</a><a href="../b48/">B48</a><a href="../b49/">B49</a><a href="../season14/">特辑14</a><a href="../ep82/">82</a><a href="../ep83/">83</a><a href="../ep84/">84</a><a href="../ep85/">85</a><a href="../ep86/">86</a><a href="../ep87/">87</a><a href="../ep88/">88</a><a href="../ep89/">89</a><a href="../ep90/">90</a><a href="../ep91/">91</a><a href="../season15/">特辑15</a><a href="../b50/">B50</a><a href="../b51/">B51</a><a href="../b52/">B52</a><a href="../b53/">B53</a><a href="../b54/">B54</a><a href="../b55/">B55</a><a href="../b56/">B56</a><a href="../b57/">B57</a><a href="../b58/">B58</a><a href="../b59/">B59</a><a href="../season16/">特辑16</a><a href="../ep92/">92</a><a href="../ep93/">93</a><a href="../ep94/">94</a><a href="../ep95/">95</a><a href="../ep96/">96</a><a href="../ep97/">97</a><a href="../ep98/">98</a><a href="../ep99/">99</a><a href="../ep100/">100</a><a href="../ep101/">101</a><a href="../season17/">特辑17</a><a href="../b60/">B60</a><a href="../b61/">B61</a><a href="../b62/">B62</a><a href="../b63/">B63</a><a href="../b64/">B64</a><a href="../b65/">B65</a><a href="../b66/">B66</a><a href="../b67/">B67</a><a href="../b68/">B68</a><a href="../b69/">B69</a><a href="../season18/">特辑18</a><a href="../ep102/">102</a><a href="../ep103/">103</a><a href="../ep104/">104</a><a href="../ep105/">105</a><a href="../ep106/">106</a><a href="../ep107/">107</a><a href="../ep108/">108</a><a href="../ep109/">109</a><a href="../ep110/">110</a><a href="../ep111/">111</a><a href="../season19/">特辑19</a><a href="../b70/">B70</a><a href="../b71/">B71</a><a href="../b72/">B72</a><a href="../b73/">B73</a><a href="../b74/">B74</a><a href="../b75/">B75</a><a href="../b76/">B76</a><a href="../b77/">B77</a><a href="../b78/">B78</a><a href="../b79/">B79</a><a href="../season20/">特辑20</a><a href="../ep112/">112</a><a href="../ep113/">113</a><a href="../ep114/">114</a><a href="../ep115/">115</a><a href="../ep116/">116</a><a href="../ep117/">117</a><a href="../ep118/">118</a><a href="../ep119/">119</a><a href="../ep120/">120</a><a href="../ep121/">121</a><a href="../season21/">特辑21</a><a href="../b80/">B80</a><a href="../b81/">B81</a><a href="../b82/">B82</a><a href="../b83/">B83</a><a href="../b84/">B84</a><a href="../b85/">B85</a><a href="../b86/">B86</a><a href="../b87/">B87</a><a href="../b88/">B88</a><a href="../b89/">B89</a><a href="../season22/">特辑22</a><a href="../ep122/">122</a><a href="../ep123/">123</a><a href="../ep124/">124</a><a href="../ep125/">125</a><a href="../ep126/">126</a><a href="../ep127/">127</a><a href="../ep128/">128</a><a href="../ep129/">129</a><a href="../ep130/">130</a><a href="../ep131/">131</a><a href="../season23/">特辑23</a><a href="../b90/">B90</a><a href="../b91/">B91</a><a href="../b92/">B92</a><a href="../b93/">B93</a><a href="../b94/">B94</a><a href="../b95/">B95</a><a href="../b96/">B96</a><a href="../b97/">B97</a><a href="../b98/">B98</a><a href="../b99/">B99</a><a href="../season24/">特辑24</a><a href="../ep132/">132</a><a href="../ep133/">133</a><a href="../ep134/">134</a><a href="../ep135/">135</a><a href="../ep136/">136</a><a href="../ep137/">137</a><a href="../ep138/">138</a><a href="../ep139/">139</a><a href="../ep140/">140</a><a href="../ep141/">141</a><a href="../season25/">特辑25</a><a href="../b100/">B100</a><a href="../b101/">B101</a><a href="../b102/">B102</a><a href="../b103/">B103</a><a href="../b104/">B104</a><a href="../b105/">B105</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 古法解密 10.0 · B103</div>
+<h1>虹桥</h1>
+<p class="thesis">北宋张择端《清明上河图》中，汴河上有一座没有桥墩的单跨木拱桥，被称为「虹桥」（拍摄前核对）。它采用「编木拱」结构：用两套长度有限的木杆（拱骨），一套分成若干段、另一套分成多一段，两套交替搭接，每个节点处横穿一根横木（横梁），木杆压在横木上、又被别的木杆压住，互相穿插承托，形成一道不需要长木料的拱。这种结构的稳定主要靠受压和交接处的摩擦：桥面荷载越大，交接处的压力越大，摩擦力越大，构件越不易滑动；它最怕的是两端桥台向外位移，以及节点处木材腐朽。由于没有桥墩，河道中间畅通，船只可以从桥下通过。类似的编木拱桥在今天的浙江、福建山区仍有保存，称为木拱廊桥（拍摄前核对）。用长筷子按「一横两纵」编法搭建的小桥，被称为「达·芬奇桥」或筷子桥，原理相近。本集用筷子模拟，承重读数以实测为准。</p>
+<div class="facts">
+<div><span>暂定标题</span>汴河上那座没有一根桥墩的木拱桥，是怎么用短木头搭起来的？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>北宋《清明上河图》汴河虹桥</div>
+<div><span>衔接</span>← B6 赵州桥、B7 榫卯；→ B104 摇橹</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">画中</p><p class="p">《清明上河图》汴河虹桥（拍摄前核对）。</p></div>
+<div class="ol"><p class="o">今天</p><p class="p">浙闽山区的木拱廊桥（拍摄前核对）。</p></div>
+<div class="ol"><p class="o">原理</p><p class="p">编木拱；受压与摩擦；桥台推力。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>虹桥要很长的大木头</s> → 用一根根短木互相穿插、压住，拼成一道拱</span></li>
+<li><span class="k">2</span><span><s>压得越重越容易塌</s> → 重量越大，木头之间压得越紧</span></li>
+<li><span class="k">3</span><span><s>拱桥只怕压</s> → 更怕两头的桥台被推开</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>用长筷子不用胶不用绳编一座拱桥，在桥顶一枚枚加硬币</p></div>
+<div class="layer"><span>规律层</span><p>编木拱：互相压住，越压越紧</p></div>
+<div class="layer"><span>本质层</span><p>摩擦、杠杆与拱</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>要在不能立桥墩的急流上架桥 → 用短木头一根压一根 → 让每一根被别的木头压住，拼成一道能自己站住的拱。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">筷子桥：15 根同样的长筷子（火锅筷或一次性筷子都行，要方头不打滑）。编法：先放 2 根纵向平行（间隔约 5 厘米），一根横在它们上面靠前端；再放 2 根纵向从横筷子下面穿过、压在前一组纵筷子的末端上……照着网上「达·芬奇桥」「筷子桥」的图一步步搭（截图注明来源）。两头用两摞书当桥台，跨度约 40 厘米。桥顶放一个瓶盖，往里一枚枚放 1 元硬币。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>15 根筷子搭桥</td><td>编木拱</td></tr>
+<tr><td>B</td><td>加硬币到变形</td><td>承重</td></tr>
+<tr><td>C</td><td>空桥与压重后抽筷子</td><td>越压越紧</td></tr>
+<tr><td>D</td><td>拉开桥台</td><td>怕推开</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>A：搭桥并计时。</li>
+<li>B：桥顶加硬币到变形，再试 11 根。</li>
+<li>C：空桥、压 20 枚硬币后各抽一次中间筷子。</li>
+<li>D：两头的书往外拉开 1 厘米。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>读数</th><th>备注</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 搭桥用时（分）</td><td><input type="text" inputmode="decimal" data-k="b103-0-0" aria-label="A 搭桥用时（分） 读数"></td><td><input type="text" inputmode="decimal" data-k="b103-0-1" aria-label="A 搭桥用时（分） 备注"></td><td><input type="text" data-k="b103-0-n" aria-label="A 搭桥用时（分） 备注"></td></tr>
+<tr><td>B 15 根硬币数</td><td><input type="text" inputmode="decimal" data-k="b103-1-0" aria-label="B 15 根硬币数 读数"></td><td><input type="text" inputmode="decimal" data-k="b103-1-1" aria-label="B 15 根硬币数 备注"></td><td><input type="text" data-k="b103-1-n" aria-label="B 15 根硬币数 备注"></td></tr>
+<tr><td>B 11 根硬币数</td><td><input type="text" inputmode="decimal" data-k="b103-2-0" aria-label="B 11 根硬币数 读数"></td><td><input type="text" inputmode="decimal" data-k="b103-2-1" aria-label="B 11 根硬币数 备注"></td><td><input type="text" data-k="b103-2-n" aria-label="B 11 根硬币数 备注"></td></tr>
+<tr><td>C 空桥抽</td><td><input type="text" inputmode="decimal" data-k="b103-3-0" aria-label="C 空桥抽 读数"></td><td><input type="text" inputmode="decimal" data-k="b103-3-1" aria-label="C 空桥抽 备注"></td><td><input type="text" data-k="b103-3-n" aria-label="C 空桥抽 备注"></td></tr>
+<tr><td>C 压重后抽</td><td><input type="text" inputmode="decimal" data-k="b103-4-0" aria-label="C 压重后抽 读数"></td><td><input type="text" inputmode="decimal" data-k="b103-4-1" aria-label="C 压重后抽 备注"></td><td><input type="text" data-k="b103-4-n" aria-label="C 压重后抽 备注"></td></tr>
+<tr><td>D 拉开后</td><td><input type="text" inputmode="decimal" data-k="b103-5-0" aria-label="D 拉开后 读数"></td><td><input type="text" inputmode="decimal" data-k="b103-5-1" aria-label="D 拉开后 备注"></td><td><input type="text" data-k="b103-5-n" aria-label="D 拉开后 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>《清明上河图》虹桥的结构描述拍摄前核对</li>
+<li>木拱廊桥的分布拍摄前核对</li>
+<li>读数以实测为准</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>筷子端头有毛刺时先用砂纸磨一下。</li>
+<li>硬币别让幼儿放进嘴里。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>长筷子 ×15</td><td>拱骨</td></tr>
+<tr><td>书两摞</td><td>桥台</td></tr>
+<tr><td>瓶盖、1 元硬币</td><td>荷载</td></tr>
+<tr><td>卷尺</td><td>量跨度</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://en.wikipedia.org/wiki/Rainbow_Bridge_(China)">Wikipedia：Rainbow bridge (Song)</a> <span>虹桥</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Along_the_River_During_the_Qingming_Festival">Wikipedia：Along the River During the Qingming Festival</a> <span>清明上河图</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Leonardo%27s_self-supporting_bridge">Wikipedia：Leonardo bridge</a> <span>自承重桥</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "桌上两摞书之间隔着 40 厘米，作者把十几根长筷子一根根交叉压着搭过去，不用胶不用绳，一座弯弯的小拱桥就立住了；桥顶的瓶盖里一枚枚放硬币，桥纹丝不动", "一把筷子，不用一点胶，搭出了一座桥。"], [2, "0:08", "done", "问题卡：没有一根桥墩的木拱桥，是怎么用短木头搭起来的？", ""], [3, "0:14", "done", "片头：古法解密 10.0 科技树，B103 闪烁", "B6 的赵州桥用石头起拱，B7 的榫卯不用钉子：虹桥用一根根短木头，编出了一道木拱。"], [4, "0:21", "done", "资料卡：清明上河图、赵州桥、榫卯", "九百多年前的一幅长卷里，汴河上横着一座没有桥墩的木拱桥，桥上挤满了人，桥下正穿过一条大船。"], [5, "0:45", "res", "实验 1：15 根长筷子按「一横两纵」的编法搭一座跨度约 40 厘米的拱桥，记下搭了几分钟、哪一步最难", "用了……分钟，最难的是……"], [6, "1:10", "done", "动画：短木头互相压住，编成一道拱", "两套短木头交替搭接：每一根都压着别的、又被别的压着。"], [7, "1:32", "res", "实验 2：桥顶放瓶盖，一枚枚加硬币，直到桥变形或散开，记录硬币数；再用 11 根筷子搭一座比一比", "15 根……枚，11 根……枚"], [8, "1:57", "done", "问题卡：桥上越重，为什么反而越稳？", ""], [9, "2:03", "res", "实验 3：不放硬币时，轻轻抽中间一根筷子，看难不难抽；放上 20 枚硬币后再抽同一根", "空桥……，放硬币后……"], [10, "2:33", "done", "动画：压得越重，咬得越紧", "桥上越重，交叉处压得越紧，摩擦力越大，谁也滑不开。"], [11, "2:55", "real", "实验 4：把两头的书慢慢往外拉开 1 厘米，看桥会怎样", "桥最怕的不是压，是两头的桥台被推开。"], [12, "3:22", "done", "结论卡：编木拱", "两套短木交替搭接，一根压一根编成拱；越压越紧，摩擦力让木头咬死。"], [13, "3:29", "done", "片尾：点亮 B103，预告 B104", "下集：船尾一支橹左右摇，船为什么一直往前走？"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>
