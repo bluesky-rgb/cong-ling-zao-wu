@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>剪刀拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../shooting/">拍摄排期</a><a href="../publish/">发布素材</a><a href="../checklist/">待核清单</a><a href="../expansion/">内容架构</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../ep30/">30</a><a href="../b6/">B6</a><a href="../season3/">特辑3</a><a href="../ep32/">32</a><a href="../ep33/">33</a><a href="../b19/">B19</a><a href="../ep37/">37</a><a href="../ep31/">31</a><a href="../ep35/">35</a><a href="../ep36/">36</a><a href="../season4/">特辑4</a><a href="../ep39/">39</a><a href="../b8/">B8</a><a href="../ep40/">40</a><a href="../ep41/">41</a><a href="../b17/">B17</a><a href="../b7/">B7</a><a href="../ep42/">42</a><a href="../ep43/">43</a><a href="../ep44/">44</a><a href="../season5/">特辑5</a><a href="../ep45/">45</a><a href="../b11/">B11</a><a href="../b9/">B9</a><a href="../ep46/">46</a><a href="../ep47/">47</a><a href="../b10/">B10</a><a href="../ep48/">48</a><a href="../ep49/">49</a><a href="../ep50/">50</a><a href="../b18/">B18</a><a href="../season6/">特辑6</a><a href="../ep07/">07</a><a href="../ep08/">08</a><a href="../ep09/">09</a><a href="../ep12/">12</a><a href="../ep13/">13</a><a href="../ep14/">14</a><a href="../ep10/">10</a><a href="../ep19/">19</a><a href="../ep21/">21</a><a href="../ep51/">51</a><a href="../season7/">特辑7</a><a href="../ep52/">52</a><a href="../ep53/">53</a><a href="../ep54/">54</a><a href="../ep55/">55</a><a href="../ep56/">56</a><a href="../ep57/">57</a><a href="../ep58/">58</a><a href="../ep59/">59</a><a href="../ep60/">60</a><a href="../ep61/">61</a><a href="../season8/">特辑8</a><a href="../b20/">B20</a><a href="../b21/">B21</a><a href="../b22/">B22</a><a href="../b23/">B23</a><a href="../b24/">B24</a><a href="../b25/">B25</a><a href="../b26/">B26</a><a href="../b27/">B27</a><a href="../b28/">B28</a><a href="../b29/">B29</a><a href="../season9/">特辑9</a><a href="../ep62/">62</a><a href="../ep63/">63</a><a href="../ep64/">64</a><a href="../ep65/">65</a><a href="../ep66/">66</a><a href="../ep67/">67</a><a href="../ep68/">68</a><a href="../ep69/">69</a><a href="../ep70/">70</a><a href="../ep71/">71</a><a href="../season10/">特辑10</a><a href="../b30/">B30</a><a href="../b31/">B31</a><a href="../b32/">B32</a><a href="../b33/">B33</a><a href="../b34/">B34</a><a href="../b35/">B35</a><a href="../b36/">B36</a><a href="../b37/">B37</a><a href="../b38/">B38</a><a href="../b39/">B39</a><a href="../season11/">特辑11</a><a href="../ep72/">72</a><a href="../ep73/">73</a><a href="../ep74/">74</a><a href="../ep75/">75</a><a href="../ep76/">76</a><a href="../ep77/">77</a><a href="../ep78/">78</a><a href="../ep79/">79</a><a href="../ep80/">80</a><a href="../ep81/">81</a><a href="../season12/">特辑12</a><a href="../h1/">H1</a><a href="../h2/">H2</a><a href="../h3/">H3</a><a href="../h4/">H4</a><a href="../h5/">H5</a><a href="../season13/">特辑13</a><a href="../b40/">B40</a><a href="../b41/">B41</a><a href="../b42/">B42</a><a href="../b43/">B43</a><a href="../b44/">B44</a><a href="../b45/">B45</a><a href="../b46/">B46</a><a href="../b47/">B47</a><a href="../b48/">B48</a><a href="../b49/">B49</a><a href="../season14/">特辑14</a><a href="../ep82/">82</a><a href="../ep83/">83</a><a href="../ep84/">84</a><a href="../ep85/">85</a><a href="../ep86/">86</a><a href="../ep87/">87</a><a href="../ep88/">88</a><a href="../ep89/">89</a><a href="../ep90/">90</a><a href="../ep91/">91</a><a href="../season15/">特辑15</a><a href="../b50/">B50</a><a href="../b51/">B51</a><a href="../b52/">B52</a><a href="../b53/">B53</a><a href="../b54/">B54</a><a href="../b55/">B55</a><a href="../b56/">B56</a><a href="../b57/">B57</a><a href="../b58/">B58</a><a href="../b59/">B59</a><a href="../season16/">特辑16</a><a href="../ep92/">92</a><a href="../ep93/">93</a><a href="../ep94/">94</a><a href="../ep95/">95</a><a href="../ep96/">96</a><a href="../ep97/">97</a><a href="../ep98/">98</a><a href="../ep99/">99</a><a href="../ep100/">100</a><a href="../ep101/">101</a><a href="../season17/">特辑17</a><a href="../b60/">B60</a><a href="../b61/">B61</a><a href="../b62/">B62</a><a href="../b63/">B63</a><a href="../b64/">B64</a><a href="../b65/">B65</a><a href="../b66/">B66</a><a href="../b67/">B67</a><a href="../b68/">B68</a><a href="../b69/">B69</a><a href="../season18/">特辑18</a><a href="../ep102/">102</a><a href="../ep103/">103</a><a href="../ep104/">104</a><a href="../ep105/">105</a><a href="../ep106/">106</a><a href="../ep107/">107</a><a href="../ep108/">108</a><a href="../ep109/">109</a><a href="../ep110/">110</a><a href="../ep111/">111</a><a href="../season19/">特辑19</a><a href="../b70/">B70</a><a href="../b71/">B71</a><a href="../b72/">B72</a><a href="../b73/">B73</a><a href="../b74/">B74</a><a href="../b75/">B75</a><a href="../b76/">B76</a><a href="../b77/">B77</a><a href="../b78/">B78</a><a href="../b79/">B79</a><a href="../season20/">特辑20</a><a href="../ep112/">112</a><a href="../ep113/">113</a><a href="../ep114/">114</a><a href="../ep115/">115</a><a href="../ep116/">116</a><a href="../ep117/">117</a><a href="../ep118/">118</a><a href="../ep119/">119</a><a href="../ep120/">120</a><a href="../ep121/">121</a><a href="../season21/">特辑21</a><a href="../b80/">B80</a><a href="../b81/">B81</a><a href="../b82/">B82</a><a href="../b83/">B83</a><a href="../b84/">B84</a><a href="../b85/">B85</a><a href="../b86/">B86</a><a href="../b87/">B87</a><a href="../b88/">B88</a><a href="../b89/">B89</a><a href="../season22/">特辑22</a><a href="../ep122/">122</a><a href="../ep123/">123</a><a href="../ep124/">124</a><a href="../ep125/">125</a><a href="../ep126/">126</a><a href="../ep127/">127</a><a href="../ep128/">128</a><a href="../ep129/">129</a><a href="../ep130/">130</a><a href="../ep131/">131</a><a href="../season23/">特辑23</a><a href="../b90/">B90</a><a href="../b91/">B91</a><a href="../b92/">B92</a><a href="../b93/">B93</a><a href="../b94/">B94</a><a href="../b95/">B95</a><a href="../b96/">B96</a><a href="../b97/">B97</a><a href="../b98/">B98</a><a href="../b99/">B99</a><a href="../season24/">特辑24</a><a href="../ep132/">132</a><a href="../ep133/">133</a><a href="../ep134/">134</a><a href="../ep135/">135</a><a href="../ep136/">136</a><a href="../ep137/">137</a><a href="../ep138/">138</a><a href="../ep139/">139</a><a href="../ep140/">140</a><a href="../ep141/">141</a><a href="../season25/">特辑25</a><a href="../b100/">B100</a><a href="../b101/">B101</a><a href="../b102/">B102</a><a href="../b103/">B103</a><a href="../b104/">B104</a><a href="../b105/">B105</a><a href="../b106/">B106</a><a href="../b107/">B107</a><a href="../b108/">B108</a><a href="../b109/">B109</a><a href="../season26/">特辑26</a><a href="../ep142/">142</a><a href="../ep143/">143</a><a href="../ep144/">144</a><a href="../ep145/">145</a><a href="../ep146/">146</a><a href="../ep147/">147</a><a href="../ep148/">148</a><a href="../ep149/">149</a><a href="../ep150/">150</a><a href="../ep151/">151</a><a href="../season27/">特辑27</a><a href="../b110/">B110</a><a href="../b111/">B111</a><a href="../b112/">B112</a><a href="../b113/">B113</a><a href="../b114/">B114</a><a href="../b115/">B115</a><a href="../b116/">B116</a><a href="../b117/">B117</a><a href="../b118/">B118</a><a href="../b119/">B119</a><a href="../season28/">特辑28</a><a href="../ep152/">152</a><a href="../ep153/">153</a><a href="../ep154/">154</a><a href="../ep155/">155</a><a href="../ep156/">156</a><a href="../ep157/">157</a><a href="../ep158/">158</a><a href="../ep159/">159</a><a href="../ep160/">160</a><a href="../ep161/">161</a><a href="../season29/">特辑29</a><a href="../b120/">B120</a><a href="../b121/">B121</a><a href="../b122/">B122</a><a href="../b123/">B123</a><a href="../b124/">B124</a><a href="../b125/">B125</a><a href="../b126/">B126</a><a href="../b127/">B127</a><a href="../b128/">B128</a><a href="../b129/">B129</a><a href="../season30/">特辑30</a><a href="../ep162/">162</a><a href="../ep163/">163</a><a href="../ep164/">164</a><a href="../ep165/">165</a><a href="../ep166/">166</a><a href="../ep167/">167</a><a href="../ep168/">168</a><a href="../ep169/">169</a><a href="../ep170/">170</a><a href="../ep171/">171</a><a href="../season31/">特辑31</a><a href="../b130/">B130</a><a href="../b131/">B131</a><a href="../b132/">B132</a><a href="../b133/">B133</a><a href="../b134/">B134</a><a href="../b135/">B135</a><a href="../b136/">B136</a><a href="../b137/">B137</a><a href="../b138/">B138</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 古法解密 13.0 · B136</div>
+<h1>剪刀</h1>
+<p class="thesis">早期剪刀是一根弯成 U 形、两端磨利的铁条（弹簧剪），汉代以后出现以铆钉为支点、两片刀交叉的交股剪（拍摄前核对）。交股剪的每一片刀都是一根以铆钉为支点的杠杆：手握在手柄上施力，刀刃在支点另一侧对被剪物施力。由杠杆原理，刀口上的力 ≈ 手上的力 × 手柄到支点的距离 ÷ 被剪处到支点的距离：被剪物离支点越近，力被放大得越多。设手离支点 6 厘米，被剪处在 2 厘米时力放大 3 倍，在 10 厘米的刀尖处反而只有 0.6 倍。所以剪厚纸板、厚布、树枝时要把东西尽量塞到剪刀根部；修枝剪、铁皮剪都做成刀刃短、手柄长。代价是刀刃越靠近支点，每合拢一次剪开的长度越短。两片刀刃之间要有一定的压紧力并略带弧度，使剪切点始终紧贴，才能剪断而不是把材料夹进缝里。本集用儿童圆头剪刀，剪刀尖不对着人，裁纸板条由成年人操作。</p>
+<div class="facts">
+<div><span>暂定标题</span>剪厚纸板时，为什么要把纸板塞到剪刀根部去剪，用剪刀尖就剪不动？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>汉代已有交股剪</div>
+<div><span>衔接</span>← 39 杠杆与滑轮组、B53 筷子；→ B137 瓦片</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">出现</p><p class="p">汉代已有交股剪（拍摄前核对）。</p></div>
+<div class="ol"><p class="o">今天</p><p class="p">剪刀、修枝剪、铁皮剪、钳子、指甲剪。</p></div>
+<div class="ol"><p class="o">原理</p><p class="p">杠杆；力臂；剪切。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>剪刀越锋利越好剪</s> → 离支点越近，同样的手劲压在纸上的力越大</span></li>
+<li><span class="k">2</span><span><s>剪刀尖和根部一样</s> → 根部离支点近，是个省力杠杆</span></li>
+<li><span class="k">3</span><span><s>手柄越短越好用</s> → 剪硬东西要手柄长、刀刃短</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>儿童圆头剪刀在刀尖、中间、根部剪硬纸板条</p></div>
+<div class="layer"><span>规律层</span><p>离支点越近越省力</p></div>
+<div class="layer"><span>本质层</span><p>杠杆与剪切</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>要用手的力气剪断很韧的东西 → 把两片刀口用一个支点交叉起来 → 东西越靠近支点，手劲放大得越多。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">纸板：成年人用美工刀把快递纸箱的硬纸板裁成 2 厘米宽、15 厘米长的条若干。剪刀：一把儿童圆头剪刀（孩子用），手柄握法每次保持一样。位置：用尺子在剪刀上量出刀尖（离支点最远）、刀刃中间、根部（离支点约 1 厘米）三个位置并用马克笔点上记号。测试：1 层、2 层、3 层叠起来的纸板条，分别对准三个记号剪，能一次剪断就记「通过」。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>刀尖剪</td><td>力臂长</td></tr>
+<tr><td>B</td><td>中间剪</td><td>对照</td></tr>
+<tr><td>C</td><td>根部剪</td><td>力臂短</td></tr>
+<tr><td>D</td><td>量距离</td><td>杠杆比</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>A：刀尖处剪 1、2、3 层。</li>
+<li>B：中间剪 1、2、3 层。</li>
+<li>C：根部剪 1、2、3 层。</li>
+<li>D：量各处和手柄到支点的距离。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>最多剪断几层</th><th>到支点距离（厘米）</th><th>备注</th></tr></thead><tbody>
+<tr><td>刀尖</td><td><input type="text" inputmode="decimal" data-k="b136-0-0" aria-label="刀尖 最多剪断几层"></td><td><input type="text" inputmode="decimal" data-k="b136-0-1" aria-label="刀尖 到支点距离（厘米）"></td><td><input type="text" data-k="b136-0-n" aria-label="刀尖 备注"></td></tr>
+<tr><td>中间</td><td><input type="text" inputmode="decimal" data-k="b136-1-0" aria-label="中间 最多剪断几层"></td><td><input type="text" inputmode="decimal" data-k="b136-1-1" aria-label="中间 到支点距离（厘米）"></td><td><input type="text" data-k="b136-1-n" aria-label="中间 备注"></td></tr>
+<tr><td>根部</td><td><input type="text" inputmode="decimal" data-k="b136-2-0" aria-label="根部 最多剪断几层"></td><td><input type="text" inputmode="decimal" data-k="b136-2-1" aria-label="根部 到支点距离（厘米）"></td><td><input type="text" data-k="b136-2-n" aria-label="根部 备注"></td></tr>
+<tr><td>手柄</td><td><input type="text" inputmode="decimal" data-k="b136-3-0" aria-label="手柄 最多剪断几层"></td><td><input type="text" inputmode="decimal" data-k="b136-3-1" aria-label="手柄 到支点距离（厘米）"></td><td><input type="text" data-k="b136-3-n" aria-label="手柄 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>交股剪出现年代拍摄前核对</li>
+<li>层数以实测为准</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>孩子用儿童圆头剪刀，剪刀尖不对着人。</li>
+<li>裁纸板条用美工刀由成年人操作。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>儿童圆头剪刀</td><td>工具</td></tr>
+<tr><td>硬纸板条</td><td>被剪物</td></tr>
+<tr><td>尺子</td><td>量距离</td></tr>
+<tr><td>马克笔</td><td>做记号</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://en.wikipedia.org/wiki/Scissors">Wikipedia：Scissors</a> <span>剪刀</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Lever">Wikipedia：Lever</a> <span>杠杆</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Mechanical_advantage">Wikipedia：Mechanical advantage</a> <span>机械利益</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "作者用儿童圆头剪刀的刀尖去剪三层叠起来的硬纸板，剪刀卡住纹丝不动；把纸板一直塞到剪刀根部，轻轻一合，三层一起断开", "换个位置，同样的手劲就够了。"], [2, "0:08", "done", "问题卡：剪厚纸板，为什么要塞到剪刀根部？", ""], [3, "0:14", "done", "片头：古法解密 13.0 科技树，B136 闪烁", "第 39 集的杠杆能省力，B53 的筷子是手里的杠杆：剪刀，是两根交叉在一起的杠杆。"], [4, "0:21", "done", "资料卡：交股剪、杠杆、筷子", "最早的剪刀是一根弯成 U 形的铁片，两头磨利，一捏就剪；汉代以后出现了用铆钉把两片刀交叉固定的剪刀（拍摄前核对）。"], [5, "0:45", "res", "实验 1：把 1、2、3 层叠起来的硬纸板条分别放在刀尖处剪，记最多剪断几层", "刀尖……层"], [6, "1:10", "done", "动画：离支点越近，刀口上的力越大", "纸放到根部，同样的手劲放大到 3 倍。"], [7, "1:32", "res", "实验 2：同样放在刀刃中间、靠近支点的根部各剪一次", "中间……层，根部……层"], [8, "1:57", "done", "问题卡：刀尖和根部，能剪断的层数差多少？", ""], [9, "2:03", "res", "实验 3：用尺子量刀尖、中间、根部到支点的距离，和手柄到支点的距离", "刀尖……厘米，中间……，根部……，手柄……"], [10, "2:33", "done", "动画：刀尖、中间、根部，各能剪断几层？", "裁缝剪厚布、园丁剪树枝，都往根部塞。"], [11, "2:55", "real", "实验 4：看一看家里的剪刀：厨房剪、指甲剪，手柄和刀刃哪个更长", "要剪硬东西的，刀刃短、手柄长。"], [12, "3:22", "done", "结论卡：杠杆与剪切", "剪刀是两根交叉的杠杆；东西离支点越近，刀口上的力越大。"], [13, "3:29", "done", "片尾：点亮 B136，预告 B137", "下集：瓦片只是搭着，下大雨为什么不漏？"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>
