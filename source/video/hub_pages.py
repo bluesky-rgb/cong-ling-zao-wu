@@ -14,7 +14,7 @@ for f in sorted(glob.glob(os.path.join(os.path.dirname(os.path.abspath(__file__)
         D[ep] = dict(sp=sp, sh=m.SH.get(ep))
 epsrc = open(f'{REPO}/episodes/index.html', encoding='utf-8').read()
 SEASONS = []
-for name, label in [('SEASON', '第一季'), ('SEASON2', '第二季'), ('SEASON3', '第三季'), ('SEASON4', '第四季'), ('SEASON5', '第五季'), ('SEASON6', '第六季'), ('SEASON7', '第七季'), ('SEASON8', '第八季'), ('SEASON9', '第九季'), ('SEASON10', '第十季'), ('SEASON11', '第十一季'), ('SEASON12', '第十二季'), ('SEASON13', '第十三季'), ('SEASON14', '第十四季'), ('SEASON15', '第十五季'), ('SEASON16', '第十六季'), ('SEASON17', '第十七季'), ('SEASON18', '第十八季'), ('SEASON19', '第十九季'), ('SEASON20', '第二十季'), ('SEASON21', '第二十一季'), ('SEASON22', '第二十二季'), ('SEASON23', '第二十三季'), ('SEASON24', '第二十四季'), ('SEASON25', '第二十五季'), ('SEASON26', '第二十六季'), ('SEASON27', '第二十七季'), ('SEASON28', '第二十八季'), ('SEASON29', '第二十九季')]:
+for name, label in [('SEASON', '第一季'), ('SEASON2', '第二季'), ('SEASON3', '第三季'), ('SEASON4', '第四季'), ('SEASON5', '第五季'), ('SEASON6', '第六季'), ('SEASON7', '第七季'), ('SEASON8', '第八季'), ('SEASON9', '第九季'), ('SEASON10', '第十季'), ('SEASON11', '第十一季'), ('SEASON12', '第十二季'), ('SEASON13', '第十三季'), ('SEASON14', '第十四季'), ('SEASON15', '第十五季'), ('SEASON16', '第十六季'), ('SEASON17', '第十七季'), ('SEASON18', '第十八季'), ('SEASON19', '第十九季'), ('SEASON20', '第二十季'), ('SEASON21', '第二十一季'), ('SEASON22', '第二十二季'), ('SEASON23', '第二十三季'), ('SEASON24', '第二十四季'), ('SEASON25', '第二十五季'), ('SEASON26', '第二十六季'), ('SEASON27', '第二十七季'), ('SEASON28', '第二十八季'), ('SEASON29', '第二十九季'), ('SEASON30', '第三十季')]:
     body = re.search(r'const %s=\[(.*?)\n\];' % name, epsrc, re.S).group(1)
     SEASONS.append((label, re.findall(r"\['([^']+)',", body)))
 ROWS = {}
