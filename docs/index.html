@@ -736,6 +736,7 @@ footer{margin-top:40px;font-size:13px;color:var(--muted);border-top:1px solid va
 
 <section id="repo">
   <div class="sh"><div class="n">07</div><h2>仓库与源码</h2></div>
+  <p class="lead">仓库根目录只有三样：<code>README.md</code>（一页说明）、<code>docs/</code>（整个网站，GitHub Pages 从这里发布）、<code>source/</code>（渲染视频的 Python 源码）。下面是 <code>docs/</code> 里的内容：</p>
   <pre>index.html              项目首页（本页）
 plan/                   项目全书
 episodes/               选题详案（345 个选题 + 三十五季播出计划）
@@ -838,11 +839,10 @@ ep182/ … ep191/         第三十五季（第十四层）：扬声器、液晶
 season35/               第三十五季特辑 · 第十四层（依赖图 + 打分表）
 media/video/            3284 段 MP4（动画 1080p，粗剪 720p）
 media/posters/          视频封面截图
-source/video/           渲染全部视频的 Python 源码
-docs/                   探索历程、决定记录、资料来源（Markdown）</pre>
+decisions.md 等         探索历程、决定记录、资料来源（Markdown）</pre>
   <h3>重新渲染视频</h3>
   <p class="lead">需要 Python 3、Pillow 和 ffmpeg，以及 Noto Sans / Serif CJK 字体。每个脚本单独运行即可输出 MP4；加上「镜头名 秒数」参数会只渲染一帧预览。</p>
-  <pre>cd source/video
+  <pre>cd source/video          # 在仓库根目录
 python3 shot10.py          # 镜头 10 · 磁感线计数
 python3 shot14.py          # 镜头 14 · 导线里的电子
 python3 shot17.py          # 镜头 17 · 交流电波形
