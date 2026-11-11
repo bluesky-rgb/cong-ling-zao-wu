@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}img,video{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}.repo-nav{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:12px 0 0;font-size:13px}.repo-nav a{color:var(--field,#2e6f9e);text-decoration:none}.repo-nav a:hover{text-decoration:underline}.repo-nav b{color:var(--copper,#b2602a);font-weight:700;margin-right:4px}</style>
+<title>刻舟求剑拍摄本</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;900&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: shot-book pages in the shared workshop-notebook system. One reading column; experiment log is a working table filled in on shoot day. */
+:root{
+  --paper:#eef1f2; --sheet:#f9fbfb; --ink:#1b2428; --muted:#56656b; --line:#d3dbde;
+  --copper:#b2602a; --copper-soft:#f3e2d5; --field:#2e6f9e; --field-soft:#dce9f2; --good:#3d7a3a; --good-soft:#e2efdc; --warn:#9a4a12; --warn-soft:#f6e3d3;
+  --display:"Noto Serif SC","Songti SC",serif; --body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#12181b;--sheet:#1a2226;--ink:#e3eaec;--muted:#97a6ab;--line:#2c383d;--copper:#e08a52;--copper-soft:#3a281d;--field:#6fb0de;--field-soft:#1c3040;--good:#8cc47f;--good-soft:#1f3320;--warn:#f0a36a;--warn-soft:#3b2416;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.3;margin:0}
+p{margin:0}
+a{color:var(--field)}
+header{padding-block:40px 12px;display:grid;gap:12px}
+header>*,section>*{min-width:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--copper);text-transform:uppercase}
+h1{font-size:clamp(36px,7vw,56px);font-weight:900}
+.thesis{font-family:var(--display);font-size:clamp(18px,3vw,23px);font-weight:500;max-width:32em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:8px}
+.facts div{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:14px;min-width:0}
+.facts span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted)}
+section{border-top:2px solid var(--ink);padding-block:24px 6px;display:grid;gap:14px;margin-top:22px}
+h2{font-size:clamp(22px,4vw,28px);font-weight:900}
+h3{font-size:17px;font-weight:500}
+.lead{color:var(--muted);max-width:42em}
+.lead b{color:var(--ink);font-weight:500}
+.ol{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.ol .o{font-family:var(--display);font-size:19px}
+.ol .p{font-size:14px;color:var(--muted)}
+.ladder{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.ladder li{display:grid;grid-template-columns:1.8em minmax(0,1fr);gap:8px;font-size:15px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.ladder .k{font-family:var(--display);font-weight:900;color:var(--copper)}
+.ladder s{color:var(--muted)}
+.layers{display:grid;gap:8px}
+.layer{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:12px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.layer span{font-family:var(--mono);font-size:12px;color:var(--field);padding-top:3px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--sheet)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:500}
+.log input{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 8px;width:100%;min-width:70px}
+input:focus-visible,button:focus-visible{outline:2px solid var(--field);outline-offset:2px}
+ol.steps{margin:0;padding-left:1.3em;display:grid;gap:4px;font-size:15px}
+ul.verify{margin:0;padding:12px 16px 12px 2em;background:var(--copper-soft);border-radius:8px;display:grid;gap:4px;font-size:15px}
+.warn{background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:12px 16px;display:grid;gap:6px}
+.warn b{color:var(--warn);font-family:var(--display);font-size:18px}
+.warn ul{margin:0;padding-left:1.2em;font-size:15px;display:grid;gap:3px}
+.hint{font-size:14px;color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button{font:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 12px;cursor:pointer;min-height:32px;justify-self:start}
+button.primary{background:var(--ink);color:var(--paper);border-color:var(--ink);font-size:14px;min-height:36px}
+.shots{display:grid;gap:10px}
+.shot{background:var(--sheet);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;font-size:13px;color:var(--muted)}
+.meta .no{font-family:var(--display);font-weight:900;font-size:18px;color:var(--ink)}
+.meta .tc{font-family:var(--mono)}
+.tag{font-size:12px;border-radius:4px;padding:1px 8px;font-weight:500}
+.tag.real{background:var(--copper-soft);color:var(--copper)}
+.tag.res{background:var(--warn-soft);color:var(--warn)}
+.tag.done{background:var(--good-soft);color:var(--good)}
+.pic{font-size:15px}
+.vo2{font-family:var(--display);font-size:17px;line-height:1.8;border-left:3px solid var(--copper);padding-left:10px;border-radius:0}
+ol.src{margin:0;padding-left:1.3em;font-size:13px;color:var(--muted);display:grid;gap:4px}
+ol.src li{overflow-wrap:anywhere}
+
+</style>
+<div class="wrap">
+<nav class="repo-nav" aria-label="站点导航"><b>从零造物</b><a href="../">项目首页</a><a href="../plan/">项目全书</a><a href="../episodes/">选题详案</a><a href="../shooting/">拍摄排期</a><a href="../publish/">发布素材</a><a href="../checklist/">待核清单</a><a href="../expansion/">内容架构</a><a href="../electricity/">从零造电</a><a href="../ep01/">01</a><a href="../ep02/">02</a><a href="../ep03/">03</a><a href="../ep04/">04</a><a href="../ep05/">05</a><a href="../ep06/">06</a><a href="../b1/">B1</a><a href="../b14/">B14</a><a href="../b13/">B13</a><a href="../b2/">B2</a><a href="../ep11/">11</a><a href="../season1/">特辑</a><a href="../ep20/">20</a><a href="../ep15/">15</a><a href="../ep16/">16</a><a href="../b16/">B16</a><a href="../ep23/">23</a><a href="../b3/">B3</a><a href="../ep22/">22</a><a href="../b15/">B15</a><a href="../ep24/">24</a><a href="../ep17/">17</a><a href="../b4/">B4</a><a href="../ep18/">18</a><a href="../season2/">特辑2</a><a href="../ep28/">28</a><a href="../ep25/">25</a><a href="../ep26/">26</a><a href="../b5/">B5</a><a href="../ep27/">27</a><a href="../ep29/">29</a><a href="../ep34/">34</a><a href="../b12/">B12</a><a href="../ep38/">38</a><a href="../ep30/">30</a><a href="../b6/">B6</a><a href="../season3/">特辑3</a><a href="../ep32/">32</a><a href="../ep33/">33</a><a href="../b19/">B19</a><a href="../ep37/">37</a><a href="../ep31/">31</a><a href="../ep35/">35</a><a href="../ep36/">36</a><a href="../season4/">特辑4</a><a href="../ep39/">39</a><a href="../b8/">B8</a><a href="../ep40/">40</a><a href="../ep41/">41</a><a href="../b17/">B17</a><a href="../b7/">B7</a><a href="../ep42/">42</a><a href="../ep43/">43</a><a href="../ep44/">44</a><a href="../season5/">特辑5</a><a href="../ep45/">45</a><a href="../b11/">B11</a><a href="../b9/">B9</a><a href="../ep46/">46</a><a href="../ep47/">47</a><a href="../b10/">B10</a><a href="../ep48/">48</a><a href="../ep49/">49</a><a href="../ep50/">50</a><a href="../b18/">B18</a><a href="../season6/">特辑6</a><a href="../ep07/">07</a><a href="../ep08/">08</a><a href="../ep09/">09</a><a href="../ep12/">12</a><a href="../ep13/">13</a><a href="../ep14/">14</a><a href="../ep10/">10</a><a href="../ep19/">19</a><a href="../ep21/">21</a><a href="../ep51/">51</a><a href="../season7/">特辑7</a><a href="../ep52/">52</a><a href="../ep53/">53</a><a href="../ep54/">54</a><a href="../ep55/">55</a><a href="../ep56/">56</a><a href="../ep57/">57</a><a href="../ep58/">58</a><a href="../ep59/">59</a><a href="../ep60/">60</a><a href="../ep61/">61</a><a href="../season8/">特辑8</a><a href="../b20/">B20</a><a href="../b21/">B21</a><a href="../b22/">B22</a><a href="../b23/">B23</a><a href="../b24/">B24</a><a href="../b25/">B25</a><a href="../b26/">B26</a><a href="../b27/">B27</a><a href="../b28/">B28</a><a href="../b29/">B29</a><a href="../season9/">特辑9</a><a href="../ep62/">62</a><a href="../ep63/">63</a><a href="../ep64/">64</a><a href="../ep65/">65</a><a href="../ep66/">66</a><a href="../ep67/">67</a><a href="../ep68/">68</a><a href="../ep69/">69</a><a href="../ep70/">70</a><a href="../ep71/">71</a><a href="../season10/">特辑10</a><a href="../b30/">B30</a><a href="../b31/">B31</a><a href="../b32/">B32</a><a href="../b33/">B33</a><a href="../b34/">B34</a><a href="../b35/">B35</a><a href="../b36/">B36</a><a href="../b37/">B37</a><a href="../b38/">B38</a><a href="../b39/">B39</a><a href="../season11/">特辑11</a><a href="../ep72/">72</a><a href="../ep73/">73</a><a href="../ep74/">74</a><a href="../ep75/">75</a><a href="../ep76/">76</a><a href="../ep77/">77</a><a href="../ep78/">78</a><a href="../ep79/">79</a><a href="../ep80/">80</a><a href="../ep81/">81</a><a href="../season12/">特辑12</a><a href="../h1/">H1</a><a href="../h2/">H2</a><a href="../h3/">H3</a><a href="../h4/">H4</a><a href="../h5/">H5</a><a href="../season13/">特辑13</a><a href="../b40/">B40</a><a href="../b41/">B41</a><a href="../b42/">B42</a><a href="../b43/">B43</a><a href="../b44/">B44</a><a href="../b45/">B45</a><a href="../b46/">B46</a><a href="../b47/">B47</a><a href="../b48/">B48</a><a href="../b49/">B49</a><a href="../season14/">特辑14</a><a href="../ep82/">82</a><a href="../ep83/">83</a><a href="../ep84/">84</a><a href="../ep85/">85</a><a href="../ep86/">86</a><a href="../ep87/">87</a><a href="../ep88/">88</a><a href="../ep89/">89</a><a href="../ep90/">90</a><a href="../ep91/">91</a><a href="../season15/">特辑15</a><a href="../b50/">B50</a><a href="../b51/">B51</a><a href="../b52/">B52</a><a href="../b53/">B53</a><a href="../b54/">B54</a><a href="../b55/">B55</a><a href="../b56/">B56</a><a href="../b57/">B57</a><a href="../b58/">B58</a><a href="../b59/">B59</a><a href="../season16/">特辑16</a><a href="../ep92/">92</a><a href="../ep93/">93</a><a href="../ep94/">94</a><a href="../ep95/">95</a><a href="../ep96/">96</a><a href="../ep97/">97</a><a href="../ep98/">98</a><a href="../ep99/">99</a><a href="../ep100/">100</a><a href="../ep101/">101</a><a href="../season17/">特辑17</a><a href="../b60/">B60</a><a href="../b61/">B61</a><a href="../b62/">B62</a><a href="../b63/">B63</a><a href="../b64/">B64</a><a href="../b65/">B65</a><a href="../b66/">B66</a><a href="../b67/">B67</a><a href="../b68/">B68</a><a href="../b69/">B69</a><a href="../season18/">特辑18</a><a href="../ep102/">102</a><a href="../ep103/">103</a><a href="../ep104/">104</a><a href="../ep105/">105</a><a href="../ep106/">106</a><a href="../ep107/">107</a><a href="../ep108/">108</a><a href="../ep109/">109</a><a href="../ep110/">110</a><a href="../ep111/">111</a><a href="../season19/">特辑19</a><a href="../b70/">B70</a><a href="../b71/">B71</a><a href="../b72/">B72</a><a href="../b73/">B73</a><a href="../b74/">B74</a><a href="../b75/">B75</a><a href="../b76/">B76</a><a href="../b77/">B77</a><a href="../b78/">B78</a><a href="../b79/">B79</a><a href="../season20/">特辑20</a><a href="../ep112/">112</a><a href="../ep113/">113</a><a href="../ep114/">114</a><a href="../ep115/">115</a><a href="../ep116/">116</a><a href="../ep117/">117</a><a href="../ep118/">118</a><a href="../ep119/">119</a><a href="../ep120/">120</a><a href="../ep121/">121</a><a href="../season21/">特辑21</a><a href="../b80/">B80</a><a href="../b81/">B81</a><a href="../b82/">B82</a><a href="../b83/">B83</a><a href="../b84/">B84</a><a href="../b85/">B85</a><a href="../b86/">B86</a><a href="../b87/">B87</a><a href="../b88/">B88</a><a href="../b89/">B89</a><a href="../season22/">特辑22</a><a href="../ep122/">122</a><a href="../ep123/">123</a><a href="../ep124/">124</a><a href="../ep125/">125</a><a href="../ep126/">126</a><a href="../ep127/">127</a><a href="../ep128/">128</a><a href="../ep129/">129</a><a href="../ep130/">130</a><a href="../ep131/">131</a><a href="../season23/">特辑23</a><a href="../b90/">B90</a><a href="../b91/">B91</a><a href="../b92/">B92</a><a href="../b93/">B93</a><a href="../b94/">B94</a><a href="../b95/">B95</a><a href="../b96/">B96</a><a href="../b97/">B97</a><a href="../b98/">B98</a><a href="../b99/">B99</a><a href="../season24/">特辑24</a><a href="../ep132/">132</a><a href="../ep133/">133</a><a href="../ep134/">134</a><a href="../ep135/">135</a><a href="../ep136/">136</a><a href="../ep137/">137</a><a href="../ep138/">138</a><a href="../ep139/">139</a><a href="../ep140/">140</a><a href="../ep141/">141</a><a href="../season25/">特辑25</a><a href="../b100/">B100</a><a href="../b101/">B101</a><a href="../b102/">B102</a><a href="../b103/">B103</a><a href="../b104/">B104</a><a href="../b105/">B105</a><a href="../b106/">B106</a><a href="../b107/">B107</a><a href="../b108/">B108</a><a href="../b109/">B109</a><a href="../season26/">特辑26</a><a href="../ep142/">142</a><a href="../ep143/">143</a><a href="../ep144/">144</a><a href="../ep145/">145</a><a href="../ep146/">146</a><a href="../ep147/">147</a><a href="../ep148/">148</a><a href="../ep149/">149</a><a href="../ep150/">150</a><a href="../ep151/">151</a><a href="../season27/">特辑27</a><a href="../b110/">B110</a><a href="../b111/">B111</a><a href="../b112/">B112</a><a href="../b113/">B113</a><a href="../b114/">B114</a><a href="../b115/">B115</a><a href="../b116/">B116</a><a href="../b117/">B117</a><a href="../b118/">B118</a><a href="../b119/">B119</a><a href="../season28/">特辑28</a><a href="../ep152/">152</a><a href="../ep153/">153</a><a href="../ep154/">154</a><a href="../ep155/">155</a><a href="../ep156/">156</a><a href="../ep157/">157</a><a href="../ep158/">158</a><a href="../ep159/">159</a><a href="../ep160/">160</a><a href="../ep161/">161</a><a href="../season29/">特辑29</a><a href="../b120/">B120</a><a href="../b121/">B121</a><a href="../b122/">B122</a><a href="../b123/">B123</a><a href="../b124/">B124</a><a href="../b125/">B125</a><a href="../b126/">B126</a><a href="../b127/">B127</a><a href="../b128/">B128</a><a href="../b129/">B129</a><a href="../season30/">特辑30</a><a href="../ep162/">162</a><a href="../ep163/">163</a><a href="../ep164/">164</a><a href="../ep165/">165</a><a href="../ep166/">166</a><a href="../ep167/">167</a><a href="../ep168/">168</a><a href="../ep169/">169</a><a href="../ep170/">170</a><a href="../ep171/">171</a><a href="../season31/">特辑31</a><a href="../b130/">B130</a><a href="../b131/">B131</a><a href="../b132/">B132</a><a href="../b133/">B133</a><a href="../b134/">B134</a><a href="../b135/">B135</a><a href="../b136/">B136</a><a href="../b137/">B137</a><a href="../b138/">B138</a><a href="../b139/">B139</a><a href="../season32/">特辑32</a><a href="../ep172/">172</a><a href="../ep173/">173</a><a href="../ep174/">174</a><a href="../ep175/">175</a><a href="../ep176/">176</a><a href="../ep177/">177</a><a href="../ep178/">178</a><a href="../ep179/">179</a><a href="../ep180/">180</a><a href="../ep181/">181</a><a href="../season33/">特辑33</a><a href="../b140/">B140</a><a href="../b141/">B141</a><a href="../b142/">B142</a><a href="../b143/">B143</a><a href="../b144/">B144</a><a href="../b145/">B145</a><a href="../b146/">B146</a><a href="../b147/">B147</a><a href="../b148/">B148</a><a href="../b149/">B149</a><a href="../season34/">特辑34</a><a href="../ep182/">182</a><a href="../ep183/">183</a><a href="../ep184/">184</a><a href="../ep185/">185</a><a href="../ep186/">186</a><a href="../ep187/">187</a><a href="../ep188/">188</a><a href="../ep189/">189</a><a href="../ep190/">190</a><a href="../ep191/">191</a><a href="../season35/">特辑35</a><a href="../b150/">B150</a><a href="../b151/">B151</a><a href="../b152/">B152</a><a href="../b153/">B153</a><a href="../b154/">B154</a><a href="../b155/">B155</a><a href="../b156/">B156</a><a href="../b157/">B157</a><a href="../b158/">B158</a><a href="../b159/">B159</a><a href="../season36/">特辑36</a><a href="../ep192/">192</a><a href="../ep193/">193</a><a href="../ep194/">194</a><a href="../ep195/">195</a><a href="../ep196/">196</a><a href="../ep197/">197</a><a href="../ep198/">198</a><a href="../ep199/">199</a><a href="../ep200/">200</a><a href="../ep201/">201</a><a href="../season37/">特辑37</a><a href="../b160/">B160</a><a href="../b161/">B161</a><a href="../b162/">B162</a><a href="../b163/">B163</a><a href="../b164/">B164</a><a href="../b165/">B165</a><a href="../b166/">B166</a><a href="../b167/">B167</a><a href="../b168/">B168</a><a href="../b169/">B169</a><a href="../season38/">特辑38</a><a href="../ep202/">202</a><a href="../ep203/">203</a><a href="../ep204/">204</a><a href="../ep205/">205</a><a href="../ep206/">206</a><a href="../ep207/">207</a><a href="../ep208/">208</a><a href="../ep209/">209</a><a href="../ep210/">210</a><a href="../ep211/">211</a><a href="../season39/">特辑39</a><a href="../b170/">B170</a><a href="../b171/">B171</a><a href="../b172/">B172</a><a href="../#videos">视频</a></nav>
+<header>
+<div class="eyebrow">从零造物 · 古法解密 17.0 · B172</div>
+<h1>刻舟求剑</h1>
+<p class="thesis">《吕氏春秋》里记载了一个故事：楚国有个人坐船过江，剑掉进了水里，他马上在船边刻了个记号，说「我的剑是从这里掉下去的」；等船停了，他从刻记号的地方跳下水去找剑，当然找不到（拍摄前核对）。问题出在参照物上。剑掉进水里，沉到江底就不动了；船却一直在往前走，船边的记号是跟着船一起走的。说「剑在记号下面」，只在剑刚落水那一瞬间是对的；之后，用船当参照物，剑在一直往后退；用江底或岸边的树当参照物，剑才是一动不动的。描述一个东西在哪里、动没动，都要先说清楚「相对于谁」，这就是相对运动。要找回落水的东西，就得选一个不跟着自己动的参照物，比如岸上的大树、江边的石头。今天的卫星定位、航海图，用的也都是地球上固定不动的坐标。本集浴缸边防滑，地面湿了及时擦干；硬币别让小孩放进嘴里。</p>
+<div class="facts">
+<div><span>暂定标题</span>剑掉进江里，那个人在船边刻了个记号，等船停了再从记号处跳下去找，为什么找不到？</div>
+<div><span>时长</span>约 3 分 36 秒 · 13 个镜头</div>
+<div><span>时代</span>《吕氏春秋》记载「刻舟求剑」</div>
+<div><span>衔接</span>← B44 船尾舵、B17 指南车；→ B173 马镫</div>
+</div>
+</header>
+<section>
+<h2>背景</h2>
+<div class="ol"><p class="o">出现</p><p class="p">《吕氏春秋》记载「刻舟求剑」的故事（拍摄前核对）。</p></div>
+<div class="ol"><p class="o">今天</p><p class="p">卫星定位、航海坐标、地铁里看窗外、跑步机。</p></div>
+<div class="ol"><p class="o">原理</p><p class="p">参照物；相对运动。</p></div>
+</section>
+<section>
+<h2>理解路径</h2>
+<p class="lead">先说出观众最常见的误解，再用实验当场打破它。</p>
+<ol class="ladder">
+<li><span class="k">1</span><span><s>他只是记号刻错了地方</s> → 船一直在动，剑却留在江底原地；记号跟着船走了</span></li>
+<li><span class="k">2</span><span><s>只要船走得慢就能找到</s> → 船走多远，记号就离剑多远</span></li>
+<li><span class="k">3</span><span><s>东西要么动要么不动</s> → 动没动，要看拿谁当参照物</span></li>
+</ol>
+<h3>三层「为什么」</h3>
+<div class="layers">
+<div class="layer"><span>现象层</span><p>保鲜盒船贴胶带，推船后看硬币</p></div>
+<div class="layer"><span>规律层</span><p>记号跟着船走，剑跟着江底不动</p></div>
+<div class="layer"><span>本质层</span><p>参照物与相对运动</p></div>
+</div>
+<p class="lead"><b>原理 → 设计决策：</b>要在动着的船上记住落水的位置 → 要选一个不跟着船动的参照物 → 比如岸上的大树、江边的石头。</p>
+</section>
+<section>
+<h2>实验设计</h2>
+<p class="lead">浴缸：放 10 厘米深的水。船：一个塑料保鲜盒浮在水上，在盒子一侧贴一条红色胶带当「刻痕」。剑：一枚硬币，放在红胶带正下方的缸底（隔着水看准）。拍：手机从正上方拍一张，作为「剑刚落水」。推船：用手把盒子沿着浴缸长边慢慢推 30 厘米，停下，再从正上方拍一张，看胶带下面还有没有硬币。参照物：在浴缸边沿贴一张写着「岸边大树」的标签，量出硬币在标签正前方多远；把船推回原处再推走，用「大树」找硬币，看能不能一下找到。</p>
+<div class="tw"><table><thead><tr>
+<th>组</th>
+<th>做法</th>
+<th>检验什么</th>
+</tr></thead><tbody>
+<tr><td>A</td><td>胶带对准硬币</td><td>剑刚落水</td></tr>
+<tr><td>B</td><td>推船 30 厘米</td><td>记号跟着船走</td></tr>
+<tr><td>C</td><td>用岸边标签记位置</td><td>固定参照物</td></tr>
+<tr><td>D</td><td>坐车看窗外</td><td>相对运动</td></tr>
+</tbody></table></div>
+<h3>操作步骤</h3>
+<ol class="steps">
+<li>A：对准硬币贴胶带，从上方拍。</li>
+<li>B：推船 30 厘米，再拍，看胶带下面。</li>
+<li>C：用浴缸边的标签记位置，再找一次。</li>
+<li>D：坐在别人开的车里，看窗外和车里。</li>
+</ol>
+<h3>实验记录</h3>
+<p class="hint">拍摄时直接填写，只保存在这台设备的浏览器里；拍完截图发给 Claude，旁白会按真实数据改写。</p>
+<div class="tw"><table class="log"><thead><tr><th>条件</th><th>胶带下有没有硬币</th><th>能不能找到</th><th>备注</th></tr></thead><tbody>
+<tr><td>A 刚落水</td><td><input type="text" inputmode="decimal" data-k="b172-0-0" aria-label="A 刚落水 胶带下有没有硬币"></td><td><input type="text" inputmode="decimal" data-k="b172-0-1" aria-label="A 刚落水 能不能找到"></td><td><input type="text" data-k="b172-0-n" aria-label="A 刚落水 备注"></td></tr>
+<tr><td>B 推船后</td><td><input type="text" inputmode="decimal" data-k="b172-1-0" aria-label="B 推船后 胶带下有没有硬币"></td><td><input type="text" inputmode="decimal" data-k="b172-1-1" aria-label="B 推船后 能不能找到"></td><td><input type="text" data-k="b172-1-n" aria-label="B 推船后 备注"></td></tr>
+<tr><td>C 用岸边标签</td><td><input type="text" inputmode="decimal" data-k="b172-2-0" aria-label="C 用岸边标签 胶带下有没有硬币"></td><td><input type="text" inputmode="decimal" data-k="b172-2-1" aria-label="C 用岸边标签 能不能找到"></td><td><input type="text" data-k="b172-2-n" aria-label="C 用岸边标签 备注"></td></tr>
+</tbody></table></div>
+<div class="row"><button type="button" id="clearlog">清空记录</button></div>
+<h3>实践时要验证</h3>
+<ul class="verify">
+<li>《吕氏春秋》原文与篇名拍摄前核对</li>
+</ul>
+</section>
+<section>
+<h2>安全与道具</h2>
+<div class="warn"><b>安全提示</b><ul>
+<li>浴缸边防滑，地面湿了及时擦干。</li>
+<li>硬币别让小孩放进嘴里。</li>
+<li>坐车观察时系好安全带，不由拍摄者开车。</li>
+</ul></div>
+<div class="tw"><table><thead><tr><th>道具</th><th>用途</th></tr></thead><tbody>
+<tr><td>浴缸或大水盆</td><td>江</td></tr>
+<tr><td>塑料保鲜盒</td><td>船</td></tr>
+<tr><td>红色胶带</td><td>刻痕</td></tr>
+<tr><td>硬币</td><td>剑</td></tr>
+<tr><td>标签纸</td><td>岸边大树</td></tr>
+<tr><td>手机</td><td>从上方拍</td></tr>
+</tbody></table></div>
+</section>
+<section>
+<h2>分镜与旁白</h2>
+<p class="lead">粗剪样片约 3:36。已渲染的动画、资料卡、问题卡和片头片尾都已就位；其余镜头是占位画面。旁白里括号中的内容，要按实测结果改写。</p>
+<div class="row"><button type="button" class="primary" id="copyAll">复制全部旁白</button></div>
+<div id="shots" class="shots"></div>
+</section>
+<section>
+<h2>来源</h2>
+<ol class="src">
+<li><a href="https://en.wikipedia.org/wiki/Frame_of_reference">Wikipedia：Frame of reference</a> <span>参照系</span></li>
+<li><a href="https://en.wikipedia.org/wiki/Relative_velocity">Wikipedia：Relative velocity</a> <span>相对速度</span></li>
+<li><a href="https://en.wikipedia.org/wiki/L%C3%BCshi_Chunqiu">Wikipedia：Lüshi Chunqiu</a> <span>吕氏春秋</span></li>
+</ol>
+</section>
+</div>
+<script>
+(function(){
+const SH=[[1, "0:00", "real", "浴缸里漂着一个保鲜盒「船」，盒边贴着一条红胶带；胶带正下方的缸底有一枚硬币；作者推着船往前走了一段，镜头从上往下拍：红胶带下面空空的，硬币还在原地", "记号还在，剑不在了。"], [2, "0:08", "done", "问题卡：照着船上的记号，为什么找不回剑？", ""], [3, "0:14", "done", "片头：古法解密 17.0 科技树，B172 闪烁", "B44 的船尾舵让船走得直，B17 的指南车不管怎么转都指着一个方向：刻舟求剑，讲的是「位置要看相对于谁」。"], [4, "0:21", "done", "资料卡：刻舟求剑、船尾舵、指南车", "《吕氏春秋》里记载：楚国有人坐船过江，剑掉进水里，他在船边刻了个记号，等船停了再从记号处下水找（拍摄前核对）。"], [5, "0:45", "res", "实验 1：保鲜盒船贴胶带，缸底对准放硬币，从上方拍一张（浴缸边防滑）", "……"], [6, "1:10", "done", "动画：记号跟着船走了", "剑留在江底原地。"], [7, "1:32", "res", "实验 2：推船走 30 厘米，再从上方拍，看胶带下面有没有硬币", "……"], [8, "1:57", "done", "问题卡：那该在哪里做记号？", ""], [9, "2:03", "res", "实验 3：在浴缸边贴一张「岸边大树」标签，记下硬币在它正前方多远，推完船再找", "……"], [10, "2:33", "done", "动画：位置要看相对于谁", "选一个不跟着你动的参照物。"], [11, "2:55", "real", "实验 4：作者坐在行驶的车里（别人开车）看窗外的树和车里的杯子，说说谁在动", "……"], [12, "3:22", "done", "结论卡：参照物与相对运动", "记号跟着船走，剑留在江底原地；要选一个不跟着你动的参照物。"], [13, "3:29", "done", "片尾：点亮 B172，预告 B173", "下集：有了马镫，人为什么就坐稳了？"]];
+
+const TAG={real:['待实拍','real'],done:['已渲染','done'],res:['待实拍结果','res']};
+function copy(t,btn){const lab=btn.textContent;const ok=()=>{btn.textContent='已复制';setTimeout(()=>btn.textContent=lab,1500)};
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+ function fb(){const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='absolute';ta.style.left='-9999px';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){btn.textContent='请长按文字复制'}document.body.removeChild(ta);}}
+const box=document.getElementById('shots');
+SH.forEach(s=>{const a=document.createElement('article');a.className='shot';const g=TAG[s[2]];
+ a.innerHTML=`<div class="meta"><span class="no">镜头 ${s[0]}</span><span class="tc">${s[1]}</span><span class="tag ${g[1]}">${g[0]}</span></div><p class="pic"></p>${s[4]?'<p class="vo2"></p><button type="button">复制旁白</button>':''}`;
+ a.querySelector('.pic').textContent=s[3];if(s[4]){a.querySelector('.vo2').textContent=s[4];const b=a.querySelector('button');b.onclick=()=>copy(s[4],b);}box.appendChild(a);});
+document.getElementById('copyAll').onclick=function(){copy(SH.filter(s=>s[4]).map(s=>s[4]).join('\n\n'),this);};
+const inputs=[...document.querySelectorAll('.log input')];
+inputs.forEach(i=>{try{i.value=localStorage.getItem('log-'+i.dataset.k)||''}catch(e){}i.addEventListener('input',()=>{try{localStorage.setItem('log-'+i.dataset.k,i.value)}catch(e){}});});
+document.getElementById('clearlog').onclick=()=>{inputs.forEach(i=>{i.value='';try{localStorage.removeItem('log-'+i.dataset.k)}catch(e){}});};
+
+})();
+</script>
+</html>
