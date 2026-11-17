@@ -56,7 +56,7 @@ flowchart TB
 | [选题详案](https://bluesky-rgb.github.io/cong-ling-zao-wu/episodes/) | 全部 565 个选题和每一季的播出计划 |
 | [项目全书](https://bluesky-rgb.github.io/cong-ling-zao-wu/plan/) | 定位、方法、科技树、制作流程、风险合规、路线图 |
 | [内容架构](https://bluesky-rgb.github.io/cong-ling-zao-wu/expansion/) | 第二阶段「一主一副一特别」的规则和候选选题 |
-| [拍摄总排期与采购清单](https://bluesky-rgb.github.io/cong-ling-zao-wu/shooting/) | 拍摄顺序、长周期实验、要买的道具（目前只覆盖前七季） |
+| [拍摄总排期与采购清单](https://bluesky-rgb.github.io/cong-ling-zao-wu/shooting/) | 拍摄顺序、每季排期、逐集道具；页首统计、通用工具箱和长周期实验还是按前七季算的 |
 | [发布素材](https://bluesky-rgb.github.io/cong-ling-zao-wu/publish/) | 每集标题、封面文字、简介、竖屏切片脚本 |
 | [待核清单](https://bluesky-rgb.github.io/cong-ling-zao-wu/checklist/) | 拍摄前要再查一遍的说法 |
 
@@ -137,7 +137,9 @@ flowchart LR
 ### 还要整理的
 
 - [x] 仓库约 1.5 GB，超过 GitHub Pages 1 GB 的上限。已决定暂不处理：这个库是资料库和备份，视频留在原处；哪天部署失败，网站会停在上一个成功的版本，内容不会丢，到时再把视频按季分到几个新库。
-- [ ] 拍摄总排期和采购清单只覆盖前七季，要随实拍进度补上。
+- [ ] 拍摄总排期页的页首统计、通用工具箱（276 项）和长周期实验（20 项）还是按前七季算的，要按 57 季重算。
+- [ ] 待核清单只汇总了第一阶段的 31 条，后面各集的「拍摄前核对」还没汇总进去。
+- [ ] 项目全书的路线图停在第 6 版（10 月 26 日，七季 70 个选题），要更新到现状。
 - [ ] 约 482 集里还有「拍摄前核对」标记，拍到哪集先核对哪集。
 - [ ] 57 个特辑的打分表要在实拍后填写。
 
